@@ -1,6 +1,6 @@
 # Interview Notes — Bu Anita / KDMP Bangunharjo
 
-Berikut adalah transkrip detail dari sesi wawancara mengenai digitalisasi Koperasi Desa Merah Putih (KDMP) Bangunharjo bersama Ibu Anita Rahayu Ramadanti.
+Berikut adalah transkrip detail dari sesi wawancara mengenai digitalisasi Koperasi Desa Merah Putih (KDMP) Bangunharjo bersama Ibu Anita (nama lengkap disimpan tim).
 
 ---
 
@@ -12,7 +12,7 @@ Berikut adalah transkrip detail dari sesi wawancara mengenai digitalisasi Kopera
 
  Fira: Sebelumnya perkenalkan Ibu, saya yang menghubungi Ibu, nama saya Fira. Kemudian ada dua rekan saya di sini, ada Dika yang memakai baju batik, dan juga ada Aldio. Jadi memang kebetulan kami ingin mewawancarai Ibu terkait dengan koperasi Merah Putih. Dari Ibu Anita sendiri, boleh Ibu kira-kira memperkenalkan diri, jabatan di KDMP sebagai apa, dan sejak kapan menjabat?
 
- Ibu Anita: Oh nggih. *Assalamualaikum warahmatullahi wabarakatuh*. Perkenalkan nama saya Anita Rahayu Ramadanti. Jabatan saya di KDMP Kelurahan Bangunharjo sebagai Sekretaris, yang dilantik dalam Muskal (Musyawarah Kalurahan) Khusus pada tanggal 16 Mei 2025.
+ Ibu Anita: Oh nggih. *Assalamualaikum warahmatullahi wabarakatuh*. Perkenalkan nama saya Anita (nama lengkap disimpan tim). Jabatan saya di KDMP Kelurahan Bangunharjo sebagai Sekretaris, yang dilantik dalam Muskal (Musyawarah Kalurahan) Khusus pada tanggal 16 Mei 2025.
 
  Fira: Oke, baik Ibu. Kalau boleh tahu Ibu, tugas sehari-hari sebagai sekretaris di koperasi itu sendiri seperti apa ya, Bu?
 
