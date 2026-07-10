@@ -1,0 +1,23 @@
+# deps & build
+node_modules/
+dist/
+.next/
+.turbo/
+*.tsbuildinfo
+.mastra/
+
+# env & secrets — repo ini akan publik!
+.env
+.env.*
+!.env.example
+
+# data dumps (69MB+, berisi data panitia)
+db_dump/
+*.sql
+*.dump
+
+# misc
+.DS_Store
+Thumbs.db
+*.log
+coverage/

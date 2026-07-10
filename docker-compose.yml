@@ -1,0 +1,39 @@
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    container_name: kopra-postgres
+    environment:
+      POSTGRES_USER: kopra
+      POSTGRES_PASSWORD: kopra
+      POSTGRES_DB: kopra
+    ports:
+      - "5433:5432"
+    volumes:
+      - kopra_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U kopra"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  # ---- Aktifkan setelah Dockerfile tiap app dibuat (deploy VPS) ----
+  # api:
+  #   build: { context: ., dockerfile: apps/api/Dockerfile }
+  #   env_file: .env
+  #   ports: ["3001:3001"]
+  #   depends_on: { postgres: { condition: service_healthy } }
+  #
+  # agent:
+  #   build: { context: ., dockerfile: apps/agent/Dockerfile }
+  #   env_file: .env
+  #   ports: ["4111:4111"]
+  #   depends_on: { postgres: { condition: service_healthy } }
+  #
+  # web:
+  #   build: { context: ., dockerfile: apps/web/Dockerfile }
+  #   env_file: .env
+  #   ports: ["3000:3000"]
+  #   depends_on: [api, agent]
+
+volumes:
+  kopra_pgdata:

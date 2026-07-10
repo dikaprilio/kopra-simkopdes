@@ -1,0 +1,289 @@
+No,Table Name,Field Name,Type & Nullable,Description,Example Data
+1,akun_bank_koperasi,akun_bank_ref,text | NOT NULL,Kode unik yang mengidentifikasi satu akun bank koperasi.,<ID unik 16 karakter>
+2,akun_bank_koperasi,koperasi_ref,text | NOT NULL,Kode referensi koperasi yang digunakan untuk menghubungkan data koperasi antartabel.,KOP-539EF09CDAAD
+3,akun_bank_koperasi,nama_rekening,text | NULLABLE,Nama pemilik rekening sebagaimana tercatat pada akun bank koperasi.,<nama pemilik rekening>
+4,akun_bank_koperasi,nama_bank,text | NULLABLE,Nama bank tempat rekening koperasi terdaftar. Nilai pada data memiliki variasi penulisan sehingga standardisasi disarankan sebelum agregasi.,BRI; BNI; Mandiri; BSI
+5,akun_bank_koperasi,dibuat_pada,timestamp without time zone | NULLABLE,Waktu ketika record pertama kali dibuat pada sistem sumber.,2026-01-31 14:30:00
+6,akun_bank_koperasi,diperbarui_pada,timestamp without time zone | NULLABLE,Waktu terakhir record diperbarui pada sistem sumber.,2026-01-31 14:30:00
+7,anggota_koperasi,anggota_ref,text | NOT NULL,Kode unik yang mengidentifikasi satu anggota koperasi.,<ID unik 16 karakter>
+8,anggota_koperasi,koperasi_ref,text | NOT NULL,Kode referensi koperasi yang digunakan untuk menghubungkan data koperasi antartabel.,KOP-539EF09CDAAD
+9,anggota_koperasi,nama,text | NULLABLE,Nama individu atau entitas sesuai konteks tabel.,<nama individu>
+10,anggota_koperasi,nik,text | NULLABLE,Nomor Induk Kependudukan individu; nilai pada dataset telah disamarkan untuk menjaga privasi.,32************01
+11,anggota_koperasi,kode_wilayah,text | NULLABLE,Kode wilayah administrasi yang menghubungkan record dengan tabel referensi_wilayah.,32.01.01.2001
+12,anggota_koperasi,jenis_kelamin,text | NULLABLE,Kategori jenis kelamin individu pada record.,PEREMPUAN; LAKI-LAKI
+13,anggota_koperasi,status_keanggotaan,text | NULLABLE,Status proses atau keaktifan keanggotaan anggota koperasi.,Approved; Requested
+14,anggota_koperasi,tanggal_terdaftar,date | NULLABLE,Tanggal anggota mulai terdaftar pada koperasi.,2026-01-31
+15,anggota_koperasi,dibuat_pada,timestamp without time zone | NULLABLE,Waktu ketika record pertama kali dibuat pada sistem sumber.,2026-01-31 14:30:00
+16,anggota_koperasi,diperbarui_pada,timestamp without time zone | NULLABLE,Waktu terakhir record diperbarui pada sistem sumber.,2026-01-31 14:30:00
+17,anggota_koperasi,file_ktp,text | NULLABLE,Referensi berkas KTP yang terkait dengan individu.,<ID/referensi berkas>
+18,anggota_koperasi,status_akun,text | NULLABLE,Status kepemilikan akun pengguna oleh anggota.,Tidak Punya Akun; Punya Akun
+19,anggota_koperasi,pekerjaan,text | NULLABLE,Jenis pekerjaan atau mata pencaharian individu.,<jenis pekerjaan>
+20,aset_koperasi,aset_ref,text | NOT NULL,Kode unik yang mengidentifikasi satu aset koperasi.,<ID unik 17 karakter>
+21,aset_koperasi,koperasi_ref,text | NOT NULL,Kode referensi koperasi yang digunakan untuk menghubungkan data koperasi antartabel.,KOP-539EF09CDAAD
+22,aset_koperasi,nama_aset,text | NULLABLE,Nama atau label aset yang dicatat oleh koperasi.,<nama aset>
+23,aset_koperasi,tipe_aset,text | NULLABLE,Kategori kepemilikan atau klasifikasi aset koperasi.,Barang Milik Desa (BMDes); BMD (Barang Milik Daerah); Hibah; -
+24,aset_koperasi,status,text | NULLABLE,Status atau kondisi record sesuai proses bisnis pada tabel.,Terverifikasi; Sedang Diverifikasi; Tidak Ada Lahan; Dipertimbangkan
+25,aset_koperasi,progres_pembangunan,numeric | NULLABLE,Persentase kemajuan pembangunan aset dengan rentang nilai 0 sampai 100.,75.50
+26,aset_koperasi,foto_utama,text | NULLABLE,Referensi berkas foto utama aset.,<ID/referensi berkas>
+27,aset_koperasi,foto_sekunder,text | NULLABLE,Referensi berkas foto tambahan aset.,<ID/referensi berkas>
+28,aset_koperasi,dokumen_utama,text | NULLABLE,Referensi berkas dokumen utama aset.,<ID/referensi berkas>
+29,aset_koperasi,dokumen_sekunder,text | NULLABLE,Referensi berkas dokumen tambahan aset.,<ID/referensi berkas>
+30,aset_koperasi,dokumen_lainnya,text | NULLABLE,Referensi berkas dokumen pendukung lainnya.,<ID/referensi berkas>
+31,aset_koperasi,luas_lahan,numeric | NULLABLE,Luas lahan yang terkait dengan aset koperasi.,500.00
+32,aset_koperasi,panjang_lahan,numeric | NULLABLE,Ukuran panjang lahan yang terkait dengan aset koperasi.,25.00
+33,aset_koperasi,lebar_lahan,numeric | NULLABLE,Ukuran lebar lahan yang terkait dengan aset koperasi.,20.00
+34,aset_koperasi,akses_jalan,text | NULLABLE,Kondisi atau tingkat kemudahan akses jalan menuju aset atau gerai.,Beraspal; Tanah; Beton; Batu
+35,aset_koperasi,koordinat_dibulatkan,text | NULLABLE,Koordinat lokasi yang telah dibulatkan untuk mengurangi tingkat presisi lokasi.,"<latitude, longitude dibulatkan>"
+36,aset_koperasi,dibuat_pada,timestamp without time zone | NULLABLE,Waktu ketika record pertama kali dibuat pada sistem sumber.,2026-01-31 14:30:00
+37,aset_koperasi,diperbarui_pada,timestamp without time zone | NULLABLE,Waktu terakhir record diperbarui pada sistem sumber.,2026-01-31 14:30:00
+38,barang_keluar_produk,__row_id,integer | NOT NULL,Nomor urut teknis yang menjadi identitas unik setiap baris pada tabel.,12345
+39,barang_keluar_produk,transaksi_sample_id,text | NOT NULL,Kode unik transaksi penjualan pada dataset hackathon.,<ID transaksi>
+40,barang_keluar_produk,produk_sample_id,text | NOT NULL,Kode unik produk pada dataset hackathon.,<ID produk>
+41,barang_keluar_produk,koperasi_ref,text | NOT NULL,Kode referensi koperasi yang digunakan untuk menghubungkan data koperasi antartabel.,KOP-539EF09CDAAD
+42,barang_keluar_produk,kode_barcode,text | NULLABLE,Kode barcode yang digunakan untuk mengidentifikasi produk.,<kode barcode>
+43,barang_keluar_produk,tanggal_keluar,timestamp without time zone | NULLABLE,Waktu produk keluar dari persediaan melalui transaksi.,2026-01-31 14:30:00
+44,barang_keluar_produk,status,text | NULLABLE,Status atau kondisi record sesuai proses bisnis pada tabel.,Sales
+45,barang_keluar_produk,nama_produk,text | NULLABLE,Nama produk sebagaimana tercatat pada data produk atau transaksi.,<nama produk>
+46,barang_keluar_produk,nama_tampilan,text | NULLABLE,Nama produk yang digunakan untuk tampilan pada aplikasi atau laporan.,<nama tampilan produk>
+47,barang_keluar_produk,jumlah_keluar,numeric | NULLABLE,Kuantitas produk yang keluar pada record transaksi.,100.00
+48,barang_keluar_produk,harga,numeric | NULLABLE,Harga per unit produk pada detail barang keluar.,15000.00
+49,barang_keluar_produk,total_nilai,numeric | NULLABLE,Nilai total barang keluar pada record.,1500000.00
+50,barang_keluar_produk,status_transaksi,text | NULLABLE,Status penyelesaian transaksi penjualan.,Paid
+51,barang_keluar_produk,dibuat_pada,timestamp without time zone | NULLABLE,Waktu ketika record pertama kali dibuat pada sistem sumber.,2026-01-31 14:30:00
+52,barang_keluar_produk,diperbarui_pada,timestamp without time zone | NULLABLE,Waktu terakhir record diperbarui pada sistem sumber.,2026-01-31 14:30:00
+53,barang_masuk_produk,barang_masuk_ref,text | NOT NULL,Kode unik yang mengidentifikasi satu transaksi atau batch barang masuk.,<ID unik 16 karakter>
+54,barang_masuk_produk,produk_sample_id,text | NOT NULL,Kode unik produk pada dataset hackathon.,<ID produk>
+55,barang_masuk_produk,koperasi_ref,text | NOT NULL,Kode referensi koperasi yang digunakan untuk menghubungkan data koperasi antartabel.,KOP-539EF09CDAAD
+56,barang_masuk_produk,kode_barcode,text | NULLABLE,Kode barcode yang digunakan untuk mengidentifikasi produk.,<kode barcode>
+57,barang_masuk_produk,nama_produk,text | NULLABLE,Nama produk sebagaimana tercatat pada data produk atau transaksi.,<nama produk>
+58,barang_masuk_produk,nama_tampilan,text | NULLABLE,Nama produk yang digunakan untuk tampilan pada aplikasi atau laporan.,<nama tampilan produk>
+59,barang_masuk_produk,jumlah_masuk,numeric | NULLABLE,Kuantitas produk yang diterima pada record barang masuk.,500.00
+60,barang_masuk_produk,jumlah_tersedia,numeric | NULLABLE,Kuantitas produk dari barang masuk yang masih tersedia.,350.00
+61,barang_masuk_produk,harga_beli,numeric | NULLABLE,Harga pembelian produk per unit.,12000.00
+62,barang_masuk_produk,harga_jual,numeric | NULLABLE,Harga penjualan produk per unit.,15000.00
+63,barang_masuk_produk,total_biaya,numeric | NULLABLE,Nilai total biaya barang masuk pada record.,6000000.00
+64,barang_masuk_produk,keterangan,text | NULLABLE,Catatan atau keterangan tambahan mengenai record.,<keterangan tambahan>
+65,barang_masuk_produk,status,text | NULLABLE,Status atau kondisi record sesuai proses bisnis pada tabel.,Approved
+66,barang_masuk_produk,tanggal_masuk,timestamp without time zone | NULLABLE,Waktu produk diterima atau masuk ke persediaan.,2026-01-31 14:30:00
+67,barang_masuk_produk,dibuat_pada,timestamp without time zone | NULLABLE,Waktu ketika record pertama kali dibuat pada sistem sumber.,2026-01-31 14:30:00
+68,barang_masuk_produk,diperbarui_pada,timestamp without time zone | NULLABLE,Waktu terakhir record diperbarui pada sistem sumber.,2026-01-31 14:30:00
+69,dokumen_koperasi,dokumen_ref,text | NOT NULL,Kode unik yang mengidentifikasi satu dokumen koperasi.,<ID unik 16 karakter>
+70,dokumen_koperasi,koperasi_ref,text | NOT NULL,Kode referensi koperasi yang digunakan untuk menghubungkan data koperasi antartabel.,KOP-539EF09CDAAD
+71,dokumen_koperasi,jenis_dokumen_ref,text | NOT NULL,Kode referensi jenis dokumen yang menghubungkan dokumen dengan tabel referensi_dokumen_koperasi.,<ID/referensi berkas>
+72,dokumen_koperasi,nomor,text | NULLABLE,Nomor resmi atau nomor administrasi dokumen.,<nomor dokumen>
+73,dokumen_koperasi,tanggal_berlaku,date | NULLABLE,Tanggal mulai berlakunya dokumen.,2026-01-31
+74,dokumen_koperasi,tanggal_kadaluarsa,date | NULLABLE,Tanggal berakhirnya masa berlaku dokumen.,2026-01-31
+75,dokumen_koperasi,alamat_pada_dokumen,text | NULLABLE,Alamat yang tercantum pada dokumen.,<alamat pada dokumen>
+76,dokumen_koperasi,unggahan_dokumen,text | NULLABLE,Referensi berkas hasil unggahan dokumen.,<ID/referensi berkas>
+77,dokumen_koperasi,dibuat_pada,timestamp without time zone | NULLABLE,Waktu ketika record pertama kali dibuat pada sistem sumber.,2026-01-31 14:30:00
+78,dokumen_koperasi,diperbarui_pada,timestamp without time zone | NULLABLE,Waktu terakhir record diperbarui pada sistem sumber.,2026-01-31 14:30:00
+79,gerai_koperasi,gerai_ref,text | NOT NULL,Kode unik yang mengidentifikasi satu gerai koperasi.,<ID unik 18 karakter>
+80,gerai_koperasi,koperasi_ref,text | NOT NULL,Kode referensi koperasi yang digunakan untuk menghubungkan data koperasi antartabel.,KOP-539EF09CDAAD
+81,gerai_koperasi,jenis_gerai_ref,text | NOT NULL,Kode referensi jenis gerai yang menghubungkan gerai dengan tabel referensi_gerai_koperasi.,<jenis gerai ref>
+82,gerai_koperasi,status_gerai,text | NULLABLE,Status operasional atau kesiapan gerai koperasi.,Aktif; Belum Aktif
+83,gerai_koperasi,foto_gerai,text | NULLABLE,Referensi berkas foto gerai koperasi.,<ID/referensi berkas>
+84,gerai_koperasi,pengisi,text | NULLABLE,Pihak atau sumber yang mengisi informasi gerai.,Kementerian Koperasi; Penyuluh Perikanan KKP; Pendamping Desa/BA/PMO; Dinas yang membidangi Koperasi (Prov/Kab/Kota)
+85,gerai_koperasi,akses_internet,text | NULLABLE,Ketersediaan atau kondisi akses internet pada gerai.,Ada; Tidak Ada
+86,gerai_koperasi,akses_listrik,text | NULLABLE,Ketersediaan atau kondisi akses listrik pada gerai.,Ada; Tidak Ada
+87,gerai_koperasi,status_kepemilikan_aset_gerai,text | NULLABLE,Status kepemilikan aset yang digunakan sebagai gerai.,Milik Sendiri; BMDes; BMD; Hibah
+88,gerai_koperasi,status_pemanfaatan_aset_gerai,text | NULLABLE,Skema atau status pemanfaatan aset gerai.,Pinjaman; Sewa; Bangunan Serah Guna; Bangun Serah Guna
+89,gerai_koperasi,sumber_air_bersih,text | NULLABLE,Sumber air bersih yang tersedia pada gerai.,PAM
+90,gerai_koperasi,jenis_bangunan,text | NULLABLE,Jenis bangunan yang digunakan sebagai gerai.,Gedung KDKMP
+91,gerai_koperasi,koordinat_dibulatkan,text | NULLABLE,Koordinat lokasi yang telah dibulatkan untuk mengurangi tingkat presisi lokasi.,"<latitude, longitude dibulatkan>"
+92,gerai_koperasi,dibuat_pada,timestamp without time zone | NULLABLE,Waktu ketika record pertama kali dibuat pada sistem sumber.,2026-01-31 14:30:00
+93,gerai_koperasi,diperbarui_pada,timestamp without time zone | NULLABLE,Waktu terakhir record diperbarui pada sistem sumber.,2026-01-31 14:30:00
+94,inventaris_produk,inventaris_ref,text | NOT NULL,Kode unik yang mengidentifikasi satu record inventaris produk.,<ID unik 16 karakter>
+95,inventaris_produk,produk_sample_id,text | NOT NULL,Kode unik produk pada dataset hackathon.,<ID produk>
+96,inventaris_produk,koperasi_ref,text | NOT NULL,Kode referensi koperasi yang digunakan untuk menghubungkan data koperasi antartabel.,KOP-539EF09CDAAD
+97,inventaris_produk,nama_produk,text | NULLABLE,Nama produk sebagaimana tercatat pada data produk atau transaksi.,<nama produk>
+98,inventaris_produk,stok,numeric | NULLABLE,Saldo stok produk yang tercatat pada inventaris.,350.00
+99,inventaris_produk,dibuat_pada,timestamp without time zone | NULLABLE,Waktu ketika record pertama kali dibuat pada sistem sumber.,2026-01-31 14:30:00
+100,inventaris_produk,diperbarui_pada,timestamp without time zone | NULLABLE,Waktu terakhir record diperbarui pada sistem sumber.,2026-01-31 14:30:00
+101,inventaris_produk,kode_barcode,text | NULLABLE,Kode barcode yang digunakan untuk mengidentifikasi produk.,<kode barcode>
+102,karyawan_koperasi,karyawan_ref,text | NOT NULL,Kode unik yang mengidentifikasi satu karyawan koperasi.,<ID unik 16 karakter>
+103,karyawan_koperasi,koperasi_ref,text | NOT NULL,Kode referensi koperasi yang digunakan untuk menghubungkan data koperasi antartabel.,KOP-539EF09CDAAD
+104,karyawan_koperasi,nama,text | NULLABLE,Nama individu atau entitas sesuai konteks tabel.,<nama individu>
+105,karyawan_koperasi,jabatan,text | NULLABLE,Jabatan atau peran individu dalam struktur organisasi koperasi.,Staff; Manager
+106,karyawan_koperasi,nomor_hp_karyawan,text | NULLABLE,Nomor telepon karyawan; ditampilkan dalam bentuk tersamarkan pada output publik.,08******7890
+107,karyawan_koperasi,jenis_kelamin,text | NULLABLE,Kategori jenis kelamin individu pada record.,LAKI-LAKI; PEREMPUAN
+108,karyawan_koperasi,nik,text | NULLABLE,Nomor Induk Kependudukan individu; nilai pada dataset telah disamarkan untuk menjaga privasi.,32************01
+109,karyawan_koperasi,email,text | NULLABLE,Alamat email individu; ditampilkan dalam bentuk tersamarkan pada output publik.,na***@domain.id
+110,karyawan_koperasi,status_karyawan,text | NULLABLE,Status hubungan kerja karyawan dengan koperasi.,Aktif; Tidak Aktif
+111,karyawan_koperasi,dibuat_pada,timestamp without time zone | NULLABLE,Waktu ketika record pertama kali dibuat pada sistem sumber.,2026-01-31 14:30:00
+112,karyawan_koperasi,diperbarui_pada,timestamp without time zone | NULLABLE,Waktu terakhir record diperbarui pada sistem sumber.,2026-01-31 14:30:00
+113,kbli_koperasi,__row_id,integer | NOT NULL,Nomor urut teknis yang menjadi identitas unik setiap baris pada tabel.,12345
+114,kbli_koperasi,koperasi_ref,text | NOT NULL,Kode referensi koperasi yang digunakan untuk menghubungkan data koperasi antartabel.,KOP-539EF09CDAAD
+115,kbli_koperasi,kode_kbli,text | NULLABLE,Kode Klasifikasi Baku Lapangan Usaha Indonesia yang dimiliki koperasi.,<kode KBLI>
+116,kbli_koperasi,nama_kbli,text | NULLABLE,Nama kegiatan usaha sesuai kode KBLI.,<nama kegiatan usaha>
+117,kbli_koperasi,tipe_izin_usaha,text | NULLABLE,Jenis atau tingkat izin usaha yang berkaitan dengan KBLI.,Izin Usaha Perdagangan (SIUP); Sertifikat Standar Usaha; Izin Lokasi dan Persetujuan Bangunan Gedung (PBG); Izin Usaha Jasa Pengurusan Transportasi (IUJPT)
+118,kbli_koperasi,tahun_kbli,smallint | NULLABLE,Tahun referensi penerbitan atau pencatatan KBLI.,2000
+119,kbli_koperasi,dibuat_pada,timestamp without time zone | NULLABLE,Waktu ketika record pertama kali dibuat pada sistem sumber.,2026-01-31 14:30:00
+120,kbli_koperasi,diperbarui_pada,timestamp without time zone | NULLABLE,Waktu terakhir record diperbarui pada sistem sumber.,2026-01-31 14:30:00
+121,modal_koperasi,modal_ref,text | NOT NULL,Kode unik yang mengidentifikasi satu sumber atau penerimaan modal.,<ID unik 18 karakter>
+122,modal_koperasi,koperasi_ref,text | NOT NULL,Kode referensi koperasi yang digunakan untuk menghubungkan data koperasi antartabel.,KOP-539EF09CDAAD
+123,modal_koperasi,nomor_perjanjian,text | NULLABLE,Nomor dokumen perjanjian sumber modal.,<nomor perjanjian>
+124,modal_koperasi,tipe_sumber,text | NULLABLE,Kategori sumber pemberi modal.,INVESTOR; MITRA; BANK; DONOR
+125,modal_koperasi,nama_sumber,text | NULLABLE,Nama pihak atau program yang menjadi sumber modal.,SUMBER-BANK-7F01; SUMBER-BANK-9AFD; SUMBER-BANK-B797; SUMBER-DONOR-1E9E
+126,modal_koperasi,tipe_modal,text | NULLABLE,Kategori modal yang diterima koperasi.,PINJAMAN; CSR; HIBAH
+127,modal_koperasi,jumlah,numeric | NULLABLE,Jumlah nilai modal yang diterima.,100000000.00
+128,modal_koperasi,tanggal_diterima,date | NULLABLE,Tanggal modal diterima oleh koperasi.,2026-01-31
+129,modal_koperasi,file_perjanjian,text | NULLABLE,Referensi berkas perjanjian sumber modal.,<ID/referensi berkas>
+130,modal_koperasi,dibuat_pada,timestamp without time zone | NULLABLE,Waktu ketika record pertama kali dibuat pada sistem sumber.,2026-01-31 14:30:00
+131,modal_koperasi,diperbarui_pada,timestamp without time zone | NULLABLE,Waktu terakhir record diperbarui pada sistem sumber.,2026-01-31 14:30:00
+132,pengajuan_domain,domain_ref,text | NOT NULL,Kode unik yang mengidentifikasi satu pengajuan domain.,<ID unik 19 karakter>
+133,pengajuan_domain,koperasi_ref,text | NOT NULL,Kode referensi koperasi yang digunakan untuk menghubungkan data koperasi antartabel.,KOP-539EF09CDAAD
+134,pengajuan_domain,domain_koperasi,text | NULLABLE,Nama domain yang diajukan untuk koperasi.,contoh-koperasi.id
+135,pengajuan_domain,status_verifikasi,text | NULLABLE,Status pemeriksaan atau verifikasi pengajuan domain.,Not Verified
+136,pengajuan_domain,status_domain,text | NULLABLE,Status aktivasi atau penggunaan domain koperasi.,Waiting
+137,pengajuan_domain,dibuat_pada,timestamp without time zone | NULLABLE,Waktu ketika record pertama kali dibuat pada sistem sumber.,2026-01-31 14:30:00
+138,pengajuan_domain,diperbarui_pada,timestamp without time zone | NULLABLE,Waktu terakhir record diperbarui pada sistem sumber.,2026-01-31 14:30:00
+139,pengajuan_kemitraan,pengajuan_kemitraan_ref,text | NOT NULL,Kode unik yang mengidentifikasi satu pengajuan kemitraan.,<ID unik 18 karakter>
+140,pengajuan_kemitraan,koperasi_ref,text | NOT NULL,Kode referensi koperasi yang digunakan untuk menghubungkan data koperasi antartabel.,KOP-539EF09CDAAD
+141,pengajuan_kemitraan,nik,text | NULLABLE,Nomor Induk Kependudukan individu; nilai pada dataset telah disamarkan untuk menjaga privasi.,32************01
+142,pengajuan_kemitraan,penanggung_jawab,text | NULLABLE,Nama pihak yang bertanggung jawab atas pengajuan.,<penanggung jawab>
+143,pengajuan_kemitraan,nomor_penanggung_jawab,text | NULLABLE,Nomor kontak penanggung jawab; ditampilkan dalam bentuk tersamarkan pada output publik.,08******7890
+144,pengajuan_kemitraan,status_permohonan,text | NULLABLE,Status proses permohonan atau pengajuan.,Verified; Approved; Rejected; Processed
+145,pengajuan_kemitraan,bisnis_kemitraan,text | NULLABLE,Nama atau jenis bisnis yang diajukan dalam kemitraan.,Bisnis LPG 3kg; Gerasi Sembako; Agen RPK; PLN Agen
+146,pengajuan_kemitraan,paket_kemitraan,text | NULLABLE,Paket kerja sama yang dipilih dalam pengajuan kemitraan.,"Standar; Refil Gas Subsidi dan Non Subsidi; Bahan Pokok non Beras dan Minyak; Beras SPHP, Premium, Minyak"
+147,pengajuan_kemitraan,formulir_permohonan,text | NULLABLE,Referensi berkas formulir pengajuan kemitraan.,<ID/referensi berkas>
+148,pengajuan_kemitraan,ktp_penanggung_jawab,text | NULLABLE,Referensi berkas KTP penanggung jawab.,<ID/referensi berkas>
+149,pengajuan_kemitraan,tipe_kemitraan,text | NULLABLE,Kategori pola kemitraan yang diajukan.,Kemitraan dan Pembiayaan; Kemitraan
+150,pengajuan_kemitraan,catatan,text | NULLABLE,Catatan tambahan mengenai pengajuan.,<catatan tambahan>
+151,pengajuan_kemitraan,dibuat_pada,timestamp without time zone | NULLABLE,Waktu ketika record pertama kali dibuat pada sistem sumber.,2026-01-31 14:30:00
+152,pengajuan_kemitraan,diperbarui_pada,timestamp without time zone | NULLABLE,Waktu terakhir record diperbarui pada sistem sumber.,2026-01-31 14:30:00
+153,pengajuan_pembiayaan,pengajuan_pembiayaan_ref,text | NOT NULL,Kode unik yang mengidentifikasi satu pengajuan pembiayaan.,<ID unik 19 karakter>
+154,pengajuan_pembiayaan,koperasi_ref,text | NOT NULL,Kode referensi koperasi yang digunakan untuk menghubungkan data koperasi antartabel.,KOP-539EF09CDAAD
+155,pengajuan_pembiayaan,nik,text | NULLABLE,Nomor Induk Kependudukan individu; nilai pada dataset telah disamarkan untuk menjaga privasi.,32************01
+156,pengajuan_pembiayaan,penanggung_jawab,text | NULLABLE,Nama pihak yang bertanggung jawab atas pengajuan.,<penanggung jawab>
+157,pengajuan_pembiayaan,nomor_penanggung_jawab,text | NULLABLE,Nomor kontak penanggung jawab; ditampilkan dalam bentuk tersamarkan pada output publik.,08******7890
+158,pengajuan_pembiayaan,status_permohonan,text | NULLABLE,Status proses permohonan atau pengajuan.,Draft; Requested; Verified
+159,pengajuan_pembiayaan,formulir_permohonan_pembiayaan,text | NULLABLE,Referensi berkas formulir pengajuan pembiayaan.,<ID/referensi berkas>
+160,pengajuan_pembiayaan,nominal_permohonan,real | NULLABLE,Nilai pembiayaan yang diajukan oleh koperasi.,500000000.00
+161,pengajuan_pembiayaan,tenor,integer | NULLABLE,Jangka waktu pembiayaan yang diajukan.,12
+162,pengajuan_pembiayaan,tujuan_permohonan,text | NULLABLE,Tujuan penggunaan dana pembiayaan yang diajukan.,LPDB; HIMBARA
+163,pengajuan_pembiayaan,dibuat_pada,timestamp without time zone | NULLABLE,Waktu ketika record pertama kali dibuat pada sistem sumber.,2026-01-31 14:30:00
+164,pengajuan_pembiayaan,diperbarui_pada,timestamp without time zone | NULLABLE,Waktu terakhir record diperbarui pada sistem sumber.,2026-01-31 14:30:00
+165,pengajuan_rekening_bank,pengajuan_rekening_ref,text | NOT NULL,Kode unik yang mengidentifikasi satu pengajuan rekening bank.,<ID unik 21 karakter>
+166,pengajuan_rekening_bank,koperasi_ref,text | NOT NULL,Kode referensi koperasi yang digunakan untuk menghubungkan data koperasi antartabel.,KOP-539EF09CDAAD
+167,pengajuan_rekening_bank,nik,text | NULLABLE,Nomor Induk Kependudukan individu; nilai pada dataset telah disamarkan untuk menjaga privasi.,32************01
+168,pengajuan_rekening_bank,penanggung_jawab,text | NULLABLE,Nama pihak yang bertanggung jawab atas pengajuan.,<penanggung jawab>
+169,pengajuan_rekening_bank,nomor_penanggung_jawab,text | NULLABLE,Nomor kontak penanggung jawab; ditampilkan dalam bentuk tersamarkan pada output publik.,08******7890
+170,pengajuan_rekening_bank,status,text | NULLABLE,Status atau kondisi record sesuai proses bisnis pada tabel.,Requested; Processed
+171,pengajuan_rekening_bank,kode_bank,text | NULLABLE,Kode bank yang dipilih pada pengajuan rekening.,002; 008; 009; 451
+172,pengajuan_rekening_bank,nama_bank,text | NULLABLE,Nama bank tempat rekening koperasi terdaftar.,BRI; MANDIRI; BNI; BSI
+173,pengajuan_rekening_bank,dibuat_pada,timestamp without time zone | NULLABLE,Waktu ketika record pertama kali dibuat pada sistem sumber.,2026-01-31 14:30:00
+174,pengajuan_rekening_bank,diperbarui_pada,timestamp without time zone | NULLABLE,Waktu terakhir record diperbarui pada sistem sumber.,2026-01-31 14:30:00
+175,pengurus_koperasi,pengurus_ref,text | NOT NULL,Kode unik yang mengidentifikasi satu pengurus koperasi.,<ID unik 16 karakter>
+176,pengurus_koperasi,koperasi_ref,text | NOT NULL,Kode referensi koperasi yang digunakan untuk menghubungkan data koperasi antartabel.,KOP-539EF09CDAAD
+177,pengurus_koperasi,nama,text | NULLABLE,Nama individu atau entitas sesuai konteks tabel.,<nama individu>
+178,pengurus_koperasi,jabatan,text | NULLABLE,Jabatan atau peran individu dalam struktur organisasi koperasi.,<jabatan>
+179,pengurus_koperasi,status,text | NULLABLE,Status atau kondisi record sesuai proses bisnis pada tabel.,PENGURUS; PENGAWAS
+180,pengurus_koperasi,no_hp,text | NULLABLE,Nomor telepon pengurus; ditampilkan dalam bentuk tersamarkan pada output publik.,08******7890
+181,pengurus_koperasi,nik,text | NULLABLE,Nomor Induk Kependudukan individu; nilai pada dataset telah disamarkan untuk menjaga privasi.,32************01
+182,pengurus_koperasi,jenis_kelamin,text | NULLABLE,Kategori jenis kelamin individu pada record.,LAKI-LAKI; PEREMPUAN
+183,pengurus_koperasi,foto_profil,text | NULLABLE,Referensi berkas foto profil pengurus.,<ID/referensi berkas>
+184,pengurus_koperasi,email,text | NULLABLE,Alamat email individu; ditampilkan dalam bentuk tersamarkan pada output publik.,na***@domain.id
+185,pengurus_koperasi,alamat,text | NULLABLE,Alamat tempat tinggal atau alamat korespondensi pengurus.,<alamat>
+186,pengurus_koperasi,kode_pos,text | NULLABLE,Kode pos alamat pengurus atau koperasi.,12345
+187,pengurus_koperasi,tanggal_lahir,text | NULLABLE,"Tanggal lahir pengurus dalam format tersamarkan, misalnya YYYY-**-**.",1955-**-**
+188,pengurus_koperasi,status_pendidikan,text | NULLABLE,Jenjang pendidikan terakhir pengurus.,SMA; S1; S2; Diploma 3
+189,pengurus_koperasi,periode_mulai,text | NULLABLE,Tanggal mulai periode kepengurusan; nilai 0000-00-00 menandakan tanggal tidak tersedia.,2025-01-01; 0000-00-00
+190,pengurus_koperasi,periode_selesai,date | NULLABLE,Tanggal akhir periode kepengurusan.,2029-12-31
+191,pengurus_koperasi,file_ktp,text | NULLABLE,Referensi berkas KTP yang terkait dengan individu.,<ID/referensi berkas>
+192,pengurus_koperasi,sumber_data,text | NULLABLE,Sumber sistem atau proses yang menyediakan data pengurus. Nilai pada data memiliki variasi penulisan sehingga standardisasi disarankan sebelum agregasi.,Pengesahan AHU; Perubahan AHU; ODS Mandiri; ODS
+193,pengurus_koperasi,dibuat_pada,timestamp without time zone | NULLABLE,Waktu ketika record pertama kali dibuat pada sistem sumber.,2026-01-31 14:30:00
+194,pengurus_koperasi,diperbarui_pada,timestamp without time zone | NULLABLE,Waktu terakhir record diperbarui pada sistem sumber.,2026-01-31 14:30:00
+195,produk_koperasi,produk_sample_id,text | NOT NULL,Kode unik produk pada dataset hackathon.,<ID unik 17 karakter>
+196,produk_koperasi,koperasi_ref,text | NOT NULL,Kode referensi koperasi yang digunakan untuk menghubungkan data koperasi antartabel.,KOP-539EF09CDAAD
+197,produk_koperasi,kode_barcode,text | NULLABLE,Kode barcode yang digunakan untuk mengidentifikasi produk.,<kode barcode>
+198,produk_koperasi,nama_produk,text | NULLABLE,Nama produk sebagaimana tercatat pada data produk atau transaksi.,<nama produk>
+199,produk_koperasi,unit,text | NULLABLE,Satuan pengukuran produk.,<unit>
+200,produk_koperasi,dibuat_pada,timestamp without time zone | NULLABLE,Waktu ketika record pertama kali dibuat pada sistem sumber.,2026-01-31 14:30:00
+201,produk_koperasi,diperbarui_pada,timestamp without time zone | NULLABLE,Waktu terakhir record diperbarui pada sistem sumber.,2026-01-31 14:30:00
+202,profil_koperasi,koperasi_ref,text | NOT NULL,Kode referensi koperasi yang digunakan untuk menghubungkan data koperasi antartabel.,KOP-539EF09CDAAD
+203,profil_koperasi,nama_koperasi,text | NULLABLE,Nama resmi atau nama tampilan koperasi.,<nama koperasi>
+204,profil_koperasi,status_registrasi,text | NULLABLE,Status registrasi koperasi pada sistem.,Approved
+205,profil_koperasi,bentuk_koperasi,text | NULLABLE,Bentuk kelembagaan koperasi.,Primer
+206,profil_koperasi,kategori_usaha,text | NULLABLE,Kategori utama kegiatan usaha koperasi.,Koperasi
+207,profil_koperasi,nik_koperasi,text | NULLABLE,Nomor Induk Koperasi yang digunakan sebagai identitas administratif koperasi.,<nomor induk koperasi>
+208,profil_koperasi,alamat_lengkap,text | NULLABLE,Alamat lengkap kantor atau lokasi koperasi.,<alamat lengkap>
+209,profil_koperasi,kode_pos,text | NULLABLE,Kode pos alamat pengurus atau koperasi.,12345
+210,profil_koperasi,koordinat_dibulatkan,text | NULLABLE,Koordinat lokasi yang telah dibulatkan untuk mengurangi tingkat presisi lokasi.,"<latitude, longitude dibulatkan>"
+211,profil_koperasi,modal_awal,text | NULLABLE,Nilai atau keterangan modal awal koperasi sebagaimana tercatat pada sumber.,<nilai/keterangan modal awal>
+212,profil_koperasi,sumber_persetujuan,text | NULLABLE,Sistem atau institusi sumber persetujuan koperasi.,AHU
+213,profil_koperasi,tentang_koperasi,text | NULLABLE,Deskripsi singkat mengenai profil dan kegiatan koperasi.,<deskripsi koperasi>
+214,profil_koperasi,pola_pengelolaan,text | NULLABLE,Pola atau prinsip pengelolaan koperasi.,Konvensional; Syariah
+215,profil_koperasi,metode_pengisian,text | NULLABLE,Cara data profil koperasi diisi atau diperbarui.,Mandiri; Dibantu Pendamping
+216,profil_koperasi,dibuat_pada,timestamp without time zone | NULLABLE,Waktu ketika record pertama kali dibuat pada sistem sumber.,2026-01-31 14:30:00
+217,profil_koperasi,diperbarui_pada,timestamp without time zone | NULLABLE,Waktu terakhir record diperbarui pada sistem sumber.,2026-01-31 14:30:00
+218,rat_koperasi,rat_sample_id,text | NOT NULL,Kode unik yang mengidentifikasi satu record pelaksanaan RAT.,<ID unik 10 karakter>
+219,rat_koperasi,koperasi_ref,text | NOT NULL,Kode referensi koperasi yang digunakan untuk menghubungkan data koperasi antartabel.,KOP-539EF09CDAAD
+220,rat_koperasi,jenis_sektor_koperasi,text | NULLABLE,Kategori sektor koperasi pada pelaksanaan RAT.,KDKMP; Riil; Riil + USP Konvensional; Riil + USP Syariah
+221,rat_koperasi,urutan_rat,text | NULLABLE,Nomor urut pelaksanaan RAT koperasi.,<urutan rat>
+222,rat_koperasi,tahun_buku,smallint | NULLABLE,Tahun buku yang dilaporkan dalam RAT.,2025
+223,rat_koperasi,tahun_rencana_kerja,smallint | NULLABLE,Tahun yang menjadi periode rencana kerja koperasi.,2026
+224,rat_koperasi,tahun_rencana_anggaran,smallint | NULLABLE,Tahun yang menjadi periode rencana anggaran koperasi.,2026
+225,rat_koperasi,tanggal_rat,date | NULLABLE,Tanggal pelaksanaan Rapat Anggota Tahunan.,2026-01-31
+226,rat_koperasi,jumlah_peserta_rat,integer | NULLABLE,Jumlah peserta yang menghadiri RAT.,25
+227,rat_koperasi,status_rat,text | NULLABLE,Status pelaksanaan atau pelaporan RAT.,Verified; Reported; Drafted; Rejected
+228,rat_koperasi,tahap_rat,text | NULLABLE,Tahap proses penyelesaian RAT.,9; 8; 6; 7
+229,rat_koperasi,laporan_posisi_keuangan,text | NULLABLE,Ringkasan laporan posisi keuangan yang disampaikan dalam RAT.,"{""total_aset"": 100000000, ""..."": ""...""}"
+230,rat_koperasi,laporan_hasil_usaha,text | NULLABLE,Ringkasan laporan hasil usaha yang disampaikan dalam RAT.,"{""pendapatan"": 50000000, ""..."": ""...""}"
+231,rat_koperasi,rapb_posisi_keuangan,text | NULLABLE,Rencana anggaran posisi keuangan koperasi.,"{""rencana_aset"": 120000000, ""..."": ""...""}"
+232,rat_koperasi,rapb_hasil_usaha,text | NULLABLE,Rencana anggaran hasil usaha koperasi.,"{""rencana_pendapatan"": 60000000, ""..."": ""...""}"
+233,rat_koperasi,dibuat_pada,timestamp without time zone | NULLABLE,Waktu ketika record pertama kali dibuat pada sistem sumber.,2026-01-31 14:30:00
+234,rat_koperasi,diperbarui_pada,timestamp without time zone | NULLABLE,Waktu terakhir record diperbarui pada sistem sumber.,2026-01-31 14:30:00
+235,referensi_dokumen_koperasi,jenis_dokumen_ref,text | NOT NULL,Kode referensi jenis dokumen yang menghubungkan dokumen dengan tabel referensi_dokumen_koperasi.,<ID unik>
+236,referensi_dokumen_koperasi,nama_dokumen,text | NULLABLE,Nama jenis dokumen koperasi.,<nama jenis dokumen>
+237,referensi_dokumen_koperasi,dibuat_pada,timestamp without time zone | NULLABLE,Waktu ketika record pertama kali dibuat pada sistem sumber.,2026-01-31 14:30:00
+238,referensi_dokumen_koperasi,diperbarui_pada,timestamp without time zone | NULLABLE,Waktu terakhir record diperbarui pada sistem sumber.,2026-01-31 14:30:00
+239,referensi_gerai_koperasi,jenis_gerai_ref,text | NOT NULL,Kode referensi jenis gerai yang menghubungkan gerai dengan tabel referensi_gerai_koperasi.,<ID unik 22 karakter>
+240,referensi_gerai_koperasi,nama_jenis_gerai,text | NULLABLE,Nama kategori atau jenis gerai koperasi.,Apotek Desa; Gerai Cold Storage/Cold Chain; Gerai Kantor Koperasi; Gerai Klinik Desa
+241,referensi_gerai_koperasi,dibuat_pada,timestamp without time zone | NULLABLE,Waktu ketika record pertama kali dibuat pada sistem sumber.,2026-01-31 14:30:00
+242,referensi_gerai_koperasi,diperbarui_pada,timestamp without time zone | NULLABLE,Waktu terakhir record diperbarui pada sistem sumber.,2026-01-31 14:30:00
+243,referensi_komoditas_desa,komoditas_ref,text | NOT NULL,Kode unik yang mengidentifikasi satu komoditas desa.,<ID unik 16 karakter>
+244,referensi_komoditas_desa,kode_wilayah,text | NOT NULL,Kode wilayah administrasi yang menghubungkan record dengan tabel referensi_wilayah.,32.01.01.2001
+245,referensi_komoditas_desa,nama_komoditas,text | NULLABLE,Nama komoditas atau potensi ekonomi desa.,<nama komoditas>
+246,referensi_komoditas_desa,luas_area,text | NULLABLE,Luas area yang digunakan atau berpotensi untuk komoditas.,<nilai luas area>
+247,referensi_komoditas_desa,volume,text | NULLABLE,Volume produksi atau potensi komoditas sebagaimana tercatat pada sumber.,<nilai volume>
+248,referensi_komoditas_desa,jumlah_sdm_terlibat,real | NULLABLE,Jumlah sumber daya manusia yang terlibat dalam komoditas.,125
+249,referensi_komoditas_desa,nilai_potensi_desa,bigint | NULLABLE,Estimasi nilai ekonomi potensi komoditas desa.,1000000000
+250,referensi_komoditas_desa,dibuat_pada,timestamp without time zone | NULLABLE,Waktu ketika record pertama kali dibuat pada sistem sumber.,2026-01-31 14:30:00
+251,referensi_komoditas_desa,diperbarui_pada,timestamp without time zone | NULLABLE,Waktu terakhir record diperbarui pada sistem sumber.,2026-01-31 14:30:00
+252,referensi_koperasi_wilayah,koperasi_ref,text | NOT NULL,Kode referensi koperasi yang digunakan untuk menghubungkan data koperasi antartabel.,KOP-539EF09CDAAD
+253,referensi_koperasi_wilayah,kode_wilayah,text | NULLABLE,Kode wilayah administrasi yang menghubungkan record dengan tabel referensi_wilayah.,32.01.01.2001
+254,referensi_koperasi_wilayah,dibuat_pada,timestamp without time zone | NULLABLE,Waktu ketika record pertama kali dibuat pada sistem sumber.,2026-01-31 14:30:00
+255,referensi_koperasi_wilayah,diperbarui_pada,timestamp without time zone | NULLABLE,Waktu terakhir record diperbarui pada sistem sumber.,2026-01-31 14:30:00
+256,referensi_profil_desa,kode_wilayah,text | NOT NULL,Kode wilayah administrasi yang menghubungkan record dengan tabel referensi_wilayah.,32.01.01.2001
+257,referensi_profil_desa,tahun_populasi,integer | NULLABLE,Tahun referensi data kependudukan desa.,2025
+258,referensi_profil_desa,total_penduduk,integer | NULLABLE,Jumlah seluruh penduduk desa.,12500
+259,referensi_profil_desa,penduduk_laki_laki,integer | NULLABLE,Jumlah penduduk laki-laki.,6300
+260,referensi_profil_desa,penduduk_perempuan,integer | NULLABLE,Jumlah penduduk perempuan.,6200
+261,referensi_profil_desa,tahun_pendanaan,integer | NULLABLE,Tahun referensi anggaran dana desa.,2026; 2025
+262,referensi_profil_desa,anggaran_dana_desa,numeric | NULLABLE,Nilai anggaran dana desa pada tahun referensi.,1500000000.00
+263,referensi_profil_desa,dibuat_pada,timestamp without time zone | NULLABLE,Waktu ketika record pertama kali dibuat pada sistem sumber.,2026-01-31 14:30:00
+264,referensi_profil_desa,diperbarui_pada,timestamp without time zone | NULLABLE,Waktu terakhir record diperbarui pada sistem sumber.,2026-01-31 14:30:00
+265,referensi_wilayah,provinsi,text | NULLABLE,Nama provinsi pada hierarki wilayah administrasi.,<nama provinsi>
+266,referensi_wilayah,kab_kota,text | NULLABLE,Nama kabupaten atau kota pada hierarki wilayah administrasi.,<nama kabupaten/kota>
+267,referensi_wilayah,kecamatan,text | NULLABLE,Nama kecamatan pada hierarki wilayah administrasi.,<nama kecamatan>
+268,referensi_wilayah,desa_kelurahan,text | NULLABLE,Nama desa atau kelurahan pada hierarki wilayah administrasi.,<nama desa/kelurahan>
+269,referensi_wilayah,kode_wilayah,text | NOT NULL,Kode wilayah administrasi yang menghubungkan record dengan tabel referensi_wilayah.,32.01.01.2001
+270,referensi_wilayah,dibuat_pada,timestamp without time zone | NULLABLE,Waktu ketika record pertama kali dibuat pada sistem sumber.,2026-01-31 14:30:00
+271,referensi_wilayah,diperbarui_pada,timestamp without time zone | NULLABLE,Waktu terakhir record diperbarui pada sistem sumber.,2026-01-31 14:30:00
+272,simpanan_anggota,simpanan_ref,text | NOT NULL,Kode unik yang mengidentifikasi satu record simpanan anggota.,<ID unik 19 karakter>
+273,simpanan_anggota,koperasi_ref,text | NOT NULL,Kode referensi koperasi yang digunakan untuk menghubungkan data koperasi antartabel.,KOP-539EF09CDAAD
+274,simpanan_anggota,anggota_ref,text | NOT NULL,Kode unik yang mengidentifikasi satu anggota koperasi.,<ID anggota>
+275,simpanan_anggota,periode_pembayaran,text | NULLABLE,Jenis atau periode kewajiban pembayaran simpanan anggota.,Simpanan Pokok; Simpanan Wajib - April 2026; Simpanan Wajib - Maret 2026; Simpanan Wajib - Mei 2026
+276,simpanan_anggota,jumlah_simpanan,numeric | NULLABLE,Nilai simpanan anggota.,100000.00
+277,simpanan_anggota,status,text | NULLABLE,Status atau kondisi record sesuai proses bisnis pada tabel.,UNPAID; PAID
+278,simpanan_anggota,dibuat_pada,timestamp without time zone | NULLABLE,Waktu ketika record pertama kali dibuat pada sistem sumber.,2026-01-31 14:30:00
+279,simpanan_anggota,dibayar_pada,timestamp without time zone | NULLABLE,Waktu pembayaran simpanan anggota.,2026-01-31 14:30:00
+280,transaksi_penjualan,transaksi_sample_id,text | NOT NULL,Kode unik transaksi penjualan pada dataset hackathon.,<ID unik 16 karakter>
+281,transaksi_penjualan,koperasi_ref,text | NOT NULL,Kode referensi koperasi yang digunakan untuk menghubungkan data koperasi antartabel.,KOP-539EF09CDAAD
+282,transaksi_penjualan,nama_pelanggan,text | NULLABLE,Nama pelanggan pada transaksi penjualan.,<nama pelanggan>
+283,transaksi_penjualan,tanggal_dibuat,timestamp without time zone | NULLABLE,Waktu transaksi penjualan dibuat.,2026-01-31 14:30:00
+284,transaksi_penjualan,total_pembayaran,numeric | NULLABLE,Total nilai pembayaran transaksi penjualan.,1500000.00
+285,transaksi_penjualan,status_transaksi,text | NULLABLE,Status penyelesaian transaksi penjualan.,Paid
+286,transaksi_penjualan,metode_pembayaran,text | NULLABLE,Metode pembayaran yang digunakan pada transaksi.,Cash
+287,transaksi_penjualan,dibuat_pada,timestamp without time zone | NULLABLE,Waktu ketika record pertama kali dibuat pada sistem sumber.,2026-01-31 14:30:00
+288,transaksi_penjualan,diperbarui_pada,timestamp without time zone | NULLABLE,Waktu terakhir record diperbarui pada sistem sumber.,2026-01-31 14:30:00

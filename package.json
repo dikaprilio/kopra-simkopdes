@@ -1,0 +1,14 @@
+{
+  "name": "kopra",
+  "private": true,
+  "packageManager": "pnpm@9.15.0",
+  "scripts": {
+    "dev:web": "pnpm --filter web dev",
+    "dev:api": "pnpm --filter api start:dev",
+    "dev:agent": "pnpm --filter agent dev",
+    "db:push": "pnpm --filter @kopra/db push",
+    "db:seed": "pnpm --filter @kopra/db seed",
+    "db:studio": "pnpm --filter @kopra/db studio",
+    "build": "pnpm -r build"
+  }
+}

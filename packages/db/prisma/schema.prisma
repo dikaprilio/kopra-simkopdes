@@ -1,0 +1,198 @@
+// Kopra app schema — 12 tabel sesuai docs/00-core-features.md §6
+// DB: postgres docker-compose (BUKAN mirror data panitia — itu SOURCE_DATABASE_URL,
+// hanya dibaca oleh script import-koperasi)
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["postgresqlExtensions"]
+}
+
+datasource db {
+  provider   = "postgresql"
+  url        = env("DATABASE_URL")
+  extensions = [vector]
+}
+
+enum Role {
+  PENGURUS
+  ANGGOTA
+}
+
+enum AccountType {
+  KAS
+  BANK
+}
+
+enum TxType {
+  INCOME
+  EXPENSE
+  TRANSFER
+}
+
+enum TxSource {
+  WHATSAPP
+  WEB
+  SEED
+  IMPORT
+}
+
+enum TxStatus {
+  DRAFT
+  CONFIRMED
+}
+
+enum CategoryClass {
+  OPERASIONAL
+  PERSEDIAAN
+  INVESTASI
+  MODAL
+  PENDAPATAN
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  name         String
+  role         Role     @default(PENGURUS)
+  createdAt    DateTime @default(now())
+
+  waIdentities WhatsappIdentity[]
+  transactions Transaction[]
+  auditLogs    AuditLog[]
+
+  @@map("users")
+}
+
+model Koperasi {
+  id         String  @id @default(cuid())
+  nama       String
+  desa       String?
+  // ref ke data resmi panitia (kalau hasil import), mis. "KOP-539EF09CDAAD"
+  sourceRef  String? @unique
+
+  waIdentities  WhatsappIdentity[]
+  members       Member[]
+  businessUnits BusinessUnit[]
+  accounts      Account[]
+  transactions  Transaction[]
+  auditLogs     AuditLog[]
+
+  @@map("koperasi")
+}
+
+model WhatsappIdentity {
+  id         String   @id @default(cuid())
+  waNumber   String   @unique // format E.164 tanpa +, mis. 6281234567890
+  userId     String
+  koperasiId String
+
+  user     User     @relation(fields: [userId], references: [id])
+  koperasi Koperasi @relation(fields: [koperasiId], references: [id])
+
+  @@map("whatsapp_identities")
+}
+
+model Member {
+  id                 String   @id @default(cuid())
+  koperasiId         String
+  nama               String
+  waNumber           String?
+  simpananWajibLunas Boolean  @default(false)
+  // ref anggota_koperasi panitia kalau hasil import
+  sourceRef          String?  @unique
+  createdAt          DateTime @default(now())
+
+  koperasi Koperasi @relation(fields: [koperasiId], references: [id])
+
+  @@index([koperasiId])
+  @@map("members")
+}
+
+model BusinessUnit {
+  id         String @id @default(cuid())
+  koperasiId String
+  nama       String
+
+  koperasi     Koperasi      @relation(fields: [koperasiId], references: [id])
+  transactions Transaction[]
+
+  @@unique([koperasiId, nama])
+  @@map("business_units")
+}
+
+model Account {
+  id         String      @id @default(cuid())
+  koperasiId String
+  type       AccountType
+  nama       String
+
+  koperasi     Koperasi      @relation(fields: [koperasiId], references: [id])
+  transactions Transaction[]
+
+  @@map("accounts")
+}
+
+model TransactionCategory {
+  id    String        @id @default(cuid())
+  nama  String        @unique
+  klass CategoryClass
+
+  transactions Transaction[]
+
+  @@map("transaction_categories")
+}
+
+model Transaction {
+  id             String   @id @default(cuid())
+  koperasiId     String
+  businessUnitId String?
+  accountId      String
+  categoryId     String
+  date           DateTime @default(now())
+  type           TxType
+  description    String
+  amount         Decimal  @db.Decimal(16, 2)
+  sourceChannel  TxSource
+  status         TxStatus @default(DRAFT)
+  createdById    String
+  createdAt      DateTime @default(now())
+
+  koperasi     Koperasi            @relation(fields: [koperasiId], references: [id])
+  businessUnit BusinessUnit?       @relation(fields: [businessUnitId], references: [id])
+  account      Account             @relation(fields: [accountId], references: [id])
+  category     TransactionCategory @relation(fields: [categoryId], references: [id])
+  createdBy    User                @relation(fields: [createdById], references: [id])
+
+  @@index([koperasiId, date])
+  @@index([koperasiId, status])
+  @@map("transactions")
+}
+
+model RagDocument {
+  id         String                       @id @default(cuid())
+  title      String
+  source     String
+  // regulation | guide | field_research | template
+  sourceType String
+  content    String
+  embedding  Unsupported("vector(1024)")?
+  createdAt  DateTime                     @default(now())
+
+  @@map("rag_documents")
+}
+
+model AuditLog {
+  id          String   @id @default(cuid())
+  koperasiId  String?
+  actorId     String?
+  action      String
+  payloadJson Json?
+  createdAt   DateTime @default(now())
+
+  koperasi Koperasi? @relation(fields: [koperasiId], references: [id])
+  actor    User?     @relation(fields: [actorId], references: [id])
+
+  @@index([koperasiId, createdAt])
+  @@map("audit_logs")
+}
