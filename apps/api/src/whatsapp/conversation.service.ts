@@ -14,6 +14,7 @@ import { DedupService } from './dedup.service';
 import { AgentClient, type ActorContext } from './agent-client';
 import { GuestFlowService } from './guest-flow';
 import { SuperAdminService } from './super-admin';
+import { GroupService } from './group.service';
 
 const YA_RE = /^(ya|y|iya|yes|ok|oke|yaa+)$/i;
 const BATAL_RE = /^(batal|gajadi|ga jadi|gak jadi|nggak jadi|cancel|tidak)$/i;
@@ -41,13 +42,14 @@ export class ConversationService {
     private readonly agent: AgentClient,
     private readonly guestReg: GuestFlowService,
     private readonly superAdmin: SuperAdminService,
+    private readonly group: GroupService,
   ) {}
 
   async onMessage(m: InboundMessage): Promise<void> {
     try {
       if (m.isGroup) {
-        // M7: konteks grup + mention-only. Sementara: simpan hening.
-        await this.dedup.markResult(m.deviceId, m.messageId, 'IGNORED');
+        const result = await this.group.onGroupMessage(m);
+        await this.dedup.markResult(m.deviceId, m.messageId, result);
         return;
       }
       if (SuperAdminService.isSuperAdmin(m.senderNumber)) {

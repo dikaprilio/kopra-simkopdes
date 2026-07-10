@@ -77,13 +77,16 @@ beforeAll(async () => {
   const outbox = new OutboxService(new GowaClient());
   const guestReg = { handle: async () => null } as never; // alur DAFTAR diuji di registration.spec
   const superAdmin = { handle: async () => 'SA' } as never;
-  svc = new ConversationService(outbox, new DedupService(), agent, guestReg, superAdmin);
+  const group = { onGroupMessage: async () => 'IGNORED' as const } as never; // diuji di group.service.spec
+  svc = new ConversationService(outbox, new DedupService(), agent, guestReg, superAdmin, group);
 });
 
 beforeEach(async () => {
   agentMock.mockClear();
   await prisma.pendingAction.deleteMany({ where: { koperasiId: kid } });
-  await prisma.outboundWhatsappMessage.deleteMany({ where: { toJid: { contains: '62899' } } });
+  await prisma.outboundWhatsappMessage.deleteMany({
+    where: { OR: [{ toJid: { contains: '62899' } }, { toJid: '1203@g.us' }] },
+  });
   await prisma.journalEntry.deleteMany({ where: { koperasiId: kid } });
   await prisma.inboundWhatsappEvent.deleteMany({ where: { deviceId: 'jest-conv' } });
 });
