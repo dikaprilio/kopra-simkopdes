@@ -49,6 +49,12 @@ enum CategoryClass {
   PENDAPATAN
 }
 
+enum StockMoveType {
+  IN
+  OUT
+  ADJUST
+}
+
 model User {
   id           String   @id @default(cuid())
   email        String   @unique
@@ -57,9 +63,10 @@ model User {
   role         Role     @default(PENGURUS)
   createdAt    DateTime @default(now())
 
-  waIdentities WhatsappIdentity[]
-  transactions Transaction[]
-  auditLogs    AuditLog[]
+  waIdentities   WhatsappIdentity[]
+  transactions   Transaction[]
+  stockMovements StockMovement[]
+  auditLogs      AuditLog[]
 
   @@map("users")
 }
@@ -71,12 +78,14 @@ model Koperasi {
   // ref ke data resmi panitia (kalau hasil import), mis. "KOP-539EF09CDAAD"
   sourceRef  String? @unique
 
-  waIdentities  WhatsappIdentity[]
-  members       Member[]
-  businessUnits BusinessUnit[]
-  accounts      Account[]
-  transactions  Transaction[]
-  auditLogs     AuditLog[]
+  waIdentities   WhatsappIdentity[]
+  members        Member[]
+  businessUnits  BusinessUnit[]
+  accounts       Account[]
+  transactions   Transaction[]
+  products       Product[]
+  stockMovements StockMovement[]
+  auditLogs      AuditLog[]
 
   @@map("koperasi")
 }
@@ -158,15 +167,61 @@ model Transaction {
   createdById    String
   createdAt      DateTime @default(now())
 
-  koperasi     Koperasi            @relation(fields: [koperasiId], references: [id])
-  businessUnit BusinessUnit?       @relation(fields: [businessUnitId], references: [id])
-  account      Account             @relation(fields: [accountId], references: [id])
-  category     TransactionCategory @relation(fields: [categoryId], references: [id])
-  createdBy    User                @relation(fields: [createdById], references: [id])
+  koperasi      Koperasi            @relation(fields: [koperasiId], references: [id])
+  businessUnit  BusinessUnit?       @relation(fields: [businessUnitId], references: [id])
+  account       Account             @relation(fields: [accountId], references: [id])
+  category      TransactionCategory @relation(fields: [categoryId], references: [id])
+  createdBy     User                @relation(fields: [createdById], references: [id])
+  stockMovement StockMovement?
 
   @@index([koperasiId, date])
   @@index([koperasiId, status])
   @@map("transactions")
+}
+
+// Inventaris-lite: se-shape dgn produk_koperasi/barang_masuk_produk panitia.
+// Stok terkini = SUM(qty bertanda) movement CONFIRMED — dihitung query, bukan kolom.
+model Product {
+  id         String   @id @default(cuid())
+  koperasiId String
+  nama       String
+  unit       String? // Pcs, kg, dus…
+  barcode    String?
+  hargaJual  Decimal? @db.Decimal(16, 2)
+  // ref produk_koperasi panitia kalau hasil import
+  sourceRef  String?  @unique
+  createdAt  DateTime @default(now())
+
+  koperasi  Koperasi        @relation(fields: [koperasiId], references: [id])
+  movements StockMovement[]
+
+  @@unique([koperasiId, nama])
+  @@map("products")
+}
+
+model StockMovement {
+  id            String        @id @default(cuid())
+  koperasiId    String
+  productId     String
+  type          StockMoveType
+  qty           Int
+  hargaBeli     Decimal?      @db.Decimal(16, 2)
+  hargaJual     Decimal?      @db.Decimal(16, 2)
+  // transaksi uang yang lahir bersama movement (penjualan → INCOME, belanja stok → EXPENSE)
+  transactionId String?       @unique
+  date          DateTime      @default(now())
+  sourceChannel TxSource
+  status        TxStatus      @default(DRAFT)
+  createdById   String
+  createdAt     DateTime      @default(now())
+
+  koperasi    Koperasi     @relation(fields: [koperasiId], references: [id])
+  product     Product      @relation(fields: [productId], references: [id])
+  transaction Transaction? @relation(fields: [transactionId], references: [id])
+  createdBy   User         @relation(fields: [createdById], references: [id])
+
+  @@index([koperasiId, productId, status])
+  @@map("stock_movements")
 }
 
 model RagDocument {
