@@ -55,8 +55,8 @@ Keputusan yang sudah diperdebatkan & dikunci (jangan dibuka lagi saat sprint):
 | Dashboard | Cards: Saldo Kas, Saldo Bank, Pemasukan bulan ini, Pengeluaran bulan ini, SHU sementara, Anggota belum bayar simpanan wajib. + bar/tabel performa per unit usaha |
 | Ledger transaksi | List + filter (bulan, unit usaha, status), input manual, edit draft. Status: DRAFT / CONFIRMED. Badge sumber: WhatsApp/Web |
 | Unit usaha | List (BRILINK, POSPAY, BANEW, GERAI, MITRA SPPG, AGRO MANDIRI) + ringkasan pemasukan/pengeluaran/net per unit |
-| Anggota | List + status simpanan wajib (lunas/belum) |
-| Laporan | **Buku Kas** & **Laba Rugi** per bulan, tampilan print-friendly + tombol print |
+| Anggota | List + status simpanan wajib **per periode** (PAID/UNPAID — struktur sama dgn `simpanan_anggota` panitia, terisi asli lewat import). Dukung pembayaran rapel multi-bulan (pola nyata di Buku Kas Umum Palbapang: "Juli - Des 25" sekaligus) |
+| Laporan | **Buku Kas** & **Laba Rugi** per bulan, print-friendly. **Format kolom meniru Excel asli Palbapang**: `No | Tanggal | Uraian | Bukti | Debet | Kredit | Saldo | Keterangan` (lihat `riset-lapangan/berkas-lapangan-anonim.md`) — pitch: "laporan yang biasa Bapak buat, sekarang otomatis & siap RAT" (LPJ RAT nyata banyak field `Rp ……` kosong) |
 
 ### Should-have (hanya kalau Fase 1–3 selesai lebih cepat)
 Buku Bank · Neraca sederhana · Export Excel · Upload bukti transaksi
@@ -72,15 +72,16 @@ Buku Bank · Neraca sederhana · Export Excel · Upload bukti transaksi
 ### Fase 2a — teks (fondasi, wajib stabil dulu)
 | Capability | Flow |
 |---|---|
-| Catat transaksi | "catat pemasukan banyu 500rb dari penjualan air" → agent ekstrak → tool `createTransactionDraft` (validasi unit & kategori) → **workflow suspend** → bot balas draft "📝 …Balas YA untuk simpan" → user "YA" → **resume**: UPDATE status CONFIRMED (kode biasa) → muncul real-time di webapp. Balasan selain YA → koreksi/batal |
+| Catat transaksi | "catat pemasukan banyu 500rb dari penjualan air" → agent ekstrak → tool `createTransactionDraft` (validasi unit & kategori) → **workflow suspend** → bot balas draft "📝 …Balas YA untuk simpan" → user "YA" → **resume**: UPDATE status CONFIRMED (kode biasa) → muncul real-time di webapp. Balasan selain YA → koreksi/batal. **Parser & prompt agent WAJIB dites dengan kosakata asli pengurus** (`riset-lapangan/berkas-lapangan-anonim.md`): "terima simpanan wajib an Bu X juli-des", "bagi hasil pisang 150rb", "laba brilink", "belanja banew ke-2" |
 | Ringkasan keuangan | "pemasukan bulan ini berapa, naik ga dari bulan lalu?" → tool `getFinancialSummary` (SQL agregat: per bulan, per unit, growth %) → LLM jelaskan angka hasil query |
 | Panduan koperasi (RAG) | "beli stok air masuk operasional atau persediaan?" → tool `searchKoperasiGuides` → jawab dengan sumber |
 | Anggota belum bayar | "siapa yang belum bayar simpanan wajib?" → tool `listUnpaidMembers` + tawarkan template pengingat |
 | Minta laporan | "kirim laporan buku kas juni" → tool `generateReport` → bot kirim link |
 
-### Fase 2b — media (stretch, plumbing dibangun sekali)
+### Fase 2b — stretch (setelah flow teks stabil)
 - **OCR nota** (prioritas 1): foto nota → download media WAHA → Claude vision ekstrak → draft transaksi → konfirmasi YA. Tanpa vendor tambahan.
 - **Voice note / STT** (prioritas 2): audio → Whisper (Groq/OpenRouter) → teks → pipeline yang sama.
+- **Mini-flow simpanan wajib** (prioritas 3; justifikasi: 61% simpanan UNPAID di data resmi): "catat bu Sari bayar simpanan juli 50rb" → draft → YA → PAID; + kirim template pengingat ke penunggak. Mesinnya sama dengan draft transaksi.
 
 ### Guardrails
 - Nomor tak terdaftar → balas instruksi pendaftaran, tidak bisa akses data
@@ -146,7 +147,7 @@ Panitia menyediakan Postgres shared (host di email panitia, kredensial di `.env`
 
 **Strategi:** app DB tetap Postgres sendiri (docker-compose). Tambah **script import**: pilih 1 koperasi nyata dari shared DB → tarik profil, anggota, pengurus, simpanan (status PAID/UNPAID asli) ke DB Kopra → demo "onboarding koperasi dari data resmi dalam satu perintah". `listUnpaidMembers` & dashboard jalan di data resmi. Transaksi operasional harian tetap di-seed ala Excel Pak Tedjo (data resmi tipis di sisi ini — dan itu justru poin pitch kami).
 
-**Seed lokal (fallback & pelengkap)**: 6 unit usaha ala Palbapang, ~2 bulan transaksi realistis, kategori standar, 2 user demo. Dashboard & laporan harus hidup sejak menit pertama demo, dengan atau tanpa koneksi shared DB.
+**Seed lokal (fallback & pelengkap)**: 6 unit usaha ala Palbapang, ~2 bulan transaksi realistis **memakai kosakata uraian & nominal ASLI dari `riset-lapangan/berkas-lapangan-anonim.md`** (setoran 100–120rb, laba Brilink ribuan perak, bagi hasil pisang, belanja Banew — bukan angka bulat fiktif), kategori standar, 2 user demo. Dashboard & laporan harus hidup sejak menit pertama demo, dengan atau tanpa koneksi shared DB.
 
 **GCP credit $60 dari panitia**: pakai untuk VPS deploy (Compute Engine, region `asia-southeast2` Jakarta — satu region dengan shared DB → latensi minimal). Ganti password default akun GCP segera.
 
@@ -175,7 +176,7 @@ Webhook `/wa/webhook` (NestJS): identify nomor → ada workflow suspended? resum
 | Fase | Kapan | Isi | Done = |
 |---|---|---|---|
 | **0 Prep** | sebelum sprint | scaffold monorepo, docker-compose jalan di VPS, WAHA pairing nomor burner, seed data, dokumen RAG P1–P2 terkumpul & bersih, `skills add mastra-ai/skills` | `docker-compose up` → webapp kosong live + WA terhubung |
-| **1 ERP core** | jam 0–8 | schema+seed, dashboard, ledger, unit usaha, anggota, laporan | juri bisa lihat webapp hidup dengan data |
+| **1 ERP core** | jam 0–8 | schema+seed, **script import 1 koperasi dari mirror data panitia**, dashboard, ledger, unit usaha, anggota+simpanan per periode, laporan format-asli | juri bisa lihat webapp hidup dengan data nyata (anggota & simpanan resmi + transaksi seed) |
 | **2a WA teks** | jam 8–16 | webhook, agent+5 tools, workflow YA, RAG nyala | demo WA→ledger→laporan end-to-end |
 | **2b WA media** | jam 16–20 (stretch) | media plumbing, OCR nota, lalu STT | foto nota → draft; voice → draft |
 | **3 Web chat + polish** | jam 20–28 | chat asisten dashboard, landing, halaman learning path statis, login rapi | semua halaman demo-ready |
