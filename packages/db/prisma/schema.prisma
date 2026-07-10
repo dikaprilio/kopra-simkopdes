@@ -1,9 +1,10 @@
-// Kopra app schema — REVAMP keuangan ala "Koperasi Merah Putih CORE"
-// (lihat docs/data/kdmp-modules-tutorial/01-koperasi-merah-putih-core.md)
-// Inti: COA hirarkis + Jurnal double-entry ringan. Laporan (Buku Besar,
-// Neraca Saldo, PHU, Neraca) = DERIVED dari journal_lines, bukan tabel.
-// DB: postgres docker-compose. Mirror data panitia = SOURCE_DATABASE_URL
-// (hanya dibaca script import-koperasi).
+// Kopra schema v3 — sesuai docs/plans/2026-07-10-kopra-system-build-plan.md
+// Keuangan ala "Koperasi Merah Putih CORE": COA hirarkis + jurnal double-entry;
+// laporan (Buku Besar, Neraca Saldo, PHU, Neraca) DERIVED dari journal_lines.
+// Identitas & registrasi: dual-flow WA/web, NIK plaintext by-requirement
+// (redaksi ketat di layer aplikasi), super-admin WA-only.
+// DB app = postgres docker :5433. Mirror data panitia = SOURCE_DATABASE_URL
+// (hanya dibaca script gen-directory/import — tidak pernah oleh runtime).
 
 generator client {
   provider        = "prisma-client-js"
@@ -16,12 +17,32 @@ datasource db {
   extensions = [vector]
 }
 
-enum Role {
+// ============ ENUMS ============
+
+enum UserRole {
+  OWNER // pemilik koperasi LOCAL (dibuat via approval super-admin)
   PENGURUS
   ANGGOTA
 }
 
-// Tipe akun COA — sama dengan CORE resmi (Asset/Liability/Equity/Revenue/Expense)
+enum UserStatus {
+  ACTIVE
+  PENDING_OTP // web-register, belum verifikasi nomor WA
+  PENDING_APPROVAL // menunggu super-admin (IMPORTED) / owner (LOCAL)
+  REJECTED
+}
+
+enum KoperasiOrigin {
+  IMPORTED // dari data resmi panitia
+  LOCAL // dibuat via registrasi koperasi baru
+}
+
+enum KoperasiStatus {
+  PENDING
+  ACTIVE
+  REJECTED
+}
+
 enum CoaType {
   ASSET
   LIABILITY
@@ -58,29 +79,74 @@ enum SavingStatus {
   UNPAID
 }
 
+enum RegType {
+  MEMBER_JOIN
+  NEW_KOPERASI
+}
+
+enum RegStatus {
+  AWAITING_FORM
+  AWAITING_OTP
+  PENDING_SUPER_ADMIN
+  PENDING_OWNER
+  APPROVED
+  REJECTED
+  EXPIRED
+}
+
+enum WaGroupStatus {
+  UNRESOLVED
+  ATTACHED
+}
+
+enum PendingState {
+  AWAITING_CONFIRM
+  CONFIRMED
+  CANCELLED
+  EXPIRED
+}
+
+// ============ IDENTITAS & TENANCY ============
+
 model User {
-  id           String   @id @default(cuid())
-  email        String   @unique
+  id           String     @id @default(cuid())
+  email        String     @unique
   passwordHash String
   name         String
-  role         Role     @default(PENGURUS)
-  createdAt    DateTime @default(now())
+  // NIK plaintext by-requirement (UNIQUE). JANGAN pernah tampil di response
+  // biasa / log / prompt / audit payload — redaksi via core.redact.
+  nik          String?    @unique
+  role         UserRole   @default(ANGGOTA)
+  status       UserStatus @default(ACTIVE)
+  koperasiId   String? // 1 user = 1 koperasi (null = guest web)
+  memberId     String?    @unique
+  createdAt    DateTime   @default(now())
 
+  koperasi       Koperasi?       @relation(fields: [koperasiId], references: [id])
+  member         Member?         @relation(fields: [memberId], references: [id])
   waIdentities   WhatsappIdentity[]
   journalEntries JournalEntry[]
   stockMovements StockMovement[]
+  pendingActions PendingAction[]
   auditLogs      AuditLog[]
 
+  @@index([koperasiId, role])
   @@map("users")
 }
 
 model Koperasi {
-  id        String  @id @default(cuid())
-  nama      String
-  desa      String?
-  // ref ke data resmi panitia (hasil import), mis. "KOP-539EF09CDAAD"
-  sourceRef String? @unique
+  id             String         @id @default(cuid())
+  nama           String
+  desa           String?
+  // ref profil_koperasi panitia (IMPORTED), mis. "KOP-539EF09CDAAD"
+  sourceRef      String?        @unique
+  origin         KoperasiOrigin @default(IMPORTED)
+  status         KoperasiStatus @default(ACTIVE)
+  // IMPORTED → "SUPER_ADMIN"; LOCAL → "OWNER"
+  managementMode String         @default("SUPER_ADMIN")
+  createdAt      DateTime       @default(now())
 
+  users          User[]
   waIdentities   WhatsappIdentity[]
   members        Member[]
   businessUnits  BusinessUnit[]
@@ -88,6 +154,8 @@ model Koperasi {
   journalEntries JournalEntry[]
   products       Product[]
   stockMovements StockMovement[]
+  pendingActions PendingAction[]
+  waGroups       WaGroup[]
   auditLogs      AuditLog[]
 
   @@map("koperasi")
@@ -106,34 +174,32 @@ model WhatsappIdentity {
 }
 
 model Member {
-  id        String   @id @default(cuid())
+  id         String   @id @default(cuid())
   koperasiId String
-  nama      String
-  waNumber  String?
-  // ref anggota_koperasi panitia (hasil import)
-  sourceRef String?  @unique
-  createdAt DateTime @default(now())
+  nama       String
+  nik        String? // dari input pengurus / import (masked ok)
+  waNumber   String?
+  sourceRef  String?  @unique // anggota_koperasi panitia
+  createdAt  DateTime @default(now())
 
-  koperasi Koperasi      @relation(fields: [koperasiId], references: [id])
+  koperasi Koperasi       @relation(fields: [koperasiId], references: [id])
+  user     User?
   savings  MemberSaving[]
 
-  @@index([koperasiId])
+  @@index([koperasiId, nik])
   @@map("members")
 }
 
-// Simpanan per periode — se-shape dgn simpanan_anggota panitia & KDMP Mobile
-// (simpanan pokok sekali di awal; wajib per bulan; dukung bayar rapel = banyak
-// row PAID sekaligus). Secara akuntansi pembayaran memposting jurnal ke akun
-// ekuitas 310000 (pokok) / 320000 (wajib) — dilakukan service, bukan trigger.
+// Simpanan per periode (pokok sekali, wajib bulanan; dukung bayar rapel).
 model MemberSaving {
   id             String       @id @default(cuid())
   memberId       String
   type           SavingType
-  period         String // "2026-01"; utk POKOK isi periode daftar
+  period         String // "2026-01"; utk POKOK = periode daftar
   amount         Decimal      @db.Decimal(16, 2)
   status         SavingStatus @default(UNPAID)
   paidAt         DateTime?
-  journalEntryId String? // jurnal yang lahir saat pembayaran dikonfirmasi
+  journalEntryId String? // jurnal saat pembayaran dikonfirmasi
 
   member Member @relation(fields: [memberId], references: [id])
 
@@ -143,7 +209,6 @@ model MemberSaving {
 }
 
 // Unit usaha = DIMENSI pelaporan (BRILINK, POSPAY, BANEW, …), bukan akun.
-// PHU per unit = filter journal_entries.businessUnitId.
 model BusinessUnit {
   id         String @id @default(cuid())
   koperasiId String
@@ -158,38 +223,33 @@ model BusinessUnit {
 
 // ============ AKUNTANSI (ala CORE resmi) ============
 
-// Bagan akun hirarkis. Seed default KDMP (subset contoh CORE):
-// 100000 AKTIVA > 111000 Kas > 112100 Bank BRI > 113000 Piutang > 114000 Persediaan
-// 200000 KEWAJIBAN · 300000 EKUITAS > 310000 Simpanan Pokok > 320000 Simpanan Wajib
-// 400000 PENDAPATAN (anak per unit usaha) · 500000 BEBAN (operasional, dst.)
 model CoaAccount {
   id         String  @id @default(cuid())
   koperasiId String
-  kode       String // "111000" — unik per koperasi, sistematis
+  kode       String // "111000"
   nama       String // "Kas Rupiah"
   type       CoaType
   parentId   String?
   isActive   Boolean @default(true)
 
-  koperasi Koperasi     @relation(fields: [koperasiId], references: [id])
-  parent   CoaAccount?  @relation("CoaTree", fields: [parentId], references: [id])
-  children CoaAccount[] @relation("CoaTree")
+  koperasi Koperasi      @relation(fields: [koperasiId], references: [id])
+  parent   CoaAccount?   @relation("CoaTree", fields: [parentId], references: [id])
+  children CoaAccount[]  @relation("CoaTree")
   lines    JournalLine[]
 
   @@unique([koperasiId, kode])
   @@map("coa_accounts")
 }
 
-// Header jurnal. Nomor auto "JU-001..". WA flow membuat DRAFT via posting rules
-// deterministik; "YA" → CONFIRMED. CONFIRMED immutable (koreksi = jurnal balik).
+// CONFIRMED immutable — koreksi = jurnal balik.
 model JournalEntry {
   id             String      @id @default(cuid())
   koperasiId     String
-  nomor          String // "JU-012" — auto, unik per koperasi
-  referensi      String? // dokumen sumber (nota, dsb.)
+  nomor          String // "JU-012" auto per koperasi
+  referensi      String?
   date           DateTime    @default(now())
-  keterangan     String // uraian bahasa pengurus: "penjualan air galon BANEW"
-  businessUnitId String? // dimensi unit usaha
+  keterangan     String
+  businessUnitId String?
   sourceChannel  EntrySource
   status         EntryStatus @default(DRAFT)
   createdById    String
@@ -207,8 +267,7 @@ model JournalEntry {
   @@map("journal_entries")
 }
 
-// Baris jurnal: per baris HANYA salah satu debit/kredit terisi.
-// Validasi balance (SUM debit == SUM kredit) dilakukan service saat create/confirm.
+// Per baris hanya salah satu debit/kredit terisi; balance divalidasi core.
 model JournalLine {
   id      String  @id @default(cuid())
   entryId String
@@ -226,7 +285,6 @@ model JournalLine {
 
 // ============ INVENTARIS-LITE ============
 
-// Se-shape dgn produk_koperasi panitia; import mengisi sourceRef.
 model Product {
   id         String   @id @default(cuid())
   koperasiId String
@@ -234,7 +292,8 @@ model Product {
   unit       String? // Pcs, kg, dus…
   barcode    String?
   hargaJual  Decimal? @db.Decimal(16, 2)
-  sourceRef  String?  @unique
+  isActive   Boolean  @default(true) // delete guard: ber-movement → inactive
+  sourceRef  String?  @unique // produk_koperasi panitia
   createdAt  DateTime @default(now())
 
   koperasi  Koperasi        @relation(fields: [koperasiId], references: [id])
@@ -244,18 +303,18 @@ model Product {
   @@map("products")
 }
 
-// Stok terkini = SUM(qty bertanda) movement CONFIRMED — query, bukan kolom.
-// Movement uang (penjualan/belanja stok) melahirkan JournalEntry linked;
-// konfirmasi atomik dua-duanya.
+// Stok terkini = SUM bertanda movement CONFIRMED (query, bukan kolom).
+// Qty Decimal utk unit fraksional (kg, liter). CONFIRMED immutable —
+// koreksi = ADJUST kompensasi.
 model StockMovement {
   id             String        @id @default(cuid())
   koperasiId     String
   productId      String
   type           StockMoveType
-  qty            Int
+  qty            Decimal       @db.Decimal(16, 3)
   hargaBeli      Decimal?      @db.Decimal(16, 2)
   hargaJual      Decimal?      @db.Decimal(16, 2)
-  journalEntryId String?       @unique
+  journalEntryId String?       @unique // jurnal uang linked (confirm atomik)
   date           DateTime      @default(now())
   sourceChannel  EntrySource
   status         EntryStatus   @default(DRAFT)
@@ -271,8 +330,163 @@ model StockMovement {
   @@map("stock_movements")
 }
 
+// ============ REGISTRASI & APPROVAL ============
+
+// Kandidat identitas dari data resmi panitia — BUKAN user terautentikasi.
+model ImportedIdentity {
+  id          String  @id @default(cuid())
+  koperasiRef String // "KOP-…"
+  sourceTable String // anggota|pengurus|karyawan_koperasi
+  sourceRef   String  @unique
+  nama        String
+  nikMasked   String? // "3402**********01" → prefix match
+  roleHint    String?
+
+  @@index([koperasiRef, nikMasked])
+  @@map("imported_identities")
+}
+
+model RegistrationRequest {
+  id           String    @id @default(cuid())
+  type         RegType
+  channel      String // WA | WEB
+  waNumber     String
+  nik          String? // plaintext by-requirement; redaksi di layer app
+  nama         String?
+  koperasiId   String?
+  koperasiRef  String? // directory ref (IMPORTED belum onboarded)
+  newKoperasi  Json? // {nama, alamat} utk NEW_KOPERASI
+  candidateRef String? // ImportedIdentity.sourceRef pilihan super-admin
+  status       RegStatus
+  shortCode    String    @unique // "R-017" utk perintah WA super-admin
+  expiresAt    DateTime // 24 jam
+  decidedById  String?
+  createdAt    DateTime  @default(now())
+
+  @@index([status, createdAt])
+  @@map("registration_requests")
+}
+
+model OtpChallenge {
+  id        String    @id @default(cuid())
+  waNumber  String
+  otpHash   String
+  attempts  Int       @default(0) // max 3
+  expiresAt DateTime // TTL 300s
+  usedAt    DateTime?
+  requestId String?
+  createdAt DateTime  @default(now())
+
+  @@index([waNumber])
+  @@map("otp_challenges")
+}
+
+// Magic link WA→web (single-use, TTL 900s).
+model AuthToken {
+  id        String    @id @default(cuid())
+  tokenHash String    @unique // sha256(token)
+  waNumber  String
+  payload   Json // {regRequestId}
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime  @default(now())
+
+  @@map("auth_tokens")
+}
+
+// ============ PERCAKAPAN & DELIVERY ============
+
+// Satu aktif per chat DM; preview→YA; expiry 900s; terminal-check dlm transaksi.
+model PendingAction {
+  id         String       @id @default(cuid())
+  chatJid    String
+  actorId    String
+  koperasiId String
+  actionType String // JOURNAL_SIMPLE|JOURNAL_MANUAL|STOCK_MOVE|SAVING_PAY|COA_CREATE|PRODUCT_CREATE|…
+  preview    Json // efek lengkap yg ditampilkan ke user
+  runId      String? // Mastra workflow run (snapshot persisted)
+  state      PendingState @default(AWAITING_CONFIRM)
+  expiresAt  DateTime
+  createdAt  DateTime     @default(now())
+
+  actor    User     @relation(fields: [actorId], references: [id])
+  koperasi Koperasi @relation(fields: [koperasiId], references: [id])
+
+  @@index([chatJid, state])
+  @@map("pending_actions")
+}
+
+// Dedup webhook (idempotensi inbound).
+model InboundWhatsappEvent {
+  id        String   @id @default(cuid())
+  deviceId  String
+  eventId   String
+  result    String? // PROCESSED|IGNORED|ERROR
+  createdAt DateTime @default(now())
+
+  @@unique([deviceId, eventId])
+  @@map("inbound_wa_events")
+}
+
+// Outbox + retry backoff (idempotensi outbound; rate ≤1 msg/dtk).
+model OutboundWhatsappMessage {
+  id        String   @id @default(cuid())
+  toJid     String
+  text      String
+  attempts  Int      @default(0)
+  nextTryAt DateTime @default(now())
+  status    String   @default("QUEUED") // QUEUED|SENT|FAILED
+  createdAt DateTime @default(now())
+
+  @@index([status, nextTryAt])
+  @@map("outbound_wa_messages")
+}
+
+model WaGroup {
+  id                 String        @id @default(cuid())
+  groupJid           String        @unique // "1203…@g.us"
+  nama               String?
+  status             WaGroupStatus @default(UNRESOLVED)
+  koperasiId         String?
+  boundByUserId      String?
+  lastParticipantsAt DateTime?
+  createdAt          DateTime      @default(now())
+
+  koperasi Koperasi?        @relation(fields: [koperasiId], references: [id])
+  messages WaGroupMessage[]
+
+  @@map("wa_groups")
+}
+
+// Konteks grup bounded: simpan 50 terbaru, prune >24 jam.
+model WaGroupMessage {
+  id        String   @id @default(cuid())
+  groupJid  String
+  sender    String // nomor pengirim
+  text      String
+  mentioned Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  group WaGroup @relation(fields: [groupJid], references: [groupJid], onDelete: Cascade)
+
+  @@index([groupJid, createdAt])
+  @@map("wa_group_messages")
+}
+
+// Direktori 1.026 koperasi resmi (nama publik, PII-free; seed dari JSON commit).
+model KoperasiDirectory {
+  sourceRef String  @id // "KOP-539EF09CDAAD"
+  nama      String
+  wilayah   String?
+
+  @@map("koperasi_directory")
+}
+
 // ============ RAG & AUDIT ============
 
+// Pencarian utama = Postgres FTS: kolom generated `tsv` + GIN index dibuat
+// via SQL init (packages/db/sql/rag_fts.sql) karena Prisma belum dukung
+// generated tsvector. Embedding pgvector = upgrade opsional (bukan jalur kritis).
 model RagDocument {
   id         String                       @id @default(cuid())
   title      String
@@ -287,12 +501,17 @@ model RagDocument {
 }
 
 model AuditLog {
-  id          String   @id @default(cuid())
-  koperasiId  String?
-  actorId     String?
-  action      String
-  payloadJson Json?
-  createdAt   DateTime @default(now())
+  id            String   @id @default(cuid())
+  koperasiId    String?
+  actorId       String?
+  channel       String? // DM|GROUP|WEB|SYSTEM
+  action        String
+  resourceType  String?
+  resourceRef   String?
+  result        String? // OK|DENIED|ERROR
+  correlationId String?
+  payloadJson   Json? // WAJIB ter-redaksi (core.redact) sebelum tulis
+  createdAt     DateTime @default(now())
 
   koperasi Koperasi? @relation(fields: [koperasiId], references: [id])
   actor    User?     @relation(fields: [actorId], references: [id])

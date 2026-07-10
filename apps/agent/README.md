@@ -1,6 +1,6 @@
 # apps/agent — Mastra (otak AI)
 
-Belum di-scaffold. Generate dengan:
+SUDAH di-scaffold (Fase 0.1). Perintah asal (referensi):
 
 ```bash
 # dari root monorepo

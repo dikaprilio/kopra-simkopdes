@@ -1,0 +1,5132 @@
+[
+ {
+  "sourceRef": "KOP-78408FE6FFA4",
+  "nama": "KOPERASI DESA MERAH PUTIH ABADI ANGKASA WONIKI",
+  "wilayah": "91.06.03.2004"
+ },
+ {
+  "sourceRef": "KOP-7379F6E9E574",
+  "nama": "KOPERASI DESA MERAH PUTIH ABADI BANTARSARI SUMBER",
+  "wilayah": "32.13.19.2005"
+ },
+ {
+  "sourceRef": "KOP-7AB3A2780945",
+  "nama": "KOPERASI DESA MERAH PUTIH ABADI BAYU PASIR INTAN",
+  "wilayah": "14.06.10.2002"
+ },
+ {
+  "sourceRef": "KOP-7753E3052E8B",
+  "nama": "KOPERASI DESA MERAH PUTIH ABADI LAMPEONG LEMBAH I",
+  "wilayah": "62.05.03.2006"
+ },
+ {
+  "sourceRef": "KOP-79D0A95BAE91",
+  "nama": "KOPERASI DESA MERAH PUTIH ABADI LANGIT MATUI",
+  "wilayah": "82.01.01.2025"
+ },
+ {
+  "sourceRef": "KOP-76904D54377D",
+  "nama": "KOPERASI DESA MERAH PUTIH ABADI PADE SAGEM SARI",
+  "wilayah": "65.03.05.2002"
+ },
+ {
+  "sourceRef": "KOP-76F96C3A50B3",
+  "nama": "KOPERASI DESA MERAH PUTIH ABADI PANGKAL LAUT BIWAR",
+  "wilayah": "93.04.19.2001"
+ },
+ {
+  "sourceRef": "KOP-7430A16FD6F4",
+  "nama": "KOPERASI DESA MERAH PUTIH ABADI PUSPA DARU",
+  "wilayah": "36.03.04.2005"
+ },
+ {
+  "sourceRef": "KOP-7BC8467CD316",
+  "nama": "KOPERASI DESA MERAH PUTIH ABADI TALANG BARU PRABA",
+  "wilayah": "17.06.06.2006"
+ },
+ {
+  "sourceRef": "KOP-7BD63BD3F7DC",
+  "nama": "KOPERASI DESA MERAH PUTIH ABADI VASCODAMNEEM TUNAS",
+  "wilayah": "92.06.23.2004"
+ },
+ {
+  "sourceRef": "KOP-2D8FA7709884",
+  "nama": "KOPERASI DESA MERAH PUTIH ABIANSEMAL MULYA BONGKASA PERTIWI CITRA",
+  "wilayah": "51.03.03.2009"
+ },
+ {
+  "sourceRef": "KOP-BAC15B983682",
+  "nama": "KOPERASI DESA MERAH PUTIH AGAM BANUHAMPU BERSERI PUTIAH BAYU NAGARI KUBANG",
+  "wilayah": "13.06.06.2004"
+ },
+ {
+  "sourceRef": "KOP-EF6DD2F55464",
+  "nama": "KOPERASI DESA MERAH PUTIH AGUNG AENG BATU BATU CANDRA",
+  "wilayah": "73.05.06.2003"
+ },
+ {
+  "sourceRef": "KOP-F1DCEDE7110E",
+  "nama": "KOPERASI DESA MERAH PUTIH AGUNG DELI HULU MUDA LEMBAH",
+  "wilayah": "12.18.02.2007"
+ },
+ {
+  "sourceRef": "KOP-F715F820D5BF",
+  "nama": "KOPERASI DESA MERAH PUTIH AGUNG KAMPUNG MUTIARA KUPRIK",
+  "wilayah": "93.01.05.2005"
+ },
+ {
+  "sourceRef": "KOP-F26D18E1DB49",
+  "nama": "KOPERASI DESA MERAH PUTIH AGUNG KARANG KUMPAY",
+  "wilayah": "36.02.09.2009"
+ },
+ {
+  "sourceRef": "KOP-EE8006C5B8DB",
+  "nama": "KOPERASI DESA MERAH PUTIH AGUNG KARYA GIRIMUKTI",
+  "wilayah": "64.09.01.2020"
+ },
+ {
+  "sourceRef": "KOP-F457EB2B7AA9",
+  "nama": "KOPERASI DESA MERAH PUTIH AGUNG PIMPING CIPTA",
+  "wilayah": "65.01.03.2002"
+ },
+ {
+  "sourceRef": "KOP-F3FF72100992",
+  "nama": "KOPERASI DESA MERAH PUTIH AGUNG SEJAHTERA KENANGA",
+  "wilayah": "61.11.01.2003"
+ },
+ {
+  "sourceRef": "KOP-C673E0BFAAFD",
+  "nama": "KOPERASI DESA MERAH PUTIH AIA MADANI BANGIH BARAT NAGARI TAMAN PASAMAN",
+  "wilayah": "13.12.01.2001"
+ },
+ {
+  "sourceRef": "KOP-55EBB62C95D7",
+  "nama": "KOPERASI DESA MERAH PUTIH AIMASI SEJAHTERA KENANGA",
+  "wilayah": "92.02.31.2008"
+ },
+ {
+  "sourceRef": "KOP-B152C011860E",
+  "nama": "KOPERASI DESA MERAH PUTIH ANABANUA TANGGUH SURYA",
+  "wilayah": "73.11.03.2008"
+ },
+ {
+  "sourceRef": "KOP-F2BBE3C815F5",
+  "nama": "KOPERASI DESA MERAH PUTIH ANGKASA AGUNG LUMBANG",
+  "wilayah": "61.01.01.2014"
+ },
+ {
+  "sourceRef": "KOP-92FDCEEC2FEB",
+  "nama": "KOPERASI DESA MERAH PUTIH ANGKASA BARU MUARA MANDIRI MAHAT",
+  "wilayah": "14.01.10.2020"
+ },
+ {
+  "sourceRef": "KOP-9DE7EF48876F",
+  "nama": "KOPERASI DESA MERAH PUTIH ANGKASA BOINFIA ADMINISTRATIF NEGERI PERMAI",
+  "wilayah": "81.05.15.2010"
+ },
+ {
+  "sourceRef": "KOP-FF157CA23773",
+  "nama": "KOPERASI DESA MERAH PUTIH ANGKASA NEGERI BAHAGIA SAUNULU",
+  "wilayah": "81.01.11.2017"
+ },
+ {
+  "sourceRef": "KOP-8106F16EFE16",
+  "nama": "KOPERASI DESA MERAH PUTIH ANGKASA PACAO GEMILANG",
+  "wilayah": "82.03.09.2009"
+ },
+ {
+  "sourceRef": "KOP-3AA653AC8E0B",
+  "nama": "KOPERASI DESA MERAH PUTIH ANGSANA SENTOSA SENJA",
+  "wilayah": "63.10.09.2005"
+ },
+ {
+  "sourceRef": "KOP-3662C0D43DAF",
+  "nama": "KOPERASI DESA MERAH PUTIH ARSOPURA SENTOSA WIJAYA KAMPUNG",
+  "wilayah": "91.11.05.2003"
+ },
+ {
+  "sourceRef": "KOP-A5155919701B",
+  "nama": "KOPERASI DESA MERAH PUTIH ARUM SARI CERIA DONO",
+  "wilayah": "18.02.16.2003"
+ },
+ {
+  "sourceRef": "KOP-063BA0682068",
+  "nama": "KOPERASI DESA MERAH PUTIH ARUNA BOKANG WOLOMATANG LESTARI",
+  "wilayah": "53.06.02.2014"
+ },
+ {
+  "sourceRef": "KOP-9D1C5B67935D",
+  "nama": "KOPERASI DESA MERAH PUTIH ARUNA KAMPUNG PERMAI HONKUDING",
+  "wilayah": "95.02.21.2009"
+ },
+ {
+  "sourceRef": "KOP-545205BCB0A6",
+  "nama": "KOPERASI DESA MERAH PUTIH ARUNA LOGHIYA SEJAHTERA",
+  "wilayah": "74.03.18.2006"
+ },
+ {
+  "sourceRef": "KOP-2929790759DD",
+  "nama": "KOPERASI DESA MERAH PUTIH ARUNA MULYA BORO",
+  "wilayah": "35.15.06.2015"
+ },
+ {
+  "sourceRef": "KOP-D50E2759CE15",
+  "nama": "KOPERASI DESA MERAH PUTIH ARUNA ULU PEMULUTAN PRIMA",
+  "wilayah": "16.10.05.2021"
+ },
+ {
+  "sourceRef": "KOP-F27EA27FC343",
+  "nama": "KOPERASI DESA MERAH PUTIH ARUNA WATONDO AGUNG",
+  "wilayah": "74.03.32.2005"
+ },
+ {
+  "sourceRef": "KOP-9177EE1886B7",
+  "nama": "KOPERASI DESA MERAH PUTIH ASAM JAYA MANDIRI RANTAU",
+  "wilayah": "63.01.02.2010"
+ },
+ {
+  "sourceRef": "KOP-2EE420F51104",
+  "nama": "KOPERASI DESA MERAH PUTIH ASAM SENTOSA SRI BUKIT BATANG AGUNG",
+  "wilayah": "15.06.07.2002"
+ },
+ {
+  "sourceRef": "KOP-1503549DEBD7",
+  "nama": "KOPERASI DESA MERAH PUTIH ASRI BANTAR PANJANG SEGARA",
+  "wilayah": "36.03.03.2014"
+ },
+ {
+  "sourceRef": "KOP-17BF4A3F5DF4",
+  "nama": "KOPERASI DESA MERAH PUTIH ASRI BUMISARI PADMA",
+  "wilayah": "18.01.04.2009"
+ },
+ {
+  "sourceRef": "KOP-1AC89CE7F7C7",
+  "nama": "KOPERASI DESA MERAH PUTIH ASRI GUNUNG JELITA TANJUNG",
+  "wilayah": "32.02.05.2007"
+ },
+ {
+  "sourceRef": "KOP-1B7D98738E36",
+  "nama": "KOPERASI DESA MERAH PUTIH ASRI KOHOD TUNAS",
+  "wilayah": "36.03.15.2008"
+ },
+ {
+  "sourceRef": "KOP-12F173371A2A",
+  "nama": "KOPERASI DESA MERAH PUTIH ASRI MOA CANDRA",
+  "wilayah": "72.10.06.2010"
+ },
+ {
+  "sourceRef": "KOP-7369BBC68FBF",
+  "nama": "KOPERASI DESA MERAH PUTIH ASRI PENDOWO ABADI BUKIT",
+  "wilayah": "18.05.25.2011"
+ },
+ {
+  "sourceRef": "KOP-1A4E27853642",
+  "nama": "KOPERASI DESA MERAH PUTIH ASRI SEPADU SENJA",
+  "wilayah": "61.01.13.2004"
+ },
+ {
+  "sourceRef": "KOP-7478B7139CFD",
+  "nama": "KOPERASI DESA MERAH PUTIH ASRI TIMUR ABADI CAHAYA LIMAU",
+  "wilayah": "94.04.15.2001"
+ },
+ {
+  "sourceRef": "KOP-152B37DCA213",
+  "nama": "KOPERASI DESA MERAH PUTIH ASRI UTARA ARUNA BUANO",
+  "wilayah": "81.06.04.2006"
+ },
+ {
+  "sourceRef": "KOP-1FBAAF9D5405",
+  "nama": "KOPERASI DESA MERAH PUTIH AWU TANAK JAYA LEMBAH",
+  "wilayah": "52.02.04.2014"
+ },
+ {
+  "sourceRef": "KOP-126CF8F7DCA5",
+  "nama": "KOPERASI DESA MERAH PUTIH B TIRTA ASRI KOLISIA",
+  "wilayah": "53.07.12.2005"
+ },
+ {
+  "sourceRef": "KOP-F8A8C4A23601",
+  "nama": "KOPERASI DESA MERAH PUTIH BAHAGIA BALIAN BATU BUKIT",
+  "wilayah": "63.03.08.2017"
+ },
+ {
+  "sourceRef": "KOP-FC90CC592DED",
+  "nama": "KOPERASI DESA MERAH PUTIH BAHAGIA GIRI KAMBUNONG",
+  "wilayah": "76.06.05.2009"
+ },
+ {
+  "sourceRef": "KOP-FD1E6F71D4FE",
+  "nama": "KOPERASI DESA MERAH PUTIH BAHAGIA MAMUYA POGIRIO DESA RANTAU",
+  "wilayah": "82.03.04.2003"
+ },
+ {
+  "sourceRef": "KOP-8665F96A0FA1",
+  "nama": "KOPERASI DESA MERAH PUTIH BALANSIKU BERKAH TIRTA",
+  "wilayah": "65.03.01.2002"
+ },
+ {
+  "sourceRef": "KOP-6158AFE5F3AE",
+  "nama": "KOPERASI DESA MERAH PUTIH BANDAR HARMONI NAGORI ANGKASA",
+  "wilayah": "12.08.23.2003"
+ },
+ {
+  "sourceRef": "KOP-E07ECAEBF0A3",
+  "nama": "KOPERASI DESA MERAH PUTIH BANGKAL CIPTA BARAT RAYA AWANG",
+  "wilayah": "63.03.06.2014"
+ },
+ {
+  "sourceRef": "KOP-0CCD84525375",
+  "nama": "KOPERASI DESA MERAH PUTIH BANGUN HARJO PANGKAL MAKMUR BATAGUH",
+  "wilayah": "62.03.17.2011"
+ },
+ {
+  "sourceRef": "KOP-31AC91EF6F17",
+  "nama": "KOPERASI DESA MERAH PUTIH BANGUN PURBA JAYA TIMUR NUSA SENTOSA",
+  "wilayah": "14.06.10.2005"
+ },
+ {
+  "sourceRef": "KOP-B1ABC32458A9",
+  "nama": "KOPERASI DESA MERAH PUTIH BANJAR TANGGUH CIPTA",
+  "wilayah": "12.09.09.2005"
+ },
+ {
+  "sourceRef": "KOP-070575B278AB",
+  "nama": "KOPERASI DESA MERAH PUTIH BANJARSARI LESTARI KENANGA",
+  "wilayah": "33.01.05.2003"
+ },
+ {
+  "sourceRef": "KOP-353C7ED03FC3",
+  "nama": "KOPERASI DESA MERAH PUTIH BARAT BUYAT PURNAMA SENTOSA",
+  "wilayah": "71.10.02.2010"
+ },
+ {
+  "sourceRef": "KOP-3EE515BC99BC",
+  "nama": "KOPERASI DESA MERAH PUTIH BARAT DAMAI MOLOBOG NUSA",
+  "wilayah": "71.10.06.2008"
+ },
+ {
+  "sourceRef": "KOP-2690831DF259",
+  "nama": "KOPERASI DESA MERAH PUTIH BARAT HURUNG MULYA PUSPA ADONARA",
+  "wilayah": "53.06.08.2017"
+ },
+ {
+  "sourceRef": "KOP-21F758BF89B0",
+  "nama": "KOPERASI DESA MERAH PUTIH BARAT KENANGA PURBA BANGUN JAYA",
+  "wilayah": "14.06.10.2006"
+ },
+ {
+  "sourceRef": "KOP-148287ED84C2",
+  "nama": "KOPERASI DESA MERAH PUTIH BARAT TELUK JEJANGKIT ASRI",
+  "wilayah": "63.04.17.2002"
+ },
+ {
+  "sourceRef": "KOP-01473C74316E",
+  "nama": "KOPERASI DESA MERAH PUTIH BARU LESTARI SUKA TIRTA",
+  "wilayah": "61.04.18.2006"
+ },
+ {
+  "sourceRef": "KOP-F83D04374304",
+  "nama": "KOPERASI DESA MERAH PUTIH BATU AGUNG CERMIN PRABA",
+  "wilayah": "53.15.05.2019"
+ },
+ {
+  "sourceRef": "KOP-00297D0FF509",
+  "nama": "KOPERASI DESA MERAH PUTIH BATU LESTARI SUMBER SUMBER",
+  "wilayah": "11.05.09.2025"
+ },
+ {
+  "sourceRef": "KOP-F7622039D025",
+  "nama": "KOPERASI DESA MERAH PUTIH BAYU AGUNG WANGIRJA",
+  "wilayah": "94.04.15.2002"
+ },
+ {
+  "sourceRef": "KOP-64F56589BE3D",
+  "nama": "KOPERASI DESA MERAH PUTIH BAYU BARAT KAIDUNDU HARMONI",
+  "wilayah": "75.03.17.2002"
+ },
+ {
+  "sourceRef": "KOP-83C113FE9E39",
+  "nama": "KOPERASI DESA MERAH PUTIH BAYU GEMILANG TANGGA LABUHAN BARU",
+  "wilayah": "14.07.02.2019"
+ },
+ {
+  "sourceRef": "KOP-A9501C6F59EF",
+  "nama": "KOPERASI DESA MERAH PUTIH BAYU JENGGELO CERIA",
+  "wilayah": "94.04.18.2009"
+ },
+ {
+  "sourceRef": "KOP-2CCE52DC55D1",
+  "nama": "KOPERASI DESA MERAH PUTIH BAYU MULYA ACEMO",
+  "wilayah": "92.02.15.2014"
+ },
+ {
+  "sourceRef": "KOP-E11DC3DEEE0D",
+  "nama": "KOPERASI DESA MERAH PUTIH BAYU RAYA TUKADAYA",
+  "wilayah": "51.01.04.2009"
+ },
+ {
+  "sourceRef": "KOP-EBDFC6D2D7BA",
+  "nama": "KOPERASI DESA MERAH PUTIH BAYU SEJATI SISIR",
+  "wilayah": "92.03.04.2010"
+ },
+ {
+  "sourceRef": "KOP-39FB3B8244BE",
+  "nama": "KOPERASI DESA MERAH PUTIH BAYU SENTOSA SEMPALAI",
+  "wilayah": "61.01.04.2003"
+ },
+ {
+  "sourceRef": "KOP-0CEF7D8548E6",
+  "nama": "KOPERASI DESA MERAH PUTIH BERINGIN MAKMUR RANTAU",
+  "wilayah": "61.01.14.2004"
+ },
+ {
+  "sourceRef": "KOP-8B586659E475",
+  "nama": "KOPERASI DESA MERAH PUTIH BERKAH BANGUNHARJO SURYA KALURAHAN",
+  "wilayah": "34.02.15.2003"
+ },
+ {
+  "sourceRef": "KOP-8E84F56150A4",
+  "nama": "KOPERASI DESA MERAH PUTIH BERKAH CITRA BALISOAN",
+  "wilayah": "82.01.04.2009"
+ },
+ {
+  "sourceRef": "KOP-8890162D2611",
+  "nama": "KOPERASI DESA MERAH PUTIH BERKAH GIRI BHAKTI DHARMA",
+  "wilayah": "61.07.09.2001"
+ },
+ {
+  "sourceRef": "KOP-86323C349E6B",
+  "nama": "KOPERASI DESA MERAH PUTIH BERKAH KALER DAWAN MEKAR",
+  "wilayah": "51.05.04.2011"
+ },
+ {
+  "sourceRef": "KOP-8A35F3519D96",
+  "nama": "KOPERASI DESA MERAH PUTIH BERKAH KARYA ARUNA MUKTI",
+  "wilayah": "72.03.06.2014"
+ },
+ {
+  "sourceRef": "KOP-8AB324E9E500",
+  "nama": "KOPERASI DESA MERAH PUTIH BERKAH KIRANA SARIPUTIH",
+  "wilayah": "81.01.25.2002"
+ },
+ {
+  "sourceRef": "KOP-882F07A3B116",
+  "nama": "KOPERASI DESA MERAH PUTIH BERKAH MAKMUR NUSA SIDO MENTAWAI",
+  "wilayah": "13.09.08.2004"
+ },
+ {
+  "sourceRef": "KOP-88E806A0BC95",
+  "nama": "KOPERASI DESA MERAH PUTIH BERKAH MERDEN LEMBAH",
+  "wilayah": "33.04.04.2002"
+ },
+ {
+  "sourceRef": "KOP-88A9FEFF8619",
+  "nama": "KOPERASI DESA MERAH PUTIH BERKAH MIAF SARI",
+  "wilayah": "82.06.08.2003"
+ },
+ {
+  "sourceRef": "KOP-859823997D2F",
+  "nama": "KOPERASI DESA MERAH PUTIH BERKAH PANCA KARSA BUKIT",
+  "wilayah": "73.24.01.2013"
+ },
+ {
+  "sourceRef": "KOP-88B153C30026",
+  "nama": "KOPERASI DESA MERAH PUTIH BERKAH RANTAU OLAK KEMANG",
+  "wilayah": "15.09.12.2008"
+ },
+ {
+  "sourceRef": "KOP-B543C38BDB63",
+  "nama": "KOPERASI DESA MERAH PUTIH BERSERI ATAR NAGARI PUSPA",
+  "wilayah": "13.04.11.2001"
+ },
+ {
+  "sourceRef": "KOP-B714B0783DD2",
+  "nama": "KOPERASI DESA MERAH PUTIH BERSERI BANDUNGAN KARANG",
+  "wilayah": "75.03.05.2002"
+ },
+ {
+  "sourceRef": "KOP-B6C1D8C0C0B7",
+  "nama": "KOPERASI DESA MERAH PUTIH BERSERI BARUS NAGARI BATANG RANTAU",
+  "wilayah": "13.02.07.2006"
+ },
+ {
+  "sourceRef": "KOP-BAAEF9A4EA63",
+  "nama": "KOPERASI DESA MERAH PUTIH BERSERI GIMPU MUTIARA",
+  "wilayah": "72.10.06.2002"
+ },
+ {
+  "sourceRef": "KOP-B7CBD6FA88E8",
+  "nama": "KOPERASI DESA MERAH PUTIH BERSERI JAYA MEKAR SURYA",
+  "wilayah": "17.06.03.2027"
+ },
+ {
+  "sourceRef": "KOP-BB0674AB9178",
+  "nama": "KOPERASI DESA MERAH PUTIH BERSERI JELITA UHAILANU",
+  "wilayah": "76.03.02.2005"
+ },
+ {
+  "sourceRef": "KOP-B79E54869A74",
+  "nama": "KOPERASI DESA MERAH PUTIH BERSERI LUNGUN BATU ANGKASA",
+  "wilayah": "17.04.07.2010"
+ },
+ {
+  "sourceRef": "KOP-B98F13541D64",
+  "nama": "KOPERASI DESA MERAH PUTIH BERSERI NGUJUNG LANGIT",
+  "wilayah": "35.18.17.2010"
+ },
+ {
+  "sourceRef": "KOP-B6313BDD7F2E",
+  "nama": "KOPERASI DESA MERAH PUTIH BERSERI PIAN TENGAH GIRI",
+  "wilayah": "21.03.05.2013"
+ },
+ {
+  "sourceRef": "KOP-B6E872120528",
+  "nama": "KOPERASI DESA MERAH PUTIH BERSERI TANJUNGAN LEMBAH KATIBUNG",
+  "wilayah": "18.01.08.2007"
+ },
+ {
+  "sourceRef": "KOP-BB68D8EE8DB6",
+  "nama": "KOPERASI DESA MERAH PUTIH BERSERI TUNAS WAWORANO",
+  "wilayah": "74.05.09.2004"
+ },
+ {
+  "sourceRef": "KOP-30C36AD82C13",
+  "nama": "KOPERASI DESA MERAH PUTIH BERTUAH KAMPUNG RANTAU BUMI SENTOSA",
+  "wilayah": "14.08.03.2005"
+ },
+ {
+  "sourceRef": "KOP-F4606E84A049",
+  "nama": "KOPERASI DESA MERAH PUTIH BESAR HATIVE WIJAYA NEGERI AGUNG",
+  "wilayah": "81.71.04.2006"
+ },
+ {
+  "sourceRef": "KOP-3FB23560B8B0",
+  "nama": "KOPERASI DESA MERAH PUTIH BHAKTI KARYA DAMAI PANGKAL",
+  "wilayah": "14.01.19.2004"
+ },
+ {
+  "sourceRef": "KOP-C7E1D57FD2E9",
+  "nama": "KOPERASI DESA MERAH PUTIH BINALAWAN MADANI CAHAYA",
+  "wilayah": "65.03.08.2002"
+ },
+ {
+  "sourceRef": "KOP-DF2DBD2A8ACF",
+  "nama": "KOPERASI DESA MERAH PUTIH BLANG SYARIAH RAYA LIMO GAMPONG TELUK",
+  "wilayah": "11.06.03.2005"
+ },
+ {
+  "sourceRef": "KOP-7D45CF638927",
+  "nama": "KOPERASI DESA MERAH PUTIH BUANTAN LESTARI GEMILANG KAMPUNG CAHAYA",
+  "wilayah": "14.08.08.2012"
+ },
+ {
+  "sourceRef": "KOP-AD632605703A",
+  "nama": "KOPERASI DESA MERAH PUTIH BUDI MUKTI TANGGUH WANA",
+  "wilayah": "72.03.06.2009"
+ },
+ {
+  "sourceRef": "KOP-4F59D4259589",
+  "nama": "KOPERASI DESA MERAH PUTIH BUGEL SEJAHTERA KALURAHAN BUKIT",
+  "wilayah": "34.01.03.2003"
+ },
+ {
+  "sourceRef": "KOP-0E48C6688F42",
+  "nama": "KOPERASI DESA MERAH PUTIH BUJOK SEULEUMAK PAYA MAKMUR SYARIAH ARUNA",
+  "wilayah": "11.74.05.2004"
+ },
+ {
+  "sourceRef": "KOP-4529433A31FC",
+  "nama": "KOPERASI DESA MERAH PUTIH BUKAKA BUKIT INDAH DESA",
+  "wilayah": "71.10.02.2005"
+ },
+ {
+  "sourceRef": "KOP-7BDEE63F65A9",
+  "nama": "KOPERASI DESA MERAH PUTIH BUKIT GEMILANG LOKASARI",
+  "wilayah": "17.07.01.2028"
+ },
+ {
+  "sourceRef": "KOP-5B5D1947EEA0",
+  "nama": "KOPERASI DESA MERAH PUTIH BUKIT HARMONI AIKIMA",
+  "wilayah": "95.01.25.2003"
+ },
+ {
+  "sourceRef": "KOP-BB7D0D13E3C3",
+  "nama": "KOPERASI DESA MERAH PUTIH BUKIT MULYO ARGO KAMPUNG CEMERLANG",
+  "wilayah": "94.01.04.2004"
+ },
+ {
+  "sourceRef": "KOP-A40401C9BC33",
+  "nama": "KOPERASI DESA MERAH PUTIH BUKIT NUSA CERIA SAMANG",
+  "wilayah": "76.05.03.2026"
+ },
+ {
+  "sourceRef": "KOP-EDD586DFD4FE",
+  "nama": "KOPERASI DESA MERAH PUTIH BUKIT TANGGA BATU AGUNG",
+  "wilayah": "62.09.07.2003"
+ },
+ {
+  "sourceRef": "KOP-742A66C75AB5",
+  "nama": "KOPERASI DESA MERAH PUTIH BUMI ABADI KEBANGA",
+  "wilayah": "76.03.16.2003"
+ },
+ {
+  "sourceRef": "KOP-3D55FA43490B",
+  "nama": "KOPERASI DESA MERAH PUTIH BUMI DAMAI YOKA",
+  "wilayah": "91.71.05.2003"
+ },
+ {
+  "sourceRef": "KOP-12C2288B3435",
+  "nama": "KOPERASI DESA MERAH PUTIH BUMI KABAE ASRI",
+  "wilayah": "76.03.16.2006"
+ },
+ {
+  "sourceRef": "KOP-1D4DEC257F1E",
+  "nama": "KOPERASI DESA MERAH PUTIH BUMI LAMBARA JAYA",
+  "wilayah": "72.10.10.2001"
+ },
+ {
+  "sourceRef": "KOP-EEE70C54C827",
+  "nama": "KOPERASI DESA MERAH PUTIH BUMI MAMBULAU AGUNG PULAU",
+  "wilayah": "62.03.17.2002"
+ },
+ {
+  "sourceRef": "KOP-8FCC4B34CC5B",
+  "nama": "KOPERASI DESA MERAH PUTIH BUMI MANDIRI BARABALI",
+  "wilayah": "52.02.03.2007"
+ },
+ {
+  "sourceRef": "KOP-E3FC36EBD490",
+  "nama": "KOPERASI DESA MERAH PUTIH BUMI SEJATI WONUAMBUTEO",
+  "wilayah": "74.11.05.2001"
+ },
+ {
+  "sourceRef": "KOP-7D0A65F37E59",
+  "nama": "KOPERASI DESA MERAH PUTIH BUMI TAJINAN JAMBEARJO GEMILANG",
+  "wilayah": "35.07.15.2009"
+ },
+ {
+  "sourceRef": "KOP-AC0F8781C73D",
+  "nama": "KOPERASI DESA MERAH PUTIH BUMI TANGGUH KAMANGI KAMPUNG",
+  "wilayah": "93.01.06.2014"
+ },
+ {
+  "sourceRef": "KOP-46C0A66C88D0",
+  "nama": "KOPERASI DESA MERAH PUTIH BUMI TANGKIANG INDAH",
+  "wilayah": "72.01.03.2002"
+ },
+ {
+  "sourceRef": "KOP-EA9180326641",
+  "nama": "KOPERASI DESA MERAH PUTIH BUNTALO SEJATI WIJAYA",
+  "wilayah": "71.01.12.2012"
+ },
+ {
+  "sourceRef": "KOP-48550C595C35",
+  "nama": "KOPERASI DESA MERAH PUTIH BUOL NUSA BOKAT TAYADUN INDAH",
+  "wilayah": "72.05.03.2001"
+ },
+ {
+  "sourceRef": "KOP-B3ED1329AAF0",
+  "nama": "KOPERASI DESA MERAH PUTIH BUYAT BERSERI TAMAN SELATAN",
+  "wilayah": "71.10.02.2008"
+ },
+ {
+  "sourceRef": "KOP-90A370A556D0",
+  "nama": "KOPERASI DESA MERAH PUTIH CAHAYA MANDIRI TANJUNG REJO PULAULAUT BANGUN SELAYAR",
+  "wilayah": "63.02.21.2010"
+ },
+ {
+  "sourceRef": "KOP-DD77CC0CA969",
+  "nama": "KOPERASI DESA MERAH PUTIH CAHAYA RAYA KUWARU",
+  "wilayah": "33.05.16.2019"
+ },
+ {
+  "sourceRef": "KOP-75249170268C",
+  "nama": "KOPERASI DESA MERAH PUTIH CANDRA ABADI CEMAGA",
+  "wilayah": "21.03.18.2001"
+ },
+ {
+  "sourceRef": "KOP-5D98D4930B9F",
+  "nama": "KOPERASI DESA MERAH PUTIH CANDRA BAYAN LINGSAR HARMONI KARANG",
+  "wilayah": "52.01.12.2005"
+ },
+ {
+  "sourceRef": "KOP-FBA78CD18970",
+  "nama": "KOPERASI DESA MERAH PUTIH CANDRA BLANG BAHAGIA SYARIAH POHROH",
+  "wilayah": "11.08.27.2006"
+ },
+ {
+  "sourceRef": "KOP-A3E19EED221E",
+  "nama": "KOPERASI DESA MERAH PUTIH CANDRA CERIA GROGOL",
+  "wilayah": "35.10.17.2006"
+ },
+ {
+  "sourceRef": "KOP-4829BCC3B027",
+  "nama": "KOPERASI DESA MERAH PUTIH CANDRA INDAH MALAKULI",
+  "wilayah": "92.03.06.2001"
+ },
+ {
+  "sourceRef": "KOP-0BB2FD1B3EA3",
+  "nama": "KOPERASI DESA MERAH PUTIH CANDRA MAKMUR ARWANOP",
+  "wilayah": "94.04.10.2003"
+ },
+ {
+  "sourceRef": "KOP-7E266C022819",
+  "nama": "KOPERASI DESA MERAH PUTIH CANDRA MWARE GEMILANG",
+  "wilayah": "94.04.03.2005"
+ },
+ {
+  "sourceRef": "KOP-18632F6E372B",
+  "nama": "KOPERASI DESA MERAH PUTIH CEMAGA UTARA ASRI MUTIARA",
+  "wilayah": "21.03.18.2003"
+ },
+ {
+  "sourceRef": "KOP-C19B8276E322",
+  "nama": "KOPERASI DESA MERAH PUTIH CEMERLANG CIPTA MATOMPI",
+  "wilayah": "73.24.03.2014"
+ },
+ {
+  "sourceRef": "KOP-C2DE542A4603",
+  "nama": "KOPERASI DESA MERAH PUTIH CEMERLANG ITIK SUNGAI PESONA",
+  "wilayah": "15.07.05.2004"
+ },
+ {
+  "sourceRef": "KOP-C060D617BF4B",
+  "nama": "KOPERASI DESA MERAH PUTIH CEMERLANG LEMBAH PALAMAKI",
+  "wilayah": "72.10.06.2012"
+ },
+ {
+  "sourceRef": "KOP-BC779804D916",
+  "nama": "KOPERASI DESA MERAH PUTIH CEMERLANG MEKAR KOGHOLIFANO",
+  "wilayah": "74.03.28.2001"
+ },
+ {
+  "sourceRef": "KOP-C1007ECF7E8E",
+  "nama": "KOPERASI DESA MERAH PUTIH CEMERLANG PURNAMA NGAJARAN",
+  "wilayah": "33.17.04.2003"
+ },
+ {
+  "sourceRef": "KOP-BD53839B6F24",
+  "nama": "KOPERASI DESA MERAH PUTIH CEMERLANG PUSPA DOLOK BAJA",
+  "wilayah": "12.18.08.2006"
+ },
+ {
+  "sourceRef": "KOP-C4754CA5F967",
+  "nama": "KOPERASI DESA MERAH PUTIH CEMERLANG SAMUDRA JAGARAGA INDAH",
+  "wilayah": "52.01.02.2003"
+ },
+ {
+  "sourceRef": "KOP-BCB021B8BD00",
+  "nama": "KOPERASI DESA MERAH PUTIH CEMERLANG SELAT TELO BARU PULAU TIRTA",
+  "wilayah": "62.03.01.2020"
+ },
+ {
+  "sourceRef": "KOP-C0A0D5EF8DDB",
+  "nama": "KOPERASI DESA MERAH PUTIH CEMERLANG SIALANG KIRANA RINDANG",
+  "wilayah": "14.06.04.2009"
+ },
+ {
+  "sourceRef": "KOP-C26164FEE26D",
+  "nama": "KOPERASI DESA MERAH PUTIH CEMERLANG SIGIMBUT NIRMALA",
+  "wilayah": "95.08.10.2008"
+ },
+ {
+  "sourceRef": "KOP-C26048BBDCA6",
+  "nama": "KOPERASI DESA MERAH PUTIH CEMERLANG WIJAYA DRUJU",
+  "wilayah": "35.07.04.2013"
+ },
+ {
+  "sourceRef": "KOP-563F1EA4367A",
+  "nama": "KOPERASI DESA MERAH PUTIH CENRANA SEJAHTERA WIJAYA",
+  "wilayah": "73.14.01.2010"
+ },
+ {
+  "sourceRef": "KOP-A4716F602C47",
+  "nama": "KOPERASI DESA MERAH PUTIH CERIA APUAN GIRI",
+  "wilayah": "51.02.09.2003"
+ },
+ {
+  "sourceRef": "KOP-A0CB7AD1B1B7",
+  "nama": "KOPERASI DESA MERAH PUTIH CERIA BUKIT CENDIL",
+  "wilayah": "19.06.04.2003"
+ },
+ {
+  "sourceRef": "KOP-A9A7087C161D",
+  "nama": "KOPERASI DESA MERAH PUTIH CERIA CITRA AWUNIO",
+  "wilayah": "74.05.09.2012"
+ },
+ {
+  "sourceRef": "KOP-A7262CA5A826",
+  "nama": "KOPERASI DESA MERAH PUTIH CERIA KIRANA SAMALORE",
+  "wilayah": "72.01.09.2036"
+ },
+ {
+  "sourceRef": "KOP-A9424A6BAA17",
+  "nama": "KOPERASI DESA MERAH PUTIH CERIA MUTIARA SUNGEGENENG",
+  "wilayah": "35.24.09.2021"
+ },
+ {
+  "sourceRef": "KOP-A8D16CC337AE",
+  "nama": "KOPERASI DESA MERAH PUTIH CERIA PESONA SINDANGPAKUON",
+  "wilayah": "32.11.14.2002"
+ },
+ {
+  "sourceRef": "KOP-A99B5E5A3192",
+  "nama": "KOPERASI DESA MERAH PUTIH CERIA PRABA LEPAK",
+  "wilayah": "52.03.18.2003"
+ },
+ {
+  "sourceRef": "KOP-A91A3BB53373",
+  "nama": "KOPERASI DESA MERAH PUTIH CERIA TANDAOLEO SAMUDRA",
+  "wilayah": "72.06.15.2004"
+ },
+ {
+  "sourceRef": "KOP-2525A5DD74F4",
+  "nama": "KOPERASI DESA MERAH PUTIH CERUK JAYA TUNAS",
+  "wilayah": "21.03.15.2002"
+ },
+ {
+  "sourceRef": "KOP-1F12A9CA1D0D",
+  "nama": "KOPERASI DESA MERAH PUTIH CIKUYA JAYA GIRI",
+  "wilayah": "36.01.29.2010"
+ },
+ {
+  "sourceRef": "KOP-22523949E633",
+  "nama": "KOPERASI DESA MERAH PUTIH CIPTA AMUN KAY JAYA",
+  "wilayah": "93.01.06.2004"
+ },
+ {
+  "sourceRef": "KOP-8B9CE0B4DFCF",
+  "nama": "KOPERASI DESA MERAH PUTIH CIPTA BERKAH SIBABAT",
+  "wilayah": "14.02.06.2010"
+ },
+ {
+  "sourceRef": "KOP-16F3AD942952",
+  "nama": "KOPERASI DESA MERAH PUTIH CIPTA DAMA ASRI",
+  "wilayah": "82.03.19.2002"
+ },
+ {
+  "sourceRef": "KOP-81F1971705B8",
+  "nama": "KOPERASI DESA MERAH PUTIH CIPTA GEMILANG PUTAT NUTUG",
+  "wilayah": "32.01.33.2001"
+ },
+ {
+  "sourceRef": "KOP-9E203136951F",
+  "nama": "KOPERASI DESA MERAH PUTIH CIPTA KONA PERMAI",
+  "wilayah": "95.03.32.2001"
+ },
+ {
+  "sourceRef": "KOP-0718AD7390D1",
+  "nama": "KOPERASI DESA MERAH PUTIH CIPTA KOTAJIN LESTARI UTARA",
+  "wilayah": "75.05.01.2018"
+ },
+ {
+  "sourceRef": "KOP-CB844C8F1327",
+  "nama": "KOPERASI DESA MERAH PUTIH CIPTA MADANI KELEBUH",
+  "wilayah": "52.02.10.2009"
+ },
+ {
+  "sourceRef": "KOP-94B71F925A4D",
+  "nama": "KOPERASI DESA MERAH PUTIH CIPTA MANDIRI PERINTIS",
+  "wilayah": "15.09.04.2002"
+ },
+ {
+  "sourceRef": "KOP-EA67B7B58067",
+  "nama": "KOPERASI DESA MERAH PUTIH CIPTA SEJATI YOSONEGORO",
+  "wilayah": "75.01.17.2005"
+ },
+ {
+  "sourceRef": "KOP-F85759DEFC89",
+  "nama": "KOPERASI DESA MERAH PUTIH CITRA AGUNG KUNDI",
+  "wilayah": "19.05.02.2002"
+ },
+ {
+  "sourceRef": "KOP-9808F94274F3",
+  "nama": "KOPERASI DESA MERAH PUTIH CITRA AKELAMO MANDIRI",
+  "wilayah": "82.01.09.2004"
+ },
+ {
+  "sourceRef": "KOP-4F1092DC17E7",
+  "nama": "KOPERASI DESA MERAH PUTIH CITRA INDAH PONDOKPANJANG",
+  "wilayah": "36.02.26.2004"
+ },
+ {
+  "sourceRef": "KOP-0941B0CD3749",
+  "nama": "KOPERASI DESA MERAH PUTIH CITRA LESTARI KARANGAGUNG",
+  "wilayah": "35.23.18.2016"
+ },
+ {
+  "sourceRef": "KOP-7BD3C1A3FF80",
+  "nama": "KOPERASI DESA MERAH PUTIH CITRA NARUWOLO I ABADI",
+  "wilayah": "53.09.12.2007"
+ },
+ {
+  "sourceRef": "KOP-1B43DAA5DD35",
+  "nama": "KOPERASI DESA MERAH PUTIH CITRA PARAGE ASRI",
+  "wilayah": "36.02.17.2011"
+ },
+ {
+  "sourceRef": "KOP-5A59531A74F8",
+  "nama": "KOPERASI DESA MERAH PUTIH CITRA RANTEDODA SEJAHTERA",
+  "wilayah": "76.02.02.2012"
+ },
+ {
+  "sourceRef": "KOP-DA1B7B3D075A",
+  "nama": "KOPERASI DESA MERAH PUTIH CITRA TRIHARJO PRIMA",
+  "wilayah": "18.01.18.2012"
+ },
+ {
+  "sourceRef": "KOP-12DF50D66B6F",
+  "nama": "KOPERASI DESA MERAH PUTIH CIULU ASRI CAHAYA",
+  "wilayah": "32.07.18.2016"
+ },
+ {
+  "sourceRef": "KOP-3F8F4BE9948C",
+  "nama": "KOPERASI DESA MERAH PUTIH DAMAI BABAKANCARINGIN SARI",
+  "wilayah": "32.03.07.2009"
+ },
+ {
+  "sourceRef": "KOP-3B6BDB14941B",
+  "nama": "KOPERASI DESA MERAH PUTIH DAMAI BARU BUKIT SYARIAH SEULALAH GAMPONG",
+  "wilayah": "11.74.04.2010"
+ },
+ {
+  "sourceRef": "KOP-3CE9B96ED7B8",
+  "nama": "KOPERASI DESA MERAH PUTIH DAMAI BIANG TIRTA",
+  "wilayah": "82.03.07.2036"
+ },
+ {
+  "sourceRef": "KOP-41E2FADB2AE6",
+  "nama": "KOPERASI DESA MERAH PUTIH DAMAI CIPTA PADWA",
+  "wilayah": "91.06.11.2013"
+ },
+ {
+  "sourceRef": "KOP-3CD0D0582AF4",
+  "nama": "KOPERASI DESA MERAH PUTIH DAMAI EPHITEN SUMBER",
+  "wilayah": "95.02.07.2003"
+ },
+ {
+  "sourceRef": "KOP-4257FD47875B",
+  "nama": "KOPERASI DESA MERAH PUTIH DAMAI KAMARUTON WIJAYA",
+  "wilayah": "36.04.35.2001"
+ },
+ {
+  "sourceRef": "KOP-3CE88DED87A3",
+  "nama": "KOPERASI DESA MERAH PUTIH DAMAI MEKAR KIRAK",
+  "wilayah": "76.03.15.2007"
+ },
+ {
+  "sourceRef": "KOP-4381821FB293",
+  "nama": "KOPERASI DESA MERAH PUTIH DAMAI MUTIARA LAMBANDIA",
+  "wilayah": "74.11.05.2012"
+ },
+ {
+  "sourceRef": "KOP-412F94A2C0AD",
+  "nama": "KOPERASI DESA MERAH PUTIH DAMAI PAREBAAN KETAWANG ARUNA",
+  "wilayah": "35.29.10.2012"
+ },
+ {
+  "sourceRef": "KOP-428B748E5134",
+  "nama": "KOPERASI DESA MERAH PUTIH DAMAI PESONA FRAMBAT USAHA SERBA KURANA",
+  "wilayah": "96.05.01.2013"
+ },
+ {
+  "sourceRef": "KOP-6846C07A9BAD",
+  "nama": "KOPERASI DESA MERAH PUTIH DAMAI SUKA BUMI UTAMA",
+  "wilayah": "14.06.09.2009"
+ },
+ {
+  "sourceRef": "KOP-3CE48D6309E8",
+  "nama": "KOPERASI DESA MERAH PUTIH DAMAI TOLANGOHULA TAMAN ABADI MAKMUR",
+  "wilayah": "75.01.13.2015"
+ },
+ {
+  "sourceRef": "KOP-B1A81B275B29",
+  "nama": "KOPERASI DESA MERAH PUTIH DATAHU TANGGUH KENANGA",
+  "wilayah": "75.01.04.2003"
+ },
+ {
+  "sourceRef": "KOP-710E035E29FF",
+  "nama": "KOPERASI DESA MERAH PUTIH DAUH KANGIN PURI BAYU UTAMA",
+  "wilayah": "51.71.03.2006"
+ },
+ {
+  "sourceRef": "KOP-A33F5FB34FE4",
+  "nama": "KOPERASI DESA MERAH PUTIH DESA BUMI MUKTIJAYA CERIA",
+  "wilayah": "32.15.23.2009"
+ },
+ {
+  "sourceRef": "KOP-5BCA9A83A6CE",
+  "nama": "KOPERASI DESA MERAH PUTIH DESA LAMA HARMONI DENAI TIRTA",
+  "wilayah": "12.07.32.2012"
+ },
+ {
+  "sourceRef": "KOP-0ECE0B92F990",
+  "nama": "KOPERASI DESA MERAH PUTIH DESA MAKMUR BORONA SURYA ESAMOI",
+  "wilayah": "82.01.07.2009"
+ },
+ {
+  "sourceRef": "KOP-BD140AD15782",
+  "nama": "KOPERASI DESA MERAH PUTIH EREMNAHOM CEMERLANG BUMI",
+  "wilayah": "95.03.04.2011"
+ },
+ {
+  "sourceRef": "KOP-7C83F4627186",
+  "nama": "KOPERASI DESA MERAH PUTIH FAGUDU GEMILANG TIRTA",
+  "wilayah": "82.05.02.2002"
+ },
+ {
+  "sourceRef": "KOP-0E86AA632C57",
+  "nama": "KOPERASI DESA MERAH PUTIH FAJAR MAKMUR ANGKASA RANTAU",
+  "wilayah": "18.07.09.2006"
+ },
+ {
+  "sourceRef": "KOP-D80B9B927DEB",
+  "nama": "KOPERASI DESA MERAH PUTIH FAUR PRIMA PADMA",
+  "wilayah": "92.03.06.2002"
+ },
+ {
+  "sourceRef": "KOP-EF96C3D65E84",
+  "nama": "KOPERASI DESA MERAH PUTIH GAMPONG ALUE WANA SYARIAH AGUNG",
+  "wilayah": "11.06.05.2008"
+ },
+ {
+  "sourceRef": "KOP-8B01516ECC63",
+  "nama": "KOPERASI DESA MERAH PUTIH GAMPONG BERKAH SEULIMENG ANGKASA PALOH SYARIAH",
+  "wilayah": "11.11.04.2059"
+ },
+ {
+  "sourceRef": "KOP-A8A981AE4048",
+  "nama": "KOPERASI DESA MERAH PUTIH GAMPONG BLANG WIJAYA BATI CERIA SYARIAH",
+  "wilayah": "11.11.03.2038"
+ },
+ {
+  "sourceRef": "KOP-5D7697086A10",
+  "nama": "KOPERASI DESA MERAH PUTIH GAMPONG HARMONI SYARIAH GANDAI BLANG CAHAYA",
+  "wilayah": "11.11.04.2063"
+ },
+ {
+  "sourceRef": "KOP-975BA026A945",
+  "nama": "KOPERASI DESA MERAH PUTIH GAMPONG MANDIRI SYARIAH MEURANDEH JELITA TEUNGOH",
+  "wilayah": "11.74.04.2012"
+ },
+ {
+  "sourceRef": "KOP-0ABB6B94DD0A",
+  "nama": "KOPERASI DESA MERAH PUTIH GAMPONG PONDOK PUSPA SYARIAH KEMUNING MAKMUR",
+  "wilayah": "11.74.04.2001"
+ },
+ {
+  "sourceRef": "KOP-C1580625AF5A",
+  "nama": "KOPERASI DESA MERAH PUTIH GEDANG EMBACANG CEMERLANG SURYA",
+  "wilayah": "15.09.12.2003"
+ },
+ {
+  "sourceRef": "KOP-702E3CB19FC2",
+  "nama": "KOPERASI DESA MERAH PUTIH GEDANG UTAMA LUBUK NIRMALA",
+  "wilayah": "17.06.01.2008"
+ },
+ {
+  "sourceRef": "KOP-9B2BC3304765",
+  "nama": "KOPERASI DESA MERAH PUTIH GEIKETAGO BUMI PERMAI KAMPUNG",
+  "wilayah": "94.03.15.2003"
+ },
+ {
+  "sourceRef": "KOP-7FBA8514F160",
+  "nama": "KOPERASI DESA MERAH PUTIH GEMILANG DENOM RANTAU",
+  "wilayah": "95.02.09.2004"
+ },
+ {
+  "sourceRef": "KOP-7F89250E7387",
+  "nama": "KOPERASI DESA MERAH PUTIH GEMILANG PANGKAL LANGAISA",
+  "wilayah": "82.03.15.2002"
+ },
+ {
+  "sourceRef": "KOP-80090022B49E",
+  "nama": "KOPERASI DESA MERAH PUTIH GEMILANG PEMALI LEMBAH",
+  "wilayah": "19.01.05.2005"
+ },
+ {
+  "sourceRef": "KOP-850CC8CA6BB3",
+  "nama": "KOPERASI DESA MERAH PUTIH GEMILANG PENINJAUAN TUNAS BUKIT I",
+  "wilayah": "17.05.01.2011"
+ },
+ {
+  "sourceRef": "KOP-82039AB8D5DC",
+  "nama": "KOPERASI DESA MERAH PUTIH GEMILANG RANTAU SUNGAI WIJAYA JAYA DUSUN",
+  "wilayah": "15.07.04.2009"
+ },
+ {
+  "sourceRef": "KOP-800830A62B79",
+  "nama": "KOPERASI DESA MERAH PUTIH GEMILANG TUNGGAL TRI TELUK MULYA",
+  "wilayah": "18.10.07.2007"
+ },
+ {
+  "sourceRef": "KOP-70631AD67A1C",
+  "nama": "KOPERASI DESA MERAH PUTIH GERENENG UTAMA PADMA",
+  "wilayah": "52.03.18.2004"
+ },
+ {
+  "sourceRef": "KOP-76064A6F1328",
+  "nama": "KOPERASI DESA MERAH PUTIH GIRI ABADI KEROIT",
+  "wilayah": "71.05.21.2008"
+ },
+ {
+  "sourceRef": "KOP-7EF6025DC02A",
+  "nama": "KOPERASI DESA MERAH PUTIH GIRI GEMILANG MEKARJAYA",
+  "wilayah": "32.04.13.2012"
+ },
+ {
+  "sourceRef": "KOP-03ADACF28831",
+  "nama": "KOPERASI DESA MERAH PUTIH GIRI LESTARI BINGA TANJUNG",
+  "wilayah": "19.02.04.2005"
+ },
+ {
+  "sourceRef": "KOP-914D24CCF8E9",
+  "nama": "KOPERASI DESA MERAH PUTIH GIRI MANDIRI PIYAIT",
+  "wilayah": "63.11.03.2032"
+ },
+ {
+  "sourceRef": "KOP-BF266A1A158E",
+  "nama": "KOPERASI DESA MERAH PUTIH GIRI MERINDU SUKA CEMERLANG",
+  "wilayah": "17.03.25.2006"
+ },
+ {
+  "sourceRef": "KOP-9B6B98CBB8C4",
+  "nama": "KOPERASI DESA MERAH PUTIH GIRI WAWASAN PERMAI",
+  "wilayah": "18.01.22.2004"
+ },
+ {
+  "sourceRef": "KOP-E0954849398E",
+  "nama": "KOPERASI DESA MERAH PUTIH GITGIT RAYA PESONA",
+  "wilayah": "51.08.05.2004"
+ },
+ {
+  "sourceRef": "KOP-2A38E4CDE8F7",
+  "nama": "KOPERASI DESA MERAH PUTIH GROBOGAN PULOKULON PANUNGGALAN WIJAYA MULYA",
+  "wilayah": "33.15.06.2007"
+ },
+ {
+  "sourceRef": "KOP-8CB21AB4DBE4",
+  "nama": "KOPERASI DESA MERAH PUTIH GUNUANG RAJO SYARIAH TANAH DATAR BERKAH NAGARI PESONA",
+  "wilayah": "13.04.02.2005"
+ },
+ {
+  "sourceRef": "KOP-B032BB8D80E4",
+  "nama": "KOPERASI DESA MERAH PUTIH HANJALIPAN TANGGUH ARUNA",
+  "wilayah": "62.02.01.2004"
+ },
+ {
+  "sourceRef": "KOP-257AFE0680F1",
+  "nama": "KOPERASI DESA MERAH PUTIH HARAPAN MAKMUR MULYA BUKIT KAMPUNG",
+  "wilayah": "93.01.11.2001"
+ },
+ {
+  "sourceRef": "KOP-5D55883D1173",
+  "nama": "KOPERASI DESA MERAH PUTIH HARMONI BUMI MENI GOLO",
+  "wilayah": "53.19.10.2005"
+ },
+ {
+  "sourceRef": "KOP-6376B47CF088",
+  "nama": "KOPERASI DESA MERAH PUTIH HARMONI FANEDANU WIJAYA",
+  "wilayah": "12.14.34.2001"
+ },
+ {
+  "sourceRef": "KOP-61C536051F03",
+  "nama": "KOPERASI DESA MERAH PUTIH HARMONI KAMPUNG MULYA YASA KENANGA",
+  "wilayah": "93.01.06.2001"
+ },
+ {
+  "sourceRef": "KOP-5BA50B8DF256",
+  "nama": "KOPERASI DESA MERAH PUTIH HARMONI MEKAR BETENGON",
+  "wilayah": "72.04.03.2013"
+ },
+ {
+  "sourceRef": "KOP-63CEDF988D42",
+  "nama": "KOPERASI DESA MERAH PUTIH HARMONI PADMA PANGKALAN TIGA",
+  "wilayah": "62.01.05.2001"
+ },
+ {
+  "sourceRef": "KOP-5CA94A0C4B3C",
+  "nama": "KOPERASI DESA MERAH PUTIH HARMONI RUANG KARYA",
+  "wilayah": "53.10.18.2010"
+ },
+ {
+  "sourceRef": "KOP-5B842718624C",
+  "nama": "KOPERASI DESA MERAH PUTIH HARMONI SUMBER BUNIPAH",
+  "wilayah": "63.03.01.2011"
+ },
+ {
+  "sourceRef": "KOP-654ECE52FD8E",
+  "nama": "KOPERASI DESA MERAH PUTIH HARMONI SUNGKAI JELITA",
+  "wilayah": "63.03.08.2010"
+ },
+ {
+  "sourceRef": "KOP-0486F421A2A1",
+  "nama": "KOPERASI DESA MERAH PUTIH HILIR MALINAU LESTARI RANTAU",
+  "wilayah": "65.02.02.2005"
+ },
+ {
+  "sourceRef": "KOP-3E5A7A9868F1",
+  "nama": "KOPERASI DESA MERAH PUTIH I PANI DAMAI CAHAYA",
+  "wilayah": "72.03.06.2005"
+ },
+ {
+  "sourceRef": "KOP-39164564BDBE",
+  "nama": "KOPERASI DESA MERAH PUTIH I SENTOSA MORONGE SAMUDRA",
+  "wilayah": "71.04.17.2002"
+ },
+ {
+  "sourceRef": "KOP-59C4B8E2E72A",
+  "nama": "KOPERASI DESA MERAH PUTIH II SENJA SUNGAI SEJAHTERA DURI",
+  "wilayah": "61.02.12.2002"
+ },
+ {
+  "sourceRef": "KOP-47C3AC5F23AA",
+  "nama": "KOPERASI DESA MERAH PUTIH INDAH ILIR CAHAYA RENDAH TELUK",
+  "wilayah": "15.09.02.2005"
+ },
+ {
+  "sourceRef": "KOP-4983ED8A12E6",
+  "nama": "KOPERASI DESA MERAH PUTIH INDAH JAYA PASIR KARANG",
+  "wilayah": "14.06.08.2005"
+ },
+ {
+  "sourceRef": "KOP-A2A08B7561EE",
+  "nama": "KOPERASI DESA MERAH PUTIH INDAH KARYA CERIA KAMPUNG SALOR",
+  "wilayah": "93.01.11.2009"
+ },
+ {
+  "sourceRef": "KOP-46319736AB42",
+  "nama": "KOPERASI DESA MERAH PUTIH INDAH MEKAR BANGSRI",
+  "wilayah": "35.05.09.2005"
+ },
+ {
+  "sourceRef": "KOP-488BA87E2CFB",
+  "nama": "KOPERASI DESA MERAH PUTIH INDAH NAGARI TANGAH GIRI KOTO",
+  "wilayah": "13.04.05.2003"
+ },
+ {
+  "sourceRef": "KOP-460C9EC421D3",
+  "nama": "KOPERASI DESA MERAH PUTIH INDAH TAMAN ORISIN",
+  "wilayah": "95.03.37.2006"
+ },
+ {
+  "sourceRef": "KOP-4B20D192A5AD",
+  "nama": "KOPERASI DESA MERAH PUTIH INDAH TANGUN SURYA",
+  "wilayah": "14.06.10.2007"
+ },
+ {
+  "sourceRef": "KOP-49440B77D3D5",
+  "nama": "KOPERASI DESA MERAH PUTIH INDAH TELUK KETAPANG",
+  "wilayah": "18.03.03.2008"
+ },
+ {
+  "sourceRef": "KOP-CEEDF8E41112",
+  "nama": "KOPERASI DESA MERAH PUTIH INDAH TUNAS FAJAR MADANI",
+  "wilayah": "19.03.07.2005"
+ },
+ {
+  "sourceRef": "KOP-FFA5A1D68B3D",
+  "nama": "KOPERASI DESA MERAH PUTIH IRANG BAHAGIA SURYA BANYU",
+  "wilayah": "63.01.05.2007"
+ },
+ {
+  "sourceRef": "KOP-9B4B3267B4BD",
+  "nama": "KOPERASI DESA MERAH PUTIH JABUNG PERMAI CAHAYA ASAHAN",
+  "wilayah": "18.07.03.2002"
+ },
+ {
+  "sourceRef": "KOP-59F67C37961D",
+  "nama": "KOPERASI DESA MERAH PUTIH JANGKANG SEJAHTERA PASAK TALAWANG PRABA",
+  "wilayah": "62.03.14.2001"
+ },
+ {
+  "sourceRef": "KOP-E4195FFA2805",
+  "nama": "KOPERASI DESA MERAH PUTIH JANGKAR PUSPA PRIMA SEJATI",
+  "wilayah": "62.09.06.2004"
+ },
+ {
+  "sourceRef": "KOP-78F47973D178",
+  "nama": "KOPERASI DESA MERAH PUTIH JAYA ABADI MAWOKAUW CIPTA",
+  "wilayah": "94.04.16.2006"
+ },
+ {
+  "sourceRef": "KOP-20635D408FB8",
+  "nama": "KOPERASI DESA MERAH PUTIH JAYA ARUNA SUNGAI LIMAU",
+  "wilayah": "65.03.12.2001"
+ },
+ {
+  "sourceRef": "KOP-1C70BAC1DB95",
+  "nama": "KOPERASI DESA MERAH PUTIH JAYA BATUFIAFAS TIRTA",
+  "wilayah": "92.03.04.2013"
+ },
+ {
+  "sourceRef": "KOP-20AFEE9EF17A",
+  "nama": "KOPERASI DESA MERAH PUTIH JAYA BOGEM ANGKASA",
+  "wilayah": "33.10.04.2006"
+ },
+ {
+  "sourceRef": "KOP-1E6808F50708",
+  "nama": "KOPERASI DESA MERAH PUTIH JAYA CANDRA KUMPI",
+  "wilayah": "72.12.04.2009"
+ },
+ {
+  "sourceRef": "KOP-24DE3B8A6166",
+  "nama": "KOPERASI DESA MERAH PUTIH JAYA CITRA JAYA ARIMI",
+  "wilayah": "91.06.16.2009"
+ },
+ {
+  "sourceRef": "KOP-5E5D8414AC8C",
+  "nama": "KOPERASI DESA MERAH PUTIH JAYA GIRI HARMONI DANDA",
+  "wilayah": "63.04.07.2009"
+ },
+ {
+  "sourceRef": "KOP-65F7EE670D6F",
+  "nama": "KOPERASI DESA MERAH PUTIH JAYA HARMONI TUNAS HARAPAN",
+  "wilayah": "72.06.09.2011"
+ },
+ {
+  "sourceRef": "KOP-1F17B6DEE41A",
+  "nama": "KOPERASI DESA MERAH PUTIH JAYA JAYA POLEMAJU SARI",
+  "wilayah": "74.11.04.2007"
+ },
+ {
+  "sourceRef": "KOP-230121CE59AB",
+  "nama": "KOPERASI DESA MERAH PUTIH JAYA KENCANA MULIA NIRMALA",
+  "wilayah": "94.04.15.2005"
+ },
+ {
+  "sourceRef": "KOP-B06FB0806B91",
+  "nama": "KOPERASI DESA MERAH PUTIH JAYA KIRANA TANGGUH PELEMPANG AIK",
+  "wilayah": "19.02.01.2013"
+ },
+ {
+  "sourceRef": "KOP-17D6AC1BC750",
+  "nama": "KOPERASI DESA MERAH PUTIH JAYA LANGIT CANDRA MERAUKE ASRI",
+  "wilayah": "93.01.11.2010"
+ },
+ {
+  "sourceRef": "KOP-20AACE4AA481",
+  "nama": "KOPERASI DESA MERAH PUTIH JAYA MANDORI KIRANA",
+  "wilayah": "91.06.16.2005"
+ },
+ {
+  "sourceRef": "KOP-1FFC6F9E606E",
+  "nama": "KOPERASI DESA MERAH PUTIH JAYA MEKARSARI SEGARA",
+  "wilayah": "36.04.30.2009"
+ },
+ {
+  "sourceRef": "KOP-24369A0E657C",
+  "nama": "KOPERASI DESA MERAH PUTIH JAYA MUTIARA SOHONGGIK",
+  "wilayah": "95.03.34.2007"
+ },
+ {
+  "sourceRef": "KOP-231C2A02E5E8",
+  "nama": "KOPERASI DESA MERAH PUTIH JAYA PESONA TAMBAKREJO",
+  "wilayah": "35.05.08.2003"
+ },
+ {
+  "sourceRef": "KOP-067A8816C434",
+  "nama": "KOPERASI DESA MERAH PUTIH JAYA PURNAMA LESTARI TUNAS",
+  "wilayah": "75.03.04.2027"
+ },
+ {
+  "sourceRef": "KOP-1FDC2A86BA8A",
+  "nama": "KOPERASI DESA MERAH PUTIH JAYA SUMENTOBOL KARANG",
+  "wilayah": "65.03.20.2001"
+ },
+ {
+  "sourceRef": "KOP-23610D77C7CD",
+  "nama": "KOPERASI DESA MERAH PUTIH JAYA TUNJUK PADMA",
+  "wilayah": "51.02.05.2010"
+ },
+ {
+  "sourceRef": "KOP-24C3196608AE",
+  "nama": "KOPERASI DESA MERAH PUTIH JAYA YOU PRABA",
+  "wilayah": "93.04.19.2005"
+ },
+ {
+  "sourceRef": "KOP-A996089195DC",
+  "nama": "KOPERASI DESA MERAH PUTIH JELITA CERIA MERANTI BATU",
+  "wilayah": "63.10.03.2012"
+ },
+ {
+  "sourceRef": "KOP-A04BE39626D6",
+  "nama": "KOPERASI DESA MERAH PUTIH JELITA JOWEN PERMAI",
+  "wilayah": "92.02.05.2038"
+ },
+ {
+  "sourceRef": "KOP-71FF1BB8FF01",
+  "nama": "KOPERASI DESA MERAH PUTIH JELITA KAMPUNG DADOU UTAMA",
+  "wilayah": "94.03.07.2002"
+ },
+ {
+  "sourceRef": "KOP-24BD3364A450",
+  "nama": "KOPERASI DESA MERAH PUTIH JELITA KEPUHKLAGEN JAYA",
+  "wilayah": "35.25.06.2001"
+ },
+ {
+  "sourceRef": "KOP-3B1279EC81D3",
+  "nama": "KOPERASI DESA MERAH PUTIH JELITA LIMAU SENTOSA TELUK",
+  "wilayah": "19.05.06.2010"
+ },
+ {
+  "sourceRef": "KOP-64F2F862BA9F",
+  "nama": "KOPERASI DESA MERAH PUTIH JONGGOL HARMONI MUTIARA",
+  "wilayah": "32.01.06.2009"
+ },
+ {
+  "sourceRef": "KOP-9B670DA21D82",
+  "nama": "KOPERASI DESA MERAH PUTIH KAKAP SUNGAI PERMAI NUSA",
+  "wilayah": "61.12.09.2001"
+ },
+ {
+  "sourceRef": "KOP-A8F344B43518",
+  "nama": "KOPERASI DESA MERAH PUTIH KAKARA LANGIT B CERIA",
+  "wilayah": "82.03.06.2015"
+ },
+ {
+  "sourceRef": "KOP-AA227B342A38",
+  "nama": "KOPERASI DESA MERAH PUTIH KAKAYO BUKIT TANGGUH BLANDIN KAMPUNG",
+  "wilayah": "93.01.07.2008"
+ },
+ {
+  "sourceRef": "KOP-124FDE44A02B",
+  "nama": "KOPERASI DESA MERAH PUTIH KALIAKAH ASRI TAMAN",
+  "wilayah": "51.01.01.2004"
+ },
+ {
+  "sourceRef": "KOP-C531EDD04487",
+  "nama": "KOPERASI DESA MERAH PUTIH KALURAHAN CEMERLANG SINDUMARTANI PRABA",
+  "wilayah": "34.04.11.2001"
+ },
+ {
+  "sourceRef": "KOP-10819F596172",
+  "nama": "KOPERASI DESA MERAH PUTIH KALURAHAN MAKMUR BAYU SINDUADI",
+  "wilayah": "34.04.06.2001"
+ },
+ {
+  "sourceRef": "KOP-6BF204E72D54",
+  "nama": "KOPERASI DESA MERAH PUTIH KALURAHAN PANGKAL UTAMA DENGOK",
+  "wilayah": "34.03.03.2005"
+ },
+ {
+  "sourceRef": "KOP-91E5FBD58831",
+  "nama": "KOPERASI DESA MERAH PUTIH KALURAHAN SEGARA KARANGTALUN MANDIRI",
+  "wilayah": "34.02.10.2007"
+ },
+ {
+  "sourceRef": "KOP-85E05F0C4259",
+  "nama": "KOPERASI DESA MERAH PUTIH KALURAHAN TAMAN GUWOSARI BERKAH",
+  "wilayah": "34.02.07.2003"
+ },
+ {
+  "sourceRef": "KOP-CDBF849A567A",
+  "nama": "KOPERASI DESA MERAH PUTIH KALURAHAN WONOKROMO MADANI SENJA",
+  "wilayah": "34.02.13.2001"
+ },
+ {
+  "sourceRef": "KOP-65B773EE7737",
+  "nama": "KOPERASI DESA MERAH PUTIH KAMPAI HARMONI CITRA",
+  "wilayah": "17.05.03.2013"
+ },
+ {
+  "sourceRef": "KOP-B58055AEF0EA",
+  "nama": "KOPERASI DESA MERAH PUTIH KAMPUNG CAHAYA BERSERI RARNPIMBO",
+  "wilayah": "91.06.11.2012"
+ },
+ {
+  "sourceRef": "KOP-6F75F94AEE41",
+  "nama": "KOPERASI DESA MERAH PUTIH KAMPUNG CIPTA UTAMA MAKIMI",
+  "wilayah": "94.01.07.2001"
+ },
+ {
+  "sourceRef": "KOP-8352F6F2CD11",
+  "nama": "KOPERASI DESA MERAH PUTIH KAMPUNG GEMILANG LANGIT WAROMI",
+  "wilayah": "92.08.06.2009"
+ },
+ {
+  "sourceRef": "KOP-4E7D59B98A77",
+  "nama": "KOPERASI DESA MERAH PUTIH KAMPUNG JELITA INDAH DALUBAN",
+  "wilayah": "95.02.27.2008"
+ },
+ {
+  "sourceRef": "KOP-1090ACEACCB4",
+  "nama": "KOPERASI DESA MERAH PUTIH KAMPUNG JELITA YARO MAKMUR MAKMUR",
+  "wilayah": "94.01.10.2003"
+ },
+ {
+  "sourceRef": "KOP-2778F1B39B6D",
+  "nama": "KOPERASI DESA MERAH PUTIH KAMPUNG MULYA FRAWEBO SARI",
+  "wilayah": "96.05.01.2014"
+ },
+ {
+  "sourceRef": "KOP-A8E27B4B5AC0",
+  "nama": "KOPERASI DESA MERAH PUTIH KAMPUNG PADMA CERIA BABURIA",
+  "wilayah": "91.11.08.2007"
+ },
+ {
+  "sourceRef": "KOP-CF95C9F771FD",
+  "nama": "KOPERASI DESA MERAH PUTIH KAMPUNG PRIMA URUMB TAMAN",
+  "wilayah": "93.01.05.2003"
+ },
+ {
+  "sourceRef": "KOP-B5A61E1B84BF",
+  "nama": "KOPERASI DESA MERAH PUTIH KAMPUNG SBIR BERSERI CANDRA",
+  "wilayah": "96.02.06.2004"
+ },
+ {
+  "sourceRef": "KOP-ED878D13FDAC",
+  "nama": "KOPERASI DESA MERAH PUTIH KAMPUNG SEJATI BARU TUNAS",
+  "wilayah": "92.03.04.2011"
+ },
+ {
+  "sourceRef": "KOP-BC43CDBD6948",
+  "nama": "KOPERASI DESA MERAH PUTIH KAMPUNG TAMAN CEMERLANG DIGIYO TUWATAIDA",
+  "wilayah": "94.03.15.2006"
+ },
+ {
+  "sourceRef": "KOP-AE7319D1206E",
+  "nama": "KOPERASI DESA MERAH PUTIH KAMPUNG TANGGUH SARI OKTEM",
+  "wilayah": "95.02.22.2003"
+ },
+ {
+  "sourceRef": "KOP-7EDEDDE4FAB6",
+  "nama": "KOPERASI DESA MERAH PUTIH KANDAR GEMILANG NUSA",
+  "wilayah": "81.03.02.2003"
+ },
+ {
+  "sourceRef": "KOP-FE603355422A",
+  "nama": "KOPERASI DESA MERAH PUTIH KARANG BAHAGIA PANGAHU",
+  "wilayah": "75.01.21.2003"
+ },
+ {
+  "sourceRef": "KOP-28BC74D3BFEE",
+  "nama": "KOPERASI DESA MERAH PUTIH KARANG MULYA KONDAMARA",
+  "wilayah": "53.11.03.2004"
+ },
+ {
+  "sourceRef": "KOP-C9E6E94A2C36",
+  "nama": "KOPERASI DESA MERAH PUTIH KARANG PANJANG MADANI PADANG",
+  "wilayah": "63.03.06.2021"
+ },
+ {
+  "sourceRef": "KOP-33B8EAD714D5",
+  "nama": "KOPERASI DESA MERAH PUTIH KARANG SEGARA SENTOSA TANJUNG",
+  "wilayah": "65.03.01.2001"
+ },
+ {
+  "sourceRef": "KOP-9CE47E00293A",
+  "nama": "KOPERASI DESA MERAH PUTIH KARANG SEKURA PERMAI",
+  "wilayah": "61.01.02.2002"
+ },
+ {
+  "sourceRef": "KOP-AFC25E630343",
+  "nama": "KOPERASI DESA MERAH PUTIH KARANG TANGGUH OKTANGLAP",
+  "wilayah": "95.02.03.2006"
+ },
+ {
+  "sourceRef": "KOP-DF4CD47C1953",
+  "nama": "KOPERASI DESA MERAH PUTIH KARANG WATUKILO RAYA",
+  "wilayah": "72.10.06.2006"
+ },
+ {
+  "sourceRef": "KOP-1035EED35119",
+  "nama": "KOPERASI DESA MERAH PUTIH KARANGREJO MAKMUR PADMA",
+  "wilayah": "35.06.05.2003"
+ },
+ {
+  "sourceRef": "KOP-02AFA0134DB2",
+  "nama": "KOPERASI DESA MERAH PUTIH KARTINI KAMPUNG LESTARI CAHAYA",
+  "wilayah": "93.01.07.2001"
+ },
+ {
+  "sourceRef": "KOP-7429829A6134",
+  "nama": "KOPERASI DESA MERAH PUTIH KARYA ABADI SELATAN TETEBATU",
+  "wilayah": "52.03.04.2011"
+ },
+ {
+  "sourceRef": "KOP-F95007758A9A",
+  "nama": "KOPERASI DESA MERAH PUTIH KARYA BAHAGIA ILATH",
+  "wilayah": "81.04.10.2001"
+ },
+ {
+  "sourceRef": "KOP-B531CE1A3C0B",
+  "nama": "KOPERASI DESA MERAH PUTIH KARYA BILUNGALA BERSERI",
+  "wilayah": "75.03.04.2004"
+ },
+ {
+  "sourceRef": "KOP-A3B1806E325A",
+  "nama": "KOPERASI DESA MERAH PUTIH KARYA CERIA CAHAYA MULYA",
+  "wilayah": "17.06.04.2030"
+ },
+ {
+  "sourceRef": "KOP-3D354CFCA4CE",
+  "nama": "KOPERASI DESA MERAH PUTIH KARYA DAMAI PALONGAAN",
+  "wilayah": "76.06.01.2004"
+ },
+ {
+  "sourceRef": "KOP-BCD9AB56D1FA",
+  "nama": "KOPERASI DESA MERAH PUTIH KARYA HIDUP CEMERLANG BARU KAMPUNG",
+  "wilayah": "93.01.06.2005"
+ },
+ {
+  "sourceRef": "KOP-12A0416DA6BD",
+  "nama": "KOPERASI DESA MERAH PUTIH KARYA NAHA ASRI",
+  "wilayah": "71.03.08.2005"
+ },
+ {
+  "sourceRef": "KOP-7C9985F4D7E6",
+  "nama": "KOPERASI DESA MERAH PUTIH KARYA PARIPPUNG GEMILANG",
+  "wilayah": "73.08.09.2005"
+ },
+ {
+  "sourceRef": "KOP-31BDA0B59F0C",
+  "nama": "KOPERASI DESA MERAH PUTIH KARYAMUKTI SENTOSA GIRI",
+  "wilayah": "32.05.12.2008"
+ },
+ {
+  "sourceRef": "KOP-EAFA2D525399",
+  "nama": "KOPERASI DESA MERAH PUTIH KASUWERI SEJATI PADMA",
+  "wilayah": "96.02.04.2004"
+ },
+ {
+  "sourceRef": "KOP-DC49DDE9EE45",
+  "nama": "KOPERASI DESA MERAH PUTIH KEDAWUNG RAYA KARYA",
+  "wilayah": "35.05.09.2002"
+ },
+ {
+  "sourceRef": "KOP-09D4B37E63CF",
+  "nama": "KOPERASI DESA MERAH PUTIH KEGAMA MAKMUR TIRTA KAMPUNG",
+  "wilayah": "94.03.23.2010"
+ },
+ {
+  "sourceRef": "KOP-68CF6B60E141",
+  "nama": "KOPERASI DESA MERAH PUTIH KELURAHAN SAPORDANCO UTAMA CAHAYA",
+  "wilayah": "96.03.17.1002"
+ },
+ {
+  "sourceRef": "KOP-E16C688D892F",
+  "nama": "KOPERASI DESA MERAH PUTIH KEMLOKO RAYA JELITA",
+  "wilayah": "35.05.09.2006"
+ },
+ {
+  "sourceRef": "KOP-C17705D28030",
+  "nama": "KOPERASI DESA MERAH PUTIH KENANGA ASAM CEMERLANG ASAM",
+  "wilayah": "63.01.02.2003"
+ },
+ {
+  "sourceRef": "KOP-16C8E294D2A8",
+  "nama": "KOPERASI DESA MERAH PUTIH KENANGA ASRI PENAI BUKIT",
+  "wilayah": "61.06.15.2013"
+ },
+ {
+  "sourceRef": "KOP-B805DF05D2BD",
+  "nama": "KOPERASI DESA MERAH PUTIH KENANGA BERSERI MAKMUR JAYA",
+  "wilayah": "62.06.10.2005"
+ },
+ {
+  "sourceRef": "KOP-8B8107D00A9D",
+  "nama": "KOPERASI DESA MERAH PUTIH KENANGA INO LINA BERKAH",
+  "wilayah": "82.03.11.2007"
+ },
+ {
+  "sourceRef": "KOP-A7FDB0713F63",
+  "nama": "KOPERASI DESA MERAH PUTIH KENANGA MABILABOL CERIA",
+  "wilayah": "95.02.01.2006"
+ },
+ {
+  "sourceRef": "KOP-2A15D5537D7C",
+  "nama": "KOPERASI DESA MERAH PUTIH KENANGA MULYA MARIAROTU",
+  "wilayah": "91.05.06.2003"
+ },
+ {
+  "sourceRef": "KOP-41D3B9464464",
+  "nama": "KOPERASI DESA MERAH PUTIH KENANGA REJOMULYO DAMAI",
+  "wilayah": "18.01.13.2016"
+ },
+ {
+  "sourceRef": "KOP-78EC8C0CE8B7",
+  "nama": "KOPERASI DESA MERAH PUTIH KENANGA SAMARENDA ABADI",
+  "wilayah": "72.06.09.2009"
+ },
+ {
+  "sourceRef": "KOP-EA1C45900A25",
+  "nama": "KOPERASI DESA MERAH PUTIH KENANGA SEJATI SEMAWUNG",
+  "wilayah": "33.06.06.2005"
+ },
+ {
+  "sourceRef": "KOP-9F71CA5B84C5",
+  "nama": "KOPERASI DESA MERAH PUTIH KENCANA LANGIT PULUNG PERMAI",
+  "wilayah": "18.12.01.2009"
+ },
+ {
+  "sourceRef": "KOP-783F66408A67",
+  "nama": "KOPERASI DESA MERAH PUTIH KERTHA KIRANA TEGAL ABADI",
+  "wilayah": "51.71.03.2009"
+ },
+ {
+  "sourceRef": "KOP-F2A6BA286E28",
+  "nama": "KOPERASI DESA MERAH PUTIH KIRANA AGUNG HARJO SIDO",
+  "wilayah": "15.02.22.2005"
+ },
+ {
+  "sourceRef": "KOP-CA0AB99FA492",
+  "nama": "KOPERASI DESA MERAH PUTIH KIRANA KALURAHAN TAMANMARTANI MADANI",
+  "wilayah": "34.04.10.2003"
+ },
+ {
+  "sourceRef": "KOP-29302FE762B8",
+  "nama": "KOPERASI DESA MERAH PUTIH KIRANA MULYA SILIMO",
+  "wilayah": "95.03.04.2002"
+ },
+ {
+  "sourceRef": "KOP-3444153B3F35",
+  "nama": "KOPERASI DESA MERAH PUTIH KIRANA SENTOSA AMBALUTU",
+  "wilayah": "12.09.16.2001"
+ },
+ {
+  "sourceRef": "KOP-E45B72BEA33A",
+  "nama": "KOPERASI DESA MERAH PUTIH KONDONGIA SEJATI WANA",
+  "wilayah": "74.03.18.2003"
+ },
+ {
+  "sourceRef": "KOP-901A754C4E7E",
+  "nama": "KOPERASI DESA MERAH PUTIH KOTA PUSPA BANGKA MANDIRI",
+  "wilayah": "19.03.04.2003"
+ },
+ {
+  "sourceRef": "KOP-C8099050DCA6",
+  "nama": "KOPERASI DESA MERAH PUTIH KRASAK MADANI CANDRA",
+  "wilayah": "33.20.02.2012"
+ },
+ {
+  "sourceRef": "KOP-A1FD02757FA4",
+  "nama": "KOPERASI DESA MERAH PUTIH KRIO CERIA TAMAN MEDAN",
+  "wilayah": "12.07.23.2010"
+ },
+ {
+  "sourceRef": "KOP-3B16A91F0D1F",
+  "nama": "KOPERASI DESA MERAH PUTIH KUANHEUN SENTOSA PRABA",
+  "wilayah": "53.01.05.2008"
+ },
+ {
+  "sourceRef": "KOP-DDE1847C3711",
+  "nama": "KOPERASI DESA MERAH PUTIH KUDU NAGARI WANA GANTIANG RAYA",
+  "wilayah": "13.05.14.2001"
+ },
+ {
+  "sourceRef": "KOP-4A5C68AF384B",
+  "nama": "KOPERASI DESA MERAH PUTIH KULON INDAH KIRANA GONDANGLEGI",
+  "wilayah": "35.07.10.2002"
+ },
+ {
+  "sourceRef": "KOP-B49742078856",
+  "nama": "KOPERASI DESA MERAH PUTIH KURIK KAMPUNG MEKAR BERSERI",
+  "wilayah": "93.01.11.2002"
+ },
+ {
+  "sourceRef": "KOP-FF8A1CD2853B",
+  "nama": "KOPERASI DESA MERAH PUTIH LABA BAHAGIA SARI PURNAMA",
+  "wilayah": "51.07.05.2011"
+ },
+ {
+  "sourceRef": "KOP-C9F4793441AE",
+  "nama": "KOPERASI DESA MERAH PUTIH LAKEA MADANI II ARUNA",
+  "wilayah": "72.05.02.2010"
+ },
+ {
+  "sourceRef": "KOP-B34B3FB96A3F",
+  "nama": "KOPERASI DESA MERAH PUTIH LAMPAHAN TANGGUH JELITA BANDAR",
+  "wilayah": "11.17.07.2001"
+ },
+ {
+  "sourceRef": "KOP-6404ECEE5D07",
+  "nama": "KOPERASI DESA MERAH PUTIH LANGIT HARMONI PHOY",
+  "wilayah": "95.03.37.2011"
+ },
+ {
+  "sourceRef": "KOP-42E110681C84",
+  "nama": "KOPERASI DESA MERAH PUTIH LANGIT OPITAWAK DAMAI",
+  "wilayah": "94.04.10.2007"
+ },
+ {
+  "sourceRef": "KOP-F6AF41E7160C",
+  "nama": "KOPERASI DESA MERAH PUTIH LANGIT PULAU AGUNG PANGGUNG",
+  "wilayah": "16.03.01.2024"
+ },
+ {
+  "sourceRef": "KOP-E100AA35CC9F",
+  "nama": "KOPERASI DESA MERAH PUTIH LANGIT RAYA SUKAMAJU",
+  "wilayah": "32.05.37.2001"
+ },
+ {
+  "sourceRef": "KOP-70736C2D70F4",
+  "nama": "KOPERASI DESA MERAH PUTIH LANGIT UTAMA JOJJOLO",
+  "wilayah": "73.02.07.2011"
+ },
+ {
+  "sourceRef": "KOP-523C1FDEA6E7",
+  "nama": "KOPERASI DESA MERAH PUTIH LANGKUMAPO SEJAHTERA CANDRA",
+  "wilayah": "74.03.06.2007"
+ },
+ {
+  "sourceRef": "KOP-11756A10BD4B",
+  "nama": "KOPERASI DESA MERAH PUTIH LANSOT ASRI BUKIT",
+  "wilayah": "71.06.01.2004"
+ },
+ {
+  "sourceRef": "KOP-6C268C24ED03",
+  "nama": "KOPERASI DESA MERAH PUTIH LEMBAH ANGGASARI UTAMA",
+  "wilayah": "32.13.24.2001"
+ },
+ {
+  "sourceRef": "KOP-40814D0BF315",
+  "nama": "KOPERASI DESA MERAH PUTIH LEMBAH BUKIT MAKMUR DAMAI",
+  "wilayah": "15.05.07.2018"
+ },
+ {
+  "sourceRef": "KOP-91A514336C96",
+  "nama": "KOPERASI DESA MERAH PUTIH LEMBAH JEKEK MANDIRI",
+  "wilayah": "35.18.10.2008"
+ },
+ {
+  "sourceRef": "KOP-3358CDA4E82B",
+  "nama": "KOPERASI DESA MERAH PUTIH LEMBAH KAMASAN SENTOSA",
+  "wilayah": "32.04.13.2001"
+ },
+ {
+  "sourceRef": "KOP-9C828999A1C7",
+  "nama": "KOPERASI DESA MERAH PUTIH LEMBAH PERMAI BANJARASEM",
+  "wilayah": "51.08.02.2019"
+ },
+ {
+  "sourceRef": "KOP-D47BB594301D",
+  "nama": "KOPERASI DESA MERAH PUTIH LEMBAH PRIMA WAWOURU",
+  "wilayah": "74.05.04.2022"
+ },
+ {
+  "sourceRef": "KOP-5382BABFFE98",
+  "nama": "KOPERASI DESA MERAH PUTIH LEMBAH SEJAHTERA KEMBES I",
+  "wilayah": "71.02.14.2002"
+ },
+ {
+  "sourceRef": "KOP-E66A1D0F1E5A",
+  "nama": "KOPERASI DESA MERAH PUTIH LEMBAH SEJATI BATU PANNU",
+  "wilayah": "76.02.01.2014"
+ },
+ {
+  "sourceRef": "KOP-013C2B58202B",
+  "nama": "KOPERASI DESA MERAH PUTIH LESTARI ADIWARNO MEKAR",
+  "wilayah": "33.05.02.2003"
+ },
+ {
+  "sourceRef": "KOP-0078F95BF9F4",
+  "nama": "KOPERASI DESA MERAH PUTIH LESTARI KALIAU TAMAN",
+  "wilayah": "61.01.09.2001"
+ },
+ {
+  "sourceRef": "KOP-03F659C01585",
+  "nama": "KOPERASI DESA MERAH PUTIH LESTARI KAMPUNG PANGKAL SEMANGGA JAYA",
+  "wilayah": "93.01.05.2007"
+ },
+ {
+  "sourceRef": "KOP-01BF4658CDD3",
+  "nama": "KOPERASI DESA MERAH PUTIH LESTARI KANANTARE BUMI",
+  "wilayah": "92.03.05.2009"
+ },
+ {
+  "sourceRef": "KOP-019F00B6767F",
+  "nama": "KOPERASI DESA MERAH PUTIH LESTARI KARYA REJO CANDI",
+  "wilayah": "14.02.04.2018"
+ },
+ {
+  "sourceRef": "KOP-089D9C317434",
+  "nama": "KOPERASI DESA MERAH PUTIH LESTARI MAKMUR TANJUNG SAMUDRA MAS",
+  "wilayah": "18.11.02.2003"
+ },
+ {
+  "sourceRef": "KOP-037CD49608C6",
+  "nama": "KOPERASI DESA MERAH PUTIH LESTARI NUSA TOLOTIO",
+  "wilayah": "75.01.04.2004"
+ },
+ {
+  "sourceRef": "KOP-07CC085094F1",
+  "nama": "KOPERASI DESA MERAH PUTIH LESTARI PADMA ANDAMATA",
+  "wilayah": "92.03.13.2001"
+ },
+ {
+  "sourceRef": "KOP-031C6E5CEF45",
+  "nama": "KOPERASI DESA MERAH PUTIH LESTARI PERADONG WANA",
+  "wilayah": "19.05.02.2004"
+ },
+ {
+  "sourceRef": "KOP-0555243971DF",
+  "nama": "KOPERASI DESA MERAH PUTIH LESTARI SANGGAOEN SEGARA",
+  "wilayah": "53.14.03.2006"
+ },
+ {
+  "sourceRef": "KOP-0906FB25164D",
+  "nama": "KOPERASI DESA MERAH PUTIH LESTARI SENJA METULANG",
+  "wilayah": "65.02.10.2005"
+ },
+ {
+  "sourceRef": "KOP-09461B066762",
+  "nama": "KOPERASI DESA MERAH PUTIH LESTARI TEGAL HARUM TUNAS",
+  "wilayah": "51.71.03.2008"
+ },
+ {
+  "sourceRef": "KOP-7410C3A4A871",
+  "nama": "KOPERASI DESA MERAH PUTIH LETKOLE ABADI TIRTA",
+  "wilayah": "53.01.21.2002"
+ },
+ {
+  "sourceRef": "KOP-29AF09BE73D0",
+  "nama": "KOPERASI DESA MERAH PUTIH LITO MULYA ANGKASA",
+  "wilayah": "75.02.07.2002"
+ },
+ {
+  "sourceRef": "KOP-CA1B06AA75DE",
+  "nama": "KOPERASI DESA MERAH PUTIH MADANI DINDOK ANGKASA",
+  "wilayah": "95.03.47.2006"
+ },
+ {
+  "sourceRef": "KOP-CB70F4DCD422",
+  "nama": "KOPERASI DESA MERAH PUTIH MADANI KENANGA BARA SWARGA",
+  "wilayah": "64.08.04.2012"
+ },
+ {
+  "sourceRef": "KOP-C93ABFFC79E1",
+  "nama": "KOPERASI DESA MERAH PUTIH MADANI LAYENI GIRI NEGERI",
+  "wilayah": "81.01.02.2009"
+ },
+ {
+  "sourceRef": "KOP-CC1972024730",
+  "nama": "KOPERASI DESA MERAH PUTIH MADANI MANGGUL WIJAYA",
+  "wilayah": "17.01.04.2017"
+ },
+ {
+  "sourceRef": "KOP-CD37C352D9EB",
+  "nama": "KOPERASI DESA MERAH PUTIH MADANI PANCANG SUNGAI BAYU",
+  "wilayah": "65.03.11.2001"
+ },
+ {
+  "sourceRef": "KOP-CD1734928F62",
+  "nama": "KOPERASI DESA MERAH PUTIH MADANI PUTTADA LANGIT",
+  "wilayah": "76.05.03.2017"
+ },
+ {
+  "sourceRef": "KOP-C9E93ACAAE81",
+  "nama": "KOPERASI DESA MERAH PUTIH MADANI SEGARA KITO KAMPUNG",
+  "wilayah": "94.03.15.2002"
+ },
+ {
+  "sourceRef": "KOP-C5AF2AA9FE94",
+  "nama": "KOPERASI DESA MERAH PUTIH MADANI SUMBER LONDERANG",
+  "wilayah": "15.05.03.2014"
+ },
+ {
+  "sourceRef": "KOP-C94B69CD5C99",
+  "nama": "KOPERASI DESA MERAH PUTIH MADANI TANJUNG PANGKAL HARAPAN",
+  "wilayah": "18.02.10.2002"
+ },
+ {
+  "sourceRef": "KOP-C983789507C7",
+  "nama": "KOPERASI DESA MERAH PUTIH MADANI TELUK WINDUJANTEN",
+  "wilayah": "32.08.01.2004"
+ },
+ {
+  "sourceRef": "KOP-C94947FC9B89",
+  "nama": "KOPERASI DESA MERAH PUTIH MADANI WAHARIA KAMPUNG SARI",
+  "wilayah": "94.01.09.2002"
+ },
+ {
+  "sourceRef": "KOP-1090C2A810C8",
+  "nama": "KOPERASI DESA MERAH PUTIH MAKMUR BELITANG JAYA KARYA PRABA MAKMUR",
+  "wilayah": "16.08.17.2009"
+ },
+ {
+  "sourceRef": "KOP-0FAC657514E5",
+  "nama": "KOPERASI DESA MERAH PUTIH MAKMUR BINTUNI MASINA WIJAYA",
+  "wilayah": "92.06.01.2022"
+ },
+ {
+  "sourceRef": "KOP-094DB6C17B0B",
+  "nama": "KOPERASI DESA MERAH PUTIH MAKMUR BUKIT MANIKYANG",
+  "wilayah": "51.02.01.2009"
+ },
+ {
+  "sourceRef": "KOP-0ABEA5DC91B5",
+  "nama": "KOPERASI DESA MERAH PUTIH MAKMUR CAHAYA RAYA SUNGAI DALAM",
+  "wilayah": "61.12.01.2016"
+ },
+ {
+  "sourceRef": "KOP-81525E23DCE4",
+  "nama": "KOPERASI DESA MERAH PUTIH MAKMUR DENTE PURNAMA GEMILANG",
+  "wilayah": "18.05.25.2010"
+ },
+ {
+  "sourceRef": "KOP-4B69CB3079B1",
+  "nama": "KOPERASI DESA MERAH PUTIH MAKMUR INDAH CIPTA PERINTIS",
+  "wilayah": "15.09.04.2015"
+ },
+ {
+  "sourceRef": "KOP-0E5AB3831996",
+  "nama": "KOPERASI DESA MERAH PUTIH MAKMUR KIRANA BAYA",
+  "wilayah": "72.01.11.2004"
+ },
+ {
+  "sourceRef": "KOP-B1FA90B77EE9",
+  "nama": "KOPERASI DESA MERAH PUTIH MAKMUR MUARO TIU TANGGUH PADMA",
+  "wilayah": "14.09.15.2007"
+ },
+ {
+  "sourceRef": "KOP-0FFDCF83FC61",
+  "nama": "KOPERASI DESA MERAH PUTIH MAKMUR PESONA KARATAT",
+  "wilayah": "81.03.07.2010"
+ },
+ {
+  "sourceRef": "KOP-0F887972543F",
+  "nama": "KOPERASI DESA MERAH PUTIH MAKMUR RANTAU CIPTA KEMINTING",
+  "wilayah": "63.07.04.2004"
+ },
+ {
+  "sourceRef": "KOP-106F4B73076F",
+  "nama": "KOPERASI DESA MERAH PUTIH MAKMUR SAMUDRA LAWUA",
+  "wilayah": "72.10.06.2005"
+ },
+ {
+  "sourceRef": "KOP-63C7EA019DA0",
+  "nama": "KOPERASI DESA MERAH PUTIH MANDE CIANDAM HARMONI PESONA",
+  "wilayah": "32.03.08.2007"
+ },
+ {
+  "sourceRef": "KOP-92AA0C46E59B",
+  "nama": "KOPERASI DESA MERAH PUTIH MANDIRI BANGKIR KIRANA",
+  "wilayah": "72.04.01.2004"
+ },
+ {
+  "sourceRef": "KOP-946DA38CDF4E",
+  "nama": "KOPERASI DESA MERAH PUTIH MANDIRI KENANGA WAWONGGURA",
+  "wilayah": "74.05.04.2029"
+ },
+ {
+  "sourceRef": "KOP-97E025AC9795",
+  "nama": "KOPERASI DESA MERAH PUTIH MANDIRI PRABA EKSA",
+  "wilayah": "95.03.04.2003"
+ },
+ {
+  "sourceRef": "KOP-94D0B0AE1C4A",
+  "nama": "KOPERASI DESA MERAH PUTIH MANDIRI WIJAYA SUNGGAL KANAN",
+  "wilayah": "12.07.23.2013"
+ },
+ {
+  "sourceRef": "KOP-9519877C55FE",
+  "nama": "KOPERASI DESA MERAH PUTIH MANDIRI WUTANG HAMBA NIRMALA",
+  "wilayah": "53.11.21.2003"
+ },
+ {
+  "sourceRef": "KOP-4D6E0E522EBD",
+  "nama": "KOPERASI DESA MERAH PUTIH MANEMBO INDAH MUTIARA",
+  "wilayah": "71.02.17.2003"
+ },
+ {
+  "sourceRef": "KOP-21BBDA33CE9E",
+  "nama": "KOPERASI DESA MERAH PUTIH MANIS SURYA JAYA LIMAU",
+  "wilayah": "21.03.15.2006"
+ },
+ {
+  "sourceRef": "KOP-72169772E4D3",
+  "nama": "KOPERASI DESA MERAH PUTIH MANURUNG PRABA UTAMA SUNGAI",
+  "wilayah": "65.03.01.2003"
+ },
+ {
+  "sourceRef": "KOP-2BBC2A1951E9",
+  "nama": "KOPERASI DESA MERAH PUTIH MARGA MULYA LANGIT SAKTI",
+  "wilayah": "17.03.09.2003"
+ },
+ {
+  "sourceRef": "KOP-143482E6859B",
+  "nama": "KOPERASI DESA MERAH PUTIH MATANI TUMPAAN SATU RANTAU ASRI",
+  "wilayah": "71.05.12.2017"
+ },
+ {
+  "sourceRef": "KOP-4DCE14234070",
+  "nama": "KOPERASI DESA MERAH PUTIH MATARA BAYU INDAH KAMPUNG",
+  "wilayah": "93.01.05.2001"
+ },
+ {
+  "sourceRef": "KOP-465788FFBE35",
+  "nama": "KOPERASI DESA MERAH PUTIH MATTIRO INDAH TIRTA ADE",
+  "wilayah": "73.15.05.2007"
+ },
+ {
+  "sourceRef": "KOP-DFBBD6EFFCC6",
+  "nama": "KOPERASI DESA MERAH PUTIH MEGIKAR KAMPUNG RAYA MELIN ARUNA",
+  "wilayah": "93.01.07.2012"
+ },
+ {
+  "sourceRef": "KOP-125DD012D6E9",
+  "nama": "KOPERASI DESA MERAH PUTIH MEKAR ASRI SOKARAJA KIDUL",
+  "wilayah": "33.02.19.2005"
+ },
+ {
+  "sourceRef": "KOP-F900AC874DDB",
+  "nama": "KOPERASI DESA MERAH PUTIH MEKAR BAHAGIA GUNUNGTEGUH",
+  "wilayah": "35.25.17.2011"
+ },
+ {
+  "sourceRef": "KOP-99F9077E7AA1",
+  "nama": "KOPERASI DESA MERAH PUTIH MEKAR DATAH PERMAI DIAN",
+  "wilayah": "61.06.01.2007"
+ },
+ {
+  "sourceRef": "KOP-7C7EACF01BF3",
+  "nama": "KOPERASI DESA MERAH PUTIH MEKAR GEMILANG HUTADAA",
+  "wilayah": "75.01.22.2001"
+ },
+ {
+  "sourceRef": "KOP-1C3B099EDDD3",
+  "nama": "KOPERASI DESA MERAH PUTIH MEKAR JAYA GIYANTI",
+  "wilayah": "33.05.17.2009"
+ },
+ {
+  "sourceRef": "KOP-CC9313AB8B37",
+  "nama": "KOPERASI DESA MERAH PUTIH MEKAR JAYA MADANI PESONA",
+  "wilayah": "18.07.15.2007"
+ },
+ {
+  "sourceRef": "KOP-33A4755E6658",
+  "nama": "KOPERASI DESA MERAH PUTIH MEKAR KARANG JAYA SENTOSA",
+  "wilayah": "21.03.05.2007"
+ },
+ {
+  "sourceRef": "KOP-50F834B2F701",
+  "nama": "KOPERASI DESA MERAH PUTIH MEKAR KERITING SEJAHTERA",
+  "wilayah": "65.01.09.2011"
+ },
+ {
+  "sourceRef": "KOP-8F98572A481B",
+  "nama": "KOPERASI DESA MERAH PUTIH MEKAR MANDIRI DOLBOL",
+  "wilayah": "95.03.37.2009"
+ },
+ {
+  "sourceRef": "KOP-CFF1E2F8EFBE",
+  "nama": "KOPERASI DESA MERAH PUTIH MEKAR PRIMA SEMPAYANG",
+  "wilayah": "65.02.08.2009"
+ },
+ {
+  "sourceRef": "KOP-E3971488EB35",
+  "nama": "KOPERASI DESA MERAH PUTIH MEKAR SEJATI LANGKAP",
+  "wilayah": "33.03.18.2003"
+ },
+ {
+  "sourceRef": "KOP-03B5979F3743",
+  "nama": "KOPERASI DESA MERAH PUTIH MERBOU LESTARI GAMPONG SARI SYARIAH DUA",
+  "wilayah": "11.03.04.2026"
+ },
+ {
+  "sourceRef": "KOP-080A459288FD",
+  "nama": "KOPERASI DESA MERAH PUTIH MERPAS LESTARI LANGIT",
+  "wilayah": "17.04.07.2005"
+ },
+ {
+  "sourceRef": "KOP-5B9DA5A861E7",
+  "nama": "KOPERASI DESA MERAH PUTIH MESU TAMAN TIMUR HARMONI AIR",
+  "wilayah": "19.04.02.2020"
+ },
+ {
+  "sourceRef": "KOP-96D8E8EB49AF",
+  "nama": "KOPERASI DESA MERAH PUTIH MLASWAT BAYU KAMPUNG MANDIRI",
+  "wilayah": "96.02.12.2006"
+ },
+ {
+  "sourceRef": "KOP-86D62238726F",
+  "nama": "KOPERASI DESA MERAH PUTIH MOGEYA PUSPA BERKAH KAMPUNG",
+  "wilayah": "94.03.14.2002"
+ },
+ {
+  "sourceRef": "KOP-3DF5D57B3213",
+  "nama": "KOPERASI DESA MERAH PUTIH MOROREJO KALURAHAN PUSPA DAMAI",
+  "wilayah": "34.04.14.2005"
+ },
+ {
+  "sourceRef": "KOP-5275CFC74113",
+  "nama": "KOPERASI DESA MERAH PUTIH MUARA SEJAHTERA WANA BADAK ULU",
+  "wilayah": "64.02.05.2003"
+ },
+ {
+  "sourceRef": "KOP-267AD850B0B9",
+  "nama": "KOPERASI DESA MERAH PUTIH MULYA BUMI KATUL",
+  "wilayah": "65.03.16.2002"
+ },
+ {
+  "sourceRef": "KOP-26F33144637A",
+  "nama": "KOPERASI DESA MERAH PUTIH MULYA CANDRA PALEROMON",
+  "wilayah": "95.03.29.2008"
+ },
+ {
+  "sourceRef": "KOP-2A182A1B5C6E",
+  "nama": "KOPERASI DESA MERAH PUTIH MULYA CIPTA PATIMBURAK",
+  "wilayah": "92.03.04.2012"
+ },
+ {
+  "sourceRef": "KOP-2D6728FD3030",
+  "nama": "KOPERASI DESA MERAH PUTIH MULYA MAYONG JELITA",
+  "wilayah": "51.08.02.2005"
+ },
+ {
+  "sourceRef": "KOP-283FC91E5141",
+  "nama": "KOPERASI DESA MERAH PUTIH MULYA PANGKAL TANJUNG MATOL",
+  "wilayah": "65.03.16.2010"
+ },
+ {
+  "sourceRef": "KOP-28696A271034",
+  "nama": "KOPERASI DESA MERAH PUTIH MULYA SALUPANGKANG DESA RANTAU",
+  "wilayah": "76.06.04.2009"
+ },
+ {
+  "sourceRef": "KOP-2A125B191DA4",
+  "nama": "KOPERASI DESA MERAH PUTIH MULYA SURYA SABINTULUNG",
+  "wilayah": "64.02.11.2006"
+ },
+ {
+  "sourceRef": "KOP-25DE523FB7C8",
+  "nama": "KOPERASI DESA MERAH PUTIH MULYA TIRTA KLUMPANG KEBUN",
+  "wilayah": "12.07.24.2003"
+ },
+ {
+  "sourceRef": "KOP-258134A5433D",
+  "nama": "KOPERASI DESA MERAH PUTIH MULYA TUA SUMBER SELAKAU",
+  "wilayah": "61.01.19.2003"
+ },
+ {
+  "sourceRef": "KOP-2DAA377AF9D6",
+  "nama": "KOPERASI DESA MERAH PUTIH MULYA TUNAS TANAMON",
+  "wilayah": "71.05.08.2010"
+ },
+ {
+  "sourceRef": "KOP-26F451C7665A",
+  "nama": "KOPERASI DESA MERAH PUTIH MULYA WANA TETABAN",
+  "wilayah": "65.03.06.2004"
+ },
+ {
+  "sourceRef": "KOP-46C1BE2A1C84",
+  "nama": "KOPERASI DESA MERAH PUTIH MUNCUNG INDAH PUSPA",
+  "wilayah": "36.03.07.2007"
+ },
+ {
+  "sourceRef": "KOP-107430169FE3",
+  "nama": "KOPERASI DESA MERAH PUTIH MUTIARA BUOL MAKMUR BUTUKAN BOKAT",
+  "wilayah": "72.05.03.2019"
+ },
+ {
+  "sourceRef": "KOP-C477611FAC44",
+  "nama": "KOPERASI DESA MERAH PUTIH MUTIARA CEMERLANG PUNCAK",
+  "wilayah": "32.08.18.2007"
+ },
+ {
+  "sourceRef": "KOP-CD2A94F5ECCC",
+  "nama": "KOPERASI DESA MERAH PUTIH MUTIARA MADANI NANALI",
+  "wilayah": "81.09.04.2004"
+ },
+ {
+  "sourceRef": "KOP-8377C3F97F42",
+  "nama": "KOPERASI DESA MERAH PUTIH MUTIARA PANGERAN GEMILANG",
+  "wilayah": "61.06.15.2003"
+ },
+ {
+  "sourceRef": "KOP-70FE2355B876",
+  "nama": "KOPERASI DESA MERAH PUTIH MUTIARA SALUBIRO UTAMA",
+  "wilayah": "76.06.05.2010"
+ },
+ {
+  "sourceRef": "KOP-5884919BA411",
+  "nama": "KOPERASI DESA MERAH PUTIH MUTIARA SENDANGREJO SEJAHTERA",
+  "wilayah": "34.04.04.2005"
+ },
+ {
+  "sourceRef": "KOP-B250E215B812",
+  "nama": "KOPERASI DESA MERAH PUTIH MUTIARA TANGGUH MUJUR",
+  "wilayah": "52.02.06.2004"
+ },
+ {
+  "sourceRef": "KOP-448C2CE19845",
+  "nama": "KOPERASI DESA MERAH PUTIH NAGARI BARULAK BARU JELITA DAMAI TANJUNG",
+  "wilayah": "13.04.12.2002"
+ },
+ {
+  "sourceRef": "KOP-5D711EAD67F2",
+  "nama": "KOPERASI DESA MERAH PUTIH NAGARI GADANG KOTO GUGUK HARMONI PUSPA",
+  "wilayah": "13.02.07.2003"
+ },
+ {
+  "sourceRef": "KOP-F27ADEDCA927",
+  "nama": "KOPERASI DESA MERAH PUTIH NAGARI III AGUNG SYARIAH TANAH SEGARA KOTO DATAR",
+  "wilayah": "13.04.03.2003"
+ },
+ {
+  "sourceRef": "KOP-D1C65A427BBC",
+  "nama": "KOPERASI DESA MERAH PUTIH NAGARI PRIMA GIRI TANJUANG BARINGIN",
+  "wilayah": "13.08.05.2001"
+ },
+ {
+  "sourceRef": "KOP-DFE153F97E1F",
+  "nama": "KOPERASI DESA MERAH PUTIH NAGARI RAYA SUNGAYANG ANGKASA SYARIAH",
+  "wilayah": "13.04.07.2004"
+ },
+ {
+  "sourceRef": "KOP-09FB03DCEF08",
+  "nama": "KOPERASI DESA MERAH PUTIH NAGARI SICINCIN MAKMUR KARYA",
+  "wilayah": "13.05.04.2002"
+ },
+ {
+  "sourceRef": "KOP-211C5442D664",
+  "nama": "KOPERASI DESA MERAH PUTIH NAGARI SIMABUR JAYA PURNAMA",
+  "wilayah": "13.04.09.2004"
+ },
+ {
+  "sourceRef": "KOP-D4C9F126CEBC",
+  "nama": "KOPERASI DESA MERAH PUTIH NANGKA LENDANG KARANG PRIMA",
+  "wilayah": "52.03.05.2007"
+ },
+ {
+  "sourceRef": "KOP-AEED9CE29ED2",
+  "nama": "KOPERASI DESA MERAH PUTIH NAPA TANGGUH PANGKAL",
+  "wilayah": "74.14.04.2013"
+ },
+ {
+  "sourceRef": "KOP-0725C6BB4189",
+  "nama": "KOPERASI DESA MERAH PUTIH NARIO WIJAYA INDAH LESTARI",
+  "wilayah": "74.02.03.2013"
+ },
+ {
+  "sourceRef": "KOP-C511EE1B1198",
+  "nama": "KOPERASI DESA MERAH PUTIH NEGERI JELITA LAHA CEMERLANG",
+  "wilayah": "81.71.04.2007"
+ },
+ {
+  "sourceRef": "KOP-4D254395D0D1",
+  "nama": "KOPERASI DESA MERAH PUTIH NGAFAN INDAH SAMUDRA",
+  "wilayah": "81.02.18.2002"
+ },
+ {
+  "sourceRef": "KOP-79093D2C7DD3",
+  "nama": "KOPERASI DESA MERAH PUTIH NIRMALA AGUNG ABADI JAYA",
+  "wilayah": "17.06.13.2004"
+ },
+ {
+  "sourceRef": "KOP-4265B69C1B56",
+  "nama": "KOPERASI DESA MERAH PUTIH NIRMALA CALUNGBUNGUR DAMAI",
+  "wilayah": "36.02.12.2004"
+ },
+ {
+  "sourceRef": "KOP-A8AE61DBCE6B",
+  "nama": "KOPERASI DESA MERAH PUTIH NIRMALA CERIA SUKAMANDI",
+  "wilayah": "19.06.05.2005"
+ },
+ {
+  "sourceRef": "KOP-36A7A8EA854B",
+  "nama": "KOPERASI DESA MERAH PUTIH NIRMALA DESA SENTOSA CIBIRUHILIR",
+  "wilayah": "32.04.05.2005"
+ },
+ {
+  "sourceRef": "KOP-1761F18DA925",
+  "nama": "KOPERASI DESA MERAH PUTIH NIRMALA KALURAHAN ASRI PALBAPANG",
+  "wilayah": "34.02.08.2001"
+ },
+ {
+  "sourceRef": "KOP-D7B327323CBF",
+  "nama": "KOPERASI DESA MERAH PUTIH NIRMALA KAMPUNG PRIMA TELUK MERBAU",
+  "wilayah": "14.08.06.2003"
+ },
+ {
+  "sourceRef": "KOP-CC4A37A50F5F",
+  "nama": "KOPERASI DESA MERAH PUTIH NIRMALA PERBARAKAN MADANI",
+  "wilayah": "12.07.31.2013"
+ },
+ {
+  "sourceRef": "KOP-8226E65DF623",
+  "nama": "KOPERASI DESA MERAH PUTIH NIRMALA SELABIH GEMILANG",
+  "wilayah": "51.02.03.2010"
+ },
+ {
+  "sourceRef": "KOP-F518AB6688B6",
+  "nama": "KOPERASI DESA MERAH PUTIH NIRMALA TUA AGUNG BONGO",
+  "wilayah": "75.02.01.2011"
+ },
+ {
+  "sourceRef": "KOP-5EA12DB519DC",
+  "nama": "KOPERASI DESA MERAH PUTIH NUAR PANGKAL HARMONI MAJU",
+  "wilayah": "18.08.13.2007"
+ },
+ {
+  "sourceRef": "KOP-FC6C87A82F8A",
+  "nama": "KOPERASI DESA MERAH PUTIH NUSA BAHAGIA ANGGANA",
+  "wilayah": "64.02.04.2005"
+ },
+ {
+  "sourceRef": "KOP-B5FA84666CB0",
+  "nama": "KOPERASI DESA MERAH PUTIH NUSA BERSERI NENIARI",
+  "wilayah": "81.06.02.2004"
+ },
+ {
+  "sourceRef": "KOP-0C31BC66C4F7",
+  "nama": "KOPERASI DESA MERAH PUTIH NUSA MAKMUR KOMBAPARI",
+  "wilayah": "53.11.19.2001"
+ },
+ {
+  "sourceRef": "KOP-DE234C7D3647",
+  "nama": "KOPERASI DESA MERAH PUTIH NUSA RAYA ORIKA",
+  "wilayah": "12.09.14.2004"
+ },
+ {
+  "sourceRef": "KOP-913A413A8B78",
+  "nama": "KOPERASI DESA MERAH PUTIH NUSA SUMURGUNG MANDIRI",
+  "wilayah": "35.23.10.2008"
+ },
+ {
+  "sourceRef": "KOP-1F1279FDB2B7",
+  "nama": "KOPERASI DESA MERAH PUTIH NUSA TODULAN JAYA MOYAG",
+  "wilayah": "71.74.02.2010"
+ },
+ {
+  "sourceRef": "KOP-C8A5D2F19E13",
+  "nama": "KOPERASI DESA MERAH PUTIH NUSA TOLIKAPURA MADANI",
+  "wilayah": "95.03.11.2003"
+ },
+ {
+  "sourceRef": "KOP-2714FC29803F",
+  "nama": "KOPERASI DESA MERAH PUTIH NUSA YARONA MULYA",
+  "wilayah": "92.08.02.2002"
+ },
+ {
+  "sourceRef": "KOP-13F8AED92250",
+  "nama": "KOPERASI DESA MERAH PUTIH ONEMBUTE ASRI SARI",
+  "wilayah": "74.05.04.2013"
+ },
+ {
+  "sourceRef": "KOP-12C84F122233",
+  "nama": "KOPERASI DESA MERAH PUTIH OSSO KAMPUNG ASRI PUSPA",
+  "wilayah": "93.02.02.2011"
+ },
+ {
+  "sourceRef": "KOP-B7A3EF5879BA",
+  "nama": "KOPERASI DESA MERAH PUTIH PADANG GANTING NAGARI BERSERI PURNAMA",
+  "wilayah": "13.04.11.2002"
+ },
+ {
+  "sourceRef": "KOP-B92B7201431A",
+  "nama": "KOPERASI DESA MERAH PUTIH PADMA BERSERI KULIPAK",
+  "wilayah": "63.02.04.2012"
+ },
+ {
+  "sourceRef": "KOP-CCAEBA8999EE",
+  "nama": "KOPERASI DESA MERAH PUTIH PADMA CEMAGA MADANI SELATAN",
+  "wilayah": "21.03.18.2002"
+ },
+ {
+  "sourceRef": "KOP-8304162375C1",
+  "nama": "KOPERASI DESA MERAH PUTIH PADMA GEMILANG KILIARMA",
+  "wilayah": "94.04.02.2001"
+ },
+ {
+  "sourceRef": "KOP-2B73704F3D6F",
+  "nama": "KOPERASI DESA MERAH PUTIH PADMA JATI KEBAN MULYA",
+  "wilayah": "17.01.09.2007"
+ },
+ {
+  "sourceRef": "KOP-8CD2D1373B3D",
+  "nama": "KOPERASI DESA MERAH PUTIH PADMA NIBUNG BERKAH",
+  "wilayah": "18.07.18.2005"
+ },
+ {
+  "sourceRef": "KOP-374C1C8E314E",
+  "nama": "KOPERASI DESA MERAH PUTIH PADMA PEBATAE SENTOSA",
+  "wilayah": "72.06.09.2004"
+ },
+ {
+  "sourceRef": "KOP-5668563F7EED",
+  "nama": "KOPERASI DESA MERAH PUTIH PADMA SEJAHTERA BARU BITAHAN",
+  "wilayah": "63.05.10.2005"
+ },
+ {
+  "sourceRef": "KOP-6987126562CC",
+  "nama": "KOPERASI DESA MERAH PUTIH PALAS UTAMA NUSA AJI",
+  "wilayah": "18.01.10.2007"
+ },
+ {
+  "sourceRef": "KOP-ABE4F59EF5BF",
+  "nama": "KOPERASI DESA MERAH PUTIH PANGGA KARYA TANGGUH PAMOSEANG",
+  "wilayah": "76.03.02.2016"
+ },
+ {
+  "sourceRef": "KOP-BFB3C29EFE66",
+  "nama": "KOPERASI DESA MERAH PUTIH PANGKAL CEMERLANG ER",
+  "wilayah": "93.04.03.2004"
+ },
+ {
+  "sourceRef": "KOP-B6BAEC704940",
+  "nama": "KOPERASI DESA MERAH PUTIH PANGKAL DAUN PANDAK BERSERI",
+  "wilayah": "63.06.08.2006"
+ },
+ {
+  "sourceRef": "KOP-1F51B36631D4",
+  "nama": "KOPERASI DESA MERAH PUTIH PANGKAL SYARIAH JAWO GAMPONG ATEUK JAYA",
+  "wilayah": "11.71.01.2008"
+ },
+ {
+  "sourceRef": "KOP-6C2DD671704B",
+  "nama": "KOPERASI DESA MERAH PUTIH PANGKAL UTAMA BULUH KARANG",
+  "wilayah": "19.03.05.2004"
+ },
+ {
+  "sourceRef": "KOP-4902E15758B2",
+  "nama": "KOPERASI DESA MERAH PUTIH PANJANG INDAH RANTAU SARI",
+  "wilayah": "15.05.03.2013"
+ },
+ {
+  "sourceRef": "KOP-2D8910D93A9C",
+  "nama": "KOPERASI DESA MERAH PUTIH PANJANG PRABA MERAKAI MULYA",
+  "wilayah": "61.06.23.2002"
+ },
+ {
+  "sourceRef": "KOP-A6092FD4DA3B",
+  "nama": "KOPERASI DESA MERAH PUTIH PASABU CERIA LEMBAH",
+  "wilayah": "76.02.13.2004"
+ },
+ {
+  "sourceRef": "KOP-A57F7C3DC26E",
+  "nama": "KOPERASI DESA MERAH PUTIH PASAR CERIA JEJANGKIT RANTAU",
+  "wilayah": "63.04.17.2006"
+ },
+ {
+  "sourceRef": "KOP-F6FC10F47C24",
+  "nama": "KOPERASI DESA MERAH PUTIH PAU KAMPUNG SAMUDRA AGUNG",
+  "wilayah": "93.04.13.2003"
+ },
+ {
+  "sourceRef": "KOP-F0C772121AC9",
+  "nama": "KOPERASI DESA MERAH PUTIH PEMATANG AGUNG LUMUT GIRI",
+  "wilayah": "15.06.04.2001"
+ },
+ {
+  "sourceRef": "KOP-418413AA3B2D",
+  "nama": "KOPERASI DESA MERAH PUTIH PENANGGOOSI DAMAI KIRANA",
+  "wilayah": "74.11.05.2005"
+ },
+ {
+  "sourceRef": "KOP-0A4E420A3688",
+  "nama": "KOPERASI DESA MERAH PUTIH PENYAMPAK MAKMUR BUMI",
+  "wilayah": "19.05.05.2005"
+ },
+ {
+  "sourceRef": "KOP-840BA403F1CA",
+  "nama": "KOPERASI DESA MERAH PUTIH PEREAN GEMILANG JELITA",
+  "wilayah": "51.02.09.2001"
+ },
+ {
+  "sourceRef": "KOP-9E0FFC3F0DF6",
+  "nama": "KOPERASI DESA MERAH PUTIH PERMAI BARINGIN NAGARI TANJUANG UTARA KENANGA",
+  "wilayah": "13.08.05.2007"
+ },
+ {
+  "sourceRef": "KOP-9F6B4F0E821B",
+  "nama": "KOPERASI DESA MERAH PUTIH PERMAI BUNTOK PADMA BARU",
+  "wilayah": "62.05.08.2006"
+ },
+ {
+  "sourceRef": "KOP-9B2DCAB85CB7",
+  "nama": "KOPERASI DESA MERAH PUTIH PERMAI PUSPA ADOLANG DHUA",
+  "wilayah": "76.05.02.2012"
+ },
+ {
+  "sourceRef": "KOP-996140778E47",
+  "nama": "KOPERASI DESA MERAH PUTIH PERMAI TAMAN SUNGAI NAGARI DUO",
+  "wilayah": "13.10.04.2005"
+ },
+ {
+  "sourceRef": "KOP-9CF694F6F128",
+  "nama": "KOPERASI DESA MERAH PUTIH PERMAI TONGGONDOA SEGARA",
+  "wilayah": "52.06.18.2003"
+ },
+ {
+  "sourceRef": "KOP-9DF85A0B2520",
+  "nama": "KOPERASI DESA MERAH PUTIH PERMAI TOULIANG PURNAMA OKI",
+  "wilayah": "71.02.03.2007"
+ },
+ {
+  "sourceRef": "KOP-9B5D69A6564D",
+  "nama": "KOPERASI DESA MERAH PUTIH PERMAI WANA SUET",
+  "wilayah": "95.03.04.2006"
+ },
+ {
+  "sourceRef": "KOP-88AFC4A28A3F",
+  "nama": "KOPERASI DESA MERAH PUTIH PERSIL PANGKAL RAYA BERKAH",
+  "wilayah": "62.07.01.2015"
+ },
+ {
+  "sourceRef": "KOP-F914D9A13DCE",
+  "nama": "KOPERASI DESA MERAH PUTIH PESISIR NAGARI SELATAN TIRTA BAHAGIA SURANTIH",
+  "wilayah": "13.01.08.2002"
+ },
+ {
+  "sourceRef": "KOP-B8DCB9727643",
+  "nama": "KOPERASI DESA MERAH PUTIH PESONA KREGENAN BERSERI",
+  "wilayah": "35.13.14.2001"
+ },
+ {
+  "sourceRef": "KOP-1773E896AC35",
+  "nama": "KOPERASI DESA MERAH PUTIH PESONA RAMBAIAN ASRI",
+  "wilayah": "14.04.06.2008"
+ },
+ {
+  "sourceRef": "KOP-36F48FDF545F",
+  "nama": "KOPERASI DESA MERAH PUTIH PESONA SENTOSA BABANA",
+  "wilayah": "76.06.03.2001"
+ },
+ {
+  "sourceRef": "KOP-7042743A5242",
+  "nama": "KOPERASI DESA MERAH PUTIH PESONA UTAMA KEBUN V PASAR KELAPA",
+  "wilayah": "12.07.33.2006"
+ },
+ {
+  "sourceRef": "KOP-4C417A53A54C",
+  "nama": "KOPERASI DESA MERAH PUTIH PESONA WOLLANGI INDAH",
+  "wilayah": "73.08.09.2004"
+ },
+ {
+  "sourceRef": "KOP-9EB1A5078ABC",
+  "nama": "KOPERASI DESA MERAH PUTIH PESONA YAUN PERMAI",
+  "wilayah": "93.04.11.2005"
+ },
+ {
+  "sourceRef": "KOP-D05A00D80494",
+  "nama": "KOPERASI DESA MERAH PUTIH PISANG PRIMA KARYA",
+  "wilayah": "61.03.04.2005"
+ },
+ {
+  "sourceRef": "KOP-9DFD1499CD8D",
+  "nama": "KOPERASI DESA MERAH PUTIH POKA PERMAI SURYA",
+  "wilayah": "81.71.04.2002"
+ },
+ {
+  "sourceRef": "KOP-0EE090EDB75C",
+  "nama": "KOPERASI DESA MERAH PUTIH POSIGADAN KENANGA MAKMUR MANGGADAA",
+  "wilayah": "71.11.02.2012"
+ },
+ {
+  "sourceRef": "KOP-BB17851E4A0F",
+  "nama": "KOPERASI DESA MERAH PUTIH PRABA NGROTO GUBUG GROBOGAN BERSERI",
+  "wilayah": "33.15.17.2005"
+ },
+ {
+  "sourceRef": "KOP-D9BFD136D11B",
+  "nama": "KOPERASI DESA MERAH PUTIH PRABA PRIMA PAMI",
+  "wilayah": "92.02.14.2009"
+ },
+ {
+  "sourceRef": "KOP-EC9038D03281",
+  "nama": "KOPERASI DESA MERAH PUTIH PRABA SEJATI WEAWEN",
+  "wilayah": "95.03.36.2001"
+ },
+ {
+  "sourceRef": "KOP-44B99D169285",
+  "nama": "KOPERASI DESA MERAH PUTIH PRABA SIKUI DAMAI",
+  "wilayah": "62.05.07.2007"
+ },
+ {
+  "sourceRef": "KOP-B382986A21F6",
+  "nama": "KOPERASI DESA MERAH PUTIH PRABA TANGGUH CIPTAWARAS",
+  "wilayah": "18.04.15.2003"
+ },
+ {
+  "sourceRef": "KOP-D51BE839F69C",
+  "nama": "KOPERASI DESA MERAH PUTIH PRIMA KIRANA SALINO",
+  "wilayah": "63.02.16.2007"
+ },
+ {
+  "sourceRef": "KOP-D5635259EA19",
+  "nama": "KOPERASI DESA MERAH PUTIH PRIMA PERAWAS SURYA",
+  "wilayah": "19.02.01.2004"
+ },
+ {
+  "sourceRef": "KOP-D4F5D8F84AC5",
+  "nama": "KOPERASI DESA MERAH PUTIH PRIMA SEGARA SUGIHAN",
+  "wilayah": "33.22.02.2002"
+ },
+ {
+  "sourceRef": "KOP-D08FF4EF9F68",
+  "nama": "KOPERASI DESA MERAH PUTIH PRIMA TALEKOI BUMI",
+  "wilayah": "62.04.04.2004"
+ },
+ {
+  "sourceRef": "KOP-DA2E83D40543",
+  "nama": "KOPERASI DESA MERAH PUTIH PRIMA TUNAS PRINGGAJURANG",
+  "wilayah": "52.03.11.2001"
+ },
+ {
+  "sourceRef": "KOP-5E0735E36CE0",
+  "nama": "KOPERASI DESA MERAH PUTIH PULAU HARMONI MENTARO NUSA",
+  "wilayah": "15.05.03.2002"
+ },
+ {
+  "sourceRef": "KOP-982B7D7F8DB6",
+  "nama": "KOPERASI DESA MERAH PUTIH PULO BUKIT TANJONG PERMAI GAMPONG SYARIAH",
+  "wilayah": "11.07.11.2005"
+ },
+ {
+  "sourceRef": "KOP-25CA9FBBF7C3",
+  "nama": "KOPERASI DESA MERAH PUTIH PURBA BANGUN MULYA MEKAR",
+  "wilayah": "14.06.10.2004"
+ },
+ {
+  "sourceRef": "KOP-80A48E7D5913",
+  "nama": "KOPERASI DESA MERAH PUTIH PURI DANGIN GEMILANG KIRANA PENATIH",
+  "wilayah": "51.71.02.2015"
+ },
+ {
+  "sourceRef": "KOP-869F75B31183",
+  "nama": "KOPERASI DESA MERAH PUTIH PURI DAUH BERKAH KARYA KLOD",
+  "wilayah": "51.71.03.2004"
+ },
+ {
+  "sourceRef": "KOP-3F369B8F94BF",
+  "nama": "KOPERASI DESA MERAH PUTIH PURNA DAMAI GIRI JAYA SARI",
+  "wilayah": "64.03.02.2019"
+ },
+ {
+  "sourceRef": "KOP-789829009426",
+  "nama": "KOPERASI DESA MERAH PUTIH PURNAMA ABADI TIPLE",
+  "wilayah": "95.03.21.2008"
+ },
+ {
+  "sourceRef": "KOP-A7784708D3CF",
+  "nama": "KOPERASI DESA MERAH PUTIH PURNAMA CERIA HANGAITJI",
+  "wilayah": "94.04.01.2006"
+ },
+ {
+  "sourceRef": "KOP-F2D1993813F1",
+  "nama": "KOPERASI DESA MERAH PUTIH PURNAMA GEMPOLKEREP AGUNG",
+  "wilayah": "35.16.14.2003"
+ },
+ {
+  "sourceRef": "KOP-616E9893C54B",
+  "nama": "KOPERASI DESA MERAH PUTIH PURNAMA HARMONI KAMPUNG KAI WANINGGAP",
+  "wilayah": "93.01.05.2010"
+ },
+ {
+  "sourceRef": "KOP-CA3326974EF8",
+  "nama": "KOPERASI DESA MERAH PUTIH PURNAMA MADANI STAGEN",
+  "wilayah": "63.02.06.2011"
+ },
+ {
+  "sourceRef": "KOP-2A0017D4005F",
+  "nama": "KOPERASI DESA MERAH PUTIH PURNAMA MULYA ASIA",
+  "wilayah": "95.03.04.2005"
+ },
+ {
+  "sourceRef": "KOP-5561493FCAC9",
+  "nama": "KOPERASI DESA MERAH PUTIH PURNAMA SEJAHTERA PATILERENG",
+  "wilayah": "73.01.05.2003"
+ },
+ {
+  "sourceRef": "KOP-0E9974EE4E93",
+  "nama": "KOPERASI DESA MERAH PUTIH PURNAMA TABADAMAI MAKMUR",
+  "wilayah": "82.01.05.2021"
+ },
+ {
+  "sourceRef": "KOP-E98F41EDD945",
+  "nama": "KOPERASI DESA MERAH PUTIH PURNAMA TEKE SEJATI",
+  "wilayah": "52.06.18.2005"
+ },
+ {
+  "sourceRef": "KOP-FA8E8FB3E4B9",
+  "nama": "KOPERASI DESA MERAH PUTIH PUSPA BAHAGIA CIKUYA",
+  "wilayah": "36.03.31.2002"
+ },
+ {
+  "sourceRef": "KOP-7D24715DBBF4",
+  "nama": "KOPERASI DESA MERAH PUTIH PUSPA KALURAHAN JATIMULYO GEMILANG",
+  "wilayah": "34.01.09.2001"
+ },
+ {
+  "sourceRef": "KOP-ACC7A07D01E1",
+  "nama": "KOPERASI DESA MERAH PUTIH PUSPA KEMRANGGON TANGGUH",
+  "wilayah": "33.04.01.2011"
+ },
+ {
+  "sourceRef": "KOP-D0B8B752DB94",
+  "nama": "KOPERASI DESA MERAH PUTIH PUSPA PRIMA BANGKAL",
+  "wilayah": "63.07.03.2011"
+ },
+ {
+  "sourceRef": "KOP-DD3DF6DD32F7",
+  "nama": "KOPERASI DESA MERAH PUTIH PUSPA RAYA NADUNG",
+  "wilayah": "19.03.05.2008"
+ },
+ {
+  "sourceRef": "KOP-314403042D21",
+  "nama": "KOPERASI DESA MERAH PUTIH PUSPA WONITU SENTOSA",
+  "wilayah": "95.04.33.2002"
+ },
+ {
+  "sourceRef": "KOP-B1C0B366ED69",
+  "nama": "KOPERASI DESA MERAH PUTIH PUTIH GUNUNG WIJAYA TANGGUH",
+  "wilayah": "65.01.01.2005"
+ },
+ {
+  "sourceRef": "KOP-B2833DEE5B43",
+  "nama": "KOPERASI DESA MERAH PUTIH PUTIH TANGGUH BAYU AIR",
+  "wilayah": "19.05.01.2004"
+ },
+ {
+  "sourceRef": "KOP-264CA3E1D1B3",
+  "nama": "KOPERASI DESA MERAH PUTIH RAHARJA YATU KARYA MULYA KAMPUNG",
+  "wilayah": "91.11.08.2003"
+ },
+ {
+  "sourceRef": "KOP-5EBCD73F6A80",
+  "nama": "KOPERASI DESA MERAH PUTIH RANTAU AIR SELUMAR HARMONI",
+  "wilayah": "19.02.04.2006"
+ },
+ {
+  "sourceRef": "KOP-C00BCF305256",
+  "nama": "KOPERASI DESA MERAH PUTIH RANTAU CEMERLANG SAWADAI",
+  "wilayah": "82.04.17.2005"
+ },
+ {
+  "sourceRef": "KOP-3FD95A701891",
+  "nama": "KOPERASI DESA MERAH PUTIH RANTAU DAMAI MOJONG",
+  "wilayah": "73.14.08.2004"
+ },
+ {
+  "sourceRef": "KOP-C9764C63774E",
+  "nama": "KOPERASI DESA MERAH PUTIH RANTAU MADANI WAIYA",
+  "wilayah": "91.03.03.2001"
+ },
+ {
+  "sourceRef": "KOP-9BFB3796B2BF",
+  "nama": "KOPERASI DESA MERAH PUTIH RANTAU PERMAI KAJASI",
+  "wilayah": "91.06.03.2005"
+ },
+ {
+  "sourceRef": "KOP-DE925519B575",
+  "nama": "KOPERASI DESA MERAH PUTIH RANTAU RAYA SABAR GANJAR",
+  "wilayah": "32.04.26.2008"
+ },
+ {
+  "sourceRef": "KOP-6BFA681D512D",
+  "nama": "KOPERASI DESA MERAH PUTIH RANTAU SUNGAI BAKAU UTAMA",
+  "wilayah": "62.01.01.2006"
+ },
+ {
+  "sourceRef": "KOP-138980BFD5F6",
+  "nama": "KOPERASI DESA MERAH PUTIH RAPAT ASRI GIRI MALANG",
+  "wilayah": "21.01.04.2002"
+ },
+ {
+  "sourceRef": "KOP-B76698A66DAB",
+  "nama": "KOPERASI DESA MERAH PUTIH RARAWA BERSERI ARUNA",
+  "wilayah": "62.05.02.2002"
+ },
+ {
+  "sourceRef": "KOP-108A8EE3E095",
+  "nama": "KOPERASI DESA MERAH PUTIH RAWANG MAKMUR PASAR V SENJA",
+  "wilayah": "12.09.29.2004"
+ },
+ {
+  "sourceRef": "KOP-E25E998E750C",
+  "nama": "KOPERASI DESA MERAH PUTIH RAYA ALAI TUNAS",
+  "wilayah": "14.10.04.2001"
+ },
+ {
+  "sourceRef": "KOP-E252EC895AEB",
+  "nama": "KOPERASI DESA MERAH PUTIH RAYA CITRA I WASILOMATA",
+  "wilayah": "74.14.04.2010"
+ },
+ {
+  "sourceRef": "KOP-DE3A1E5B6D3B",
+  "nama": "KOPERASI DESA MERAH PUTIH RAYA GIRI TAWIRI NEGERI",
+  "wilayah": "81.71.04.2005"
+ },
+ {
+  "sourceRef": "KOP-E20C5F9BC273",
+  "nama": "KOPERASI DESA MERAH PUTIH RAYA HARJO BUMI PRABA",
+  "wilayah": "62.01.01.2017"
+ },
+ {
+  "sourceRef": "KOP-E09339E3AADE",
+  "nama": "KOPERASI DESA MERAH PUTIH RAYA JANGGAWANA NIRMALA",
+  "wilayah": "52.02.07.2015"
+ },
+ {
+  "sourceRef": "KOP-E0BD65734741",
+  "nama": "KOPERASI DESA MERAH PUTIH RAYA KOYA TENGAH PADMA",
+  "wilayah": "91.71.04.2007"
+ },
+ {
+  "sourceRef": "KOP-E10D983F31F6",
+  "nama": "KOPERASI DESA MERAH PUTIH RAYA PADANG BARU MUTIARA",
+  "wilayah": "19.04.02.2012"
+ },
+ {
+  "sourceRef": "KOP-E00C348556DF",
+  "nama": "KOPERASI DESA MERAH PUTIH RAYA PURNAMA DATANG SUKAU",
+  "wilayah": "17.07.09.2002"
+ },
+ {
+  "sourceRef": "KOP-0C7AFE11D53E",
+  "nama": "KOPERASI DESA MERAH PUTIH RAYA SARI MAKMUR TERUSAN BAGUNTAN",
+  "wilayah": "62.03.17.2012"
+ },
+ {
+  "sourceRef": "KOP-DE75281C29C5",
+  "nama": "KOPERASI DESA MERAH PUTIH RAYA SETABU SARI",
+  "wilayah": "65.03.08.2003"
+ },
+ {
+  "sourceRef": "KOP-DB4EE24CDCBB",
+  "nama": "KOPERASI DESA MERAH PUTIH RAYA SUMBER PURWODADI",
+  "wilayah": "18.02.05.2006"
+ },
+ {
+  "sourceRef": "KOP-DBA6223EF2AA",
+  "nama": "KOPERASI DESA MERAH PUTIH RAYA TAMAN MULYONEGORO",
+  "wilayah": "75.01.16.2007"
+ },
+ {
+  "sourceRef": "KOP-DC3F889990C5",
+  "nama": "KOPERASI DESA MERAH PUTIH RAYA UTARA TOMOLI TIRTA",
+  "wilayah": "72.08.13.2009"
+ },
+ {
+  "sourceRef": "KOP-0C6F57BB2B82",
+  "nama": "KOPERASI DESA MERAH PUTIH REJOSARI GIRI MAKMUR MATARAM",
+  "wilayah": "18.02.11.2002"
+ },
+ {
+  "sourceRef": "KOP-2FFC9B29CC44",
+  "nama": "KOPERASI DESA MERAH PUTIH RONCITAN NATAMBANG SENTOSA SUMBER",
+  "wilayah": "12.03.14.2037"
+ },
+ {
+  "sourceRef": "KOP-DB14018B8079",
+  "nama": "KOPERASI DESA MERAH PUTIH RUMAHTIGA BUKIT NEGERI RAYA",
+  "wilayah": "81.71.04.2003"
+ },
+ {
+  "sourceRef": "KOP-A059E00F7042",
+  "nama": "KOPERASI DESA MERAH PUTIH SALASSAE PERMAI PRABA",
+  "wilayah": "73.02.07.2009"
+ },
+ {
+  "sourceRef": "KOP-B3B3AD262462",
+  "nama": "KOPERASI DESA MERAH PUTIH SAMAL BERSERI BUKIT",
+  "wilayah": "81.01.25.2006"
+ },
+ {
+  "sourceRef": "KOP-7A9CCD5162BB",
+  "nama": "KOPERASI DESA MERAH PUTIH SAMUDRA ABADI PAMINGGALAN",
+  "wilayah": "76.05.03.2018"
+ },
+ {
+  "sourceRef": "KOP-835C91B6FA3A",
+  "nama": "KOPERASI DESA MERAH PUTIH SAMUDRA BANGA GEMILANG",
+  "wilayah": "74.14.04.2004"
+ },
+ {
+  "sourceRef": "KOP-BA39D823104F",
+  "nama": "KOPERASI DESA MERAH PUTIH SAMUDRA BERSERI TENGAH RARANG",
+  "wilayah": "52.03.03.2010"
+ },
+ {
+  "sourceRef": "KOP-4366EABE8193",
+  "nama": "KOPERASI DESA MERAH PUTIH SAMUDRA DAMAI ATORI",
+  "wilayah": "96.02.11.2005"
+ },
+ {
+  "sourceRef": "KOP-23A1B04051D6",
+  "nama": "KOPERASI DESA MERAH PUTIH SAMUDRA I JAYA MANTAREN",
+  "wilayah": "62.11.05.2003"
+ },
+ {
+  "sourceRef": "KOP-18162D8E93E4",
+  "nama": "KOPERASI DESA MERAH PUTIH SAMUDRA LUAN ASRI NANGA",
+  "wilayah": "61.06.16.2006"
+ },
+ {
+  "sourceRef": "KOP-CD1FCDDB90E6",
+  "nama": "KOPERASI DESA MERAH PUTIH SAMUDRA MADANI TANAZOZO",
+  "wilayah": "53.08.01.2025"
+ },
+ {
+  "sourceRef": "KOP-9660D49F6A3C",
+  "nama": "KOPERASI DESA MERAH PUTIH SAMUDRA MANDIRI SADAI",
+  "wilayah": "19.03.06.2001"
+ },
+ {
+  "sourceRef": "KOP-9FA59579618F",
+  "nama": "KOPERASI DESA MERAH PUTIH SAMUDRA PERMAI PENGUDANG",
+  "wilayah": "21.01.10.2003"
+ },
+ {
+  "sourceRef": "KOP-E10544F77C29",
+  "nama": "KOPERASI DESA MERAH PUTIH SAMUDRA RAYA RAYA TIPAR",
+  "wilayah": "36.03.04.2003"
+ },
+ {
+  "sourceRef": "KOP-B2255470708A",
+  "nama": "KOPERASI DESA MERAH PUTIH SAMUDRA TANGGUH PEWUNU",
+  "wilayah": "72.10.11.2003"
+ },
+ {
+  "sourceRef": "KOP-F0DE10C14A88",
+  "nama": "KOPERASI DESA MERAH PUTIH SARI AGUNG DOLODUO",
+  "wilayah": "71.01.09.2004"
+ },
+ {
+  "sourceRef": "KOP-5E83BD3B6785",
+  "nama": "KOPERASI DESA MERAH PUTIH SARI HARMONI NABE",
+  "wilayah": "53.08.11.2006"
+ },
+ {
+  "sourceRef": "KOP-D291580D6CE1",
+  "nama": "KOPERASI DESA MERAH PUTIH SARI KAMPUNG INSROM PRIMA",
+  "wilayah": "91.06.01.2013"
+ },
+ {
+  "sourceRef": "KOP-2889A21E84F3",
+  "nama": "KOPERASI DESA MERAH PUTIH SARI LEMBAH MARGO MULYA",
+  "wilayah": "17.05.14.2014"
+ },
+ {
+  "sourceRef": "KOP-914ECC8F6EFA",
+  "nama": "KOPERASI DESA MERAH PUTIH SARI MANDIRI KEROMONGAN",
+  "wilayah": "16.08.01.2010"
+ },
+ {
+  "sourceRef": "KOP-9BBD7D0D7859",
+  "nama": "KOPERASI DESA MERAH PUTIH SARI PERMAI BUNTOI",
+  "wilayah": "62.11.05.2001"
+ },
+ {
+  "sourceRef": "KOP-7F359EA7F4D8",
+  "nama": "KOPERASI DESA MERAH PUTIH SARI UNER GEMILANG LEMOH",
+  "wilayah": "71.02.24.2004"
+ },
+ {
+  "sourceRef": "KOP-D80969E4654C",
+  "nama": "KOPERASI DESA MERAH PUTIH SATU PESONA JANGKANG PRIMA",
+  "wilayah": "61.12.06.2014"
+ },
+ {
+  "sourceRef": "KOP-B65E23BDCD47",
+  "nama": "KOPERASI DESA MERAH PUTIH SAWA BERSERI SARI ULU",
+  "wilayah": "74.05.11.2011"
+ },
+ {
+  "sourceRef": "KOP-ACF8EA201685",
+  "nama": "KOPERASI DESA MERAH PUTIH SAWAHAN TANGGUH CAHAYA KALURAHAN",
+  "wilayah": "34.03.10.2002"
+ },
+ {
+  "sourceRef": "KOP-29068BAFA8DD",
+  "nama": "KOPERASI DESA MERAH PUTIH SEGARA AMDASA MULYA",
+  "wilayah": "81.03.03.2004"
+ },
+ {
+  "sourceRef": "KOP-412CE2390DA9",
+  "nama": "KOPERASI DESA MERAH PUTIH SEGARA DAMAI PETALING",
+  "wilayah": "19.02.03.2002"
+ },
+ {
+  "sourceRef": "KOP-89AE215F9CF7",
+  "nama": "KOPERASI DESA MERAH PUTIH SEGARA I BERKAH SYARIAH KUTA CINGKAM",
+  "wilayah": "11.02.01.2012"
+ },
+ {
+  "sourceRef": "KOP-49E8A0C26BF9",
+  "nama": "KOPERASI DESA MERAH PUTIH SEGARA INDAH WANGUK",
+  "wilayah": "32.12.23.2007"
+ },
+ {
+  "sourceRef": "KOP-0DEB18D1F8A0",
+  "nama": "KOPERASI DESA MERAH PUTIH SEGARA MEUKISI MAKMUR",
+  "wilayah": "91.03.19.2002"
+ },
+ {
+  "sourceRef": "KOP-AFEDFE1CCAE9",
+  "nama": "KOPERASI DESA MERAH PUTIH SEGARA TALUNGENG TANGGUH",
+  "wilayah": "73.08.09.2013"
+ },
+ {
+  "sourceRef": "KOP-2869933C6C4F",
+  "nama": "KOPERASI DESA MERAH PUTIH SEI BARAT KEPENUHAN JAYA MULYA TELUK ROKAN",
+  "wilayah": "14.06.05.2006"
+ },
+ {
+  "sourceRef": "KOP-501013F06089",
+  "nama": "KOPERASI DESA MERAH PUTIH SEJAHTERA BARU TAMAN TALONANG",
+  "wilayah": "52.07.04.2006"
+ },
+ {
+  "sourceRef": "KOP-59170A51086C",
+  "nama": "KOPERASI DESA MERAH PUTIH SEJAHTERA BAYU ANGKAH",
+  "wilayah": "51.02.03.2009"
+ },
+ {
+  "sourceRef": "KOP-52ECEB5FE926",
+  "nama": "KOPERASI DESA MERAH PUTIH SEJAHTERA BEDIMBAR SARI BUNTU",
+  "wilayah": "12.07.02.2015"
+ },
+ {
+  "sourceRef": "KOP-56090869CF85",
+  "nama": "KOPERASI DESA MERAH PUTIH SEJAHTERA CIPTA II BUYAT",
+  "wilayah": "71.10.02.2007"
+ },
+ {
+  "sourceRef": "KOP-514ABA614D51",
+  "nama": "KOPERASI DESA MERAH PUTIH SEJAHTERA DESA BUMI RAJIK",
+  "wilayah": "19.03.04.2004"
+ },
+ {
+  "sourceRef": "KOP-59F004F1A138",
+  "nama": "KOPERASI DESA MERAH PUTIH SEJAHTERA JAGAMIN JELITA",
+  "wilayah": "94.04.10.2005"
+ },
+ {
+  "sourceRef": "KOP-5363348A843B",
+  "nama": "KOPERASI DESA MERAH PUTIH SEJAHTERA KERACUT RANTAU TANJUNG",
+  "wilayah": "61.01.02.2028"
+ },
+ {
+  "sourceRef": "KOP-57699704E36D",
+  "nama": "KOPERASI DESA MERAH PUTIH SEJAHTERA LANGIT SOLOKANJERUK",
+  "wilayah": "32.04.34.2002"
+ },
+ {
+  "sourceRef": "KOP-52A630A04049",
+  "nama": "KOPERASI DESA MERAH PUTIH SEJAHTERA NUSA INGGIRI",
+  "wilayah": "91.06.01.2010"
+ },
+ {
+  "sourceRef": "KOP-53905A9F08C9",
+  "nama": "KOPERASI DESA MERAH PUTIH SEJAHTERA WASILE KARANG MEKARSARI",
+  "wilayah": "82.06.01.2015"
+ },
+ {
+  "sourceRef": "KOP-EC78B83E817D",
+  "nama": "KOPERASI DESA MERAH PUTIH SEJATI JELITA TATALEKA",
+  "wilayah": "82.01.05.2004"
+ },
+ {
+  "sourceRef": "KOP-E4EF638BF65A",
+  "nama": "KOPERASI DESA MERAH PUTIH SEJATI NUSA PURBASARI",
+  "wilayah": "62.01.05.2006"
+ },
+ {
+  "sourceRef": "KOP-E570B6ED2F8F",
+  "nama": "KOPERASI DESA MERAH PUTIH SEJATI RANTAU UGAR",
+  "wilayah": "92.03.04.2009"
+ },
+ {
+  "sourceRef": "KOP-EBA12518AEE0",
+  "nama": "KOPERASI DESA MERAH PUTIH SEJATI SAMUDRA BUMI RAHAYU",
+  "wilayah": "65.01.05.2005"
+ },
+ {
+  "sourceRef": "KOP-E2FA8392D7CE",
+  "nama": "KOPERASI DESA MERAH PUTIH SEJATI SUMBER JUFRI",
+  "wilayah": "93.04.11.2004"
+ },
+ {
+  "sourceRef": "KOP-8CFA05384FB1",
+  "nama": "KOPERASI DESA MERAH PUTIH SEKADUYAN LANGIT BERKAH TAKA",
+  "wilayah": "65.03.13.2004"
+ },
+ {
+  "sourceRef": "KOP-0304E54C6437",
+  "nama": "KOPERASI DESA MERAH PUTIH SEMERAH MUARA CANDRA MUDIK LESTARI",
+  "wilayah": "15.01.05.2035"
+ },
+ {
+  "sourceRef": "KOP-F7EEEA6FC914",
+  "nama": "KOPERASI DESA MERAH PUTIH SENAK AGUNG JELITA",
+  "wilayah": "17.04.13.2007"
+ },
+ {
+  "sourceRef": "KOP-91142B9D4DF7",
+  "nama": "KOPERASI DESA MERAH PUTIH SENDANGSARI KALURAHAN MANDIRI CANDRA",
+  "wilayah": "34.04.04.2004"
+ },
+ {
+  "sourceRef": "KOP-8E14ACAE85CA",
+  "nama": "KOPERASI DESA MERAH PUTIH SENJA BERKAH GELITING",
+  "wilayah": "53.07.10.2020"
+ },
+ {
+  "sourceRef": "KOP-C4C930CC3CEA",
+  "nama": "KOPERASI DESA MERAH PUTIH SENJA CEMERLANG BATAS",
+  "wilayah": "14.06.04.2004"
+ },
+ {
+  "sourceRef": "KOP-A975F8E21DB5",
+  "nama": "KOPERASI DESA MERAH PUTIH SENJA CERIA BAJING",
+  "wilayah": "33.01.06.2010"
+ },
+ {
+  "sourceRef": "KOP-443EC05F97C4",
+  "nama": "KOPERASI DESA MERAH PUTIH SENJA DAMAI HAYAHAYA",
+  "wilayah": "75.01.17.2009"
+ },
+ {
+  "sourceRef": "KOP-E1221C5D6417",
+  "nama": "KOPERASI DESA MERAH PUTIH SENJA FATUKANUTU RAYA",
+  "wilayah": "53.01.25.2001"
+ },
+ {
+  "sourceRef": "KOP-652FC7F9A28A",
+  "nama": "KOPERASI DESA MERAH PUTIH SENJA HULU HARMONI RASAU",
+  "wilayah": "63.07.05.2013"
+ },
+ {
+  "sourceRef": "KOP-F762350D86AD",
+  "nama": "KOPERASI DESA MERAH PUTIH SENJA PASIR AGUNG AGUNG",
+  "wilayah": "14.06.10.2001"
+ },
+ {
+  "sourceRef": "KOP-D9784E88E766",
+  "nama": "KOPERASI DESA MERAH PUTIH SENJA PRIMA KANANG",
+  "wilayah": "71.09.01.2005"
+ },
+ {
+  "sourceRef": "KOP-24A6C070ED38",
+  "nama": "KOPERASI DESA MERAH PUTIH SENJA SUMERTA JAYA KAJA",
+  "wilayah": "51.71.02.2007"
+ },
+ {
+  "sourceRef": "KOP-353D8B26AA82",
+  "nama": "KOPERASI DESA MERAH PUTIH SENTOSA GEGERBITUNG SURYA",
+  "wilayah": "32.02.40.2001"
+ },
+ {
+  "sourceRef": "KOP-35CF0BC18D74",
+  "nama": "KOPERASI DESA MERAH PUTIH SENTOSA KENANGA BELITANG SIDO MAKMUR",
+  "wilayah": "16.08.03.2018"
+ },
+ {
+  "sourceRef": "KOP-307D87B9E8C0",
+  "nama": "KOPERASI DESA MERAH PUTIH SENTOSA LUBUK KARYA KUTE",
+  "wilayah": "16.04.17.2017"
+ },
+ {
+  "sourceRef": "KOP-39D823F9F2C1",
+  "nama": "KOPERASI DESA MERAH PUTIH SENTOSA MUTIARA MOTODUTO",
+  "wilayah": "75.01.09.2011"
+ },
+ {
+  "sourceRef": "KOP-32FE50751DE8",
+  "nama": "KOPERASI DESA MERAH PUTIH SENTOSA PADANGBULIA TELUK",
+  "wilayah": "51.08.05.2008"
+ },
+ {
+  "sourceRef": "KOP-316819A47EE9",
+  "nama": "KOPERASI DESA MERAH PUTIH SENTOSA PIKAT WANA",
+  "wilayah": "51.05.04.2010"
+ },
+ {
+  "sourceRef": "KOP-33BAA354F14B",
+  "nama": "KOPERASI DESA MERAH PUTIH SENTOSA SEI SEMAJA ARUNA MENGGARIS SAMAENRE",
+  "wilayah": "65.03.13.2003"
+ },
+ {
+  "sourceRef": "KOP-555023BB18CB",
+  "nama": "KOPERASI DESA MERAH PUTIH SESAKAM SEJAHTERA ANGKASA",
+  "wilayah": "93.04.13.2004"
+ },
+ {
+  "sourceRef": "KOP-41C73364D0D2",
+  "nama": "KOPERASI DESA MERAH PUTIH SIDO SURYA MULYO DAMAI KAMPUNG",
+  "wilayah": "93.01.05.2004"
+ },
+ {
+  "sourceRef": "KOP-FC999369D5BA",
+  "nama": "KOPERASI DESA MERAH PUTIH SIDOMULYO BAHAGIA WASILE TIMUR SARI",
+  "wilayah": "82.06.07.2008"
+ },
+ {
+  "sourceRef": "KOP-363376B1BE50",
+  "nama": "KOPERASI DESA MERAH PUTIH SIDOREJO SYARIAH CIPTA GAMPONG SENTOSA",
+  "wilayah": "11.74.04.2005"
+ },
+ {
+  "sourceRef": "KOP-2C9E0A991320",
+  "nama": "KOPERASI DESA MERAH PUTIH SINGGANI MULYA SAMUDRA SIPURE",
+  "wilayah": "72.03.12.2019"
+ },
+ {
+  "sourceRef": "KOP-387994CC4A7C",
+  "nama": "KOPERASI DESA MERAH PUTIH SINGOSAREN LANGIT SENTOSA KALURAHAN",
+  "wilayah": "34.02.12.2004"
+ },
+ {
+  "sourceRef": "KOP-0D3668813371",
+  "nama": "KOPERASI DESA MERAH PUTIH SINUNUKAN LEMBAH MAKMUR IV",
+  "wilayah": "12.13.22.2004"
+ },
+ {
+  "sourceRef": "KOP-F5F5A344CB62",
+  "nama": "KOPERASI DESA MERAH PUTIH SOGAN KALURAHAN PADMA AGUNG",
+  "wilayah": "34.01.02.2002"
+ },
+ {
+  "sourceRef": "KOP-E8A995C4381D",
+  "nama": "KOPERASI DESA MERAH PUTIH SOKSOK JERUK SEJATI KIRANA",
+  "wilayah": "35.11.20.2006"
+ },
+ {
+  "sourceRef": "KOP-972BD73AFB84",
+  "nama": "KOPERASI DESA MERAH PUTIH SORI MANDIRI SENJA DESA TATANGA",
+  "wilayah": "52.05.06.2011"
+ },
+ {
+  "sourceRef": "KOP-B6D461D0CCFC",
+  "nama": "KOPERASI DESA MERAH PUTIH SRIKAYANGAN KALURAHAN TELUK BERSERI",
+  "wilayah": "34.01.06.2002"
+ },
+ {
+  "sourceRef": "KOP-891EEF715BB0",
+  "nama": "KOPERASI DESA MERAH PUTIH SUKA BERKAH KARANG JAYA",
+  "wilayah": "62.07.02.2024"
+ },
+ {
+  "sourceRef": "KOP-961439AEF83D",
+  "nama": "KOPERASI DESA MERAH PUTIH SUKA MAJU MANDIRI PADMA",
+  "wilayah": "17.06.10.2004"
+ },
+ {
+  "sourceRef": "KOP-490708A8CD34",
+  "nama": "KOPERASI DESA MERAH PUTIH SUKADANA SYARIAH RANTAU INDAH",
+  "wilayah": "52.03.03.2006"
+ },
+ {
+  "sourceRef": "KOP-D3294D850BFA",
+  "nama": "KOPERASI DESA MERAH PUTIH SUKAKARYA PRIMA RANTAU",
+  "wilayah": "61.04.02.2001"
+ },
+ {
+  "sourceRef": "KOP-051441D7DE07",
+  "nama": "KOPERASI DESA MERAH PUTIH SUKOHARJO KARANG LESTARI KALURAHAN",
+  "wilayah": "34.04.12.2004"
+ },
+ {
+  "sourceRef": "KOP-BC144DF86705",
+  "nama": "KOPERASI DESA MERAH PUTIH SUMBER CEMERLANG LUBUK TINGGAL BATU",
+  "wilayah": "14.02.12.2003"
+ },
+ {
+  "sourceRef": "KOP-A150DB355E70",
+  "nama": "KOPERASI DESA MERAH PUTIH SUMBER CERIA RUOS",
+  "wilayah": "16.09.19.2004"
+ },
+ {
+  "sourceRef": "KOP-45C80CD5D8E2",
+  "nama": "KOPERASI DESA MERAH PUTIH SUMBER GANDASARI INDAH",
+  "wilayah": "75.01.13.2003"
+ },
+ {
+  "sourceRef": "KOP-7BF1A0B3699B",
+  "nama": "KOPERASI DESA MERAH PUTIH SUMBER GEMILANG WAIHATU",
+  "wilayah": "81.06.07.2001"
+ },
+ {
+  "sourceRef": "KOP-EDE7BBA9E5A7",
+  "nama": "KOPERASI DESA MERAH PUTIH SUMBER ILOMANGGA AGUNG",
+  "wilayah": "75.05.05.2017"
+ },
+ {
+  "sourceRef": "KOP-1BDFD4DDAAA7",
+  "nama": "KOPERASI DESA MERAH PUTIH SUMBER JAYA GADUNGAN",
+  "wilayah": "51.02.02.2002"
+ },
+ {
+  "sourceRef": "KOP-CF6DDE4B2600",
+  "nama": "KOPERASI DESA MERAH PUTIH SUMBER LAUT BELO PRIMA",
+  "wilayah": "19.05.01.2006"
+ },
+ {
+  "sourceRef": "KOP-8F17A99DB403",
+  "nama": "KOPERASI DESA MERAH PUTIH SUMBER MANDIRI BELUMBANG",
+  "wilayah": "51.02.04.2004"
+ },
+ {
+  "sourceRef": "KOP-4FB6AD69DED9",
+  "nama": "KOPERASI DESA MERAH PUTIH SUMBER SEJAHTERA KABAUW NEGERI",
+  "wilayah": "81.01.13.2007"
+ },
+ {
+  "sourceRef": "KOP-E5073637501B",
+  "nama": "KOPERASI DESA MERAH PUTIH SUMBER SEJATI MULYA GIRI",
+  "wilayah": "62.09.03.2032"
+ },
+ {
+  "sourceRef": "KOP-9C6FDCEF24B3",
+  "nama": "KOPERASI DESA MERAH PUTIH SUMBERAGUNG KALURAHAN TELUK PERMAI",
+  "wilayah": "34.02.09.2003"
+ },
+ {
+  "sourceRef": "KOP-B5296394670B",
+  "nama": "KOPERASI DESA MERAH PUTIH SUMBERSARI BERSERI TIRTA KALURAHAN",
+  "wilayah": "34.04.03.2002"
+ },
+ {
+  "sourceRef": "KOP-A2163E5604F8",
+  "nama": "KOPERASI DESA MERAH PUTIH SUNGAI CERIA MEKAR ANA",
+  "wilayah": "61.05.01.2011"
+ },
+ {
+  "sourceRef": "KOP-116877F2BC7B",
+  "nama": "KOPERASI DESA MERAH PUTIH SUNGAI MAKMUR LANGKOK DHARMASRAYA TUNAS NAGARI",
+  "wilayah": "13.10.08.2002"
+ },
+ {
+  "sourceRef": "KOP-D54C6BD28494",
+  "nama": "KOPERASI DESA MERAH PUTIH SUNGAI PURNAMA PRIMA KERAN",
+  "wilayah": "61.07.15.2002"
+ },
+ {
+  "sourceRef": "KOP-6C5DB594AFC6",
+  "nama": "KOPERASI DESA MERAH PUTIH SUP SEGARA UTAMA MANDORI",
+  "wilayah": "91.06.16.2007"
+ },
+ {
+  "sourceRef": "KOP-2D248D5C2D29",
+  "nama": "KOPERASI DESA MERAH PUTIH SURABAYA MULYA ILIR SENJA",
+  "wilayah": "18.02.26.2002"
+ },
+ {
+  "sourceRef": "KOP-16C3168B24F4",
+  "nama": "KOPERASI DESA MERAH PUTIH SURYA KEDUNGSARIMULYO DESA ASRI",
+  "wilayah": "33.20.03.2004"
+ },
+ {
+  "sourceRef": "KOP-E00D094F83AD",
+  "nama": "KOPERASI DESA MERAH PUTIH SURYA LOMBANG BAGAS RAYA",
+  "wilayah": "12.03.04.2010"
+ },
+ {
+  "sourceRef": "KOP-817BD184AD99",
+  "nama": "KOPERASI DESA MERAH PUTIH SURYA NGAWOL GEMILANG",
+  "wilayah": "65.03.20.2005"
+ },
+ {
+  "sourceRef": "KOP-9415FFF6BF8A",
+  "nama": "KOPERASI DESA MERAH PUTIH SURYA ONANG MANDIRI",
+  "wilayah": "76.05.07.2001"
+ },
+ {
+  "sourceRef": "KOP-55DE6D631FA5",
+  "nama": "KOPERASI DESA MERAH PUTIH SURYA SEJAHTERA KATEW",
+  "wilayah": "93.04.13.2007"
+ },
+ {
+  "sourceRef": "KOP-53E108C32E74",
+  "nama": "KOPERASI DESA MERAH PUTIH SURYA SEJAHTERA SINAR SEGARA",
+  "wilayah": "19.05.05.2008"
+ },
+ {
+  "sourceRef": "KOP-E9C248D0D47B",
+  "nama": "KOPERASI DESA MERAH PUTIH SURYA SEJATI MAMAHAN",
+  "wilayah": "71.04.08.2001"
+ },
+ {
+  "sourceRef": "KOP-D53DF52452F7",
+  "nama": "KOPERASI DESA MERAH PUTIH SYARIAH ANGKASA PRIMA LAMJUHANG GAMPONG",
+  "wilayah": "11.06.01.2015"
+ },
+ {
+  "sourceRef": "KOP-A721EE0D4EC2",
+  "nama": "KOPERASI DESA MERAH PUTIH SYARIAH CERIA ARUNA KUNG",
+  "wilayah": "11.04.07.2012"
+ },
+ {
+  "sourceRef": "KOP-CEBD84B2F4E7",
+  "nama": "KOPERASI DESA MERAH PUTIH SYARIAH PRABA MADANI KEURAMAT GAMPONG",
+  "wilayah": "11.71.02.2004"
+ },
+ {
+  "sourceRef": "KOP-551A7C48B32D",
+  "nama": "KOPERASI DESA MERAH PUTIH SYARIAH TANJUNG MANYAK NERACA PAYED SEJAHTERA KIRANA",
+  "wilayah": "11.16.01.2019"
+ },
+ {
+  "sourceRef": "KOP-14D79CD9B0FD",
+  "nama": "KOPERASI DESA MERAH PUTIH SYARIAH UJUNG KARANG PADANG GAMPONG ASRI",
+  "wilayah": "11.01.03.2016"
+ },
+ {
+  "sourceRef": "KOP-9AEE63975426",
+  "nama": "KOPERASI DESA MERAH PUTIH TABO KARYA SORAT PARAU PERMAI SITABO",
+  "wilayah": "12.03.05.2075"
+ },
+ {
+  "sourceRef": "KOP-0FDA7A3448A1",
+  "nama": "KOPERASI DESA MERAH PUTIH TADUI MAKMUR NIRMALA",
+  "wilayah": "76.02.01.2010"
+ },
+ {
+  "sourceRef": "KOP-601D642AE2A3",
+  "nama": "KOPERASI DESA MERAH PUTIH TALANG HARMONI KARANG DURIAN",
+  "wilayah": "17.05.04.2015"
+ },
+ {
+  "sourceRef": "KOP-7392C23AB57F",
+  "nama": "KOPERASI DESA MERAH PUTIH TAMAN MESJID GAMPONG ABADI SYARIAH",
+  "wilayah": "11.08.10.2016"
+ },
+ {
+  "sourceRef": "KOP-25AC91ED7263",
+  "nama": "KOPERASI DESA MERAH PUTIH TAMAN MULYA KUMBANG SYARIAH GAMPONG",
+  "wilayah": "11.08.10.2018"
+ },
+ {
+  "sourceRef": "KOP-AB6F47460F45",
+  "nama": "KOPERASI DESA MERAH PUTIH TAMAN TANGGUH RUGUK",
+  "wilayah": "18.01.14.2007"
+ },
+ {
+  "sourceRef": "KOP-1C328A84B693",
+  "nama": "KOPERASI DESA MERAH PUTIH TAMAN TOBADAK JAYA",
+  "wilayah": "76.06.01.2003"
+ },
+ {
+  "sourceRef": "KOP-D2FA68D52895",
+  "nama": "KOPERASI DESA MERAH PUTIH TAMBANG LEBONG PANGKAL PRIMA",
+  "wilayah": "17.07.01.2016"
+ },
+ {
+  "sourceRef": "KOP-4CCCCD903CC2",
+  "nama": "KOPERASI DESA MERAH PUTIH TANAH INDAH HARAPAN PADMA",
+  "wilayah": "17.06.02.2019"
+ },
+ {
+  "sourceRef": "KOP-B1C56F954F68",
+  "nama": "KOPERASI DESA MERAH PUTIH TANGGUH NIRMALA DIGIKEBO",
+  "wilayah": "94.06.07.2006"
+ },
+ {
+  "sourceRef": "KOP-AA317681427C",
+  "nama": "KOPERASI DESA MERAH PUTIH TANGGUH PUSONG SUMBER SYARIAH GAMPONG",
+  "wilayah": "11.08.08.2011"
+ },
+ {
+  "sourceRef": "KOP-AF21CE730A9A",
+  "nama": "KOPERASI DESA MERAH PUTIH TANGGUH REMAU TUO LEMBAH BAKU",
+  "wilayah": "15.07.05.2008"
+ },
+ {
+  "sourceRef": "KOP-AB9BA431748D",
+  "nama": "KOPERASI DESA MERAH PUTIH TANGGUH TENGAH JEMBAYAN TIRTA",
+  "wilayah": "64.02.02.2011"
+ },
+ {
+  "sourceRef": "KOP-0D0BBAE40A69",
+  "nama": "KOPERASI DESA MERAH PUTIH TAWALIAN MAKMUR TIMUR TELUK",
+  "wilayah": "76.03.14.2002"
+ },
+ {
+  "sourceRef": "KOP-773354D8C546",
+  "nama": "KOPERASI DESA MERAH PUTIH TELUK ABADI DARMASARI",
+  "wilayah": "36.02.03.2011"
+ },
+ {
+  "sourceRef": "KOP-A5AFD5BBB530",
+  "nama": "KOPERASI DESA MERAH PUTIH TELUK CERIA BAKUNGAN",
+  "wilayah": "64.02.03.2001"
+ },
+ {
+  "sourceRef": "KOP-C556EB2C5899",
+  "nama": "KOPERASI DESA MERAH PUTIH TELUK CITRA KEMUNING CEMERLANG",
+  "wilayah": "63.02.20.2008"
+ },
+ {
+  "sourceRef": "KOP-5FDA0ACC43D4",
+  "nama": "KOPERASI DESA MERAH PUTIH TELUK HARMONI NISAKARANG",
+  "wilayah": "53.06.11.2006"
+ },
+ {
+  "sourceRef": "KOP-403E2A868404",
+  "nama": "KOPERASI DESA MERAH PUTIH TELUK KAMPUNG GURIN DAMAI",
+  "wilayah": "95.04.08.2008"
+ },
+ {
+  "sourceRef": "KOP-EB298B6C3065",
+  "nama": "KOPERASI DESA MERAH PUTIH TELUK LANGIT KAPUAS SEJATI",
+  "wilayah": "61.12.01.2012"
+ },
+ {
+  "sourceRef": "KOP-F155FFBF49A4",
+  "nama": "KOPERASI DESA MERAH PUTIH TELUK SOSAR AGUNG",
+  "wilayah": "92.03.04.2028"
+ },
+ {
+  "sourceRef": "KOP-AF089A25CC1F",
+  "nama": "KOPERASI DESA MERAH PUTIH TELUK TANGGUH KEMALO ABUNG",
+  "wilayah": "18.03.07.2017"
+ },
+ {
+  "sourceRef": "KOP-917A6AF86FF0",
+  "nama": "KOPERASI DESA MERAH PUTIH TELUK TERONG MANDIRI",
+  "wilayah": "19.02.04.2003"
+ },
+ {
+  "sourceRef": "KOP-6C0045ACF8D9",
+  "nama": "KOPERASI DESA MERAH PUTIH TELUK UTAMA BINTANA",
+  "wilayah": "75.05.01.2004"
+ },
+ {
+  "sourceRef": "KOP-E638E39577DB",
+  "nama": "KOPERASI DESA MERAH PUTIH TELUK WAPALO SEJATI",
+  "wilayah": "75.05.01.2014"
+ },
+ {
+  "sourceRef": "KOP-D5BAFC51F405",
+  "nama": "KOPERASI DESA MERAH PUTIH TEMBAL PRIMA KENANGA",
+  "wilayah": "82.04.17.2008"
+ },
+ {
+  "sourceRef": "KOP-F8F13755CB89",
+  "nama": "KOPERASI DESA MERAH PUTIH TERONG KALURAHAN BAHAGIA TAMAN",
+  "wilayah": "34.02.11.2005"
+ },
+ {
+  "sourceRef": "KOP-C7158369B236",
+  "nama": "KOPERASI DESA MERAH PUTIH TETEWANG MADANI KARYA",
+  "wilayah": "82.03.22.2008"
+ },
+ {
+  "sourceRef": "KOP-3EDB0D01812E",
+  "nama": "KOPERASI DESA MERAH PUTIH TEUNGOH SYARIAH WANA GAMPONG DAMAI",
+  "wilayah": "11.74.03.2001"
+ },
+ {
+  "sourceRef": "KOP-0956BBC73C27",
+  "nama": "KOPERASI DESA MERAH PUTIH TIMUR JEMBATAN KEMBAR MAKMUR SUMBER",
+  "wilayah": "52.01.13.2009"
+ },
+ {
+  "sourceRef": "KOP-D849BC797588",
+  "nama": "KOPERASI DESA MERAH PUTIH TIMUR PUNGGASAN PESISIR PRIMA LANGIT NAGARI SELATAN",
+  "wilayah": "13.01.09.2004"
+ },
+ {
+  "sourceRef": "KOP-3161DD663B75",
+  "nama": "KOPERASI DESA MERAH PUTIH TINALI SENTOSA CANDRA",
+  "wilayah": "76.06.03.2006"
+ },
+ {
+  "sourceRef": "KOP-D026D95CBE7A",
+  "nama": "KOPERASI DESA MERAH PUTIH TIRTA KEMBANG KALURAHAN PRIMA",
+  "wilayah": "34.01.10.2006"
+ },
+ {
+  "sourceRef": "KOP-BDF0751C783A",
+  "nama": "KOPERASI DESA MERAH PUTIH TOYIDITO CEMERLANG CAHAYA",
+  "wilayah": "75.01.16.2009"
+ },
+ {
+  "sourceRef": "KOP-8E692D69CC9D",
+  "nama": "KOPERASI DESA MERAH PUTIH TRAIMELYAN PRABA KAMPUNG BERKAH",
+  "wilayah": "91.11.05.2007"
+ },
+ {
+  "sourceRef": "KOP-85B912097BC2",
+  "nama": "KOPERASI DESA MERAH PUTIH TRIWIDADI BERKAH SUMBER KALURAHAN",
+  "wilayah": "34.02.07.2001"
+ },
+ {
+  "sourceRef": "KOP-DD9A2E219969",
+  "nama": "KOPERASI DESA MERAH PUTIH TUMBAK BAYUH RAYA CANDRA",
+  "wilayah": "51.03.02.2019"
+ },
+ {
+  "sourceRef": "KOP-8E97D292364E",
+  "nama": "KOPERASI DESA MERAH PUTIH TUNAS BERKAH SUMBUL",
+  "wilayah": "12.11.11.2001"
+ },
+ {
+  "sourceRef": "KOP-B38FF9CA5116",
+  "nama": "KOPERASI DESA MERAH PUTIH TUNAS BOLA TANGGUH BULU",
+  "wilayah": "73.14.11.2006"
+ },
+ {
+  "sourceRef": "KOP-C5931203B7DA",
+  "nama": "KOPERASI DESA MERAH PUTIH TUNAS CEMERLANG NUSASARI",
+  "wilayah": "51.01.04.2005"
+ },
+ {
+  "sourceRef": "KOP-44D087540FB9",
+  "nama": "KOPERASI DESA MERAH PUTIH TUNAS DAMAI ABATADI KAMPUNG",
+  "wilayah": "94.03.03.2003"
+ },
+ {
+  "sourceRef": "KOP-5B0EC24216BB",
+  "nama": "KOPERASI DESA MERAH PUTIH TUNAS HOLTEKAMP SEJAHTERA",
+  "wilayah": "91.71.04.2006"
+ },
+ {
+  "sourceRef": "KOP-A06DD3664C87",
+  "nama": "KOPERASI DESA MERAH PUTIH TUNAS HUTABARINGIN PERMAI",
+  "wilayah": "12.13.20.2011"
+ },
+ {
+  "sourceRef": "KOP-4F2AE24EFCA0",
+  "nama": "KOPERASI DESA MERAH PUTIH TUNAS INDAH SARDONOHARJO KALURAHAN",
+  "wilayah": "34.04.12.2005"
+ },
+ {
+  "sourceRef": "KOP-C9DE83025D0D",
+  "nama": "KOPERASI DESA MERAH PUTIH TUNAS MADANI MUDO LEMBAH",
+  "wilayah": "15.05.02.2016"
+ },
+ {
+  "sourceRef": "KOP-981ACEE9C4F5",
+  "nama": "KOPERASI DESA MERAH PUTIH TUNAS MANDIRI TIMUR TAPADAKA",
+  "wilayah": "71.01.34.2004"
+ },
+ {
+  "sourceRef": "KOP-8F2EEC8A36F1",
+  "nama": "KOPERASI DESA MERAH PUTIH TUNGGULSARI MANDIRI TAMAN",
+  "wilayah": "33.24.09.2001"
+ },
+ {
+  "sourceRef": "KOP-B3DBEE4D0AC5",
+  "nama": "KOPERASI DESA MERAH PUTIH ULU SUMBER BERSERI TELUK RENDAH",
+  "wilayah": "15.09.02.2004"
+ },
+ {
+  "sourceRef": "KOP-AF0311F2D04E",
+  "nama": "KOPERASI DESA MERAH PUTIH UPA RANTAU TANGGUH KALI",
+  "wilayah": "82.03.11.2006"
+ },
+ {
+  "sourceRef": "KOP-6E2FE7A0E019",
+  "nama": "KOPERASI DESA MERAH PUTIH UTAMA BATU SURYA GAJAH",
+  "wilayah": "21.03.07.2014"
+ },
+ {
+  "sourceRef": "KOP-6C90FEFD45FC",
+  "nama": "KOPERASI DESA MERAH PUTIH UTAMA MATI ARUNA GAJAH",
+  "wilayah": "17.06.15.2003"
+ },
+ {
+  "sourceRef": "KOP-66546B21791C",
+  "nama": "KOPERASI DESA MERAH PUTIH UTAMA MEKAR KINAM",
+  "wilayah": "92.03.04.2014"
+ },
+ {
+  "sourceRef": "KOP-68EEA58EA4E4",
+  "nama": "KOPERASI DESA MERAH PUTIH UTAMA PANAEN CANDRA",
+  "wilayah": "62.05.07.2008"
+ },
+ {
+  "sourceRef": "KOP-73222CE7E94F",
+  "nama": "KOPERASI DESA MERAH PUTIH UTAMA POMBUREA TUNAS",
+  "wilayah": "74.11.05.2019"
+ },
+ {
+  "sourceRef": "KOP-6DD24B4E3027",
+  "nama": "KOPERASI DESA MERAH PUTIH UTAMA PURNAMA MOYEBA",
+  "wilayah": "92.06.06.2001"
+ },
+ {
+  "sourceRef": "KOP-6A562A94B640",
+  "nama": "KOPERASI DESA MERAH PUTIH UTAMA SARI RADURIA",
+  "wilayah": "92.03.05.2005"
+ },
+ {
+  "sourceRef": "KOP-71758CB73656",
+  "nama": "KOPERASI DESA MERAH PUTIH UTAMA SENJA KAMPUNG SAURI POIRU",
+  "wilayah": "91.06.18.2006"
+ },
+ {
+  "sourceRef": "KOP-6A4094B52D4C",
+  "nama": "KOPERASI DESA MERAH PUTIH UTAMA TAMBU GIRI",
+  "wilayah": "72.03.12.2009"
+ },
+ {
+  "sourceRef": "KOP-66B7AA373F0D",
+  "nama": "KOPERASI DESA MERAH PUTIH UTAMA TIRTA WAIMLABAT",
+  "wilayah": "96.01.08.2005"
+ },
+ {
+  "sourceRef": "KOP-679B92FBEC8D",
+  "nama": "KOPERASI DESA MERAH PUTIH UTAMA TOMOLOL KARYA",
+  "wilayah": "96.03.06.2002"
+ },
+ {
+  "sourceRef": "KOP-E44DDE110953",
+  "nama": "KOPERASI DESA MERAH PUTIH UWODEGE CAHAYA SEJATI KAMPUNG",
+  "wilayah": "94.03.15.2005"
+ },
+ {
+  "sourceRef": "KOP-70EB99D07D91",
+  "nama": "KOPERASI DESA MERAH PUTIH WAIBU UTAMA SAMUDRA",
+  "wilayah": "96.03.21.2003"
+ },
+ {
+  "sourceRef": "KOP-E45334800C79",
+  "nama": "KOPERASI DESA MERAH PUTIH WAIHERU SEJATI CANDRA",
+  "wilayah": "81.71.03.2006"
+ },
+ {
+  "sourceRef": "KOP-FBF4D106AAC1",
+  "nama": "KOPERASI DESA MERAH PUTIH WAISARISA BAHAGIA WANA",
+  "wilayah": "81.06.07.2006"
+ },
+ {
+  "sourceRef": "KOP-50FD5DD4E67E",
+  "nama": "KOPERASI DESA MERAH PUTIH WALANI SEJAHTERA TIRTA",
+  "wilayah": "94.04.13.2007"
+ },
+ {
+  "sourceRef": "KOP-75D25EE19526",
+  "nama": "KOPERASI DESA MERAH PUTIH WANA ABADI UNGGAHAN",
+  "wilayah": "51.08.02.2001"
+ },
+ {
+  "sourceRef": "KOP-4848B63ED51E",
+  "nama": "KOPERASI DESA MERAH PUTIH WANA BESAR INDAH ALUAN",
+  "wilayah": "63.07.02.2006"
+ },
+ {
+  "sourceRef": "KOP-BE3EDE197592",
+  "nama": "KOPERASI DESA MERAH PUTIH WANA CEMERLANG TEMPILANG",
+  "wilayah": "19.05.05.2001"
+ },
+ {
+  "sourceRef": "KOP-5DDBBE419DE3",
+  "nama": "KOPERASI DESA MERAH PUTIH WANA CIBOGO HARMONI",
+  "wilayah": "32.17.01.2012"
+ },
+ {
+  "sourceRef": "KOP-1EE91167D6DA",
+  "nama": "KOPERASI DESA MERAH PUTIH WANA JAYA MAWEA",
+  "wilayah": "82.03.12.2002"
+ },
+ {
+  "sourceRef": "KOP-912525A7B824",
+  "nama": "KOPERASI DESA MERAH PUTIH WANA MANDIRI FIOR",
+  "wilayah": "92.03.13.2004"
+ },
+ {
+  "sourceRef": "KOP-B5B91356175F",
+  "nama": "KOPERASI DESA MERAH PUTIH WANA WAYAME BERSERI",
+  "wilayah": "81.71.04.2004"
+ },
+ {
+  "sourceRef": "KOP-0DB040696179",
+  "nama": "KOPERASI DESA MERAH PUTIH WAY MAKMUR ASIH KARANG",
+  "wilayah": "81.01.25.2009"
+ },
+ {
+  "sourceRef": "KOP-8BCDC854C7DB",
+  "nama": "KOPERASI DESA MERAH PUTIH WIJAYA BERKAH SYARIAH DAMA ALUE GAMPONG",
+  "wilayah": "11.08.01.2023"
+ },
+ {
+  "sourceRef": "KOP-B8B9BE9D7FC0",
+  "nama": "KOPERASI DESA MERAH PUTIH WIJAYA BERSERI BUANGIN",
+  "wilayah": "76.03.15.2004"
+ },
+ {
+  "sourceRef": "KOP-4BB3B1F96381",
+  "nama": "KOPERASI DESA MERAH PUTIH WIJAYA INDAH KWIGILUK",
+  "wilayah": "95.01.28.2004"
+ },
+ {
+  "sourceRef": "KOP-9E537682CB7A",
+  "nama": "KOPERASI DESA MERAH PUTIH WIJAYA KAUGAPU PERMAI",
+  "wilayah": "94.04.03.2002"
+ },
+ {
+  "sourceRef": "KOP-17345F86D79F",
+  "nama": "KOPERASI DESA MERAH PUTIH WIJAYA LUMPIAS ASRI",
+  "wilayah": "71.06.05.2014"
+ },
+ {
+  "sourceRef": "KOP-E0932E71D007",
+  "nama": "KOPERASI DESA MERAH PUTIH WIJAYA RAYA ROJOPOLO",
+  "wilayah": "35.08.17.2002"
+ },
+ {
+  "sourceRef": "KOP-2280C6DE9351",
+  "nama": "KOPERASI DESA MERAH PUTIH WIJAYA RENGEL JAYA",
+  "wilayah": "35.23.14.2007"
+ },
+ {
+  "sourceRef": "KOP-4AE436473BDA",
+  "nama": "KOPERASI DESA MERAH PUTIH WOLUTENGAH INDAH PURNAMA",
+  "wilayah": "35.23.08.2004"
+ },
+ {
+  "sourceRef": "KOP-AD53E3E4FB5C",
+  "nama": "KOPERASI DESA MERAH PUTIH YENBEBA TANGGUH CANDRA",
+  "wilayah": "91.06.17.2001"
+ },
+ {
+  "sourceRef": "KOP-7916036E413C",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH ABADI BAJAK PESONA",
+  "wilayah": "17.71.03.1008"
+ },
+ {
+  "sourceRef": "KOP-75E648992C7C",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH ABADI NUSA KARANG ANYAR",
+  "wilayah": "65.71.01.1001"
+ },
+ {
+  "sourceRef": "KOP-77ED175D545D",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH ABADI SEGARA PAAL MERAH",
+  "wilayah": "15.71.11.1005"
+ },
+ {
+  "sourceRef": "KOP-78C65A8F4E90",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH ABADI SURYA SOWI",
+  "wilayah": "92.02.15.1001"
+ },
+ {
+  "sourceRef": "KOP-7714689A5CE8",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH ABADI ULU RANTAU DELAPAN",
+  "wilayah": "16.71.17.1001"
+ },
+ {
+  "sourceRef": "KOP-EF5ACBA3150E",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH AGUNG CAHAYA CILINCING",
+  "wilayah": "31.72.04.1001"
+ },
+ {
+  "sourceRef": "KOP-D0FF97DA5206",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH AGUNG CANDRA PRIMA PAGAR",
+  "wilayah": "16.04.10.1033"
+ },
+ {
+  "sourceRef": "KOP-EE531CFF22F0",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH AGUNG MEKAR NGEMPON",
+  "wilayah": "33.22.13.1001"
+ },
+ {
+  "sourceRef": "KOP-F106E26E8D0A",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH AGUNG NAMOSAIN PANGKAL",
+  "wilayah": "53.71.01.1001"
+ },
+ {
+  "sourceRef": "KOP-EE12FEEF6120",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH AGUNG PADARNI TAMAN",
+  "wilayah": "92.02.12.1005"
+ },
+ {
+  "sourceRef": "KOP-F35A28A5C44A",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH AGUNG UTARA SURYA REMU",
+  "wilayah": "96.71.01.1001"
+ },
+ {
+  "sourceRef": "KOP-C0C1B51F19CE",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH ANGKASA CEMERLANG NABOLON TAMBUN",
+  "wilayah": "12.72.06.1003"
+ },
+ {
+  "sourceRef": "KOP-E94080A06AF3",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH ANGKASA FATUBESI SEJATI",
+  "wilayah": "53.71.06.1008"
+ },
+ {
+  "sourceRef": "KOP-164B4EC906C6",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH ANGKASA GADANG ASRI",
+  "wilayah": "63.71.05.1008"
+ },
+ {
+  "sourceRef": "KOP-0660710F52CF",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH ANGKASA LESTARI PRAILIU",
+  "wilayah": "53.11.16.1002"
+ },
+ {
+  "sourceRef": "KOP-4A8FAE41AC4E",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH ANGKASA SIPATOKKONG INDAH",
+  "wilayah": "73.15.04.1007"
+ },
+ {
+  "sourceRef": "KOP-D933BCE334A8",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH ANYAR BAYU PRIMA KARANG",
+  "wilayah": "31.71.02.1002"
+ },
+ {
+  "sourceRef": "KOP-9298D03C7B69",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH ARUNA KARANG ASAM ILIR MANDIRI",
+  "wilayah": "64.72.06.1006"
+ },
+ {
+  "sourceRef": "KOP-135D5D9AE511",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH ASRI SAKO NUSA",
+  "wilayah": "16.71.08.1002"
+ },
+ {
+  "sourceRef": "KOP-FFE561D7E8C1",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH BAHAGIA KENANGA KAMPUNG PADANG JAWA",
+  "wilayah": "13.71.03.1007"
+ },
+ {
+  "sourceRef": "KOP-FED3FACCFE97",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH BAHAGIA KIRANA OIMBO",
+  "wilayah": "52.72.02.1021"
+ },
+ {
+  "sourceRef": "KOP-FD35145C1FC3",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH BAHAGIA TUNGGAL BUKIT TELUK",
+  "wilayah": "62.71.03.1003"
+ },
+ {
+  "sourceRef": "KOP-E54DB9684179",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH BALIK KARANG SEJATI SARI",
+  "wilayah": "65.71.01.1004"
+ },
+ {
+  "sourceRef": "KOP-827BB3F703DF",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH BANGKA GEMILANG PESONA",
+  "wilayah": "31.74.03.1002"
+ },
+ {
+  "sourceRef": "KOP-3B50B2993C4C",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH BARAT KOYA SENTOSA TUNAS",
+  "wilayah": "91.71.04.1004"
+ },
+ {
+  "sourceRef": "KOP-A6AF0BADCDDE",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH BARAYYA SEGARA CERIA BARA",
+  "wilayah": "73.71.03.1002"
+ },
+ {
+  "sourceRef": "KOP-46701F89006E",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH BARU INDAH SEPINGGAN KARYA",
+  "wilayah": "64.71.05.1008"
+ },
+ {
+  "sourceRef": "KOP-E3DDC9985E3D",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH BARU KARYA ABIANTUBUH SEJATI",
+  "wilayah": "52.71.06.1005"
+ },
+ {
+  "sourceRef": "KOP-41AE34A454D0",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH BARU TIBAN DAMAI PURNAMA",
+  "wilayah": "21.71.03.1006"
+ },
+ {
+  "sourceRef": "KOP-EE6144B86FEE",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH BARU TIRTA AGUNG MANGGAR",
+  "wilayah": "64.71.01.1004"
+ },
+ {
+  "sourceRef": "KOP-4405308B26B8",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH BAYU DAMAI TIMUR TONROKASSI",
+  "wilayah": "73.04.02.1004"
+ },
+ {
+  "sourceRef": "KOP-08DCA2570480",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH BAYU LAKAHANG LESTARI",
+  "wilayah": "76.03.05.1001"
+ },
+ {
+  "sourceRef": "KOP-804E1B3DD3C3",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH BELAS GEMILANG SEGARA ULU LIMA",
+  "wilayah": "16.71.17.1003"
+ },
+ {
+  "sourceRef": "KOP-86D18F4668E6",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH BERKAH BARU LEBAR BUMI SAWAH",
+  "wilayah": "17.71.06.1007"
+ },
+ {
+  "sourceRef": "KOP-86F6678FC2B1",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH BERKAH CAHAYA PUTRI SUNGAI",
+  "wilayah": "15.71.10.1001"
+ },
+ {
+  "sourceRef": "KOP-8C1A02040F04",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH BERKAH NIRMALA PEJANGGIK",
+  "wilayah": "52.71.02.1011"
+ },
+ {
+  "sourceRef": "KOP-88B70DAEF086",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH BERKAH TIMUR RABADOMPU TELUK",
+  "wilayah": "52.72.04.1008"
+ },
+ {
+  "sourceRef": "KOP-B71E10814785",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH BERSERI AMAN TANJUNG SEGARA",
+  "wilayah": "16.73.02.1018"
+ },
+ {
+  "sourceRef": "KOP-BB24A36362D5",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH BERSERI DAMAI CITRA",
+  "wilayah": "64.71.06.1005"
+ },
+ {
+  "sourceRef": "KOP-BB0158A4FD33",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH BERSERI SENJA BARU ILIR",
+  "wilayah": "64.71.02.1001"
+ },
+ {
+  "sourceRef": "KOP-5160E44C268F",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH BUAYA PUSPA SEJAHTERA RAWA",
+  "wilayah": "31.73.01.1003"
+ },
+ {
+  "sourceRef": "KOP-1BB43E9898E1",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH BUKIT JAYA SARI TANJUNG",
+  "wilayah": "21.71.01.1006"
+ },
+ {
+  "sourceRef": "KOP-8EBB0A110A4A",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH BUKIT MANDIRI KLASUUR",
+  "wilayah": "96.71.07.1003"
+ },
+ {
+  "sourceRef": "KOP-65FF9BF884BF",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH BUKIT PANDAN UTAMA KASTURI",
+  "wilayah": "81.71.02.1010"
+ },
+ {
+  "sourceRef": "KOP-CF31F5BDB512",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH BUKIT TEMPINO SYARIAH PRIMA",
+  "wilayah": "15.05.05.1009"
+ },
+ {
+  "sourceRef": "KOP-DC8989601DC6",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH BUMI KEMIRIMUKA RAYA",
+  "wilayah": "32.76.06.1004"
+ },
+ {
+  "sourceRef": "KOP-F98C65069165",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH BUMI SIKUMANA BAHAGIA",
+  "wilayah": "53.71.02.1008"
+ },
+ {
+  "sourceRef": "KOP-FB727A59DC0F",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH CAHAYA BAHAGIA CENDERAWASIH PUNCAK",
+  "wilayah": "96.71.03.1003"
+ },
+ {
+  "sourceRef": "KOP-1DFF042202C4",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH CAHAYA MEDOKAN SEMAMPIR JAYA",
+  "wilayah": "35.78.09.1007"
+ },
+ {
+  "sourceRef": "KOP-26C6E4DB5EA2",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH CAHAYA MULYA RD PJKA",
+  "wilayah": "16.04.10.1043"
+ },
+ {
+  "sourceRef": "KOP-874DEEF97F91",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH CANDRA BERKAH ANDAY",
+  "wilayah": "92.02.15.1002"
+ },
+ {
+  "sourceRef": "KOP-BE3BE4D99239",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH CANDRA CEMERLANG KLAWASI",
+  "wilayah": "96.71.03.1002"
+ },
+ {
+  "sourceRef": "KOP-C069B528F796",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH CEMERLANG KARANG MUARADUA PASAR",
+  "wilayah": "16.09.01.1019"
+ },
+ {
+  "sourceRef": "KOP-BF4E3C9BCCFF",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH CEMERLANG SARI THEHOK",
+  "wilayah": "15.71.02.1004"
+ },
+ {
+  "sourceRef": "KOP-C02A29BC5FA7",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH CEMERLANG TELUK SRIWIDARI",
+  "wilayah": "32.72.01.1003"
+ },
+ {
+  "sourceRef": "KOP-C3A3244BA005",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH CEMERLANG TUGU LANGIT SELATAN",
+  "wilayah": "31.72.03.1005"
+ },
+ {
+  "sourceRef": "KOP-A9AE7A455E30",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH CERIA TUNAS KADEMANGAN",
+  "wilayah": "36.74.07.1004"
+ },
+ {
+  "sourceRef": "KOP-81BA65E70134",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH CIJANTUNG GEMILANG KENANGA",
+  "wilayah": "31.75.05.1003"
+ },
+ {
+  "sourceRef": "KOP-A76C3AE263D8",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH CIPANENGAH CERIA ANGKASA",
+  "wilayah": "32.72.06.1001"
+ },
+ {
+  "sourceRef": "KOP-D1A6A3E4ADEB",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH CIPINANG PRIMA NUSA MUARA",
+  "wilayah": "31.75.03.1006"
+ },
+ {
+  "sourceRef": "KOP-A87B26AD21CB",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH CIPTA CERIA SELI",
+  "wilayah": "82.72.01.1005"
+ },
+ {
+  "sourceRef": "KOP-301C775B5DA8",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH CIPULIR SENTOSA MEKAR",
+  "wilayah": "31.74.05.1003"
+ },
+ {
+  "sourceRef": "KOP-B38A015B7FED",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH CITRA INDAH ATARI TANGGUH",
+  "wilayah": "74.05.12.1005"
+ },
+ {
+  "sourceRef": "KOP-A065CBE31FC0",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH CITRA PERMAI RAYA SEKANAK",
+  "wilayah": "21.71.01.1007"
+ },
+ {
+  "sourceRef": "KOP-44B9B3239121",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH CITRA SUPRAU DAMAI",
+  "wilayah": "96.71.10.1001"
+ },
+ {
+  "sourceRef": "KOP-721CE9F7BB94",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH CITRA UTAMA PORIS UTARA PLAWAD",
+  "wilayah": "36.71.05.1009"
+ },
+ {
+  "sourceRef": "KOP-149D612101BC",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH DAMAI BARU ASRI LEMBAH",
+  "wilayah": "64.71.05.1011"
+ },
+ {
+  "sourceRef": "KOP-42D3D83728AB",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH DAMAI DANNUANG PADMA",
+  "wilayah": "73.02.09.1001"
+ },
+ {
+  "sourceRef": "KOP-4198CF80719D",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH DAMAI GELORA ANGKASA",
+  "wilayah": "31.71.07.1001"
+ },
+ {
+  "sourceRef": "KOP-D9A700A36EFC",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH DAMAI JELITA PRIMA KAMPONG",
+  "wilayah": "19.02.01.1016"
+ },
+ {
+  "sourceRef": "KOP-B88476BFD9DA",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH DASAN CIPTA BERSERI CERMEN",
+  "wilayah": "52.71.06.1001"
+ },
+ {
+  "sourceRef": "KOP-6157B13854A9",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH DEMBE JAYA HARMONI KIRANA",
+  "wilayah": "75.71.03.1015"
+ },
+ {
+  "sourceRef": "KOP-E3B5376C9227",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH DULALOWO SEJATI TIMUR TIRTA",
+  "wilayah": "75.71.06.1006"
+ },
+ {
+  "sourceRef": "KOP-F032E82B16ED",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH GALUNG AGUNG NUSA",
+  "wilayah": "76.05.01.1013"
+ },
+ {
+  "sourceRef": "KOP-B5340EB969A5",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH GEDONG BERSERI BUMI",
+  "wilayah": "31.75.05.1001"
+ },
+ {
+  "sourceRef": "KOP-273F3EF1D7AA",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH GIRI ILIR LUBUKLINGGAU MULYA",
+  "wilayah": "16.73.06.1006"
+ },
+ {
+  "sourceRef": "KOP-490352630B52",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH GUNTUNG INDAH PANGKAL MANGGIS",
+  "wilayah": "63.72.02.1005"
+ },
+ {
+  "sourceRef": "KOP-60B7C6F6FB04",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH HARMONI KUBU PADANG MARAPALAM ARUNA",
+  "wilayah": "13.71.02.1006"
+ },
+ {
+  "sourceRef": "KOP-6468387C8045",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH HARMONI SELATAN GROGOL SAMUDRA",
+  "wilayah": "31.74.05.1005"
+ },
+ {
+  "sourceRef": "KOP-9FD47C9BE60B",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH HITAM BAYU PERMAI BATU",
+  "wilayah": "21.03.07.1019"
+ },
+ {
+  "sourceRef": "KOP-805B325AE642",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH I U GEMILANG ARUNA LIMBA",
+  "wilayah": "75.71.02.1019"
+ },
+ {
+  "sourceRef": "KOP-782F1E4338A7",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH ILIR ARUNA DUA ABADI",
+  "wilayah": "16.71.06.1008"
+ },
+ {
+  "sourceRef": "KOP-30119E52147A",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH ILIR KLANDASAN TAMAN SENTOSA",
+  "wilayah": "64.71.06.1004"
+ },
+ {
+  "sourceRef": "KOP-1348AAA332AE",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH ILIR PLAJU WANA ASRI",
+  "wilayah": "16.71.14.1003"
+ },
+ {
+  "sourceRef": "KOP-4A0579990FAD",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH INDAH ARUNA AKEHUDA",
+  "wilayah": "82.71.03.1020"
+ },
+ {
+  "sourceRef": "KOP-4CE07002A810",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH INDAH GRAHA INDAH LANGIT",
+  "wilayah": "64.71.03.1006"
+ },
+ {
+  "sourceRef": "KOP-4E812CBC9BE0",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH INDAH PRABA BERLIAN KOTA TANJUNG",
+  "wilayah": "21.02.07.1012"
+ },
+ {
+  "sourceRef": "KOP-1F68563667D5",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH JAE JAYA SABUNGAN TELUK",
+  "wilayah": "12.77.04.1003"
+ },
+ {
+  "sourceRef": "KOP-8401EEB57A1E",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH JAWA GEMILANG SENJA",
+  "wilayah": "64.02.15.1001"
+ },
+ {
+  "sourceRef": "KOP-245EF0EDB4C8",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH JAYA BAYU KEMARAYA",
+  "wilayah": "74.71.05.1001"
+ },
+ {
+  "sourceRef": "KOP-23881ABADE98",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH JAYA IX LANGIT BATU",
+  "wilayah": "21.72.02.1004"
+ },
+ {
+  "sourceRef": "KOP-1F62C397EC53",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH JAYA SARI ULU GUNUNG RANTAU",
+  "wilayah": "64.71.04.1001"
+ },
+ {
+  "sourceRef": "KOP-315C5EFCC96D",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH KALIGANDU SENTOSA CAHAYA",
+  "wilayah": "36.73.01.1010"
+ },
+ {
+  "sourceRef": "KOP-7B874FBA865D",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH KANAN SIMPANG JELITA ABADI",
+  "wilayah": "14.07.11.1001"
+ },
+ {
+  "sourceRef": "KOP-A6A922CDBDE6",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH KARANG CERIA SUNGAISELINCAH",
+  "wilayah": "16.71.10.1004"
+ },
+ {
+  "sourceRef": "KOP-8014856E09C5",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH KARANG GEMILANG SULAMADAHA",
+  "wilayah": "82.71.08.1004"
+ },
+ {
+  "sourceRef": "KOP-77E1B27C5E87",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH KARANG KEAGUNGAN ABADI",
+  "wilayah": "31.73.03.1006"
+ },
+ {
+  "sourceRef": "KOP-510DA15345A9",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH KARYA BATUA SEJAHTERA",
+  "wilayah": "73.71.12.1005"
+ },
+ {
+  "sourceRef": "KOP-1D191C80D49E",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH KARYA JAYA KEPUTRAAN",
+  "wilayah": "16.73.06.1005"
+ },
+ {
+  "sourceRef": "KOP-2AB060D68AD1",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH KEBON SARI MULYA NIRMALA",
+  "wilayah": "36.72.08.1005"
+ },
+ {
+  "sourceRef": "KOP-142CAB18927E",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH KELURAHAN ASRI ALAK PANGKAL",
+  "wilayah": "53.71.01.1008"
+ },
+ {
+  "sourceRef": "KOP-4B5D9F8ABBE2",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH KENANGA SATU RURUKAN INDAH",
+  "wilayah": "71.73.05.1004"
+ },
+ {
+  "sourceRef": "KOP-9DA2E0E93F3D",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH KIRANA KEBON BARU PERMAI",
+  "wilayah": "31.74.01.1004"
+ },
+ {
+  "sourceRef": "KOP-06446DA9AB65",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH KIRANA LESTARI GALUNG PATIH",
+  "wilayah": "16.74.01.1007"
+ },
+ {
+  "sourceRef": "KOP-6CD12C90D1FB",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH KIRANA UTAMA DWIKORA",
+  "wilayah": "12.71.03.1006"
+ },
+ {
+  "sourceRef": "KOP-155A45B3A627",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH KIRANA XX PAGAMBIRAN ASRI NAN AMPALU PADANG",
+  "wilayah": "13.71.06.1012"
+ },
+ {
+  "sourceRef": "KOP-ECEF583E17AF",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH KLAWALU SEJATI CITRA",
+  "wilayah": "96.71.02.1001"
+ },
+ {
+  "sourceRef": "KOP-B1E248A043CA",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH KOTA PESONA TANGGUH BARU",
+  "wilayah": "91.71.03.1012"
+ },
+ {
+  "sourceRef": "KOP-56533935A168",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH KOTABUMI SEJAHTERA PESONA",
+  "wilayah": "36.72.07.1002"
+ },
+ {
+  "sourceRef": "KOP-963E43156B3F",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH LANGIT MANDIRI LATSARI",
+  "wilayah": "35.23.16.1006"
+ },
+ {
+  "sourceRef": "KOP-B219A3B16139",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH LANGIT YUKUM JAYA TANGGUH",
+  "wilayah": "18.02.07.1004"
+ },
+ {
+  "sourceRef": "KOP-5FEEF0AD7FC1",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH LEMBAH BARU HARMONI",
+  "wilayah": "31.75.05.1002"
+ },
+ {
+  "sourceRef": "KOP-4978E4574D8F",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH LEMBAH INDAH KAMAL",
+  "wilayah": "31.73.06.1004"
+ },
+ {
+  "sourceRef": "KOP-C80E72CDC420",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH LENGKUAS GUNUNG WANA MADANI",
+  "wilayah": "21.01.06.1010"
+ },
+ {
+  "sourceRef": "KOP-07050B4794D4",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH LESTARI KEDUNGPANE SURYA",
+  "wilayah": "33.74.14.1010"
+ },
+ {
+  "sourceRef": "KOP-0008016CB39E",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH LESTARI KOTASARI BUKIT",
+  "wilayah": "36.72.06.1001"
+ },
+ {
+  "sourceRef": "KOP-08CC6C59A8A4",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH LESTARI MUTIARA DUA PEGANGSAAN",
+  "wilayah": "31.72.06.1002"
+ },
+ {
+  "sourceRef": "KOP-795D64CFB1F6",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH LESTARI PADMA ABADI PATAM",
+  "wilayah": "21.71.03.1008"
+ },
+ {
+  "sourceRef": "KOP-077BFE961123",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH LESTARI SUNGAI NANGKA PESONA",
+  "wilayah": "64.71.05.1010"
+ },
+ {
+  "sourceRef": "KOP-04C0408A56B9",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH LESTARI TELUK WETAN BANGETAYU",
+  "wilayah": "33.74.05.1011"
+ },
+ {
+  "sourceRef": "KOP-87A60052BEB0",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH LOR BERKAH SEMARANG PANGGUNG WANA UTARA",
+  "wilayah": "33.74.02.1006"
+ },
+ {
+  "sourceRef": "KOP-EAC57ADA10A5",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH LOROKPAKJO SEJATI NIRMALA",
+  "wilayah": "16.71.04.1002"
+ },
+ {
+  "sourceRef": "KOP-CDDEB9F86F58",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH MADANI III MATSUM KOTA JELITA",
+  "wilayah": "12.71.01.1006"
+ },
+ {
+  "sourceRef": "KOP-C6D9DFC60803",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH MADANI JEPON MEKAR",
+  "wilayah": "33.16.08.1013"
+ },
+ {
+  "sourceRef": "KOP-CEBEF662D276",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH MADANI KARANGROTO CITRA",
+  "wilayah": "33.74.05.1003"
+ },
+ {
+  "sourceRef": "KOP-CA604BC75944",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH MADANI LAKSANA SURYA PANCA",
+  "wilayah": "36.73.04.1006"
+ },
+ {
+  "sourceRef": "KOP-C5AEA4A2AC78",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH MADANI MANDALA BUKIT",
+  "wilayah": "93.01.01.1004"
+ },
+ {
+  "sourceRef": "KOP-C78B10F5979D",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH MADANI PARI PULAU BUMI",
+  "wilayah": "31.01.02.1003"
+ },
+ {
+  "sourceRef": "KOP-C70430D424EC",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH MADANI TIRTA BAKUNASE",
+  "wilayah": "53.71.05.1001"
+ },
+ {
+  "sourceRef": "KOP-106DD583A71F",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH MAKMUR BAKTI LANGIT JAYA",
+  "wilayah": "36.74.07.1005"
+ },
+ {
+  "sourceRef": "KOP-1147C44F0E60",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH MAKMUR BARAT CENGKARENG CITRA",
+  "wilayah": "31.73.01.1001"
+ },
+ {
+  "sourceRef": "KOP-097FED1EF210",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH MAKMUR MEKAR MANGASA",
+  "wilayah": "73.71.10.1004"
+ },
+ {
+  "sourceRef": "KOP-095DB9B464AA",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH MAKMUR TAMAN KLABALA",
+  "wilayah": "96.71.07.1002"
+ },
+ {
+  "sourceRef": "KOP-8FB4DC5243BB",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH MANDIRI SELATAN LINGKAR KARYA",
+  "wilayah": "15.71.11.1004"
+ },
+ {
+  "sourceRef": "KOP-6D20429FBD12",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH MANULAI UTAMA II ANGKASA",
+  "wilayah": "53.71.01.1010"
+ },
+ {
+  "sourceRef": "KOP-8E3C6B5D5BCD",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH MARIO BERKAH JELITA",
+  "wilayah": "73.71.01.1007"
+ },
+ {
+  "sourceRef": "KOP-73EC9B6B3C35",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH MEKAR ABADI KALOSI ALLA",
+  "wilayah": "73.16.05.1002"
+ },
+ {
+  "sourceRef": "KOP-AB88E89B508A",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH MEKAR MAESA TANGGUH UNIMA",
+  "wilayah": "71.02.18.1008"
+ },
+ {
+  "sourceRef": "KOP-DC1FB46B1A1B",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH MEKAR RAYA KOTA KOKAS",
+  "wilayah": "92.03.04.1001"
+ },
+ {
+  "sourceRef": "KOP-0BD646215046",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH MELAYU MAKMUR WANA",
+  "wilayah": "62.05.05.1014"
+ },
+ {
+  "sourceRef": "KOP-E2C4B2FDAA2C",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH MONGONDOW SEJATI BUKIT",
+  "wilayah": "71.74.03.1008"
+ },
+ {
+  "sourceRef": "KOP-96C6C128684F",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH MOODU MANDIRI MUTIARA",
+  "wilayah": "75.71.05.1008"
+ },
+ {
+  "sourceRef": "KOP-8D427607559E",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH MUTIARA BERKAH MATAIWOI",
+  "wilayah": "74.71.07.1003"
+ },
+ {
+  "sourceRef": "KOP-2CA62A05D00C",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH MUTIARA MULYA LUMPUR SUNGAI",
+  "wilayah": "21.04.01.1012"
+ },
+ {
+  "sourceRef": "KOP-9FCD642C209C",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH MUTIARA PERMAI DULALOWO",
+  "wilayah": "75.71.06.1002"
+ },
+ {
+  "sourceRef": "KOP-EBCC54C88306",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH MUTIARA SEJATI SADENG",
+  "wilayah": "33.74.12.1011"
+ },
+ {
+  "sourceRef": "KOP-D888E580BCF1",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH MUTIARA TIMUR TANJUNG SELOR PRIMA",
+  "wilayah": "65.01.05.1008"
+ },
+ {
+  "sourceRef": "KOP-848C43274F20",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH NALU GEMILANG PRABA",
+  "wilayah": "72.04.07.1004"
+ },
+ {
+  "sourceRef": "KOP-63AEF19F6654",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH NIRMALA HARMONI UNYUR",
+  "wilayah": "36.73.01.1007"
+ },
+ {
+  "sourceRef": "KOP-B8D36F1E4E3E",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH NIRMALA KARAMPUANG BERSERI",
+  "wilayah": "73.71.09.1005"
+ },
+ {
+  "sourceRef": "KOP-4BD118124A23",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH NIRMALA KOTAKARANG INDAH",
+  "wilayah": "18.71.19.1001"
+ },
+ {
+  "sourceRef": "KOP-073B4557B3C1",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH NIRMALA LESTARI GADDONG",
+  "wilayah": "73.71.06.1003"
+ },
+ {
+  "sourceRef": "KOP-5640DE941587",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH NIRMALA SAMARINDA SIDODADI SEJAHTERA ULU",
+  "wilayah": "64.72.03.1005"
+ },
+ {
+  "sourceRef": "KOP-AE38DC6156AD",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH NUSA TANGGUH LANGENHARJO",
+  "wilayah": "33.24.15.1012"
+ },
+ {
+  "sourceRef": "KOP-C3029EC10E35",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH PADMA CEMERLANG PRAPATAN",
+  "wilayah": "64.71.06.1001"
+ },
+ {
+  "sourceRef": "KOP-FCFDC796DF20",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH PANGKAL BAHAGIA TAMPO",
+  "wilayah": "74.03.06.1005"
+ },
+ {
+  "sourceRef": "KOP-E54F32FD49B3",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH PANGKAL KUBU BANCAH GULAI BUKITTINGGI SEJATI",
+  "wilayah": "13.75.02.1004"
+ },
+ {
+  "sourceRef": "KOP-DE8845A4F610",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH PANGKAL RAYA ULU RURAH",
+  "wilayah": "16.72.02.1020"
+ },
+ {
+  "sourceRef": "KOP-A56B340CC0D7",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH PANGKAL WONGKADITI CERIA TIMUR",
+  "wilayah": "75.71.03.1004"
+ },
+ {
+  "sourceRef": "KOP-617A67E37678",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH PANNAMPU HARMONI SURYA",
+  "wilayah": "73.71.07.1001"
+ },
+ {
+  "sourceRef": "KOP-F5E304AB417E",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH PAYAKUMBUH AIA AGUNG PARIK MUKO PESONA",
+  "wilayah": "13.76.04.1002"
+ },
+ {
+  "sourceRef": "KOP-B2CB8183C8DD",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH PEKAYON TANGGUH SENJA",
+  "wilayah": "31.75.05.1005"
+ },
+ {
+  "sourceRef": "KOP-9B5D46E901FD",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH PERMAI CANDRA PERMAI BALOI",
+  "wilayah": "21.71.10.1001"
+ },
+ {
+  "sourceRef": "KOP-9950FB40E94E",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH PERMAI REMU SUMBER",
+  "wilayah": "96.71.01.1004"
+ },
+ {
+  "sourceRef": "KOP-9A67D8799CBF",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH PERMAI ROBAN TIRTA",
+  "wilayah": "61.72.01.1001"
+ },
+ {
+  "sourceRef": "KOP-9BEDB8201E77",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH PERMAI TANGKERANG SELATAN PANGKAL",
+  "wilayah": "14.71.07.1006"
+ },
+ {
+  "sourceRef": "KOP-2ACF11BD98DE",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH PESONA MULYA WURING",
+  "wilayah": "53.07.14.1004"
+ },
+ {
+  "sourceRef": "KOP-958EA8A539E7",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH PESONA TIHU MANDIRI",
+  "wilayah": "81.71.04.1008"
+ },
+ {
+  "sourceRef": "KOP-E861A6701DE7",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH PINANG KENCANA SEJATI ARUNA",
+  "wilayah": "21.72.02.1005"
+ },
+ {
+  "sourceRef": "KOP-65511BBE4138",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH PRABA HARMONI ULU TUJUH",
+  "wilayah": "16.71.02.1006"
+ },
+ {
+  "sourceRef": "KOP-0936CF2DFDB5",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH PRABA LESTARI DULANPOKPOK",
+  "wilayah": "92.03.10.1003"
+ },
+ {
+  "sourceRef": "KOP-1AE8F0D90107",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH PRABA MAWASANGKA ASRI",
+  "wilayah": "74.14.04.1002"
+ },
+ {
+  "sourceRef": "KOP-D0ED79ED5AF8",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH PRIMA BALIKPAPAN MARGO MULYO BARAT CAHAYA",
+  "wilayah": "64.71.02.1005"
+ },
+ {
+  "sourceRef": "KOP-D5C951A3B95A",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH PRIMA BAUSASRAN CIPTA",
+  "wilayah": "34.71.04.1003"
+ },
+ {
+  "sourceRef": "KOP-D5E4E83408CC",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH PRIMA JAYA WIJAYA BOJONG",
+  "wilayah": "36.71.07.1002"
+ },
+ {
+  "sourceRef": "KOP-D8668B30A6D7",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH PRIMA LABAN RANTAU SAMUDRA",
+  "wilayah": "12.76.02.1004"
+ },
+ {
+  "sourceRef": "KOP-8B2C0F7A6856",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH PURNAMA BARU BERKAH KAMPUNG",
+  "wilayah": "96.71.07.1001"
+ },
+ {
+  "sourceRef": "KOP-168F3A45780F",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH PURNAMA KOJA ASRI",
+  "wilayah": "31.72.03.1001"
+ },
+ {
+  "sourceRef": "KOP-93F167DAAC4B",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH PURNAMA MANDIRI MARIYAI",
+  "wilayah": "96.01.14.1002"
+ },
+ {
+  "sourceRef": "KOP-A357692DD7E4",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH PUSPA CERIA TABONE",
+  "wilayah": "76.03.06.1002"
+ },
+ {
+  "sourceRef": "KOP-1D637FDD06BD",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH PUSPA JAYA TAMARUNANG",
+  "wilayah": "73.71.01.1009"
+ },
+ {
+  "sourceRef": "KOP-020CDB1F3B78",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH PUSPA LESTARI KLASUAT",
+  "wilayah": "96.71.08.1001"
+ },
+ {
+  "sourceRef": "KOP-C7D30F2BF9BC",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH PUSPA NABARUA MADANI",
+  "wilayah": "94.01.01.1008"
+ },
+ {
+  "sourceRef": "KOP-EF10EA0EE243",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH PUSPA PAPANGGO AGUNG",
+  "wilayah": "31.72.02.1003"
+ },
+ {
+  "sourceRef": "KOP-DF4354067608",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH PUTIH RAYA PAL LEMBAH",
+  "wilayah": "96.71.03.1004"
+ },
+ {
+  "sourceRef": "KOP-EAD5E3909327",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH RAJA SEJATI AIR PESONA",
+  "wilayah": "21.72.02.1003"
+ },
+ {
+  "sourceRef": "KOP-3293B7A25179",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH RANTAU SENTOSA MATABUBU",
+  "wilayah": "74.71.04.1006"
+ },
+ {
+  "sourceRef": "KOP-F1515AB8606B",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH RANTAU SOA AGUNG",
+  "wilayah": "82.71.03.1007"
+ },
+ {
+  "sourceRef": "KOP-8DCDABDA0B63",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH RAWA BERKAH TERATE BAYU",
+  "wilayah": "31.75.06.1002"
+ },
+ {
+  "sourceRef": "KOP-BF017F60BE43",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH RAYA KERAMAT NUSA CEMERLANG",
+  "wilayah": "16.07.10.1030"
+ },
+ {
+  "sourceRef": "KOP-DFCF658B9438",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH RAYA KIRANA DALAM SUNGAIJAWI",
+  "wilayah": "61.71.03.1002"
+ },
+ {
+  "sourceRef": "KOP-04DAA6F9705B",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH RAYA LEMBAH LESTARI BERINGIN",
+  "wilayah": "17.71.04.1005"
+ },
+ {
+  "sourceRef": "KOP-C47C63E04191",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH REJO KARANG CEMERLANG BAYU",
+  "wilayah": "64.71.04.1003"
+ },
+ {
+  "sourceRef": "KOP-57881B6B76D2",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH SAMUDRA SEJAHTERA UTAN KAYU SELATAN",
+  "wilayah": "31.75.01.1006"
+ },
+ {
+  "sourceRef": "KOP-8D401574E042",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH SAMUDRA SELAMAT BERKAH",
+  "wilayah": "15.71.10.1004"
+ },
+ {
+  "sourceRef": "KOP-C0921262041D",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH SARI CEMERLANG TELAGA ARUNA",
+  "wilayah": "64.71.06.1002"
+ },
+ {
+  "sourceRef": "KOP-FEA3B2908EE8",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH SEGARA BAHAGIA KORUMBA",
+  "wilayah": "74.71.01.1006"
+ },
+ {
+  "sourceRef": "KOP-DF571BCFB9D2",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH SEGARA RAWA RAYA ARUM",
+  "wilayah": "36.72.06.1003"
+ },
+ {
+  "sourceRef": "KOP-B7882B77B261",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH SEI KIRANA JANG BERSERI",
+  "wilayah": "21.72.04.1004"
+ },
+ {
+  "sourceRef": "KOP-51CEA4BD7CC8",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH SEJAHTERA CAHAYA SENGGARANG",
+  "wilayah": "21.72.03.1003"
+ },
+ {
+  "sourceRef": "KOP-52BC4387189D",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH SEJAHTERA TUUTU GIRI",
+  "wilayah": "71.02.01.1010"
+ },
+ {
+  "sourceRef": "KOP-E36AB904E651",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH SEJATI BODOA KALUKU TAMAN",
+  "wilayah": "73.71.07.1003"
+ },
+ {
+  "sourceRef": "KOP-E6B91D65E9D9",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH SEJATI KLAWUYUK KARANG",
+  "wilayah": "96.71.02.1003"
+ },
+ {
+  "sourceRef": "KOP-E859654D213C",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH SEJATI PAGESANGAN SEGARA BARAT",
+  "wilayah": "52.71.02.1009"
+ },
+ {
+  "sourceRef": "KOP-EC24787EA515",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH SEJATI PURBAYAN SENJA",
+  "wilayah": "34.71.14.1003"
+ },
+ {
+  "sourceRef": "KOP-91C012E83297",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH SEKELOA MANDIRI KARANG",
+  "wilayah": "32.73.02.1005"
+ },
+ {
+  "sourceRef": "KOP-09269AEF4A63",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH SELATAN REMU JELITA LESTARI",
+  "wilayah": "96.71.06.1004"
+ },
+ {
+  "sourceRef": "KOP-3026CB68520A",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH SELATAN SENTOSA JATIMULYA TAMBUN TIRTA",
+  "wilayah": "32.16.06.1001"
+ },
+ {
+  "sourceRef": "KOP-9E699C3E9F53",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH SELOR NIRMALA HILIR TANJUNG PERMAI",
+  "wilayah": "65.01.05.1002"
+ },
+ {
+  "sourceRef": "KOP-A0066342DA57",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH SENJA AWIYO PERMAI",
+  "wilayah": "91.71.03.1008"
+ },
+ {
+  "sourceRef": "KOP-7B2EF4B12121",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH SENJA CILILITAN JATI ABADI KRAMAT",
+  "wilayah": "31.75.04.1006"
+ },
+ {
+  "sourceRef": "KOP-4E54AB2F6750",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH SENJA MANGGAR INDAH",
+  "wilayah": "64.71.01.1001"
+ },
+ {
+  "sourceRef": "KOP-35341675B26C",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH SENTOSA KLASULUK ANGKASA",
+  "wilayah": "96.01.14.1003"
+ },
+ {
+  "sourceRef": "KOP-327551628F87",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH SENTOSA PADANG KOTA PANGKAL",
+  "wilayah": "17.02.06.1004"
+ },
+ {
+  "sourceRef": "KOP-324C26AA0923",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH SENTOSA SARI KUNINGAN BARAT",
+  "wilayah": "31.74.03.1005"
+ },
+ {
+  "sourceRef": "KOP-601FBF70C553",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH SIALANG HARMONI SEGARA",
+  "wilayah": "16.71.08.1006"
+ },
+ {
+  "sourceRef": "KOP-6614DC24DB89",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH SIMPANG TUAN UTAMA SUMBER",
+  "wilayah": "15.07.09.1001"
+ },
+ {
+  "sourceRef": "KOP-62F2074313A8",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH SIPIROK PASAR HARMONI CIPTA",
+  "wilayah": "12.03.04.1001"
+ },
+ {
+  "sourceRef": "KOP-F8A8ED1123A3",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH SUKODADI BAHAGIA SUMBER",
+  "wilayah": "16.71.07.1011"
+ },
+ {
+  "sourceRef": "KOP-11EF868AB11E",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH SUMBER ASRI UMA TELUK",
+  "wilayah": "21.02.05.1002"
+ },
+ {
+  "sourceRef": "KOP-537825326975",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH SUNGAI LOKAN SEJAHTERA TELUK",
+  "wilayah": "15.07.05.1005"
+ },
+ {
+  "sourceRef": "KOP-53383DBEB644",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH SUNGAI PANGKAL SEJAHTERA KERJAN",
+  "wilayah": "15.08.12.1002"
+ },
+ {
+  "sourceRef": "KOP-68470310A2AE",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH SURABAYA UTAMA PUSPA SERUT SUNGAI",
+  "wilayah": "17.71.08.1006"
+ },
+ {
+  "sourceRef": "KOP-A79353540BB2",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH SURYA CERIA WAISAI KOTA",
+  "wilayah": "96.03.17.1001"
+ },
+ {
+  "sourceRef": "KOP-7AB01584A187",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH TALANGAME BASTIONG MUTIARA ABADI",
+  "wilayah": "82.71.02.1006"
+ },
+ {
+  "sourceRef": "KOP-6646F7793BAD",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH TAMAN AIRNONA UTAMA",
+  "wilayah": "53.71.05.1003"
+ },
+ {
+  "sourceRef": "KOP-7C49DF1903E0",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH TAMAN SAUMLAKI GEMILANG",
+  "wilayah": "81.03.01.1001"
+ },
+ {
+  "sourceRef": "KOP-B09C84F10934",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH TANGGUH ANGKASA NUMBAY",
+  "wilayah": "91.71.02.1003"
+ },
+ {
+  "sourceRef": "KOP-AE63B29320FC",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH TANGGUH GIRI KEBAGUSAN",
+  "wilayah": "31.74.04.1007"
+ },
+ {
+  "sourceRef": "KOP-B10523F35440",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH TANGGUH WARMASEN PURNAMA",
+  "wilayah": "96.03.17.1004"
+ },
+ {
+  "sourceRef": "KOP-916E1E656117",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH TANI PANGKAL MANDIRI AMAN",
+  "wilayah": "64.72.10.1002"
+ },
+ {
+  "sourceRef": "KOP-3E8D9E0E040E",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH TANJUNG CANDRA DAMAI UTARA UBAN",
+  "wilayah": "21.01.07.1002"
+ },
+ {
+  "sourceRef": "KOP-3B2BF2E110CE",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH TANJUNG CITRA SENTOSA RIA SWAJA",
+  "wilayah": "91.71.01.1005"
+ },
+ {
+  "sourceRef": "KOP-E06186BDB35F",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH TANJUNG KENANGA PERMAI RAYA",
+  "wilayah": "21.01.15.1005"
+ },
+ {
+  "sourceRef": "KOP-C07A59CCBB33",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH TEGAL CEMERLANG ALUR SEGARA",
+  "wilayah": "31.73.06.1003"
+ },
+ {
+  "sourceRef": "KOP-D461047500FB",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH TELUK EMBUN PAGI LABUAI PRIMA",
+  "wilayah": "14.71.07.1011"
+ },
+ {
+  "sourceRef": "KOP-199C22705882",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH TENGAH BAYU ASRI LAMPER",
+  "wilayah": "33.74.07.1010"
+ },
+ {
+  "sourceRef": "KOP-FECB325AB0E1",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH TIMUR ARUNA MATARAM BAHAGIA",
+  "wilayah": "52.71.02.1002"
+ },
+ {
+  "sourceRef": "KOP-84C1E3209229",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH TIMUR GEMILANG CITRA MAMBURUNGAN",
+  "wilayah": "65.71.03.1007"
+ },
+ {
+  "sourceRef": "KOP-A23F291D3EE0",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH TIRTA CERIA CITANGKIL",
+  "wilayah": "36.72.08.1007"
+ },
+ {
+  "sourceRef": "KOP-8FB26BD01B22",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH TIRTA MAMUNYU MANDIRI",
+  "wilayah": "76.02.01.1003"
+ },
+ {
+  "sourceRef": "KOP-FD51CA0A0ED0",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH TRIKORA BAHAGIA LEMBAH",
+  "wilayah": "91.71.01.1003"
+ },
+ {
+  "sourceRef": "KOP-F8A0C206EB72",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH TUNAS AGUNG TERONDOL",
+  "wilayah": "36.73.01.1011"
+ },
+ {
+  "sourceRef": "KOP-6E93D73BC273",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH UTAMA KENANGA LANJAS",
+  "wilayah": "62.05.05.1013"
+ },
+ {
+  "sourceRef": "KOP-6978F5C2B747",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH UTAMA WANA DINGIN AIR",
+  "wilayah": "14.71.07.1012"
+ },
+ {
+  "sourceRef": "KOP-7E739FF3CD81",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH WANA BARU GEMILANG SELINDUNG",
+  "wilayah": "19.71.06.1002"
+ },
+ {
+  "sourceRef": "KOP-A3FDDFD38BC7",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH WANA GOMONG CERIA",
+  "wilayah": "52.71.05.1006"
+ },
+ {
+  "sourceRef": "KOP-D1946E4B2401",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH WANA MANGUN HARJO PRIMA",
+  "wilayah": "16.05.13.1007"
+ },
+ {
+  "sourceRef": "KOP-79016E626E04",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH WIJAYA ABADI LEMPAKE",
+  "wilayah": "64.72.05.1003"
+ },
+ {
+  "sourceRef": "KOP-70115C0F2FA7",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH WIJAYA UTAMA JATI",
+  "wilayah": "35.74.03.1004"
+ },
+ {
+  "sourceRef": "KOP-40823146E3EC",
+  "nama": "KOPERASI KELURAHAN MERAH PUTIH XX KARANG DAMAI PIAI PADANG SIRAH TANAH NAN",
+  "wilayah": "13.71.06.1003"
+ }
+]

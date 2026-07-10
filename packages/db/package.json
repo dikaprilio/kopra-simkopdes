@@ -3,19 +3,25 @@
   "version": "0.0.1",
   "private": true,
   "main": "src/index.ts",
+  "types": "src/index.ts",
   "scripts": {
     "push": "prisma db push",
     "generate": "prisma generate",
     "seed": "tsx src/seed.ts",
+    "gen:directory": "tsx src/gen-directory.ts",
     "import:koperasi": "tsx src/import-koperasi.ts",
     "studio": "prisma studio"
   },
   "dependencies": {
-    "@prisma/client": "^6.2.0"
+    "@prisma/client": "^6.2.0",
+    "argon2": "^0.41.1"
   },
   "devDependencies": {
+    "pg": "^8.13.1",
     "prisma": "^6.2.0",
     "tsx": "^4.19.0",
-    "typescript": "^5.7.0"
+    "typescript": "^5.7.0",
+    "@types/pg": "^8.11.10",
+    "@types/node": "^22.10.0"
   }
 }

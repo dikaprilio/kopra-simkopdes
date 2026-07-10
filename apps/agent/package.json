@@ -1,0 +1,25 @@
+{
+  "name": "agent",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "mastra dev",
+    "build": "mastra build",
+    "start": "mastra start"
+  },
+  "dependencies": {
+    "@ai-sdk/anthropic": "latest",
+    "@kopra/core": "workspace:*",
+    "@kopra/db": "workspace:*",
+    "@mastra/core": "latest",
+    "@mastra/libsql": "latest",
+    "@mastra/memory": "latest",
+    "zod": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "mastra": "latest",
+    "typescript": "^5.7.0"
+  }
+}
