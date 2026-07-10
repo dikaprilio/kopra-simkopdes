@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@ai-sdk/anthropic": "latest",
+    "@ai-sdk/google-vertex": "^3",
     "@kopra/core": "workspace:*",
     "@kopra/db": "workspace:*",
     "@mastra/core": "latest",

@@ -1,5 +1,5 @@
 import { Agent } from "@mastra/core/agent";
-import { anthropic } from "@ai-sdk/anthropic";
+import { kopraModel } from "../../lib/model";
 import {
   getCooperativeProfile,
   getFinancialDashboard,
@@ -42,7 +42,7 @@ ATURAN KERAS:
 7. Periode simpanan: "apr-jun" tahun berjalan → ["2026-04","2026-05","2026-06"].
 8. Di GRUP: hanya jawab pertanyaan; semua ajakan mencatat → arahkan japri (DM).
 9. Kalau user belum terhubung koperasi (GUEST): jawab pertanyaan umum saja + ingatkan bisa ketik *DAFTAR*.`,
-  model: anthropic("claude-opus-4-8"),
+  model: kopraModel(),
   tools: {
     getCooperativeProfile,
     getFinancialDashboard,
