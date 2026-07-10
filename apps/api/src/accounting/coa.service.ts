@@ -1,4 +1,4 @@
-import { ConflictException, Injectable } from '@nestjs/common';
+import { BadRequestException, ConflictException, Injectable } from '@nestjs/common';
 import { prisma } from '@kopra/db';
 import { CreateCoaDto } from './dto/create-coa.dto';
 
@@ -22,6 +22,10 @@ export class CoaService {
       where: { koperasiId_kode: { koperasiId, kode: dto.kode } },
     });
     if (exists) throw new ConflictException('KODE_COA_SUDAH_ADA');
+    if (dto.parentId) {
+      const parent = await prisma.coaAccount.findFirst({ where: { id: dto.parentId, koperasiId } });
+      if (!parent) throw new BadRequestException('AKUN_INDUK_TIDAK_VALID');
+    }
     return prisma.coaAccount.create({
       data: { koperasiId, kode: dto.kode, nama: dto.nama, type: dto.type, parentId: dto.parentId ?? null },
     });

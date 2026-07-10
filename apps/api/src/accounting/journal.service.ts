@@ -1,4 +1,4 @@
-import { ConflictException, Injectable, NotFoundException } from '@nestjs/common';
+import { BadRequestException, ConflictException, Injectable, NotFoundException } from '@nestjs/common';
 import { Prisma, prisma } from '@kopra/db';
 import {
   assertBalanced, createDraftFromSimple, createManualDraft, confirmEntry, rejectEntry,
@@ -17,7 +17,7 @@ export class JournalService {
     const where: Prisma.JournalEntryWhereInput = { koperasiId };
     if (q.unitId) where.businessUnitId = q.unitId;
     if (q.status === 'DRAFT' || q.status === 'CONFIRMED') where.status = q.status;
-    if (q.source) where.sourceChannel = q.source as Prisma.JournalEntryWhereInput['sourceChannel'];
+    if (q.source === 'WHATSAPP' || q.source === 'WEB' || q.source === 'SEED' || q.source === 'IMPORT') where.sourceChannel = q.source;
     if (q.month) {
       const [y, m] = q.month.split('-').map(Number);
       where.date = { gte: new Date(y, m - 1, 1), lt: new Date(y, m, 1) };
@@ -65,16 +65,23 @@ export class JournalService {
       const accounts = await tx.coaAccount.findMany({ where: { koperasiId, kode: { in: kodes }, isActive: true } });
       const byKode = new Map(accounts.map((a) => [a.kode, a.id]));
       const missing = kodes.filter((k) => !byKode.has(k));
-      if (missing.length) throw new NotFoundException(`AKUN_COA_HILANG: ${missing.join(',')}`);
-      await tx.journalLine.deleteMany({ where: { entryId: id } });
-      const updated = await tx.journalEntry.update({
-        where: { id },
-        data: {
-          keterangan: dto.keterangan, referensi: dto.referensi ?? null, businessUnitId: dto.businessUnitId ?? null,
-          lines: { create: dto.lines.map((l) => ({ coaId: byKode.get(l.coaKode)!, debit: l.debit, kredit: l.kredit })) },
-        },
-        include: INCLUDE,
+      if (missing.length) throw new BadRequestException(`AKUN_COA_HILANG: ${missing.join(',')}`);
+      if (dto.businessUnitId) {
+        const unit = await tx.businessUnit.findFirst({ where: { id: dto.businessUnitId, koperasiId } });
+        if (!unit) throw new BadRequestException('UNIT_TIDAK_DITEMUKAN');
+      }
+      // Compare-and-swap: re-assert DRAFT di write, bukan cuma di baca awal (TOCTOU).
+      // Mirror core confirmEntry() — updateMany(status: DRAFT) ⇒ count !== 1 = sudah dikonfirmasi konkuren.
+      const res = await tx.journalEntry.updateMany({
+        where: { id, koperasiId, status: 'DRAFT' },
+        data: { keterangan: dto.keterangan, referensi: dto.referensi ?? null, businessUnitId: dto.businessUnitId ?? null },
       });
+      if (res.count !== 1) throw new ConflictException('JURNAL_TERKONFIRMASI_IMMUTABLE');
+      await tx.journalLine.deleteMany({ where: { entryId: id } });
+      await tx.journalLine.createMany({
+        data: dto.lines.map((l) => ({ entryId: id, coaId: byKode.get(l.coaKode)!, debit: l.debit, kredit: l.kredit })),
+      });
+      const updated = await tx.journalEntry.findFirst({ where: { id, koperasiId }, include: INCLUDE });
       return serializeDecimals(updated);
     });
   }
