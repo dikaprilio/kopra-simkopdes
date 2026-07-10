@@ -242,6 +242,11 @@ export class RegistrationService {
     if (activeIdentity && activeIdentity.user.status === 'ACTIVE')
       throw new RegError('NOMOR_SUDAH_TERDAFTAR', 'Nomor WhatsApp ini sudah terdaftar sebagai pengguna aktif.');
 
+    // Anti-spam OTP: start-web berulang tunduk rate-limit yang sama dengan resend (60s).
+    const lastSentAt = await this.tokens.lastOtpSentAt(input.waNumber);
+    if (lastSentAt && Date.now() - lastSentAt.getTime() < 60_000)
+      throw new RegError('TUNGGU_SEBELUM_KIRIM_ULANG', 'Kode OTP baru saja dikirim. Tunggu sebentar sebelum meminta lagi ya.');
+
     const { koperasiId, koperasiRef } = await this.resolveKoperasiRef(input.koperasiRef);
     const passwordHash = await argon2.hash(input.password);
 

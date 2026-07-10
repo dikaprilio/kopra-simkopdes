@@ -210,6 +210,22 @@ describe('registrasi WEB-FIRST (OTP via WA)', () => {
     expect(res.status).toBe('PENDING_OWNER');
   });
 
+  it('start-web berulang < 60 detik → TUNGGU_SEBELUM_KIRIM_ULANG (anti OTP-flood)', async () => {
+    const waNumber = wa('009');
+    const input = {
+      nama: 'Ika WebJest',
+      nik: '9100000000000009',
+      password: 'rahasia1',
+      waNumber,
+      role: 'ANGGOTA' as const,
+      koperasiRef: kopLocalId,
+    };
+    await reg.startWebRegistration(input);
+    await expect(reg.startWebRegistration(input)).rejects.toMatchObject({
+      code: 'TUNGGU_SEBELUM_KIRIM_ULANG',
+    });
+  });
+
   it('verify-otp tanpa permohonan AWAITING_OTP aktif → error', async () => {
     await expect(reg.verifyWebOtp(wa('999-unknown'), '123456')).rejects.toMatchObject({
       code: 'PERMOHONAN_TIDAK_DITEMUKAN',
