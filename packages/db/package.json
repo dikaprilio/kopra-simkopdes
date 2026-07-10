@@ -8,6 +8,7 @@
     "push": "prisma db push",
     "generate": "prisma generate",
     "seed": "tsx src/seed.ts",
+    "ingest:rag": "tsx src/ingest-rag.ts",
     "gen:directory": "tsx src/gen-directory.ts",
     "import:koperasi": "tsx src/import-koperasi.ts",
     "studio": "prisma studio"

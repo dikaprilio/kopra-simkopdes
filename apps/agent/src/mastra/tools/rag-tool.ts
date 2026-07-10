@@ -38,6 +38,27 @@ export const searchCooperativeGuidance = createTool({
       ORDER BY rank DESC
       LIMIT 5`;
 
+    // suplemen OR (plainto = AND semua kata; terlalu ketat utk query panjang)
+    if (hits.length < 5) {
+      const orQuery = q
+        .split(/\s+/)
+        .map((w) => w.replace(/[^\p{L}\p{N}]/gu, ""))
+        .filter((w) => w.length >= 3)
+        .join(" | ");
+      if (orQuery) {
+        const extra = await prisma.$queryRaw<RagHit[]>`
+          SELECT title, source, "sourceType",
+                 left(content, 700) AS snippet,
+                 ts_rank(tsv, to_tsquery('simple', ${orQuery}))::float AS rank
+          FROM rag_documents
+          WHERE tsv @@ to_tsquery('simple', ${orQuery})
+          ORDER BY rank DESC
+          LIMIT 5`;
+        const seen = new Set(hits.map((h) => h.title));
+        hits = [...hits, ...extra.filter((h) => !seen.has(h.title))].slice(0, 5);
+      }
+    }
+
     if (hits.length === 0) {
       // fallback ILIKE per kata (FTS 'simple' tidak stemming bahasa Indonesia)
       const words = q.split(/\s+/).filter((w) => w.length >= 4).slice(0, 3);
