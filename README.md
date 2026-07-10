@@ -46,6 +46,7 @@ WAHA (WhatsApp) jalan dari repo terpisah: [`kopra-whatsapp-waha`](https://github
 
 | Doc | Isi |
 |---|---|
+| [docs/CONTEXT.md](docs/CONTEXT.md) | **Full context summary** — sejarah keputusan, seluruh riset, infra, keadaan repo, gotchas (mulai dari sini untuk sesi agent baru) |
 | [docs/00-core-features.md](docs/00-core-features.md) | **Spec utama** — scope terkunci, fase, cut-list, demo script |
 | [docs/01-shared-db.md](docs/01-shared-db.md) | Database resmi panitia: skema, insight, strategi import |
 | [docs/02-riset-adoption-gap.md](docs/02-riset-adoption-gap.md) | Data & sumber untuk pitch (92% vs <1%, dst.) |
