@@ -150,7 +150,7 @@ This package prevents the direct Prisma capability in NestJS and Mastra from cre
 
 #### GoWA gateway
 
-GoWA remains a separately versioned gateway container. The MVP pins a concrete GoWA v8 release rather than using `latest`. All device-scoped calls include the selected device ID. NestJS adapts GoWA payloads into internal message events so gateway-specific details do not enter the agent or domain layer.
+GoWA remains a separately versioned gateway container. The MVP pins `ghcr.io/aldinokemal/go-whatsapp-web-multidevice:v8.6.0` rather than using `latest`. All device-scoped calls include the selected device ID. NestJS adapts GoWA payloads into internal message events so gateway-specific details do not enter the agent or domain layer.
 
 ## 5. Data Design
 
@@ -195,6 +195,18 @@ The existing accounting and stock models remain the foundation:
 - quantities use a decimal type so kg, litre, and other fractional units are supported;
 - all reads and writes include `koperasiId` in the query predicate.
 
+### 5.4 Government import boundary
+
+The government database is accessed only by an explicit read-only import command, never by a web request, agent tool, or live demo flow.
+
+- Import all available cooperative profiles and the minimum `karyawan_koperasi`, `pengurus_koperasi`, and `anggota_koperasi` identity-candidate fields needed for cooperative search and super-administrator approval.
+- Preserve government source references and masked NIK values in `ImportedIdentity`; do not treat redacted phone values as authentication evidence.
+- Import operational Finance/Inventory data only for the selected demonstration cooperative: member references, products, and opening-stock facts that can be represented safely.
+- Generate opening `ADJUST` movements for imported stock so derived local balances are correct.
+- Seed local balanced journals for the Finance demonstration because the source copy does not provide the complete CORE journal ledger required by the MVP.
+- Record import batch, source timestamp, row counts, and failures without storing source credentials or unmasked PII in logs.
+- After import, all registration and ERP runtime behavior uses local PostgreSQL and remains functional when the government database is unavailable.
+
 ## 6. Registration and Approval Flows
 
 ### 6.1 First WhatsApp conversation
@@ -212,9 +224,9 @@ The existing accounting and stock models remain the foundation:
 3. The webpage asks for full NIK and password. It does not request imported profile fields again.
 4. A five-minute OTP is sent to the same WhatsApp number. It permits three verification attempts.
 5. The system searches `ImportedIdentity` using the selected cooperative and the visible prefix of the imported masked NIK.
-6. Every imported match creates a `PENDING_SUPER_ADMIN` request, even when only one candidate exists.
-7. When masked data yields several candidates, the WhatsApp-only super administrator selects the correct source reference while approving.
-8. Approval creates or updates the local `User`, stores the submitted full NIK, attaches the verified phone, copies imported profile data, and creates a `MEMBER` membership.
+6. Every registration targeting an imported cooperative enters `PENDING_SUPER_ADMIN`, including zero, one, or several candidate matches.
+7. When masked data yields several candidates, the WhatsApp-only super administrator selects the correct source reference while approving. A request with no source match is clearly marked and may be approved as a new `MEMBER` or rejected.
+8. Approval creates or updates the local `User`, stores the submitted full NIK, attaches the verified phone, copies imported profile data when a candidate was selected, and creates a `MEMBER` membership.
 9. Rejection returns a safe reason without exposing candidate identity data.
 
 If an exact local full-NIK user already exists and its phone is null, the profile form is skipped; approval and OTP attach the phone. A non-null phone conflict is rejected and routed to super-administrator resolution.
@@ -318,8 +330,8 @@ The LLM extracts and explains; shared domain code calculates totals, selects pos
 - NestJS stores every inbound group text message in a bounded context window, even when the bot does not reply.
 - A group retains the newest 50 text messages for at most 24 hours.
 - Media content is not interpreted in the MVP.
-- The bot responds only when the message contains the bot number or `@Kopra`, or when it replies to a known bot message.
-- An initial integration spike records redacted raw payload structure to determine whether GoWA supplies native incoming mention metadata. The deterministic text/reply rule remains the fallback used by the demo.
+- The bot responds only when the message contains a native mention of the bot number or the explicit text `@Kopra`. Replying to a bot message without mentioning it does not trigger a response.
+- An initial integration spike records redacted raw payload structure to determine whether GoWA supplies native incoming mention metadata. The explicit `@Kopra` text rule remains the deterministic fallback used by the demo.
 
 ### 9.2 Cooperative binding
 
@@ -399,7 +411,7 @@ The MVP runs on one GCP Compute Engine VM in `asia-southeast2` using Docker Comp
 - NestJS;
 - Mastra;
 - PostgreSQL 16 with pgvector available;
-- GoWA v8 pinned to a concrete release.
+- GoWA `v8.6.0`.
 
 A dedicated Persistent Disk stores PostgreSQL and GoWA session/key data. Only SSH, HTTP, and HTTPS are publicly reachable. PostgreSQL, NestJS internal routes, Mastra, and the GoWA management UI remain on the private Compose network; GoWA administration is reached through an SSH tunnel.
 
@@ -469,4 +481,3 @@ The MVP is complete when:
 - GoWA webhook payload and HMAC contract: <https://github.com/aldinokemal/go-whatsapp-web-multidevice/blob/main/docs/webhook-payload.md>
 - Mastra persisted workflow snapshots: <https://mastra.ai/en/reference/workflows/snapshots>
 - GCP Persistent Disk: <https://docs.cloud.google.com/compute/docs/disks/persistent-disks>
-
