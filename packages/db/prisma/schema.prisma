@@ -7,14 +7,15 @@
 // (hanya dibaca script gen-directory/import — tidak pernah oleh runtime).
 
 generator client {
-  provider        = "prisma-client-js"
-  previewFeatures = ["postgresqlExtensions"]
+  provider = "prisma-client-js"
 }
 
+// CATATAN pgvector: extension & kolom embedding SENGAJA ditunda (unified plan
+// #10 — RAG jalur kritis = Postgres FTS; vector = upgrade opsional saat deploy
+// dgn image pgvector/pgvector). Dev lokal memakai Postgres 18 native tanpa vector.
 datasource db {
-  provider   = "postgresql"
-  url        = env("DATABASE_URL")
-  extensions = [vector]
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 // ============ ENUMS ============
@@ -486,16 +487,15 @@ model KoperasiDirectory {
 
 // Pencarian utama = Postgres FTS: kolom generated `tsv` + GIN index dibuat
 // via SQL init (packages/db/sql/rag_fts.sql) karena Prisma belum dukung
-// generated tsvector. Embedding pgvector = upgrade opsional (bukan jalur kritis).
+// generated tsvector. Embedding pgvector = upgrade opsional saat deploy.
 model RagDocument {
-  id         String                       @id @default(cuid())
+  id         String   @id @default(cuid())
   title      String
   source     String
   // regulation | guide | field_research | template | module_tutorial
   sourceType String
   content    String
-  embedding  Unsupported("vector(1024)")?
-  createdAt  DateTime                     @default(now())
+  createdAt  DateTime @default(now())
 
   @@map("rag_documents")
 }
