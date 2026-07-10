@@ -1,4 +1,9 @@
-// @kopra/core — shared domain rules (unified plan Task 2.3).
-// Diisi bertahap: policy.ts, posting-rules.ts, journal.ts, stock.ts,
-// pending-action.ts, audit.ts. Konsumen: apps/api & apps/agent.
+// @kopra/core — shared domain rules (satu implementasi, dua konsumen: api & agent).
 export * from "./redact";
+export * from "./policy";
+export * from "./posting-rules";
+export * from "./journal";
+export * from "./stock";
+export * from "./savings";
+export * from "./pending-action";
+export * from "./audit";
