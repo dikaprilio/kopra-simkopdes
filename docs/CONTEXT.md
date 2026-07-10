@@ -9,7 +9,7 @@
 
 - **Event:** Hackathon Digital Cooperatives Expo 2026 ("Hack The Cooperatives") — Kementerian Koperasi RI × PEBS FEB UI. Situs: hackathon.simkopdes.go.id
 - **Tim:** **Fandelion** — Dika + Aldio (fullstack, keduanya men-drive coding agents Claude Code & Codex) + 1 hustler (PPT, pitching, ide)
-- **Pilar terdaftar:** **4 — Literasi Gen-Z & Gen-Alpha dalam Berkoperasi** (dari 4 tema: volume usaha, keterlibatan masyarakat, potensi desa, literasi Gen-Z)
+- **Pilar terdaftar:** **1 — Peningkatan Volume Usaha Koperasi** *(pindah dari Pilar 4 pada 10 Jul sore — tesis "CRUD harian via WA" jauh lebih pas di Tema 1: volume usaha, efisiensi operasional, produktivitas, keberlanjutan; kategori solusi "Digitalisasi Operasional Koperasi")*
 - **Timeline aktual:** sprint hacking maraton **Jum–Sab 10–11 Jul 2026, Flores Ballroom Hotel Borobudur Jakarta** (24–36 jam); Pitching Day 10–11 Jul; Awarding 12 Jul (3 pemenang dari 10 finalis)
 - **Bobot penilaian:** Relevansi tema 25% · Inovasi/novelty 20% · Dampak & manfaat 20% · Kemudahan implementasi 15% · Kualitas teknologi 15% · Presentasi 5%
 - **Submission wajib:** repo publik (source MVP + README install & arsitektur) · pitch deck PDF ≤12 slide · link demo aktif + **kredensial akun uji juri** · video demo ≤3 menit unlisted (opsional tapi kami WAJIBKAN sebagai asuransi WAHA) · dikumpulkan via portal SIMKOPDES sebelum deadline sprint (telat 1 detik = gugur)
@@ -23,6 +23,7 @@
 2. **Pivot 1 (9 Jul):** learning path dijadikan **bridge**; urgensi utama = **activation gap** digitalisasi KDMP (92% punya akun SIMKOPDES, <1% aktif). Course interaktif → **BACKLOG** (cukup halaman statis sebagai artefak Pilar 4)
 3. **Pivot 2 (10 Jul pagi):** setelah audit DB panitia + baca ulang interview — inventaris ternyata BERGUNA (Bu Anita) tapi gagal diadopsi karena interface & SDM → tesis final: **"Kopra = antarmuka WhatsApp untuk CRUD harian koperasi"** (transaksi, stok, simpanan). Fitur resmi sudah ada; yang mati adalah INPUT HARIAN; WA = tempat pengurus benar-benar bekerja
 4. **Pivot 3 (10 Jul sore):** revamp sistem keuangan ke struktur **"Koperasi Merah Putih CORE" resmi** (COA + jurnal double-entry + Buku Besar/Neraca Saldo/PHU/Neraca) — jangan berpaku format xlsx Pak Tedjo (susah distandardisasi). Pitch line: *"chat masuk, jurnal CORE-standard keluar."*
+5. **Pivot 4 (10 Jul sore):** pindah **Pilar 4 → Pilar 1** (Volume Usaha). Konsekuensi: halaman learning path statis → backlog (tak perlu artefak Gen-Z lagi); relevansi kini langsung — pembukuan+stok+simpanan tercatat = volume usaha terlihat, laporan siap RAT = syarat kemitraan/pembiayaan. Gen-Z tinggal 1 slide dampak sosial.
 
 ## 3. Riset yang sudah dilakukan (semua tersitasi, siap pitch)
 
@@ -116,7 +117,7 @@ ERP web ala CORE (Dashboard kartu akuntansi; COA; Jurnal; Produk+Stok; Anggota+S
 ## 8. CUT & jawaban juri (hafalkan)
 
 - **POS/kasir/barcode:** "Segmen yang butuh kasir sudah dilayani vendor (kasus Bangunharjo). Target kami 700+ koperasi TANPA app vendor; stok kami movement-log via WA, bukan point-of-sale." (Data: 640 daftar produk vs 301 mencatat.)
-- **Kenapa tak ada course interaktif (Pilar 4)?** "Learning path kami = Gen Z jadi agen digitalisasi (halaman roadmap); LMS pemerintah sudah ada 3 — yang kurang bukan platform belajar, tapi jembatan literasi→aktivasi. Course interaktif ada di roadmap."
+- **Kok dulu Pilar 4 / mana unsur Gen-Z?** "Kami pindah ke Pilar 1 karena riset menunjukkan pain terbesar di volume usaha & operasional harian. Gen-Z tetap di roadmap (learning path 'agen digitalisasi') sebagai jalur regenerasi pengurus (median umur 44)."
 - **Kenapa transaksi CONFIRMED tak bisa diedit?** "Prinsip pembukuan: koreksi lewat jurnal balik — auditability RAT."
 - **Integrasi SIMKOPDES?** "Struktur data kami sengaja se-shape dengan suite resmi (COA/jurnal CORE, simpanan Mobile, movement Warehouse) — integrasi = roadmap terdekat, bukan rewrite."
 - **Keamanan data?** guardrails: identity WA wajib linked, scoped koperasiId, audit_logs, template pengingat di-copy manual (no auto-broadcast).

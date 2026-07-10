@@ -1,15 +1,15 @@
 # Kopra — Asisten Digital Koperasi Merah Putih
 
-> **Hackathon Digital Cooperatives Expo 2026** — Kemenkop RI × PEBS FEB UI · Tim Fandelion · Pilar 4
+> **Hackathon Digital Cooperatives Expo 2026** — Kemenkop RI × PEBS FEB UI · Tim Fandelion · Pilar 1 (Peningkatan Volume Usaha Koperasi)
 
 **Masalah:** 92% Kopdes Merah Putih punya akun SIMKOPDES, tapi <1% yang aktif memakainya untuk bisnis. Pengurus tetap bekerja di WhatsApp dan Excel.
 
-**Solusi:** Kopra bertemu pengurus di tempat mereka berada — **WhatsApp** — dan mengubah kebiasaan chat menjadi pembukuan terstruktur: catat transaksi via chat/foto nota/voice note → konfirmasi "YA" → masuk ledger → laporan otomatis. Plus asisten RAG untuk panduan koperasi, dan learning path Gen Z sebagai agen digitalisasi.
+**Solusi:** Kopra bertemu pengurus di tempat mereka berada — **WhatsApp** — dan mengubah kebiasaan chat menjadi pembukuan terstruktur: catat transaksi via chat/foto nota/voice note → konfirmasi "YA" → masuk ledger → laporan otomatis. Plus catat stok & simpanan via chat, dan asisten RAG untuk panduan koperasi — semuanya menghasilkan jurnal ber-standar CORE resmi. Hasilnya: volume usaha koperasi tercatat, terukur, dan siap untuk kemitraan & pembiayaan.
 
 ## Arsitektur
 
 ```
-apps/web     Next.js      — dashboard ERP, chat asisten, landing, learning path
+apps/web     Next.js      — dashboard ERP, chat asisten, landing
 apps/api     NestJS       — auth/JWT, CRUD, laporan, webhook WAHA, audit log
 apps/agent   Mastra       — agent "kopra", workflow konfirmasi (suspend/resume),
                             memory per nomor WA, RAG (pgvector)

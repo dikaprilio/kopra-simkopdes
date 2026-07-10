@@ -1,6 +1,6 @@
 # KOPRA — Spec Final & Rencana Implementasi (v2, LOCKED)
 
-**Update:** 10 Jul 2026 (pasca riset DB panitia + re-plan inventaris) · **Pilar:** 4 · **Tim:** Fandelion
+**Update:** 10 Jul 2026 (pindah ke Pilar 1) · **Pilar:** **1 — Peningkatan Volume Usaha Koperasi** · **Tim:** Fandelion
 **Ini SATU-SATUNYA dokumen scope.** Dokumen lain (01–03, riset-lapangan/) adalah konteks pendukung. Kalau ragu sebuah fitur perlu dibangun: cari di §9 (CUT & Backlog). Kalau tetap ragu → tanya grup, default JANGAN bangun.
 
 ---
@@ -21,6 +21,8 @@ Bukti (semua dari data resmi panitia + riset lapangan sendiri — siap disitasi 
 | Simpanan = pain keuangan #1 | 61% record simpanan UNPAID (226.912); 76% anggota tanpa akun | DB panitia |
 | WhatsApp = platform kerja nyata | Pemesanan mitra, penagihan simpanan, koordinasi — semua via WA | Interview Bu Anita & Pak Tedjo |
 | Inventaris BERGUNA bila accessible | Bu Anita: stock opname & fast-moving "sangat membantu" — via app vendor custom | Interview §73–75 |
+
+**Relevansi Tema 1 (bobot 25%):** problem statement resmi = *"bagaimana teknologi membantu koperasi meningkatkan volume usaha, efisiensi operasional, produktivitas, dan keberlanjutan?"* Jawaban Kopra langsung: (1) input harian yang tadinya mati → tercatat = volume usaha TERLIHAT & terukur; (2) laporan otomatis siap RAT → syarat kemitraan & pembiayaan (jalan menaikkan volume); (3) stok tercatat → gerai aktif beroperasi; (4) simpanan tertagih (61% UNPAID) → modal kerja naik. Kategori solusi TOR yang kena: "Digitalisasi Operasional Koperasi" + AI assistant.
 
 Prinsip non-negotiable: **LLM explains, backend calculates.** Angka selalu dari SQL; commit data = kode deterministik setelah user balas "YA"; LLM hanya ekstraksi intent + merangkai kalimat.
 
@@ -112,7 +114,7 @@ Menu & istilah **meniru CORE resmi** (Dashboard · Akuntansi: COA, Jurnal · Mas
 Detail flows di §5.
 
 ### 3.3 Webapp umum
-Login credentials sederhana (2 role) · chat asisten di dashboard (otak & tools sama dengan WA, streaming) · landing 1 halaman · **halaman Learning Path statis** (artefak Pilar 4; course interaktif = backlog).
+Login credentials sederhana (2 role) · chat asisten di dashboard (otak & tools sama dengan WA, streaming) · landing 1 halaman. (Learning path Gen-Z → BACKLOG sejak pindah Pilar 1 — cukup 1 slide dampak sosial di deck.)
 
 ### 3.4 RAG
 Ingest: markdown → chunk → embed → pgvector; sourceType `regulation|guide|field_research|template`.
@@ -230,7 +232,7 @@ Agent `kopra`: model `claude-opus-4-8`, system prompt bahasa sederhana, tak pern
 - **Done per item:** flow media/simpanan masuk draft→YA yang sama
 
 ### Fase 3 — Web chat + polish (jam 20–28)
-- [ ] chat asisten dashboard (streaming, tools sama) · [ ] landing · [ ] learning path statis · [ ] RAG P2
+- [ ] chat asisten dashboard (streaming, tools sama) · [ ] landing · [ ] RAG P2
 - **Done:** semua halaman demo-ready
 
 ### Fase 4 — Hardening & pitch (jam 28–36)
@@ -238,7 +240,7 @@ Agent `kopra`: model `claude-opus-4-8`, system prompt bahasa sederhana, tak pern
 - **Done:** submission lengkap SEBELUM deadline
 
 ### Aturan potong scope (urutan korban kalau kepepet)
-`RAG P3 → STT → simpanan-via-WA (2b) → OCR → halaman learning path → should-have ERP`
+`RAG P3 → STT → simpanan-via-WA (2b) → OCR → should-have ERP`
 **Tidak pernah dikorbankan:** F1+F7 (transaksi & stok via WA + konfirmasi YA), dashboard+laporan, RAG P1, import data resmi.
 
 ---
@@ -250,14 +252,14 @@ Buku Bank · Neraca sederhana · Export Excel · upload bukti transaksi · evals
 **CUT (tidak dibangun, punya jawaban):**
 - **POS/kasir checkout, barcode scanning, harga promo** — segmen yang butuh kasir sudah dilayani vendor (kasus Bangunharjo); target Kopra = 700+ koperasi tanpa app vendor; stok kami movement-log via WA, bukan point-of-sale
 - Payment gateway, approval berjenjang, multi-koperasi UI, delete anggota, user mgmt UI
-**BACKLOG (slide roadmap):** course interaktif Gen Z + gamifikasi · integrasi API SIMKOPDES/Satriya (schema sudah se-shape) · MCP server tool layer · Excel import · stock opname massal · HPP/FIFO · SHU simulation · WhatsApp Business API resmi.
+**BACKLOG (slide roadmap):** learning path & course interaktif Gen Z + gamifikasi · integrasi API SIMKOPDES/Satriya (schema sudah se-shape) · MCP server tool layer · Excel import · stock opname massal · HPP/FIFO · SHU simulation · WhatsApp Business API resmi.
 
 ## 10. Demo script 5 menit
 1. **Hook (30s):** 92% akun vs <1% aktif; 640 daftar produk vs 301 yang mencatat; pengurus median 44 th — "masalahnya bukan aplikasi; input hariannya yang mati"
 2. **WA (2m):** "catat pemasukan banyu 500rb" → YA → muncul di web · **"kejual minyakita 5" → YA → stok & kas berubah bersamaan** ("dua buku tercatat sekali chat") · (kalau 2b jadi: foto nota / voice)
 3. **Web (1m):** dashboard → kartu stok → laporan Laba Rugi print-ready "siap RAT"
 4. **RAG (30s):** "beli stok air masuk operasional atau persediaan?" → jawaban + sumber
-5. **Closing (1m):** import 1 koperasi dari data resmi live → learning path (Pilar 4: Gen Z agen digitalisasi) → roadmap (integrasi SIMKOPDES — "schema kami sudah se-shape") → dampak
+5. **Closing (1m):** import 1 koperasi dari data resmi live → dampak volume usaha (dari <1% aktif → tercatat, terukur, siap mitra & pembiayaan) → roadmap (integrasi SIMKOPDES — "schema kami sudah se-shape"; learning path Gen Z)
 
 ## 11. Compliance TOR
 Repo publik + README (install + arsitektur) · deck PDF ≤12 slide · link demo aktif + **kredensial akun uji juri** · video ≤3 menit unlisted · **disclosure AI** (Claude Code/Codex = coding assistance; ide & riset lapangan = orisinal tim) · HAKI → Kemenkop bila Top 10 · **tak ada kredensial/PII bocor di repo**.
