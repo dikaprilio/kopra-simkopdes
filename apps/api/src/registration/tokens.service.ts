@@ -1,5 +1,6 @@
 import { createHash, randomBytes, randomInt } from 'node:crypto';
 import { Injectable } from '@nestjs/common';
+import * as argon2 from 'argon2';
 import { prisma } from '@kopra/db';
 
 const sha256 = (s: string) => createHash('sha256').update(s).digest('hex');
@@ -48,14 +49,25 @@ export class TokensService {
     return { waNumber: row.waNumber, regRequestId: payload.regRequestId };
   }
 
-  /** OTP 6 digit TTL 300s — pengirimannya urusan pemanggil (outbox DM). */
+  /** OTP 6 digit TTL 600s (10 menit), hash argon2 — pengirimannya urusan pemanggil (outbox DM). */
   async issueOtp(waNumber: string, requestId?: string): Promise<string> {
     const otp = String(randomInt(0, 1_000_000)).padStart(6, '0');
-    const ttl = Number(process.env.OTP_TTL_SECONDS ?? 300) * 1000;
+    const ttl = Number(process.env.OTP_TTL_SECONDS ?? 600) * 1000;
+    const otpHash = await argon2.hash(otp);
     await prisma.otpChallenge.create({
-      data: { waNumber, otpHash: sha256(otp), requestId, expiresAt: new Date(Date.now() + ttl) },
+      data: { waNumber, otpHash, requestId, expiresAt: new Date(Date.now() + ttl) },
     });
     return otp;
+  }
+
+  /** Waktu OTP aktif terakhir dikirim utk waNumber ini (dipakai guard resend 60s). */
+  async lastOtpSentAt(waNumber: string): Promise<Date | undefined> {
+    const ch = await prisma.otpChallenge.findFirst({
+      where: { waNumber },
+      orderBy: { createdAt: 'desc' },
+      select: { createdAt: true },
+    });
+    return ch?.createdAt;
   }
 
   /** Verifikasi OTP: max 3 percobaan per challenge, single-use. */
@@ -67,7 +79,8 @@ export class TokensService {
     if (!ch) throw new TokenError('INVALID', 'Tidak ada OTP aktif. Minta kode baru ya.');
     if (ch.expiresAt < new Date()) throw new TokenError('EXPIRED', 'OTP kedaluwarsa. Minta kode baru ya.');
     if (ch.attempts >= 3) throw new TokenError('LOCKED', 'OTP terkunci (3× salah). Minta kode baru ya.');
-    if (ch.otpHash !== sha256(otp)) {
+    const ok = await argon2.verify(ch.otpHash, otp).catch(() => false);
+    if (!ok) {
       await prisma.otpChallenge.update({ where: { id: ch.id }, data: { attempts: ch.attempts + 1 } });
       const sisa = 3 - (ch.attempts + 1);
       throw new TokenError('WRONG', sisa > 0 ? `Kode salah. Sisa percobaan: ${sisa}.` : 'OTP terkunci (3× salah). Minta kode baru ya.');

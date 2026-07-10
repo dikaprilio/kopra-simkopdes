@@ -37,6 +37,12 @@ export function masksMatch(nik: string, masked?: string | null): boolean {
   return nik.startsWith(prefix) && (suffix === '' || nik.endsWith(suffix));
 }
 
+/** Nomor WA SELALU masked di response HTTP (5 depan + 2 belakang). */
+export function maskWaNumber(waNumber: string): string {
+  if (waNumber.length <= 7) return '*'.repeat(waNumber.length);
+  return waNumber.slice(0, 5) + '***' + waNumber.slice(-2);
+}
+
 @Injectable()
 export class RegistrationService {
   private readonly logger = new Logger(RegistrationService.name);
@@ -71,12 +77,10 @@ export class RegistrationService {
   }
 
   private async nextShortCode(): Promise<string> {
-    const last = await prisma.registrationRequest.findFirst({
-      orderBy: { createdAt: 'desc' },
-      select: { shortCode: true },
-    });
-    const n = last ? Number(last.shortCode.replace(/\D/g, '')) + 1 : 1;
-    return `R-${String(n).padStart(3, '0')}`;
+    // Max NUMERIK, bukan createdAt terbaru — urutan insert ≠ urutan nomor (bisa tabrakan unik).
+    const rows = await prisma.registrationRequest.findMany({ select: { shortCode: true } });
+    const max = rows.reduce((m, r) => Math.max(m, Number(r.shortCode.replace(/\D/g, '')) || 0), 0);
+    return `R-${String(max + 1).padStart(3, '0')}`;
   }
 
   /** Mulai registrasi dari WA (guest flow) → magic link form web. */
@@ -142,10 +146,21 @@ export class RegistrationService {
       data: { nama: input.nama, nik: input.nik, passwordHash },
     });
 
+    return this.routeAfterForm(reg, { waNumber, nama: input.nama, nik: input.nik, passwordHash });
+  }
+
+  /**
+   * Tail bersama WA-first (completeWaForm) & web-first (verifyWebOtp) setelah form
+   * (nama/nik/password) siap: auto-match NIK Member → ACTIVE, atau kandidat + toPending().
+   */
+  private async routeAfterForm(
+    reg: { id: string; type: string; koperasiId: string | null; koperasiRef: string | null; roleRequested: string | null; shortCode: string },
+    form: { waNumber: string; nama: string; nik: string; passwordHash: string },
+  ): Promise<{ status: 'PENDING' | 'ACTIVE'; shortCode: string; koperasiNama?: string }> {
     if (reg.type === 'NEW_KOPERASI') {
       await this.toPending(reg.id, 'PENDING_SUPER_ADMIN');
       await this.outbox.enqueue(
-        jid(waNumber),
+        jid(form.waNumber),
         `📝 Pendaftaran koperasi barumu tercatat (kode ${reg.shortCode}) dan menunggu persetujuan admin. Kami kabari lewat chat ini ya!`,
       );
       return { status: 'PENDING' as const, shortCode: reg.shortCode };
@@ -157,42 +172,175 @@ export class RegistrationService {
       : null;
     if (koperasi) {
       const member = await prisma.member.findFirst({
-        where: { koperasiId: koperasi.id, nik: input.nik },
+        where: { koperasiId: koperasi.id, nik: form.nik },
       });
       if (member) {
         await this.activate(reg.id, {
-          waNumber,
-          nama: input.nama,
-          nik: input.nik,
-          passwordHash,
+          waNumber: form.waNumber,
+          nama: form.nama,
+          nik: form.nik,
+          passwordHash: form.passwordHash,
           role: (reg.roleRequested as 'PENGURUS' | 'ANGGOTA') ?? 'ANGGOTA',
           koperasiId: koperasi.id,
           memberId: member.id,
         });
         await this.outbox.enqueue(
-          jid(waNumber),
-          `✅ Selamat datang di *${koperasi.nama}*, ${input.nama.split(' ')[0]}!\nAkunmu langsung aktif karena NIK-mu terdaftar sebagai anggota.\nCoba: "info koperasi", "simpanan saya", atau tanya apa saja.`,
+          jid(form.waNumber),
+          `✅ Selamat datang di *${koperasi.nama}*, ${form.nama.split(' ')[0]}!\nAkunmu langsung aktif karena NIK-mu terdaftar sebagai anggota.\nCoba: "info koperasi", "simpanan saya", atau tanya apa saja.`,
         );
-        return { status: 'ACTIVE' as const, koperasiNama: koperasi.nama };
+        return { status: 'ACTIVE' as const, shortCode: reg.shortCode, koperasiNama: koperasi.nama };
       }
     }
 
     // tidak match → PENDING (kandidat dari data resmi utk membantu super-admin)
-    const ref = koperasi?.sourceRef ?? reg.koperasiRef;
+    const ref = koperasi?.sourceRef ?? reg.koperasiRef ?? undefined;
     let candidateRef: string | undefined;
     if (ref) {
       const imported = await prisma.importedIdentity.findMany({ where: { koperasiRef: ref } });
-      const matches = imported.filter((i) => masksMatch(input.nik, i.nikMasked));
+      const matches = imported.filter((i) => masksMatch(form.nik, i.nikMasked));
       if (matches.length === 1) candidateRef = matches[0].sourceRef;
     }
     const nextStatus =
       koperasi && koperasi.managementMode === 'OWNER' ? 'PENDING_OWNER' : 'PENDING_SUPER_ADMIN';
     await this.toPending(reg.id, nextStatus, candidateRef);
     await this.outbox.enqueue(
-      jid(waNumber),
+      jid(form.waNumber),
       `📝 Pendaftaranmu tercatat (kode ${reg.shortCode}) dan menunggu persetujuan.\nKami kabari lewat chat ini begitu disetujui ya!`,
     );
     return { status: 'PENDING' as const, shortCode: reg.shortCode };
+  }
+
+  /** Terima 1 field `koperasiRef` dari web (bisa berisi id koperasi onboarded ATAU sourceRef directory). */
+  private async resolveKoperasiRef(
+    koperasiRef: string,
+  ): Promise<{ koperasiId?: string; koperasiRef?: string }> {
+    const kop = await prisma.koperasi.findFirst({
+      where: { OR: [{ id: koperasiRef }, { sourceRef: koperasiRef }] },
+    });
+    if (kop) return { koperasiId: kop.id };
+    const dir = await prisma.koperasiDirectory.findUnique({ where: { sourceRef: koperasiRef } });
+    if (dir) return { koperasiRef: dir.sourceRef };
+    throw new RegError('KOPERASI_TIDAK_DITEMUKAN', 'Koperasi tidak ditemukan. Coba cari ulang ya.');
+  }
+
+  /**
+   * Mulai registrasi WEB-FIRST: simpan form (nama/nik/password) di RegistrationRequest
+   * berstatus AWAITING_OTP, lalu kirim OTP 6 digit via WA (OutboxService).
+   */
+  async startWebRegistration(input: {
+    nama: string;
+    nik: string;
+    password: string;
+    waNumber: string;
+    role: 'PENGURUS' | 'ANGGOTA';
+    koperasiRef: string;
+  }): Promise<{ sentTo: string }> {
+    const activeIdentity = await prisma.whatsappIdentity.findUnique({
+      where: { waNumber: input.waNumber },
+      include: { user: true },
+    });
+    if (activeIdentity && activeIdentity.user.status === 'ACTIVE')
+      throw new RegError('NOMOR_SUDAH_TERDAFTAR', 'Nomor WhatsApp ini sudah terdaftar sebagai pengguna aktif.');
+
+    const { koperasiId, koperasiRef } = await this.resolveKoperasiRef(input.koperasiRef);
+    const passwordHash = await argon2.hash(input.password);
+
+    const existing = await prisma.registrationRequest.findFirst({
+      where: { waNumber: input.waNumber, status: 'AWAITING_OTP' },
+      orderBy: { createdAt: 'desc' },
+    });
+    const reg = existing
+      ? await prisma.registrationRequest.update({
+          where: { id: existing.id },
+          data: {
+            nama: input.nama,
+            nik: input.nik,
+            passwordHash,
+            roleRequested: input.role,
+            koperasiId: koperasiId ?? null,
+            koperasiRef: koperasiRef ?? null,
+          },
+        })
+      : await prisma.registrationRequest.create({
+          data: {
+            type: 'MEMBER_JOIN',
+            channel: 'WEB',
+            waNumber: input.waNumber,
+            roleRequested: input.role,
+            nama: input.nama,
+            nik: input.nik,
+            passwordHash,
+            koperasiId,
+            koperasiRef,
+            status: 'AWAITING_OTP',
+            shortCode: await this.nextShortCode(),
+            expiresAt: new Date(Date.now() + 24 * 3600_000),
+          },
+        });
+
+    const otp = await this.tokens.issueOtp(input.waNumber, reg.id);
+    await this.outbox.enqueue(
+      jid(input.waNumber),
+      `🔐 Kode OTP pendaftaran Kopra kamu: *${otp}* (berlaku 10 menit). Jangan bagikan kode ini ke siapa pun ya.`,
+    );
+    return { sentTo: maskWaNumber(input.waNumber) };
+  }
+
+  /** Verifikasi OTP web-first → jalankan routing tail yang SAMA dengan completeWaForm. */
+  async verifyWebOtp(
+    waNumber: string,
+    code: string,
+  ): Promise<{ status: string; shortCode: string; koperasiNama?: string }> {
+    const reg = await prisma.registrationRequest.findFirst({
+      where: { waNumber, status: 'AWAITING_OTP' },
+      orderBy: { createdAt: 'desc' },
+    });
+    if (!reg) throw new RegError('PERMOHONAN_TIDAK_DITEMUKAN', 'Tidak ada permohonan OTP aktif untuk nomor ini.');
+
+    try {
+      await this.tokens.verifyOtp(waNumber, code);
+    } catch (e) {
+      if (e instanceof TokenError) {
+        const map: Record<string, string> = {
+          WRONG: 'OTP_SALAH',
+          LOCKED: 'OTP_TERKUNCI',
+          EXPIRED: 'OTP_KEDALUWARSA',
+          INVALID: 'OTP_TIDAK_DITEMUKAN',
+          USED: 'OTP_TIDAK_DITEMUKAN',
+        };
+        throw new RegError(map[e.code] ?? 'OTP_SALAH', e.message);
+      }
+      throw e;
+    }
+
+    await this.routeAfterForm(reg, {
+      waNumber: reg.waNumber,
+      nama: reg.nama!,
+      nik: reg.nik!,
+      passwordHash: reg.passwordHash!,
+    });
+    const updated = await prisma.registrationRequest.findUnique({ where: { id: reg.id } });
+    return { status: updated!.status, shortCode: updated!.shortCode };
+  }
+
+  /** Kirim ulang OTP — rate limit 60 detik sejak pengiriman terakhir. */
+  async resendWebOtp(waNumber: string): Promise<{ sentTo: string }> {
+    const reg = await prisma.registrationRequest.findFirst({
+      where: { waNumber, status: 'AWAITING_OTP' },
+      orderBy: { createdAt: 'desc' },
+    });
+    if (!reg) throw new RegError('PERMOHONAN_TIDAK_DITEMUKAN', 'Tidak ada permohonan OTP aktif untuk nomor ini.');
+
+    const lastSentAt = await this.tokens.lastOtpSentAt(waNumber);
+    if (lastSentAt && Date.now() - lastSentAt.getTime() < 60_000)
+      throw new RegError('TUNGGU_SEBELUM_KIRIM_ULANG', 'Tunggu sebentar sebelum meminta kode baru ya.');
+
+    const otp = await this.tokens.issueOtp(waNumber, reg.id);
+    await this.outbox.enqueue(
+      jid(waNumber),
+      `🔐 Kode OTP baru pendaftaran Kopra kamu: *${otp}* (berlaku 10 menit). Jangan bagikan kode ini ke siapa pun ya.`,
+    );
+    return { sentTo: maskWaNumber(waNumber) };
   }
 
   private async toPending(regId: string, status: 'PENDING_SUPER_ADMIN' | 'PENDING_OWNER', candidateRef?: string) {
