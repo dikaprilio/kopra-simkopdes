@@ -36,6 +36,9 @@ export default function LoginPage() {
         <input className="w-full rounded border px-3 py-2" type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Kata sandi" />
         {error && <p className="text-sm text-red-600">{error}</p>}
         <button className="w-full rounded bg-red-600 py-2 font-medium text-white">Masuk</button>
+        <p className="text-center text-sm text-slate-500">
+          Belum punya akun? <a href="/register" className="text-red-600">Daftar</a>
+        </p>
       </form>
     </main>
   );
