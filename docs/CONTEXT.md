@@ -73,8 +73,8 @@
 |---|---|
 | **Mastra** (TS agent framework) | workflow suspend/resume durable (konfirmasi YA tahan restart), memory & RAG first-class, evals, **Mastra Skills** utk coding agents; dipilih setelah riset standar industri (LangGraph=Python-first, ditolak; Vercel AI SDK=lapisan bawahnya; Dify=GUI tak bisa diedit agent, self-host berat) |
 | **Monorepo pnpm 3 app** `web`(Next.js) / `api`(NestJS) / `agent`(Mastra server standalone) + `packages/db`(Prisma) | pemisahan backend proper (user menolak Next.js-only); NestJS sesuai rencana awal tim & sangat dikenal LLM; Mastra server punya playground `mastra dev`; split kerja bersih Dev1(api+web) vs Dev2(agent+WA) |
-| **WAHA di repo terpisah** [`kopra-whatsapp-waha`](https://github.com/dikaprilio/kopra-whatsapp-waha) | image jadi (bukan kode kita); volume `waha_sessions` WAJIB (pairing hilang kalau tidak); README repo utama menyebutnya |
-| WA = **WAHA all-in** (bukan simulasi) | keputusan user; mitigasi = rekam video demo 3 menit |
+| **Gateway WA = GoWA** (go-whatsapp-web-multidevice) di repo terpisah [`kopra-whatsapp-waha`](https://github.com/dikaprilio/kopra-whatsapp-waha) | menggantikan WAHA (10 Jul malam): binary Go ringan (VPS kecil), media download + webhook HMAC built-in, MCP server (dev-time testing + pitch), gratis MIT. WAHA = fallback ter-comment. WAJIB: adapter di balik interface `WhatsappGateway` + volume `storages/` (pairing hilang kalau dihapus) |
+| WA = **gateway asli all-in** (bukan simulasi) | keputusan user; mitigasi = rekam video demo 3 menit |
 | Model LLM | `claude-opus-4-8` (agent + OCR vision); STT Whisper via Groq (fase 2b) |
 | DB app sendiri (docker `pgvector/pgvector:pg16`, port **5433**) | shared DB panitia read-only & dipakai 100 tim; mirror lokal utk import |
 | Deploy | 1 VPS GCP **asia-southeast2** (credit $60 panitia; satu region dgn shared DB), docker-compose |
@@ -88,7 +88,7 @@
 - **Mirror lokal (laptop Dika):** Postgres 18 localhost:5432, db `hackathon_2026`, user postgres (password diketahui tim) — 27 tabel identik + index + PK. Resync: `scripts/resync_source_db.py` (env-only).
 - **Dump:** `Simkopdes/db_dump/` lokal (schema.sql + 27 CSV ≈69MB + `hackathon_2026_full.sql` 71MB via pg_dump). TIDAK di repo (gitignore).
 - **GCP:** 3 akun grup 20a/b/c, credit $60 — **ganti password default segera**, provision VPS.
-- **WAHA:** perlu **nomor burner** (jangan nomor pribadi), pairing QR sekali sebelum sprint, jangan `docker compose down -v`.
+- **GoWA:** perlu **nomor burner** (jangan nomor pribadi), pairing QR sekali via UI GoWA, jangan hapus volume `storages/`.
 - **Berkas asli lapangan:** folder lokal `Simkopdes/` (xlsx sudah dicopy ke repo; LPJ PDF & JSON list 83k koperasi tetap lokal-only).
 
 ## 6. Keadaan repo SEKARANG (10 Jul sore, commit `f4c7ce1`)
@@ -106,7 +106,7 @@
 2. `docker compose up postgres` → `pnpm db:push`
 3. `packages/db/src/`: `index.ts` (client singleton), `seed.ts` (koperasi + 6 unit + **COA default KDMP** + ~2 bln jurnal via posting rules dgn kosakata asli + simpanan per periode + 2 user: `pengurus@kopra.id`/`anggota@kopra.id`), `import-koperasi.ts` (dari mirror: profil+anggota+pengurus+simpanan+produk)
 4. Implementasi api (kontrak §4 spec) · agent (7 tools + workflow `recordEntry` + RAG ingest) · web (menu ala CORE)
-5. WAHA pairing + webhook end-to-end
+5. GoWA pairing + webhook end-to-end (HMAC)
 6. Korpus RAG P1–P2 (`rag_corpus/`): panduan pembukuan, konsep koperasi, UU 25/1992, Inpres 9/2025, FAQ KDMP + tutorial modules (sudah ada) + transkrip interview (tag field_research)
 7. Deploy VPS + video demo + deck
 
@@ -127,6 +127,6 @@ ERP web ala CORE (Dashboard kartu akuntansi; COA; Jurnal; Produk+Stok; Anggota+S
 - Windows dev box; `psql`/`pg_dump` ada di `C:\Program Files\PostgreSQL\18\bin`; poppler via winget (PATH baru butuh shell restart)
 - Prisma: pakai `previewFeatures postgresqlExtensions` + `extensions=[vector]`; embedding `Unsupported("vector(1024)")`
 - Port 5432 = mirror panitia lokal; **5433 = DB app** (jangan ketukar)
-- WAHA event → `POST /wa/webhook`; kirim balik via `POST /api/sendText`; media via `GET /api/files/...`
+- GoWA event → `POST /wa/webhook` (verifikasi `WHATSAPP_WEBHOOK_SECRET` HMAC-SHA256); kirim balik via `POST /send/message`; media via `GET /message/:message_id/download`; multi-akun v8 pakai header `X-Device-Id`
 - Shared DB: jangan query saat demo (100 tim); tanggal lahir masked `YYYY-**-**` (parse LEFT(...,4))
 - Repo akan PUBLIK: tiap commit baru — cek tak ada kredensial/PII (sudah 2x kejadian hampir bocor: IP di docs, nama lengkap narasumber di transkrip — keduanya sudah disanitasi)

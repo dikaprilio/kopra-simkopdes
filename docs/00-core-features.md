@@ -33,20 +33,21 @@ Prinsip non-negotiable: **LLM explains, backend calculates.** Angka selalu dari 
 ```
 REPO kopra-simkopdes (disubmit):
   apps/web    Next.js   — dashboard ERP, chat asisten, landing, learning-path
-  apps/api    NestJS    — auth/JWT, CRUD, laporan, webhook WAHA, audit
+  apps/api    NestJS    — auth/JWT, CRUD, laporan, webhook gateway WA, audit
   apps/agent  Mastra    — agent kopra, workflow suspend/resume, memory, RAG
                           (`mastra dev` = playground test tanpa WA)
   packages/db Prisma    — schema+client (dipakai api & agent)
-REPO kopra-whatsapp-waha: container WAHA + volume session + panduan pairing
+REPO kopra-whatsapp-waha: gateway WhatsApp = GoWA (go-whatsapp-web-multidevice,
+  binary Go + whatsmeow; WAHA tersimpan sebagai fallback ter-comment) + volume storages
 
-Alur : WAHA → api /wa/webhook (identity+guardrail) → agent → api → WAHA
+Alur : GoWA → api /wa/webhook (verifikasi HMAC + identity + guardrail) → agent → api → GoWA
        web chat → agent langsung (streaming, JWT dari api)
 Infra: 1 VPS GCP asia-southeast2 (credit $60 panitia), docker-compose
-       [web, api, agent, postgres(pgvector)] + waha di repo infra
+       [web, api, agent, postgres(pgvector)] + gowa di repo infra
 LLM  : claude-opus-4-8 (agent + OCR vision) · STT: Whisper Groq (2b)
 ```
 
-Sudah diputuskan & ditolak: Dify, LangChain/LangGraph, FastAPI, Next.js-only, WAHA di monorepo. Alasan terdokumentasi di history diskusi — jangan re-litigasi jam 3 pagi.
+Sudah diputuskan & ditolak: Dify, LangChain/LangGraph, FastAPI, Next.js-only, gateway di monorepo. **Gateway WA: GoWA menggantikan WAHA (10 Jul malam)** — lebih ringan utk VPS kecil (binary Go vs Node+engine), media download & webhook HMAC built-in, MCP server utk dev-time testing; WAHA = fallback via adapter (`WhatsappGateway` interface di apps/api — WAJIB, supaya swap = 1 file). Jangan re-litigasi jam 3 pagi.
 
 ---
 
@@ -140,7 +141,7 @@ Aturan jawab: tak mengarang pasal; bedakan regulasi vs praktik vs temuan lapanga
 | **Products** | `GET/POST /products` · `PATCH /products/:id` · `GET /products/:id/card` (stok + riwayat) | |
 | **Stock** | `GET /stock-movements?productId=` · `POST /stock-movements` · `POST /stock-movements/:id/confirm` | movement CONFIRMED immutable; confirm movement ber-link jurnal = confirm dua-duanya atomik |
 | Reports | `GET /dashboard/summary` (kartu ala CORE) · `GET /reports/buku-besar?from=&to=` · `GET /reports/neraca-saldo?from=&to=` (+Status Balance) · `GET /reports/phu?month=&unitId=` · `GET /reports/neraca?date=` · `GET /reports/buku-kas?month=` (view) — semua `&format=html` print-friendly | semua derived dari journal_lines |
-| WA/Admin | `GET/POST/DELETE /wa-identities` · `POST /wa/webhook` (auth api-key WAHA) · `POST /admin/import-koperasi {sourceRef}` · `GET /audit-logs` | |
+| WA/Admin | `GET/POST/DELETE /wa-identities` · `POST /wa/webhook` (verifikasi HMAC-SHA256 GoWA) · `POST /admin/import-koperasi {sourceRef}` · `GET /audit-logs` | |
 
 Tidak dibangun: delete anggota, user management UI, CRUD kategori penuh, edit transaksi confirmed.
 
@@ -174,7 +175,7 @@ Parser WAJIB dites kosakata asli: "terima simpanan wajib an Bu X juli-des", "bag
 
 **F5 Minta laporan** → `generateReport` → link buku kas / laba rugi bulan diminta.
 
-**F6 (2b) Media** → foto nota: download → Claude vision → draft (belanja stok = movement IN + jurnal Dr Persediaan/Cr Kas sekaligus). Voice: Whisper → teks → flow sesuai isi.
+**F6 (2b) Media** → foto nota: download via gateway (`GET /message/:id/download`) → Claude vision → draft (belanja stok = movement IN + jurnal Dr Persediaan/Cr Kas sekaligus). Voice: Whisper → teks → flow sesuai isi.
 
 **F7 Stok (Fase 2a — bagian tesis inti)**
 - `"stok masuk minyakita 20 pcs, beli 14rb"` → draft movement IN (+jurnal Dr Persediaan/Cr Kas linked) → YA → stok naik
@@ -210,10 +211,10 @@ Agent `kopra`: model `claude-opus-4-8`, system prompt bahasa sederhana, tak pern
 - [ ] Scaffold 3 app: `create-next-app`, `nest new`, `create mastra` (+`npx skills add mastra-ai/skills`)
 - [ ] `docker compose up postgres` → `prisma db push` (schema §2, +model member_savings)
 - [ ] `seed.ts` (kosakata asli) + `import-koperasi.ts` (termasuk produk)
-- [ ] WAHA: pairing nomor burner (repo infra), tes webhook lokal
+- [ ] GoWA: pairing nomor burner (repo infra), tes webhook lokal (HMAC)
 - [ ] Kumpulkan korpus RAG P1–P2 → `rag_corpus/`
 - [ ] GCP: ganti password default, provision VPS asia-southeast2, docker compose up kosong
-- **Done:** webapp kosong live di VPS, WA terhubung, DB terisi seed+import
+- **Done:** webapp kosong live di VPS, WA terhubung via GoWA, DB terisi seed+import
 
 ### Fase 1 — ERP core (jam 0–8) · Dev 1 fokus di sini
 - [ ] apps/api: auth, members+simpanan, units, transactions, products+stock, reports, dashboard (kontrak §4)
@@ -221,7 +222,7 @@ Agent `kopra`: model `claude-opus-4-8`, system prompt bahasa sederhana, tak pern
 - **Done:** juri bisa lihat webapp hidup dengan data nyata (anggota/simpanan/produk resmi + transaksi seed)
 
 ### Fase 2a — WA teks (jam 8–16) · Dev 2 mulai paralel dari Fase 0
-- [ ] webhook + identity + state machine §5
+- [ ] webhook (adapter GoWA di balik interface `WhatsappGateway`) + identity + state machine §5
 - [ ] agent + 7 tools + workflow suspend/resume
 - [ ] RAG ingest P1 + tool search
 - [ ] Flows F0–F5, F7 jalan end-to-end
@@ -236,7 +237,7 @@ Agent `kopra`: model `claude-opus-4-8`, system prompt bahasa sederhana, tak pern
 - **Done:** semua halaman demo-ready
 
 ### Fase 4 — Hardening & pitch (jam 28–36)
-- [ ] polish UI + seed final · [ ] **rekam video demo 3 menit** (asuransi WAHA) · [ ] deck ≤12 slide (statistik §0) · [ ] submit: repo publik + README + link demo + kredensial juri + video · [ ] latihan pitch + disclosure AI
+- [ ] polish UI + seed final · [ ] **rekam video demo 3 menit** (asuransi gateway WA) · [ ] deck ≤12 slide (statistik §0) · [ ] submit: repo publik + README + link demo + kredensial juri + video · [ ] latihan pitch + disclosure AI
 - **Done:** submission lengkap SEBELUM deadline
 
 ### Aturan potong scope (urutan korban kalau kepepet)

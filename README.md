@@ -10,15 +10,15 @@
 
 ```
 apps/web     Next.js      — dashboard ERP, chat asisten, landing
-apps/api     NestJS       — auth/JWT, CRUD, laporan, webhook WAHA, audit log
+apps/api     NestJS       — auth/JWT, CRUD, laporan, webhook gateway WA, audit log
 apps/agent   Mastra       — agent "kopra", workflow konfirmasi (suspend/resume),
                             memory per nomor WA, RAG (pgvector)
 packages/db  Prisma       — schema & client (dipakai api + agent)
 ```
 
 ```
-WhatsApp user → WAHA (repo kopra-whatsapp-waha) → api /wa/webhook
-             → agent (Mastra API) → api → WAHA → user
+WhatsApp user → GoWA (repo kopra-whatsapp-waha) → api /wa/webhook
+             → agent (Mastra API) → api → GoWA → user
 Browser      → web → api (CRUD) & agent (chat streaming, JWT)
 ```
 
@@ -40,7 +40,7 @@ pnpm dev:agent                # Mastra  → http://localhost:4111 (+ playground!
 pnpm dev:web                  # Next.js → http://localhost:3000
 ```
 
-WAHA (WhatsApp) jalan dari repo terpisah: [`kopra-whatsapp-waha`](https://github.com/dikaprilio/kopra-whatsapp-waha).
+Gateway WhatsApp (GoWA) jalan dari repo terpisah: [`kopra-whatsapp-waha`](https://github.com/dikaprilio/kopra-whatsapp-waha).
 
 ## Dokumentasi (BACA SEBELUM CODING)
 

@@ -26,19 +26,21 @@ Perubahan `packages/db/prisma/schema.prisma` = **wajib bilang di grup** (dua app
 
 ```
 apps/web/          Next.js App Router
-  app/(dashboard)/ dashboard, transaksi, unit-usaha, anggota, laporan
-  app/(public)/    landing, learning-path
+  app/(dashboard)/ dashboard, coa, jurnal, produk-stok, anggota-simpanan, laporan
+  app/(public)/    landing
   app/chat/        chat asisten (useChat → agent)
 apps/api/          NestJS
   src/auth/        JWT login
-  src/koperasi/    CRUD anggota, unit, transaksi
-  src/reports/     buku kas, laba rugi
-  src/whatsapp/    webhook WAHA + client kirim pesan + media download
-src/apps/agent/    Mastra
+  src/koperasi/    CRUD anggota+simpanan, unit, produk+stok
+  src/accounting/  COA + jurnal (posting rules)
+  src/reports/     buku besar, neraca saldo, PHU, neraca, view buku kas
+  src/whatsapp/    interface WhatsappGateway + adapter GoWA (webhook HMAC, kirim pesan, media download); WAHA = adapter fallback
+apps/agent/        Mastra
   src/mastra/agents/kopra.ts
-  src/mastra/tools/        createTransactionDraft, getFinancialSummary,
-                           listUnpaidMembers, generateReport, searchKoperasiGuides
-  src/mastra/workflows/recordTransaction.ts   (suspend → "YA" → resume)
+  src/mastra/tools/        createEntryDraft, recordStockMovement, getStockLevels,
+                           getFinancialSummary, listUnpaidMembers, generateReport,
+                           searchKoperasiGuides
+  src/mastra/workflows/recordEntry.ts   (suspend → "YA" → resume atomik)
   src/rag/         ingest script + corpus loader
 packages/db/       Prisma (schema final — lihat README-nya)
 ```
@@ -49,7 +51,7 @@ packages/db/       Prisma (schema final — lihat README-nya)
 |---|---|
 | web | 3000 |
 | api | 3001 |
-| WAHA (repo infra) | 3002 |
+| GoWA (repo infra) | 3002 |
 | agent (Mastra) | 4111 |
 | postgres app (docker) | 5433 |
 | postgres lokal dev (mirror data panitia) | 5432 |
