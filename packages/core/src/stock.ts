@@ -1,5 +1,5 @@
 import { prisma, type EntrySource, type StockMoveType } from "@kopra/db";
-import { DomainError, createDraftFromSimple, type DraftResult } from "./journal";
+import { DomainError, createDraftFromSimple, type DraftResult } from "./journal.js";
 
 /** Stok terkini = SUM bertanda movement CONFIRMED (IN +, OUT −, ADJUST ±qty). */
 export async function currentStock(productId: string): Promise<number> {

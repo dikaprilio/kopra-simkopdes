@@ -1,5 +1,5 @@
 import { prisma } from "@kopra/db";
-import { redactJson } from "./redact";
+import { redactJson } from "./redact.js";
 
 export interface AuditInput {
   koperasiId?: string;

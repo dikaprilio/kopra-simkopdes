@@ -1,9 +1,9 @@
 // @kopra/core — shared domain rules (satu implementasi, dua konsumen: api & agent).
-export * from "./redact";
-export * from "./policy";
-export * from "./posting-rules";
-export * from "./journal";
-export * from "./stock";
-export * from "./savings";
-export * from "./pending-action";
-export * from "./audit";
+export * from "./redact.js";
+export * from "./policy.js";
+export * from "./posting-rules.js";
+export * from "./journal.js";
+export * from "./stock.js";
+export * from "./savings.js";
+export * from "./pending-action.js";
+export * from "./audit.js";

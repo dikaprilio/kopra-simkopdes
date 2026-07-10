@@ -5,7 +5,7 @@ import {
   effectiveAmount,
   PostingError,
   type SimpleEntryInput,
-} from "./posting-rules";
+} from "./posting-rules.js";
 
 const base = { koperasiId: "kop1", description: "tes" };
 const sum = (ls: { debit: number; kredit: number }[]) => ({

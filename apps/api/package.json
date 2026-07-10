@@ -22,6 +22,7 @@
   "dependencies": {
     "@kopra/core": "workspace:*",
     "@kopra/db": "workspace:*",
+    "@mastra/client-js": "^1.31.1",
     "@nestjs/common": "^11.0.1",
     "@nestjs/core": "^11.0.1",
     "@nestjs/platform-express": "^11.0.1",
@@ -50,8 +51,8 @@
     "ts-jest": "^29.2.5",
     "ts-loader": "^9.5.2",
     "ts-node": "^10.9.2",
-    "tsx": "^4.19.0",
     "tsconfig-paths": "^4.2.0",
+    "tsx": "^4.19.0",
     "typescript": "^5.7.3",
     "typescript-eslint": "^8.20.0"
   },
@@ -68,13 +69,19 @@
     ],
     "moduleNameMapper": {
       "^@kopra/core$": "<rootDir>/../../../packages/core/src/index.ts",
-      "^@kopra/db$": "<rootDir>/../../../packages/db/src/index.ts"
+      "^@kopra/db$": "<rootDir>/../../../packages/db/src/index.ts",
+      "^(\\.{1,2}/.*)\\.js$": "$1"
     },
     "transform": {
       "^.+\\.(t|j)s$": [
         "ts-jest",
         {
-          "isolatedModules": true
+          "isolatedModules": true,
+          "tsconfig": {
+            "module": "commonjs",
+            "moduleResolution": "node",
+            "resolvePackageJsonExports": false
+          }
         }
       ]
     },

@@ -6,7 +6,7 @@ import {
   PostingError,
   type SimpleEntryInput,
   type PostingLine,
-} from "./posting-rules";
+} from "./posting-rules.js";
 
 export class DomainError extends Error {
   constructor(public code: string, message: string) {

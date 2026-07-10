@@ -1,5 +1,5 @@
 import { prisma, type EntrySource } from "@kopra/db";
-import { DomainError, createDraftFromSimple, type DraftResult } from "./journal";
+import { DomainError, createDraftFromSimple, type DraftResult } from "./journal.js";
 
 export interface SavingPayInput {
   koperasiId: string;

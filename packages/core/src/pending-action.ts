@@ -1,8 +1,8 @@
 import { prisma, type PendingAction } from "@kopra/db";
-import { DomainError, confirmEntry, rejectEntry, accountBalance } from "./journal";
-import { confirmMovementOnly, cancelMovement } from "./stock";
-import { markPeriodsPaid } from "./savings";
-import { KODE } from "./posting-rules";
+import { DomainError, confirmEntry, rejectEntry, accountBalance } from "./journal.js";
+import { confirmMovementOnly, cancelMovement } from "./stock.js";
+import { markPeriodsPaid } from "./savings.js";
+import { KODE } from "./posting-rules.js";
 
 const TTL_MS = Number(process.env.PENDING_ACTION_TTL_SECONDS ?? 900) * 1000;
 

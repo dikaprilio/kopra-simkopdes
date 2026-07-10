@@ -8,10 +8,10 @@ import { prisma } from "@kopra/db";
 import { DEFAULT_COA } from "../../db/src/coa-default";
 import {
   createDraftFromSimple, confirmEntry, rejectEntry, accountBalance, DomainError,
-} from "./journal";
-import { createMovementDraft, currentStock } from "./stock";
-import { paySavingDraft } from "./savings";
-import { createPending, confirmPending, cancelPending, getAwaiting } from "./pending-action";
+} from "./journal.js";
+import { createMovementDraft, currentStock } from "./stock.js";
+import { paySavingDraft } from "./savings.js";
+import { createPending, confirmPending, cancelPending, getAwaiting } from "./pending-action.js";
 
 let kopId = "", userId = "", unitId = "", productId = "", memberId = "";
 const CHAT = "628999@s.whatsapp.net";

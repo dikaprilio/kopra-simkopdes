@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { can, type ActorRole, type Capability, type Channel } from "./policy";
+import { can, type ActorRole, type Capability, type Channel } from "./policy.js";
 
 const T = (role: ActorRole, cap: Capability, ch: Channel, want: boolean) =>
   it(`${role} ${cap} @${ch} = ${want}`, () => expect(can(role, cap, ch)).toBe(want));
