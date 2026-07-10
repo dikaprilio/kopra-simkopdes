@@ -1,0 +1,142 @@
+{
+ "uu_6_2023_p86": {
+  "request_id": "fa2e934f0f37",
+  "law": {
+   "law_id": 805,
+   "citation": "UU 6/2023",
+   "law_title": "Undang-Undang Nomor 6 Tahun 2023 tentang PENETAPAN PERATURAN PEMERINTAH PENGGANTI UNDANG-UNDANG NOMOR 2 TAHUN 2022 TENTANG CIPTA KERJA MENJADI UNDANG-UNDANG",
+   "regulation_type": "UU",
+   "law_number": "6",
+   "year": 2023,
+   "status": "berlaku",
+   "region": null,
+   "issuing_body": {
+    "slug": "peraturan-dpr",
+    "name": "DPR RI",
+    "abbreviation": "DPR"
+   },
+   "law_url": "https://pasal.id/peraturan/uu/uu-no-6-tahun-2023"
+  },
+  "selector_parsed": {
+   "kind": "pasal_list",
+   "numbers": [
+    "86"
+   ]
+  },
+  "sections": [
+   {
+    "kind": "pasal",
+    "node_id": 24455267,
+    "node_type": "pasal",
+    "label": "Pasal 86",
+    "pasal_number": "86",
+    "heading": null,
+    "content_text": "Beberapa ketentuan dalam Undang-Undang Nomor 25 Tahun 1992 tentang Perkoperasian (trmbaran Negara Republik Indonesia Tahun 1992 Nomor 116, Tambahan kmbaran Negara Republik Indonesia Nomor 3502) diubah sebagai berikut:",
+    "content_chars": 217,
+    "parent_bab": {
+     "node_id": 24455263,
+     "number": "V",
+     "heading": "KEMUDAHAN, PELINDUNGAN, DAN PEMBERDAYAAN KOPERASI, USAHA MIKRO, KECIL, DAN MENENGAH",
+     "label": "BAB V"
+    },
+    "pasal_url": "https://pasal.id/peraturan/uu/uu-no-6-tahun-2023#pasal-86",
+    "correction_url": "https://pasal.id/peraturan/uu/uu-no-6-tahun-2023/koreksi/24455267",
+    "cross_refs": []
+   }
+  ],
+  "total_chars": 217,
+  "truncated": false,
+  "next_cursor": null,
+  "missing": [],
+  "disclaimer": "Informasi ini bukan nasihat hukum. Selalu verifikasi dengan sumber resmi. Database Pasal.id saat ini mencakup sebagian kecil peraturan Indonesia."
+ },
+ "inpres_outline": {
+  "request_id": "b7fdc851781a",
+  "detail": "outline",
+  "law": {
+   "law_id": 233290,
+   "citation": "INPRES 9/2025",
+   "law_title": "Instruksi Presiden Nomor 9 Tahun 2025 tentang Percepatan Pembentukan Koperasi Desa/Kelurahan Merah Putih",
+   "regulation_type": "INPRES",
+   "law_number": "9",
+   "year": 2025,
+   "status": "berlaku",
+   "region": null,
+   "issuing_body": {
+    "slug": "presiden",
+    "name": "Presiden Republik Indonesia",
+    "abbreviation": null
+   },
+   "law_url": "https://pasal.id/peraturan/inpres/inpres-no-9-tahun-2025"
+  },
+  "outline": [],
+  "outline_truncated": false,
+  "hint": "Use read_law with selector='bab ...' or selector='pasal ...' to read text.",
+  "disclaimer": "Informasi ini bukan nasihat hukum. Selalu verifikasi dengan sumber resmi. Database Pasal.id saat ini mencakup sebagian kecil peraturan Indonesia."
+ },
+ "inpres_read_all": {
+  "request_id": "b003d4778dac",
+  "law": {
+   "law_id": 233290,
+   "citation": "INPRES 9/2025",
+   "law_title": "Instruksi Presiden Nomor 9 Tahun 2025 tentang Percepatan Pembentukan Koperasi Desa/Kelurahan Merah Putih",
+   "regulation_type": "INPRES",
+   "law_number": "9",
+   "year": 2025,
+   "status": "berlaku",
+   "region": null,
+   "issuing_body": {
+    "slug": "presiden",
+    "name": "Presiden Republik Indonesia",
+    "abbreviation": null
+   },
+   "law_url": "https://pasal.id/peraturan/inpres/inpres-no-9-tahun-2025"
+  },
+  "selector_parsed": {
+   "kind": "all"
+  },
+  "sections": [],
+  "total_chars": 0,
+  "truncated": false,
+  "next_cursor": null,
+  "missing": [],
+  "disclaimer": "Informasi ini bukan nasihat hukum. Selalu verifikasi dengan sumber resmi. Database Pasal.id saat ini mencakup sebagian kecil peraturan Indonesia."
+ },
+ "kdmp_search": {
+  "request_id": "3457b3f6c881",
+  "results": [
+   {
+    "law_id": 516512,
+    "citation": "PERBUP 47/2025",
+    "law_title": "Peraturan Bupati Tanah Laut Nomor  47 Tahun 2025 Tentang Penyelenggaran Koperasi Desa/Kelurahan Merah Putih",
+    "status": "berlaku",
+    "region": "perbup-kab-tanah-laut",
+    "url": "https://pasal.id/peraturan/perbup/perbup-kab-tanah-laut-47-2025",
+    "snippet": "Peraturan Bupati Tanah Laut Nomor  47 Tahun 2025 Tentang Penyelenggaran Koperasi Desa/Kelurahan Merah Putih",
+    "relevance_score": 1.175
+   },
+   {
+    "law_id": 490580,
+    "citation": "PERBUP 27/2025",
+    "law_title": "Peraturan Bupati Katingan Nomor 27 Tahun 2025 tentang Penyelenggaraan Koperasi Desa/Kelurahan Merah Putih",
+    "status": "berlaku",
+    "region": "perbup-kab-katingan",
+    "url": "https://pasal.id/peraturan/perbup/perbup-kab-katingan-27-2025",
+    "snippet": "Peraturan Bupati Katingan Nomor 27 Tahun 2025 tentang Penyelenggaraan Koperasi Desa/Kelurahan Merah Putih",
+    "relevance_score": 1.175
+   },
+   {
+    "law_id": 463778,
+    "citation": "PERWALI 17/2025",
+    "law_title": "Peraturan Wali Kota Batu Nomor 17 Tahun 2025 Tentang Penyelenggaraan Koperasi Desa/Kelurahan Merah Putih",
+    "status": "berlaku",
+    "region": "perwali-kota-batu",
+    "url": "https://pasal.id/peraturan/perwali/perwali-kota-batu-17-2025",
+    "snippet": "Peraturan Wali Kota Batu Nomor 17 Tahun 2025 Tentang Penyelenggaraan Koperasi Desa/Kelurahan Merah Putih",
+    "relevance_score": 1.175
+   }
+  ],
+  "result_count": 3,
+  "disclaimer": "Informasi ini bukan nasihat hukum. Selalu verifikasi dengan sumber resmi. Database Pasal.id saat ini mencakup sebagian kecil peraturan Indonesia."
+ }
+}

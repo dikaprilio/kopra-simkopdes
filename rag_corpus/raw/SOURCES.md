@@ -9,7 +9,23 @@ Diunduh 2026-07-10. PDF di folder ini adalah bahan mentah — perlu diekstrak/di
 | `Juklak-Menkop-1-2025-Pembentukan-KDMP.pdf` | Petunjuk Pelaksanaan Menteri Koperasi No. 1 Tahun 2025 tentang Pembentukan Koperasi Desa/Kelurahan Merah Putih | Kementerian Koperasi (JDIH Kemenkop) | 2025 | guide | https://jdih.kop.go.id/doc/detail/doc-1168-v_peraturan |
 | `Panduan-Teknis-KOPDES.pdf` | Panduan Teknis KOPDES Merah Putih | kopdesa.com (non-pemerintah — verifikasi sebelum dikutip sebagai resmi) | 2025 | guide | https://kopdesa.com/download/PanduanTeknisKOPDES.pdf |
 
+## Dokumen lapangan (OCR vision, 2026-07-10)
+
+| File | Isi |
+|---|---|
+| `lpj-rat-bangunharjo-2025-transkrip.md` | Transkrip 44 hlm LPJ RAT KDMP Bangunharjo TB 2025 (scan di `Simkopdes/Berkas Koperasi Anita/`; duplikatnya `DOC-20260630-WA0000..pdf` di folder Palbapang — hash identik). Nama peserta daftar hadir dihilangkan. Termasuk catatan 7 inkonsistensi internal dokumen. Sumber `../template-laporan-rat.md` |
+
+## pasal-id/ (diambil via MCP/API pasal.id, 2026-07-10)
+
+| File | Isi |
+|---|---|
+| `pasal-id/uu-25-1992-mcp.json` | 67 pasal UU 25/1992 lengkap dengan ayat (sumber `../uu-25-1992-perkoperasian.md`) + relasi perubahan + UU 6/2023 Pasal 85 |
+| `pasal-id/uu-25-1992.json` | Respons REST API `/laws` (struktur bab/pasal; 37 pasal tanpa ayat — dipakai hanya untuk kerangka) |
+| `pasal-id/kdmp-extra-mcp.json` | Outline Inpres 9/2025 (teks belum diekstrak di pasal.id), UU 6/2023 Pasal 86, hasil pencarian regulasi KDMP |
+
 Catatan:
-- UU 25/1992 masih berlaku (Putusan MK No. 28/PUU-XI/2013 membatalkan UU 17/2012).
+- UU 25/1992 masih berlaku (Putusan MK No. 28/PUU-XI/2013 membatalkan UU 17/2012); beberapa ketentuan diubah UU 6/2023 (Cipta Kerja) Pasal 86.
+- Teks lengkap per pasal UU 25/1992 sudah dikonversi ke `../uu-25-1992-perkoperasian.md` (siap ingest, `sourceType: regulation`).
 - FAQ KDMP sudah dikonversi langsung ke `../faq-kdmp.md` (sumber: Diskop UKM Prov. Kalbar).
-- Regulasi KDMP lain (PMK 81/2025, Permendesa 10/2025, Permen 9/2025 dana bergulir, dll.) tersedia di https://jdih.kop.go.id/doc/peraturan_kdmp bila perlu — di luar scope P2.
+- Inpres 9/2025 di pasal.id belum ada teksnya — pakai PDF resmi di folder ini untuk ekstraksi.
+- Regulasi KDMP pusat (Juklak Menkop, PMK 81/2025, Permendesa 10/2025, dll.) TIDAK ada di pasal.id; sumbernya tetap https://jdih.kop.go.id/doc/peraturan_kdmp — di luar scope P2 kecuali Juklak (sudah diunduh).

@@ -11,7 +11,7 @@ Perubahan `packages/db/prisma/schema.prisma` = **wajib bilang di grup** (dua app
 
 ## Git
 
-- Branch: langsung `main` saja (sprint 36 jam, bukan production). Commit kecil & sering, pesan jelas: `feat(api): webhook waha`, `fix(agent): resume YA case-insensitive`.
+- Branch: `development/dika` (RAG, WA chatbot, agent — Fase 2/3/4 sisi bot) · `development/aldio` (web + api — Fase 0/1/3 sisi web) · **`main` = integrasi, harus selalu demo-able**. Merge ke main per milestone kecil (jangan numpuk); `git pull --rebase origin main` sebelum merge. Commit kecil & sering, pesan jelas: `feat(api): webhook gowa`, `fix(agent): resume YA case-insensitive`.
 - `git pull --rebase` sebelum push. Konflik schema → koordinasi, jangan force.
 - **Tidak pernah commit**: `.env`, `db_dump/`, kredensial apa pun. Repo publik saat submission.
 
