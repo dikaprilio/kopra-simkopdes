@@ -5,7 +5,7 @@ source: "Dokumen asli: LPJ RAT KDMP Bangunharjo (scan CamScanner 44 hlm, Simkopd
 year: 2026
 accessed: 2026-07-10
 relevance: contoh nyata struktur dokumen RAT KDMP — dasar template-laporan-rat.md
-note: transkrip vision per halaman; 101 nama anggota di daftar hadir DIHILANGKAN untuk privasi; angka ditranskrip apa adanya termasuk inkonsistensi internal dokumen (lihat catatan akhir)
+note: transkrip vision per halaman; 101 nama anggota di daftar hadir DIHILANGKAN untuk privasi; nama lengkap pengurus DIINISIALKAN & kontak di-masking (identitas asli disimpan tim); angka ditranskrip apa adanya termasuk inkonsistensi internal dokumen (lihat catatan akhir)
 ---
 
 # Transkrip LPJ RAT — KDMP Kalurahan Bangunharjo, Tahun Buku 2025
@@ -18,7 +18,7 @@ LAPORAN PERTANGGUNGJAWABAN PENGURUS KOPERASI DESA MERAH PUTIH KALURAHAN BANGUNHA
 
 ## Hal. 2 — Undangan RAT
 
-Kop surat: KOPERASI DESA MERAH PUTIH KALURAHAN BANGUNHARJO · Badan Hukum AHU-0017736.AH.01.29.TAHUN 2025 · Jalan Parangtritis Km. 5, Padukuhan Druwo RT/RW 001/000, Kalurahan Bangunharjo, Kapanewon Sewon, Kabupaten Bantul, DIY 55188 · Telp 0812-3332-2689 · Email kdmpbangunharjo@gmail.com
+Kop surat: KOPERASI DESA MERAH PUTIH KALURAHAN BANGUNHARJO · Badan Hukum AHU-0017736.AH.01.29.TAHUN 2025 · Jalan Parangtritis Km. 5, Padukuhan Druwo RT/RW 001/000, Kalurahan Bangunharjo, Kapanewon Sewon, Kabupaten Bantul, DIY 55188 · Telp 08**-****-**** · Email kdmp********@gmail.com
 
 Bangunharjo, 31 Maret 2026 · Nomor: 015/KDMPKalBH/III/2026 · Lampiran: - · Perihal: Undangan RAT
 
@@ -30,7 +30,7 @@ Kepada Yth. Bapak/Ibu/Saudara Anggota Koperasi Desa Merah Putih Kalurahan Bangun
 - Tempat: Pendopo Kalurahan Bangunharjo
 - Acara: 1. RAT · 2. Pembagian kartu Anggota · 3. Sosialisasi Program Kerja
 
-Ditandatangani: Ketua Pengurus (Yeri Widarnanto, SE) dan Sekretaris (Anita Rahayu Rama Danti), berstempel.
+Ditandatangani: Ketua Pengurus (Y.W., SE) dan Sekretaris (A.R.R.D.), berstempel.
 
 ## Hal. 3 — Notulen RAT
 
@@ -64,7 +64,7 @@ Puji syukur; laporan disusun tepat waktu sebagai alat evaluasi kinerja pengurus 
 - Laporan Pengawas Tahun Buku 2025
 - Dan lain-lain
 
-Ditutup tanda tangan Ketua (Yeri Widarnanto, SE), Bangunharjo 2 April 2026.
+Ditutup tanda tangan Ketua (Y.W., SE), Bangunharjo 2 April 2026.
 
 ## Hal. 9 — Daftar Isi
 
@@ -83,9 +83,9 @@ Salam pembuka dan ucapan terima kasih. Mengutip UU 25/1992 Pasal 26 ayat (1): se
 
 ## Hal. 12 — Pengurus, Rapat Kerja, Pengawas
 
-3. Pengurus (5 orang, hasil Musyawarah Kalurahan Khusus 16 Mei 2025, periode 2025–2030): Ketua Yeri Widarnanto, SE · Waka Bidang Usaha Andhi Sulistyo · Waka Bidang Anggota Ridwan · Bendahara Ravika Dewi Agustin B U · Sekretaris Anita Rahayu Rama Danti
+3. Pengurus (5 orang, hasil Musyawarah Kalurahan Khusus 16 Mei 2025, periode 2025–2030): Ketua Y.W., SE · Waka Bidang Usaha A.S. · Waka Bidang Anggota R. · Bendahara R.D.A.B.U. · Sekretaris A.R.R.D.
 4. Rapat Kerja: rapat pengurus; rapat pengurus & pengawas; rapat koordinasi dengan Pemkal; rapat evaluasi usaha; rapat bersama BA dari Kemenkop. Rapat rutin pengurus setiap bulan tanggal 10.
-5. Pengawas (3 orang, Musyawarah Kalurahan Khusus 16 Mei 2025, periode 2025–2030): Ketua Nur Hidayat, S.Ag., M.SI · Anggota Sutrisna, MM · Anggota H. Kurniawan Indaryatna, ST
+5. Pengawas (3 orang, Musyawarah Kalurahan Khusus 16 Mei 2025, periode 2025–2030): Ketua N.H., S.Ag., M.SI · Anggota S., MM · Anggota H.K.I., ST
 
 ## Hal. 13 — Karyawan, Administrasi, Permodalan
 
