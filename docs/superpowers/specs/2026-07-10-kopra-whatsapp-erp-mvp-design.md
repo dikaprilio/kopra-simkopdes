@@ -2,9 +2,8 @@
 
 > ⚠️ **SUPERSEDED (10 Jul malam):** dokumen ini sudah DILEBUR ke rencana terpadu
 > [`docs/plans/2026-07-10-kopra-system-build-plan.md`](../../plans/2026-07-10-kopra-system-build-plan.md) (v2 unified).
-> Hampir seluruh desain ini DIADOPSI FINAL (grup read per-role, packages/core + Prisma langsung di Mastra, cut OCR/STT/web-chat, super-admin WA).
-> SATU override tersisa (keputusan Dika): §7 — MEMBER di DM/web = RAG + data dirinya saja (bukan read Finance/Inventory penuh).
-> Jangan implementasi dari dokumen ini — pakai rencana terpadu.
+> Desain ini DIADOPSI PENUH ke rencana terpadu (grup read per-role, MEMBER read finance utk transparansi, packages/core + Prisma langsung di Mastra, cut OCR/STT/web-chat, super-admin WA). Tidak ada override tersisa.
+> Namun jangan implementasi dari dokumen ini — pakai rencana terpadu (berfase, ber-task, ber-acceptance).
 
 **Date:** 2026-07-10  
 **Status:** Approved in conversation  
