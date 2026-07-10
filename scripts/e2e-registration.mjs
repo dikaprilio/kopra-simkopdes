@@ -12,9 +12,18 @@
  */
 import { createHmac, randomUUID } from 'node:crypto';
 import { createRequire } from 'node:module';
+import { readFileSync } from 'node:fs';
 
 const require = createRequire(new URL('../packages/db/package.json', import.meta.url));
 const { Client } = require('pg');
+
+// muat .env root (script dijalankan via `node` polos — nilai HARUS sama dgn yang dibaca api)
+try {
+  for (const line of readFileSync(new URL('../.env', import.meta.url), 'utf8').split('\n')) {
+    const m = line.match(/^([A-Z_]+)=(.*)$/);
+    if (m && process.env[m[1]] === undefined) process.env[m[1]] = m[2].split(/\s+#/)[0].trim();
+  }
+} catch { /* .env opsional */ }
 
 const API = process.env.API_BASE ?? 'http://localhost:3001/api/v1';
 const WEBHOOK = `${API}/whatsapp/webhook`;

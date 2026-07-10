@@ -47,14 +47,15 @@ export class OutboxService implements OnModuleInit, OnModuleDestroy {
       for (const msg of batch) {
         try {
           await this.gowa.sendTextDirect(msg.toJid, msg.text);
-          await prisma.outboundWhatsappMessage.update({
+          // updateMany: baris bisa lenyap (prune/cleanup) saat retry — JANGAN lempar P2025.
+          await prisma.outboundWhatsappMessage.updateMany({
             where: { id: msg.id },
             data: { status: 'SENT', attempts: msg.attempts + 1 },
           });
         } catch (e) {
           const attempts = msg.attempts + 1;
           const failed = attempts >= MAX_ATTEMPTS;
-          await prisma.outboundWhatsappMessage.update({
+          await prisma.outboundWhatsappMessage.updateMany({
             where: { id: msg.id },
             data: {
               attempts,
@@ -68,6 +69,9 @@ export class OutboxService implements OnModuleInit, OnModuleDestroy {
         }
         await new Promise((r) => setTimeout(r, RATE_GAP_MS));
       }
+    } catch (e) {
+      // worker interval TIDAK boleh membunuh proses api (unhandled rejection)
+      this.logger.error(`drain outbox gagal: ${(e as Error).message}`);
     } finally {
       this.draining = false;
     }
