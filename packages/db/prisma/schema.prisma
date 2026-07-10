@@ -352,6 +352,10 @@ model RegistrationRequest {
   type         RegType
   channel      String // WA | WEB
   waNumber     String
+  // PENGURUS | ANGGOTA (utk MEMBER_JOIN; NEW_KOPERASI otomatis OWNER)
+  roleRequested String?
+  // argon2 hash dari form web — dipakai membuat User saat approve (tidak pernah plaintext)
+  passwordHash  String?
   nik          String? // plaintext by-requirement; redaksi di layer app
   nama         String?
   koperasiId   String?

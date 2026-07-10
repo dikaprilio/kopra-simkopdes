@@ -1,6 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 
 export * from "@prisma/client";
+export * from "./coa-default";
 
 const g = globalThis as unknown as { prisma?: PrismaClient };
 

@@ -1,14 +1,15 @@
 import { Module } from '@nestjs/common';
-import { GowaClient } from './gateway';
-import { DedupService } from './dedup.service';
-import { OutboxService } from './outbox.service';
+import { WaCoreModule } from './wa-core.module';
+import { RegistrationModule } from '../registration/registration.module';
 import { AgentClient } from './agent-client';
+import { GuestFlowService } from './guest-flow';
+import { SuperAdminService } from './super-admin';
 import { ConversationService } from './conversation.service';
 import { WebhookController } from './webhook.controller';
 
 @Module({
+  imports: [WaCoreModule, RegistrationModule],
   controllers: [WebhookController],
-  providers: [GowaClient, DedupService, OutboxService, AgentClient, ConversationService],
-  exports: [OutboxService, GowaClient],
+  providers: [AgentClient, GuestFlowService, SuperAdminService, ConversationService],
 })
 export class WhatsappModule {}

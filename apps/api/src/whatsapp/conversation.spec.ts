@@ -75,7 +75,9 @@ beforeAll(async () => {
   agentMock = jest.fn(async () => 'JAWABAN_AGENT');
   const agent = { ask: agentMock } as unknown as AgentClient;
   const outbox = new OutboxService(new GowaClient());
-  svc = new ConversationService(outbox, new DedupService(), agent);
+  const guestReg = { handle: async () => null } as never; // alur DAFTAR diuji di registration.spec
+  const superAdmin = { handle: async () => 'SA' } as never;
+  svc = new ConversationService(outbox, new DedupService(), agent, guestReg, superAdmin);
 });
 
 beforeEach(async () => {

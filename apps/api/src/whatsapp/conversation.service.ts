@@ -12,6 +12,8 @@ import { InboundMessage } from './gateway';
 import { OutboxService } from './outbox.service';
 import { DedupService } from './dedup.service';
 import { AgentClient, type ActorContext } from './agent-client';
+import { GuestFlowService } from './guest-flow';
+import { SuperAdminService } from './super-admin';
 
 const YA_RE = /^(ya|y|iya|yes|ok|oke|yaa+)$/i;
 const BATAL_RE = /^(batal|gajadi|ga jadi|gak jadi|nggak jadi|cancel|tidak)$/i;
@@ -37,6 +39,8 @@ export class ConversationService {
     private readonly outbox: OutboxService,
     private readonly dedup: DedupService,
     private readonly agent: AgentClient,
+    private readonly guestReg: GuestFlowService,
+    private readonly superAdmin: SuperAdminService,
   ) {}
 
   async onMessage(m: InboundMessage): Promise<void> {
@@ -44,6 +48,13 @@ export class ConversationService {
       if (m.isGroup) {
         // M7: konteks grup + mention-only. Sementara: simpan hening.
         await this.dedup.markResult(m.deviceId, m.messageId, 'IGNORED');
+        return;
+      }
+      if (SuperAdminService.isSuperAdmin(m.senderNumber)) {
+        // super-admin = parser deterministik saja (matriks: tanpa PUBLIC_QA)
+        const saReply = await this.superAdmin.handle(m.text);
+        await this.outbox.enqueue(m.chatJid, saReply);
+        await this.dedup.markResult(m.deviceId, m.messageId, 'PROCESSED');
         return;
       }
       const identity = await prisma.whatsappIdentity.findUnique({
@@ -144,11 +155,11 @@ export class ConversationService {
     }
   }
 
-  /** Nomor asing: intro sekali, sisanya Q&A publik (RAG). DAFTAR penuh = M6. */
+  /** Nomor asing: alur DAFTAR (M6) > intro sekali > Q&A publik (RAG). */
   private async guestFlow(m: InboundMessage): Promise<string> {
     const text = m.text.trim();
-    if (/^daftar$/i.test(text))
-      return '📝 Siap! Pendaftaran via WhatsApp sedang disiapkan — sementara ini silakan hubungi pengurus koperasimu ya. (Segera aktif!)';
+    const regReply = await this.guestReg.handle(m);
+    if (regReply) return regReply;
     const pernahDisapa = await prisma.outboundWhatsappMessage.count({
       where: { toJid: m.chatJid },
     });
