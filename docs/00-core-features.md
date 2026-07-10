@@ -51,7 +51,7 @@ Sudah diputuskan & ditolak: Dify, LangChain/LangGraph, FastAPI, Next.js-only, ga
 
 ---
 
-## 2. Data model (Prisma — 15 model, SUDAH ditulis di packages/db)
+## 2. Data model (Prisma — 15 model inti + 4 registrasi/grup: AuthToken, WaGroup, KoperasiDirectory, WaRun → detail & delta di docs/plans/2026-07-10-kopra-system-build-plan.md Task 0.2/2.3)
 
 ```
 users                email, passwordHash, name, role PENGURUS|ANGGOTA
@@ -110,6 +110,8 @@ Menu & istilah **meniru CORE resmi** (Dashboard · Akuntansi: COA, Jurnal · Mas
 | Laporan | **4 laporan resmi CORE**: Buku Besar, Neraca Saldo (+Status Balance "Neraca Seimbang"), **PHU**, Neraca — print-friendly, framing "siap RAT". Bonus: **view Buku Kas** (buku besar akun Kas) sebagai jembatan kebiasaan pengurus lama |
 
 ### 3.2 WhatsApp Assistant — tangan untuk mengisi (WEDGE)
+**Registrasi & Grup (requirement 10 Jul malam):** guest bisa tanya RAG + daftar via WA/web; anggota DM = RAG-only; grup = read ringan mention-only tanpa C/U/D; CRUD penuh = DM pengurus. Detail flow & fase: docs/plans/2026-07-10-kopra-system-build-plan.md.
+
 **Fase 2a (teks, fondasi):** catat transaksi · catat stok masuk/keluar (penjualan auto-bikin jurnal pemasukan) · tanya stok/keuangan · tanya panduan (RAG) · daftar penunggak + template pengingat · minta laporan.
 **Fase 2b (stretch, urutan):** OCR nota (Claude vision; nota belanja → stok masuk + transaksi keluar sekaligus) → catat pembayaran simpanan (rapel) → voice note (Whisper).
 Detail flows di §5.
@@ -161,7 +163,7 @@ per chat dulu, baru panggil agent bebas. SATU draft pending per chat.
 ```
 
 ### Flows
-**F0 Nomor asing** → perkenalan + cara minta pengurus menautkan nomor di web. Nol akses data.
+**F0 Guest (nomor tak dikenal)** → bot memperkenalkan diri + boleh tanya seputar koperasi (RAG umum) + prompt "ketik DAFTAR". Flow registrasi dual-arah (WA→magic-link / web→OTP), NIK matching, approval pengurus: lihat **docs/plans/2026-07-10-kopra-system-build-plan.md Fase 3**. Grup WhatsApp (mention-only, resolusi koperasi via member, read-ringan tanpa C/U/D): **Fase 4**. Matriks akses Guest/Anggota/Pengurus × DM/Grup/Web: lihat plan (LOCKED).
 
 **F1 Catat transaksi (JALUR DEMO UTAMA)**
 `"catat pemasukan banyu 500rb dari penjualan air galon"` → ekstrak → `createEntryDraft` (posting rules → jurnal 2-baris; validasi unit & akun) → SUSPEND → bot: "📝 Draft: Pemasukan • BANEW • Rp500.000 … Balas YA" → "YA" → confirm (kode) → "✅ Tersimpan. Saldo kas Rp… <link>" → muncul real-time di web (badge WhatsApp). Cabang: koreksi ("eh 450rb") / batal.
