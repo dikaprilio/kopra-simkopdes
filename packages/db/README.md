@@ -2,10 +2,10 @@
 
 Prisma schema + client, dipakai `apps/api` dan `apps/agent`.
 
-- `prisma/schema.prisma` — 12 tabel (spec §6). Sudah final, jangan tambah tabel tanpa update `docs/00-core-features.md`.
+- `prisma/schema.prisma` — 15 model, keuangan ala CORE resmi (COA + Jurnal double-entry; laporan derived). Jangan tambah model tanpa update `docs/00-core-features.md` §2.
 - `src/index.ts` — export singleton PrismaClient (buat saat implementasi).
-- `src/seed.ts` — seed demo: 1 koperasi (ala KDMP Palbapang), 6 unit usaha, kategori standar, ~2 bulan transaksi, 2 user demo (`pengurus@kopra.id` / `anggota@kopra.id`).
-- `src/import-koperasi.ts` — tarik 1 koperasi nyata dari `SOURCE_DATABASE_URL` (mirror data panitia): profil, anggota, pengurus, status simpanan PAID/UNPAID → tabel Kopra. Momen demo "onboarding dari data resmi satu perintah".
+- `src/seed.ts` — seed demo: 1 koperasi, 6 unit usaha (dimensi), COA default KDMP, ~2 bulan jurnal (kosakata asli Palbapang, via posting rules), simpanan per periode, 2 user demo (`pengurus@kopra.id` / `anggota@kopra.id`).
+- `src/import-koperasi.ts` — tarik 1 koperasi nyata dari `SOURCE_DATABASE_URL` (mirror data panitia): profil, anggota, pengurus, status simpanan PAID/UNPAID + produk → tabel Kopra. Momen demo "onboarding dari data resmi satu perintah".
 
 ```bash
 pnpm db:push      # sync schema ke postgres docker (5433)

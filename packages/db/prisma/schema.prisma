@@ -1,6 +1,9 @@
-// Kopra app schema — 12 tabel sesuai docs/00-core-features.md §6
-// DB: postgres docker-compose (BUKAN mirror data panitia — itu SOURCE_DATABASE_URL,
-// hanya dibaca oleh script import-koperasi)
+// Kopra app schema — REVAMP keuangan ala "Koperasi Merah Putih CORE"
+// (lihat docs/data/kdmp-modules-tutorial/01-koperasi-merah-putih-core.md)
+// Inti: COA hirarkis + Jurnal double-entry ringan. Laporan (Buku Besar,
+// Neraca Saldo, PHU, Neraca) = DERIVED dari journal_lines, bukan tabel.
+// DB: postgres docker-compose. Mirror data panitia = SOURCE_DATABASE_URL
+// (hanya dibaca script import-koperasi).
 
 generator client {
   provider        = "prisma-client-js"
@@ -18,41 +21,41 @@ enum Role {
   ANGGOTA
 }
 
-enum AccountType {
-  KAS
-  BANK
-}
-
-enum TxType {
-  INCOME
+// Tipe akun COA — sama dengan CORE resmi (Asset/Liability/Equity/Revenue/Expense)
+enum CoaType {
+  ASSET
+  LIABILITY
+  EQUITY
+  REVENUE
   EXPENSE
-  TRANSFER
 }
 
-enum TxSource {
+enum EntrySource {
   WHATSAPP
   WEB
   SEED
   IMPORT
 }
 
-enum TxStatus {
+enum EntryStatus {
   DRAFT
   CONFIRMED
-}
-
-enum CategoryClass {
-  OPERASIONAL
-  PERSEDIAAN
-  INVESTASI
-  MODAL
-  PENDAPATAN
 }
 
 enum StockMoveType {
   IN
   OUT
   ADJUST
+}
+
+enum SavingType {
+  POKOK
+  WAJIB
+}
+
+enum SavingStatus {
+  PAID
+  UNPAID
 }
 
 model User {
@@ -64,7 +67,7 @@ model User {
   createdAt    DateTime @default(now())
 
   waIdentities   WhatsappIdentity[]
-  transactions   Transaction[]
+  journalEntries JournalEntry[]
   stockMovements StockMovement[]
   auditLogs      AuditLog[]
 
@@ -72,17 +75,17 @@ model User {
 }
 
 model Koperasi {
-  id         String  @id @default(cuid())
-  nama       String
-  desa       String?
-  // ref ke data resmi panitia (kalau hasil import), mis. "KOP-539EF09CDAAD"
-  sourceRef  String? @unique
+  id        String  @id @default(cuid())
+  nama      String
+  desa      String?
+  // ref ke data resmi panitia (hasil import), mis. "KOP-539EF09CDAAD"
+  sourceRef String? @unique
 
   waIdentities   WhatsappIdentity[]
   members        Member[]
   businessUnits  BusinessUnit[]
-  accounts       Account[]
-  transactions   Transaction[]
+  coaAccounts    CoaAccount[]
+  journalEntries JournalEntry[]
   products       Product[]
   stockMovements StockMovement[]
   auditLogs      AuditLog[]
@@ -91,8 +94,8 @@ model Koperasi {
 }
 
 model WhatsappIdentity {
-  id         String   @id @default(cuid())
-  waNumber   String   @unique // format E.164 tanpa +, mis. 6281234567890
+  id         String @id @default(cuid())
+  waNumber   String @unique // E.164 tanpa +, mis. 6281234567890
   userId     String
   koperasiId String
 
@@ -103,84 +106,127 @@ model WhatsappIdentity {
 }
 
 model Member {
-  id                 String   @id @default(cuid())
-  koperasiId         String
-  nama               String
-  waNumber           String?
-  simpananWajibLunas Boolean  @default(false)
-  // ref anggota_koperasi panitia kalau hasil import
-  sourceRef          String?  @unique
-  createdAt          DateTime @default(now())
+  id        String   @id @default(cuid())
+  koperasiId String
+  nama      String
+  waNumber  String?
+  // ref anggota_koperasi panitia (hasil import)
+  sourceRef String?  @unique
+  createdAt DateTime @default(now())
 
-  koperasi Koperasi @relation(fields: [koperasiId], references: [id])
+  koperasi Koperasi      @relation(fields: [koperasiId], references: [id])
+  savings  MemberSaving[]
 
   @@index([koperasiId])
   @@map("members")
 }
 
+// Simpanan per periode — se-shape dgn simpanan_anggota panitia & KDMP Mobile
+// (simpanan pokok sekali di awal; wajib per bulan; dukung bayar rapel = banyak
+// row PAID sekaligus). Secara akuntansi pembayaran memposting jurnal ke akun
+// ekuitas 310000 (pokok) / 320000 (wajib) — dilakukan service, bukan trigger.
+model MemberSaving {
+  id             String       @id @default(cuid())
+  memberId       String
+  type           SavingType
+  period         String // "2026-01"; utk POKOK isi periode daftar
+  amount         Decimal      @db.Decimal(16, 2)
+  status         SavingStatus @default(UNPAID)
+  paidAt         DateTime?
+  journalEntryId String? // jurnal yang lahir saat pembayaran dikonfirmasi
+
+  member Member @relation(fields: [memberId], references: [id])
+
+  @@unique([memberId, type, period])
+  @@index([memberId, status])
+  @@map("member_savings")
+}
+
+// Unit usaha = DIMENSI pelaporan (BRILINK, POSPAY, BANEW, …), bukan akun.
+// PHU per unit = filter journal_entries.businessUnitId.
 model BusinessUnit {
   id         String @id @default(cuid())
   koperasiId String
   nama       String
 
-  koperasi     Koperasi      @relation(fields: [koperasiId], references: [id])
-  transactions Transaction[]
+  koperasi       Koperasi       @relation(fields: [koperasiId], references: [id])
+  journalEntries JournalEntry[]
 
   @@unique([koperasiId, nama])
   @@map("business_units")
 }
 
-model Account {
-  id         String      @id @default(cuid())
+// ============ AKUNTANSI (ala CORE resmi) ============
+
+// Bagan akun hirarkis. Seed default KDMP (subset contoh CORE):
+// 100000 AKTIVA > 111000 Kas > 112100 Bank BRI > 113000 Piutang > 114000 Persediaan
+// 200000 KEWAJIBAN · 300000 EKUITAS > 310000 Simpanan Pokok > 320000 Simpanan Wajib
+// 400000 PENDAPATAN (anak per unit usaha) · 500000 BEBAN (operasional, dst.)
+model CoaAccount {
+  id         String  @id @default(cuid())
   koperasiId String
-  type       AccountType
-  nama       String
+  kode       String // "111000" — unik per koperasi, sistematis
+  nama       String // "Kas Rupiah"
+  type       CoaType
+  parentId   String?
+  isActive   Boolean @default(true)
 
-  koperasi     Koperasi      @relation(fields: [koperasiId], references: [id])
-  transactions Transaction[]
+  koperasi Koperasi     @relation(fields: [koperasiId], references: [id])
+  parent   CoaAccount?  @relation("CoaTree", fields: [parentId], references: [id])
+  children CoaAccount[] @relation("CoaTree")
+  lines    JournalLine[]
 
-  @@map("accounts")
+  @@unique([koperasiId, kode])
+  @@map("coa_accounts")
 }
 
-model TransactionCategory {
-  id    String        @id @default(cuid())
-  nama  String        @unique
-  klass CategoryClass
-
-  transactions Transaction[]
-
-  @@map("transaction_categories")
-}
-
-model Transaction {
-  id             String   @id @default(cuid())
+// Header jurnal. Nomor auto "JU-001..". WA flow membuat DRAFT via posting rules
+// deterministik; "YA" → CONFIRMED. CONFIRMED immutable (koreksi = jurnal balik).
+model JournalEntry {
+  id             String      @id @default(cuid())
   koperasiId     String
-  businessUnitId String?
-  accountId      String
-  categoryId     String
-  date           DateTime @default(now())
-  type           TxType
-  description    String
-  amount         Decimal  @db.Decimal(16, 2)
-  sourceChannel  TxSource
-  status         TxStatus @default(DRAFT)
+  nomor          String // "JU-012" — auto, unik per koperasi
+  referensi      String? // dokumen sumber (nota, dsb.)
+  date           DateTime    @default(now())
+  keterangan     String // uraian bahasa pengurus: "penjualan air galon BANEW"
+  businessUnitId String? // dimensi unit usaha
+  sourceChannel  EntrySource
+  status         EntryStatus @default(DRAFT)
   createdById    String
-  createdAt      DateTime @default(now())
+  createdAt      DateTime    @default(now())
 
-  koperasi      Koperasi            @relation(fields: [koperasiId], references: [id])
-  businessUnit  BusinessUnit?       @relation(fields: [businessUnitId], references: [id])
-  account       Account             @relation(fields: [accountId], references: [id])
-  category      TransactionCategory @relation(fields: [categoryId], references: [id])
-  createdBy     User                @relation(fields: [createdById], references: [id])
+  koperasi      Koperasi       @relation(fields: [koperasiId], references: [id])
+  businessUnit  BusinessUnit?  @relation(fields: [businessUnitId], references: [id])
+  createdBy     User           @relation(fields: [createdById], references: [id])
+  lines         JournalLine[]
   stockMovement StockMovement?
 
+  @@unique([koperasiId, nomor])
   @@index([koperasiId, date])
   @@index([koperasiId, status])
-  @@map("transactions")
+  @@map("journal_entries")
 }
 
-// Inventaris-lite: se-shape dgn produk_koperasi/barang_masuk_produk panitia.
-// Stok terkini = SUM(qty bertanda) movement CONFIRMED — dihitung query, bukan kolom.
+// Baris jurnal: per baris HANYA salah satu debit/kredit terisi.
+// Validasi balance (SUM debit == SUM kredit) dilakukan service saat create/confirm.
+model JournalLine {
+  id      String  @id @default(cuid())
+  entryId String
+  coaId   String
+  debit   Decimal @default(0) @db.Decimal(16, 2)
+  kredit  Decimal @default(0) @db.Decimal(16, 2)
+  catatan String?
+
+  entry JournalEntry @relation(fields: [entryId], references: [id], onDelete: Cascade)
+  coa   CoaAccount   @relation(fields: [coaId], references: [id])
+
+  @@index([coaId])
+  @@map("journal_lines")
+}
+
+// ============ INVENTARIS-LITE ============
+
+// Se-shape dgn produk_koperasi panitia; import mengisi sourceRef.
 model Product {
   id         String   @id @default(cuid())
   koperasiId String
@@ -188,7 +234,6 @@ model Product {
   unit       String? // Pcs, kg, dus…
   barcode    String?
   hargaJual  Decimal? @db.Decimal(16, 2)
-  // ref produk_koperasi panitia kalau hasil import
   sourceRef  String?  @unique
   createdAt  DateTime @default(now())
 
@@ -199,36 +244,40 @@ model Product {
   @@map("products")
 }
 
+// Stok terkini = SUM(qty bertanda) movement CONFIRMED — query, bukan kolom.
+// Movement uang (penjualan/belanja stok) melahirkan JournalEntry linked;
+// konfirmasi atomik dua-duanya.
 model StockMovement {
-  id            String        @id @default(cuid())
-  koperasiId    String
-  productId     String
-  type          StockMoveType
-  qty           Int
-  hargaBeli     Decimal?      @db.Decimal(16, 2)
-  hargaJual     Decimal?      @db.Decimal(16, 2)
-  // transaksi uang yang lahir bersama movement (penjualan → INCOME, belanja stok → EXPENSE)
-  transactionId String?       @unique
-  date          DateTime      @default(now())
-  sourceChannel TxSource
-  status        TxStatus      @default(DRAFT)
-  createdById   String
-  createdAt     DateTime      @default(now())
+  id             String        @id @default(cuid())
+  koperasiId     String
+  productId      String
+  type           StockMoveType
+  qty            Int
+  hargaBeli      Decimal?      @db.Decimal(16, 2)
+  hargaJual      Decimal?      @db.Decimal(16, 2)
+  journalEntryId String?       @unique
+  date           DateTime      @default(now())
+  sourceChannel  EntrySource
+  status         EntryStatus   @default(DRAFT)
+  createdById    String
+  createdAt      DateTime      @default(now())
 
-  koperasi    Koperasi     @relation(fields: [koperasiId], references: [id])
-  product     Product      @relation(fields: [productId], references: [id])
-  transaction Transaction? @relation(fields: [transactionId], references: [id])
-  createdBy   User         @relation(fields: [createdById], references: [id])
+  koperasi     Koperasi      @relation(fields: [koperasiId], references: [id])
+  product      Product       @relation(fields: [productId], references: [id])
+  journalEntry JournalEntry? @relation(fields: [journalEntryId], references: [id])
+  createdBy    User          @relation(fields: [createdById], references: [id])
 
   @@index([koperasiId, productId, status])
   @@map("stock_movements")
 }
 
+// ============ RAG & AUDIT ============
+
 model RagDocument {
   id         String                       @id @default(cuid())
   title      String
   source     String
-  // regulation | guide | field_research | template
+  // regulation | guide | field_research | template | module_tutorial
   sourceType String
   content    String
   embedding  Unsupported("vector(1024)")?

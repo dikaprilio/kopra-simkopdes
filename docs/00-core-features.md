@@ -7,7 +7,9 @@
 
 ## 0. Tesis produk & bukti
 
-> **Kopra = antarmuka WhatsApp untuk CRUD harian koperasi** (transaksi, stok, simpanan) di atas struktur data yang se-shape dengan SIMKOPDES. Fitur di sistem resmi sudah ada — yang gagal adalah **input harian**, karena interface-nya bukan tempat pengurus bekerja. Webapp Kopra = layar untuk melihat & laporan; WhatsApp = tangan untuk mengisi.
+> **Kopra = antarmuka WhatsApp untuk CRUD harian koperasi** (transaksi, stok, simpanan) di atas struktur data yang se-shape dengan **suite resmi KDMP** (Koperasi Merah Putih CORE / Warehouse / KDMP Mobile / POS — lihat `docs/data/kdmp-modules-tutorial/`). Fitur di sistem resmi sudah ada — yang gagal adalah **input harian**, karena interface-nya bukan tempat pengurus bekerja. Webapp Kopra = layar untuk melihat & laporan; WhatsApp = tangan untuk mengisi.
+
+**Revamp keuangan (10 Jul sore):** sistem informasi keuangan mengikuti struktur **CORE resmi** — COA hirarkis + Jurnal double-entry + laporan Buku Besar/Neraca Saldo/PHU/Neraca. **Jangan berpaku pada format xlsx Pak Tedjo** (susah distandardisasi) — xlsx itu tetap dipakai sebagai kosakata seed & bukti pain, bukan struktur data. Pengurus TIDAK pernah melihat debit/kredit di WA: mereka bicara bahasa sehari-hari, posting rules deterministik yang menerjemahkan ke jurnal. Pitch line: *"chat masuk, jurnal CORE-standard keluar — koperasi naik kelas akuntansi tanpa belajar akuntansi."*
 
 Bukti (semua dari data resmi panitia + riset lapangan sendiri — siap disitasi di pitch):
 
@@ -46,44 +48,66 @@ Sudah diputuskan & ditolak: Dify, LangChain/LangGraph, FastAPI, Next.js-only, WA
 
 ---
 
-## 2. Data model (Prisma — 14 model, SUDAH ditulis di packages/db)
+## 2. Data model (Prisma — 15 model, SUDAH ditulis di packages/db)
 
 ```
-users                   email, passwordHash, name, role PENGURUS|ANGGOTA
-koperasi                nama, desa, sourceRef → profil_koperasi panitia
-whatsapp_identities     waNumber UNIQUE → userId, koperasiId
-members                 nama, waNumber?, simpananWajibLunas, sourceRef
-business_units          nama (BRILINK, POSPAY, BANEW, GERAI, MITRA SPPG, AGRO MANDIRI)
-accounts                type KAS|BANK
-transaction_categories  nama, klass OPERASIONAL|PERSEDIAAN|INVESTASI|MODAL|PENDAPATAN
-transactions            date, type INCOME|EXPENSE|TRANSFER, amount, description,
-                        businessUnitId?, accountId, categoryId,
-                        sourceChannel WHATSAPP|WEB|SEED|IMPORT, status DRAFT|CONFIRMED
-products                nama, unit?, barcode?, hargaJual?, sourceRef → produk_koperasi
-stock_movements         productId, type IN|OUT|ADJUST, qty, hargaBeli?, hargaJual?,
-                        transactionId? (1-1 link transaksi uang), sourceChannel, status
-rag_documents           title, source, sourceType, content, embedding vector(1024)
-audit_logs              koperasiId?, actorId?, action, payloadJson
-(course_modules, course_progress → BACKLOG, jangan dibuat sekarang)
+users                email, passwordHash, name, role PENGURUS|ANGGOTA
+koperasi             nama, desa, sourceRef → profil_koperasi panitia
+whatsapp_identities  waNumber UNIQUE → userId, koperasiId
+members              nama, waNumber?, sourceRef → anggota_koperasi panitia
+member_savings       memberId, type POKOK|WAJIB, period "2026-01", amount,
+                     status PAID|UNPAID, journalEntryId? (jurnal saat bayar)
+business_units       DIMENSI pelaporan (BRILINK, POSPAY, BANEW, …) — bukan akun
+── AKUNTANSI (ala CORE resmi) ──
+coa_accounts         kode ("111000"), nama, type ASSET|LIABILITY|EQUITY|REVENUE|EXPENSE,
+                     parentId (hirarki), isActive — seed COA default KDMP
+journal_entries      nomor "JU-012" auto, referensi?, date, keterangan,
+                     businessUnitId?, sourceChannel WHATSAPP|WEB|SEED|IMPORT,
+                     status DRAFT|CONFIRMED (immutable; koreksi = jurnal balik)
+journal_lines        entryId, coaId, debit, kredit, catatan — balance divalidasi service
+── INVENTARIS-LITE ──
+products             nama, unit?, barcode?, hargaJual?, sourceRef → produk_koperasi
+stock_movements      productId, type IN|OUT|ADJUST, qty, hargaBeli?, hargaJual?,
+                     journalEntryId? (1-1 jurnal uang), sourceChannel, status
+── LAINNYA ──
+rag_documents        + sourceType `module_tutorial` (docs/data/kdmp-modules-tutorial)
+audit_logs           koperasiId?, actorId?, action, payloadJson
+(course_modules, course_progress → BACKLOG)
 ```
 
-Aturan: **stok terkini = SUM movement CONFIRMED** (query, bukan kolom). Simpanan per periode meniru `simpanan_anggota` panitia (periode + status PAID/UNPAID) — implement via tabel `member_savings(memberId, period "2026-01", amount, status)` ← tambahkan model ini saat implementasi seed (total jadi 15).
+Aturan derivasi (semua query, bukan kolom/tabel):
+- **Stok terkini** = SUM movement CONFIRMED per product
+- **Buku Besar** = saldo per akun COA dari journal_lines · **Neraca Saldo** = daftar debit/kredit semua akun + Status Balance · **PHU** = REVENUE − EXPENSE per periode (per unit via dimensi) · **Neraca** = ASSET vs LIABILITY+EQUITY per tanggal · **Buku Kas view** = buku besar akun 111000 (jembatan kebiasaan pengurus)
+
+Seed COA default (subset contoh CORE): `100000 AKTIVA` → 111000 Kas Rupiah, 112100 Bank BRI, 113000 Piutang, 114000 Persediaan · `200000 KEWAJIBAN` · `300000 EKUITAS` → 310000 Simpanan Pokok, 320000 Simpanan Wajib · `400000 PENDAPATAN` → anak per unit usaha · `500000 BEBAN` → operasional, adm bank, dst.
+
+**Posting rules (kode deterministik — pengurus tak pernah lihat debit/kredit):**
+| Ucapan pengurus | Jurnal yang lahir |
+|---|---|
+| "catat pemasukan banyu 500rb" | Dr 111000 Kas 500rb / Cr 4xxxx Pendapatan BANEW 500rb (dim: BANEW) |
+| "bayar listrik 200rb" | Dr 5xxxx Beban Operasional / Cr 111000 Kas |
+| "belanja stok minyakita 20pcs @14rb" | Dr 114000 Persediaan 280rb / Cr Kas + movement IN |
+| "kejual minyakita 5" | Dr Kas (5×hargaJual) / Cr Pendapatan Penjualan + movement OUT |
+| "bu Sari bayar simpanan wajib jan-mar" | Dr Kas / Cr 320000 Simpanan Wajib + 3 period PAID |
 
 ---
 
 ## 3. Fitur MVP
 
 ### 3.1 ERP Webapp (role PENGURUS) — layar untuk melihat
+Menu & istilah **meniru CORE resmi** (Dashboard · Akuntansi: COA, Jurnal · Master Data · Laporan) — juri dari Kemenkop langsung merasa familiar.
+
 | Fitur | Detail |
 |---|---|
-| Dashboard | Cards: Saldo Kas, Saldo Bank, Pemasukan & Pengeluaran bulan ini, SHU sementara, anggota nunggak; tabel performa per unit usaha |
-| Ledger | list transaksi + filter (bulan/unit/status/source), input manual, edit & confirm DRAFT, badge sumber WA/Web |
+| Dashboard | Kartu ala CORE: Total Aset, Kewajiban, Ekuitas, Pendapatan, Beban, Laba Bersih + Total Anggota, Total Simpanan, anggota nunggak; tabel PHU per unit usaha |
+| Akuntansi › COA | bagan akun hirarkis (tree expand), seed default KDMP, tambah akun (Nama, Kode, Status, Akun Induk — form sama dgn CORE) |
+| Akuntansi › Jurnal | daftar jurnal (No. Jurnal, Referensi, Tanggal, Debit, Kredit) + detail lines; jurnal dari WA badge sumber; confirm DRAFT; CONFIRMED immutable |
 | **Produk & Stok** | list produk (import dari data resmi) + stok terkini + kartu stok per produk (riwayat movement). TANPA kasir/barcode-scan |
-| Anggota & Simpanan | list anggota + status simpanan **per periode** (PAID/UNPAID), dukung bayar rapel multi-bulan |
-| Laporan | **Buku Kas** & **Laba Rugi** per bulan, print-friendly, **kolom meniru Excel asli Palbapang** (`No|Tanggal|Uraian|Bukti|Debet|Kredit|Saldo|Ket`) — framing "siap RAT" |
+| Anggota & Simpanan | list anggota + simpanan POKOK/WAJIB **per periode** (PAID/UNPAID), bayar rapel multi-bulan |
+| Laporan | **4 laporan resmi CORE**: Buku Besar, Neraca Saldo (+Status Balance "Neraca Seimbang"), **PHU**, Neraca — print-friendly, framing "siap RAT". Bonus: **view Buku Kas** (buku besar akun Kas) sebagai jembatan kebiasaan pengurus lama |
 
 ### 3.2 WhatsApp Assistant — tangan untuk mengisi (WEDGE)
-**Fase 2a (teks, fondasi):** catat transaksi · catat stok masuk/keluar (penjualan auto-bikin transaksi pemasukan) · tanya stok/keuangan · tanya panduan (RAG) · daftar penunggak + template pengingat · minta laporan.
+**Fase 2a (teks, fondasi):** catat transaksi · catat stok masuk/keluar (penjualan auto-bikin jurnal pemasukan) · tanya stok/keuangan · tanya panduan (RAG) · daftar penunggak + template pengingat · minta laporan.
 **Fase 2b (stretch, urutan):** OCR nota (Claude vision; nota belanja → stok masuk + transaksi keluar sekaligus) → catat pembayaran simpanan (rapel) → voice note (Whisper).
 Detail flows di §5.
 
@@ -109,11 +133,11 @@ Aturan jawab: tak mengarang pasal; bedakan regulasi vs praktik vs temuan lapanga
 | Auth | `POST /auth/login` · `GET /auth/me` | JWT berisi userId, koperasiId, role |
 | Members | `GET /members?unpaid=&search=` · `POST /members` · `PATCH /members/:id` | |
 | Simpanan | `GET /members/:id/simpanan` · `POST /members/:id/simpanan/pay {periods[], amount}` | rapel multi-bulan |
-| Units/Accounts/Categories | `GET/POST /business-units` · `GET /accounts` · `GET /categories` | accounts & categories dari seed |
-| Transactions | `GET /transactions?month=&unitId=&status=&source=` · `POST /transactions` · `PATCH /transactions/:id` (DRAFT saja) · `POST /transactions/:id/confirm` · `DELETE /transactions/:id` (DRAFT saja) | CONFIRMED immutable — koreksi via jurnal balik (jawaban juri) |
+| Units & COA | `GET/POST /business-units` · `GET /coa?tree=true` · `POST /coa` (Nama, Kode, Status, Akun Induk) | COA seed default KDMP |
+| Journals | `GET /journals?month=&unitId=&status=&source=` · `POST /journals` (header+lines, service validasi balance; helper `POST /journals/simple` utk income/expense 2-baris via posting rules) · `PATCH /journals/:id` (DRAFT) · `POST /journals/:id/confirm` · `DELETE /journals/:id` (DRAFT) | CONFIRMED immutable — koreksi via jurnal balik (jawaban juri) |
 | **Products** | `GET/POST /products` · `PATCH /products/:id` · `GET /products/:id/card` (stok + riwayat) | |
-| **Stock** | `GET /stock-movements?productId=` · `POST /stock-movements` · `POST /stock-movements/:id/confirm` | movement CONFIRMED immutable; confirm movement ber-link transaksi = confirm dua-duanya atomik |
-| Reports | `GET /dashboard/summary` · `GET /reports/buku-kas?month=&format=html` · `GET /reports/laba-rugi?month=&format=html` | satu endpoint summary, SQL agregat |
+| **Stock** | `GET /stock-movements?productId=` · `POST /stock-movements` · `POST /stock-movements/:id/confirm` | movement CONFIRMED immutable; confirm movement ber-link jurnal = confirm dua-duanya atomik |
+| Reports | `GET /dashboard/summary` (kartu ala CORE) · `GET /reports/buku-besar?from=&to=` · `GET /reports/neraca-saldo?from=&to=` (+Status Balance) · `GET /reports/phu?month=&unitId=` · `GET /reports/neraca?date=` · `GET /reports/buku-kas?month=` (view) — semua `&format=html` print-friendly | semua derived dari journal_lines |
 | WA/Admin | `GET/POST/DELETE /wa-identities` · `POST /wa/webhook` (auth api-key WAHA) · `POST /admin/import-koperasi {sourceRef}` · `GET /audit-logs` | |
 
 Tidak dibangun: delete anggota, user management UI, CRUD kategori penuh, edit transaksi confirmed.
@@ -137,7 +161,7 @@ per chat dulu, baru panggil agent bebas. SATU draft pending per chat.
 **F0 Nomor asing** → perkenalan + cara minta pengurus menautkan nomor di web. Nol akses data.
 
 **F1 Catat transaksi (JALUR DEMO UTAMA)**
-`"catat pemasukan banyu 500rb dari penjualan air galon"` → ekstrak → `createTransactionDraft` (validasi unit+kategori) → SUSPEND → bot: "📝 Draft: Pemasukan • BANEW • Rp500.000 … Balas YA" → "YA" → confirm (kode) → "✅ Tersimpan. Saldo kas Rp… <link>" → muncul real-time di web (badge WhatsApp). Cabang: koreksi ("eh 450rb") / batal.
+`"catat pemasukan banyu 500rb dari penjualan air galon"` → ekstrak → `createEntryDraft` (posting rules → jurnal 2-baris; validasi unit & akun) → SUSPEND → bot: "📝 Draft: Pemasukan • BANEW • Rp500.000 … Balas YA" → "YA" → confirm (kode) → "✅ Tersimpan. Saldo kas Rp… <link>" → muncul real-time di web (badge WhatsApp). Cabang: koreksi ("eh 450rb") / batal.
 Parser WAJIB dites kosakata asli: "terima simpanan wajib an Bu X juli-des", "bagi hasil pisang 150rb", "laba brilink", "belanja banew ke-2".
 
 **F2 Tanya keuangan** → `getFinancialSummary` (SQL: total, per unit, MoM growth) → jawaban berangka-query.
@@ -148,11 +172,11 @@ Parser WAJIB dites kosakata asli: "terima simpanan wajib an Bu X juli-des", "bag
 
 **F5 Minta laporan** → `generateReport` → link buku kas / laba rugi bulan diminta.
 
-**F6 (2b) Media** → foto nota: download → Claude vision → draft (belanja stok = movement IN + transaksi EXPENSE sekaligus). Voice: Whisper → teks → flow sesuai isi.
+**F6 (2b) Media** → foto nota: download → Claude vision → draft (belanja stok = movement IN + jurnal Dr Persediaan/Cr Kas sekaligus). Voice: Whisper → teks → flow sesuai isi.
 
 **F7 Stok (Fase 2a — bagian tesis inti)**
-- `"stok masuk minyakita 20 pcs, beli 14rb"` → draft movement IN (+opsional transaksi EXPENSE linked) → YA → stok naik
-- `"kejual minyakita 5"` → draft movement OUT **+ otomatis draft transaksi INCOME** (5 × hargaJual) → SATU konfirmasi YA → dua record CONFIRMED atomik → *momen demo: stok & kas berubah bersamaan di web*
+- `"stok masuk minyakita 20 pcs, beli 14rb"` → draft movement IN (+jurnal Dr Persediaan/Cr Kas linked) → YA → stok naik
+- `"kejual minyakita 5"` → draft movement OUT **+ otomatis draft jurnal Dr Kas/Cr Pendapatan** (5 × hargaJual) → SATU konfirmasi YA → dua record CONFIRMED atomik → *momen demo: stok & kas berubah bersamaan di web*
 - `"stok minyakita berapa?"` / `"barang apa yang mau habis?"` → `getStockLevels`
 - Produk tak dikenal → bot tawarkan buat produk baru (draft) — C dari CRUD products via WA
 
@@ -165,10 +189,10 @@ Nomor asing = nol akses · semua query/write scoped koperasiId · semua tool cal
 
 | Tool | Isi (fungsi TS + Prisma, deterministik) |
 |---|---|
-| `createTransactionDraft` | validasi unit & kategori → insert DRAFT → ringkasan |
-| `recordStockMovement` | validasi produk (fuzzy match nama) → draft IN/OUT (+draft transaksi linked utk penjualan/belanja) |
+| `createEntryDraft` | posting rules deterministik: ucapan → jurnal 2-baris balanced (DRAFT) → ringkasan bahasa sederhana |
+| `recordStockMovement` | validasi produk (fuzzy match nama) → draft IN/OUT (+draft jurnal linked utk penjualan/belanja) |
 | `getStockLevels` | SUM movement per produk; filter "hampir habis" (threshold qty ≤ 5) |
-| `getFinancialSummary` | SQL agregat bulan/unit + MoM growth |
+| `getFinancialSummary` | agregat journal_lines: pendapatan/beban/laba per bulan & unit + MoM growth |
 | `listUnpaidMembers` | simpanan UNPAID per member + total |
 | `generateReport` | URL laporan bulan diminta |
 | `searchKoperasiGuides` | vector search pgvector → chunks + sumber |
