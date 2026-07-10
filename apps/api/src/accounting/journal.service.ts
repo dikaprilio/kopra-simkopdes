@@ -45,6 +45,10 @@ export class JournalService {
   }
 
   async createManual(koperasiId: string, actorId: string, dto: CreateManualJournalDto) {
+    if (dto.businessUnitId) {
+      const unit = await prisma.businessUnit.findFirst({ where: { id: dto.businessUnitId, koperasiId } });
+      if (!unit) throw new BadRequestException('UNIT_TIDAK_DITEMUKAN');
+    }
     const entry = await createManualDraft(
       actorId, koperasiId,
       { keterangan: dto.keterangan, referensi: dto.referensi, businessUnitId: dto.businessUnitId },

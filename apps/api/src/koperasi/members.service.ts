@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
+import { BadRequestException, Injectable, InternalServerErrorException, NotFoundException } from '@nestjs/common';
 import { Prisma, prisma } from '@kopra/db';
 import { confirmEntry, markPeriodsPaid, memberSavings, paySavingDraft } from '@kopra/core';
 import { parsePage, serializeDecimals } from '../common/http';
@@ -40,7 +40,23 @@ export class MembersService {
 
     const draft = await paySavingDraft(actorId, { koperasiId, memberId, periods, amount: total, savingType }, 'WEB');
     await confirmEntry(draft.journal.entry.id, koperasiId);
-    await markPeriodsPaid(memberId, savingType, periods, draft.journal.entry.id, Number(savings[0].amount));
+    // markPeriodsPaid = upsert per periode; jurnal sudah CONFIRMED (immutable) — retry supaya
+    // kegagalan transien tidak meninggalkan periode UNPAID yang bisa dibayar ganda.
+    let markErr: unknown;
+    for (let attempt = 0; attempt < 3; attempt++) {
+      try {
+        await markPeriodsPaid(memberId, savingType, periods, draft.journal.entry.id, Number(savings[0].amount));
+        markErr = undefined;
+        break;
+      } catch (e) {
+        markErr = e;
+        await new Promise((r) => setTimeout(r, 150 * (attempt + 1)));
+      }
+    }
+    if (markErr)
+      throw new InternalServerErrorException(
+        `RAPEL_TANDA_PERIODE_GAGAL: jurnal ${draft.journal.entry.nomor} sudah CONFIRMED tapi periode belum tertanda PAID — jangan bayar ulang, tandai manual. (${(markErr as Error).message})`,
+      );
     return { paid: periods.length, total: String(total), journalId: draft.journal.entry.id, nomor: draft.journal.entry.nomor };
   }
 }
