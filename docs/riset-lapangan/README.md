@@ -7,13 +7,11 @@ Transkrip interview asli tim (Juli 2026, Bantul DIY) — dasar seluruh keputusan
 | [interview_notes_bu_anita_kdmp_bangunharjo.md](interview_notes_bu_anita_kdmp_bangunharjo.md) | Bu Anita, KDMP Bangunharjo (koperasi "maju", sudah punya app vendor) | Pain: terlalu banyak sistem, input berulang, anggota tua tak buka app, reminder jatuh ke WA. Jangan rebuild POS — jadilah bridge |
 | [interview_notes_pak_tejo_kdmp_palbapang.md](interview_notes_pak_tejo_kdmp_palbapang.md) | Pak Tedjo, KDMP Palbapang (grassroots, Excel-first) | Pain: klasifikasi transaksi & laporan keuangan (laba rugi, neraca, konsolidasi). Unit usaha riil: BRI Link, PosPay, Banyu, dst. Ingin "catat transaksi → laporan otomatis" |
 
-## Berkas pendukung (TIDAK di repo — sengaja)
+## Berkas pendukung
 
-Ada di penyimpanan lokal tim (`Simkopdes/Berkas (Could be use for RAG and Context)/`):
-- 4 file Excel laporan asli KDMP Palbapang (Buku Bank, Kas Umum, Kas Operasional, Laporan Unit Usaha 2026)
-- LPJ RAT KDMP Bangunharjo (PDF)
-
-**Alasan tidak di-commit:** ini laporan keuangan asli koperasi nyata yang dititipkan narasumber — repo ini publik saat submission. Pemakaiannya: (1) referensi struktur untuk `packages/db` seed & format laporan, (2) diubah jadi **template anonim** untuk korpus RAG (`rag_corpus/`), bukan dipublikasikan mentah.
+- **[berkas-lapangan-anonim.md](berkas-lapangan-anonim.md)** ← mulai dari sini: struktur, kosakata transaksi, pola & implikasi desain dari semua berkas (paling berguna untuk AI agent)
+- `berkas-raw/palbapang/` — 4 Excel laporan asli KDMP Palbapang (Buku Bank, Kas Umum, Kas Operasional, Laporan Unit Usaha 2026): referensi struktur untuk seed & format laporan
+- LPJ RAT KDMP Bangunharjo (PDF 44 hal) — **tetap lokal, tidak di-commit** (berisi daftar hadir anggota: nama, alamat, tanda tangan). Outline lengkapnya ada di dokumen anonim.
 
 ## Data statistik nasional (di `docs/data/`)
 
