@@ -2,9 +2,9 @@
 
 > ⚠️ **SUPERSEDED (10 Jul malam):** dokumen ini sudah DILEBUR ke rencana terpadu
 > [`docs/plans/2026-07-10-kopra-system-build-plan.md`](../../plans/2026-07-10-kopra-system-build-plan.md) (v2 unified).
-> Tiga keputusan di sini DI-OVERRIDE di dokumen terpadu (lihat "Changelog merge"): (8) read keuangan di grup ditolak utk semua,
-> (9) MEMBER di DM/web = RAG + data dirinya saja, (11) OCR/STT/web-chat jadi stretch Fase 8 (bukan cut permanen), (4) agent → api HTTP (bukan Prisma langsung).
-> Jangan implementasi dari dokumen ini.
+> Hampir seluruh desain ini DIADOPSI FINAL (grup read per-role, packages/core + Prisma langsung di Mastra, cut OCR/STT/web-chat, super-admin WA).
+> SATU override tersisa (keputusan Dika): §7 — MEMBER di DM/web = RAG + data dirinya saja (bukan read Finance/Inventory penuh).
+> Jangan implementasi dari dokumen ini — pakai rencana terpadu.
 
 **Date:** 2026-07-10  
 **Status:** Approved in conversation  

@@ -3,9 +3,9 @@
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax.
 > **Dokumen ini menggantikan:** `docs/plans/…-system-build-plan.md` v1 (Claude, commit `6a07521`) **dan** `docs/superpowers/specs/2026-07-10-kopra-whatsapp-erp-mvp-design.md` (GPT 5.6 + Aldio, commit `a377feab`). Satu-satunya rencana yang berlaku.
 
-**Goal:** Sistem Kopra demo-ready 36 jam: web ERP stand-in (Finance ala CORE + Inventory-lite), bot WhatsApp ber-guardrail (CRUD via DM pengurus, preview→YA), registrasi dual-flow (WA↔web, OTP, NIK, approval super-admin), group support read-only mention-only — di satu VM GCP.
+**Goal:** Sistem Kopra demo-ready 36 jam: web ERP stand-in (Finance ala CORE + Inventory-lite), bot WhatsApp ber-guardrail (CRUD via DM pengurus, preview→YA), registrasi dual-flow (WA↔web, OTP, NIK, approval super-admin), group support mention-only (read sesuai role, tanpa C/U/D) — di satu VM GCP.
 
-**Architecture:** Monorepo pnpm `web`(Next.js) / `api`(NestJS) / `agent`(Mastra) / `packages/db`(Prisma). **Semua penulisan DB lewat api** (agent memanggil api via HTTP + service token — satu titik guardrail & audit; lihat Changelog #4). Gateway = GoWA (repo `kopra-whatsapp-waha`) di balik `WhatsappGateway` interface. Sumber data resmi = import offline; runtime tidak pernah menyentuh DB panitia.
+**Architecture:** Monorepo pnpm `web`(Next.js) / `api`(NestJS) / `agent`(Mastra) / `packages/db`(Prisma) / **`packages/core` (shared domain rules)**. NestJS **dan** Mastra sama-sama akses Prisma langsung, tapi SEMUA aturan (policy role/channel, posting rules, validasi balance & stok, PendingAction, audit, redaksi NIK) hidup di `packages/core` — satu implementasi, dua konsumen (keputusan GPT diadopsi final). Next.js tak pernah menyentuh Prisma. Gateway = GoWA di balik `WhatsappGateway` interface. Sumber data resmi = import offline; runtime tidak pernah menyentuh DB panitia.
 
 **Tech Stack:** Next.js · NestJS · Mastra · Prisma/Postgres16+pgvector (:5433) · GoWA **pinned `v8.6.0`** · Claude `claude-opus-4-8` · Argon2id · Caddy (HTTPS).
 
@@ -18,14 +18,14 @@
 | 1 | Struktur phased + task + kontrak interface | dipertahankan | plan Claude |
 | 2 | Idempotensi & delivery: dedup inbound `(deviceId,eventId)`, outbox retry, duplicate-YA lock, `is_from_me` ignore | **diadopsi** | design GPT |
 | 3 | `PendingAction` (ganti `WaRun`): 1 aktif per DM, preview, expiry 15m, terminal-check dalam transaksi | **diadopsi** | design GPT |
-| 4 | Integrasi agent↔data: GPT usul `packages/core`+Prisma langsung di Mastra; final = **agent → api HTTP** (satu penulis DB, guardrail & audit terpusat, kontrak paralel Dev1/Dev2 bersih). Semua policy hidup di api | plan Claude (override GPT, alasan dicatat) |
+| 4 | Integrasi agent↔data: **Mastra akses Prisma langsung + `packages/core`** berisi seluruh domain rules — dikonsumsi api & agent, mencegah dua implementasi | **design GPT (final — keputusan Dika 10 Jul malam)** |
 | 5 | Registrasi: `ImportedIdentity` + pencocokan **prefix NIK masked**, OTP hashed 3×/5m, magic link 15m, skip-form bila NIK lokal ada & phone null, konflik phone → eskalasi | **diadopsi** | design GPT |
 | 6 | **Super-admin WhatsApp-only** (`SUPER_ADMIN_WA_NUMBER`, perintah deterministik PERMOHONAN/DETAIL/SETUJUI/TOLAK/PERAN) menggantikan "first-claimer langsung jadi pengurus" utk koperasi IMPORTED; koperasi LOCAL baru → OWNER setelah approval super-admin | **diadopsi** (mengganti jawaban first-claimer versi sore — abuse-proof, tetap cepat didemokan) | design GPT |
 | 7 | Grup: konteks window 50 pesan/24 jam (tabel), rebind→UNRESOLVED bila member terdaftar koperasi ter-bind hilang, jawaban binding hanya boleh koperasi si penjawab | **diadopsi** | design GPT |
-| 8 | **Baca keuangan di GRUP: DITOLAK untuk semua** (diarahkan DM) — GPT mengizinkan pengurus; keputusan Dika (privasi) menang | plan Claude / Dika |
+| 8 | Baca di GRUP mengikuti role (GPT): guest = tanya publik saja; MEMBER = + read Inventory; PENGURUS/OWNER = + read Finance. C/U/D tetap dilarang di grup (diarahkan DM) | **design GPT (final — keputusan Dika 10 Jul malam)** |
 | 9 | **Anggota (MEMBER) di DM & web = RAG + data dirinya saja** (simpanan sendiri); GPT memberi member read Finance penuh — keputusan Dika menang | plan Claude / Dika |
 | 10 | RAG: **Postgres full-text search dulu** (tsvector, tanpa embedding di jalur kritis); pgvector = upgrade opsional | **diadopsi** | design GPT |
-| 11 | OCR nota, STT, web-chat: GPT men-cut; final = **stretch Fase 8, non-blocking** setelah acceptance inti lolos (prioritas Dika: registrasi+grup > OCR) | kompromi |
+| 11 | OCR nota, STT, **web-chat: CUT dari MVP** (backlog/roadmap, dikerjakan nanti) — tidak ada fase stretch media | **design GPT (final — keputusan Dika 10 Jul malam)** |
 | 12 | NIK plaintext at rest (requirement produk) + redaksi ketat di log/prompt/response/audit | **diadopsi** | design GPT |
 | 13 | Deploy: Caddy HTTPS, GoWA pinned, persistent disk, GoWA UI via SSH tunnel, snapshot pra-demo, demo tak bergantung DB panitia | **diadopsi** | design GPT |
 | 14 | Loans/pinjaman, warehouse lanjutan (bin/batch/expiry/adjudication), POS/barcode, multi-koperasi per user, live-write DB panitia, Redis/BullMQ/microservices | tetap CUT | keduanya |
@@ -40,7 +40,7 @@
 - Keamanan: webhook HMAC-SHA256 header `X-Hub-Signature-256` atas **raw body**, constant-time compare, tolak sebelum parse JSON; password Argon2id; OTP disimpan hash (3 percobaan, TTL 300s); magic link TTL 900s single-use; PendingAction TTL 900s.
 - **NIK**: plaintext at rest (requirement), UNIQUE; tidak pernah di response API biasa, log, trace, prompt LLM, pesan grup, atau `audit.payloadJson` (util redaksi di api). NIK hanya diinput via form web.
 - GoWA: image pinned `ghcr.io/aldinokemal/go-whatsapp-web-multidevice:v8.6.0`; semua call device-scoped; abaikan `is_from_me`; UI admin tak diekspos publik (SSH tunnel).
-- Ports: web 3000 · api 3001 · gowa 3002 · agent 4111 · postgres 5433 (mirror panitia lokal dev 5432). Env baru: `APP_PUBLIC_WEB_URL`, `OTP_TTL_SECONDS=300`, `MAGIC_LINK_TTL_SECONDS=900`, `PENDING_ACTION_TTL_SECONDS=900`, `SUPER_ADMIN_WA_NUMBER`, `AGENT_SERVICE_TOKEN`.
+- Ports: web 3000 · api 3001 · gowa 3002 · agent 4111 · postgres 5433 (mirror panitia lokal dev 5432). Env baru: `APP_PUBLIC_WEB_URL`, `OTP_TTL_SECONDS=300`, `MAGIC_LINK_TTL_SECONDS=900`, `PENDING_ACTION_TTL_SECONDS=900`, `SUPER_ADMIN_WA_NUMBER`. (agent & api satu network compose privat; agent tidak diekspos publik.)
 - Test wajib (Vitest/Jest): matriks otorisasi penuh, posting rules & balance, stok (fraksional), state machine DM, NIK-match & prefix-match, group binding/rebind, dedup & duplicate-YA, redaksi NIK. UI = verifikasi manual/curl.
 - Commit kecil & sering ke `main`, tanpa `Co-Authored-By`.
 
@@ -52,12 +52,12 @@
 | Lihat simpanan/profil DIRINYA (DM/web) | ❌ | ✅ | ✅ | ✅ | ❌ |
 | Read Inventory & Finance (DM/web) | ❌ | ❌ | ✅ | ✅ | ❌ |
 | CRUD Finance/Inventory (DM preview→YA, web) | ❌ | ❌ | ✅ | ✅ | ❌ |
-| Grup ter-bind: read ringan (stok, produk, profil koperasi) | ✅* | ✅ | ✅ | ✅ | ❌ |
-| Grup: ringkasan keuangan / penunggak / C-U-D | ❌ semua — bot arahkan ke DM | ❌ | ❌ (diarahkan DM) | ❌ (diarahkan DM) | ❌ |
+| Grup ter-bind: tanya publik (RAG) | ✅ | ✅ | ✅ | ✅ | ❌ |
+| Grup ter-bind: read Inventory (stok, produk, kartu stok) | ❌ | ✅ | ✅ | ✅ | ❌ |
+| Grup ter-bind: read Finance (dashboard, laporan, penunggak) | ❌ | ❌ | ✅ | ✅ | ❌ |
+| Grup: Create/Update/Delete | ❌ semua — bot arahkan ke DM, tanpa PendingAction | ❌ | ❌ | ❌ | ❌ |
 | Kelola role member LOCAL (web) | ❌ | ❌ | ❌ | ✅ | ❌ |
 | Approve registrasi IMPORTED + koperasi baru + `PERAN` | ❌ | ❌ | ❌ | ❌ | ✅ |
-
-\* di grup ter-bind, guest boleh ikut tanya read ringan (konteks grup = governance koperasi).
 
 ## Data model delta (final ≈ 22 model — semua di `packages/db/prisma/schema.prisma`)
 
@@ -221,8 +221,8 @@ model KoperasiDirectory {            // 1.026 nama koperasi resmi (PII-free, di-
 
 - [ ] **2.1 api: WhatsappGateway + adapter GoWA (TDD HMAC)** — interface: `parseWebhook(raw, sig) → InboundMessage|null` (`chatJid, senderNumber, isGroup, text, mentionedJids, mediaType, messageId, groupName, deviceId, eventId, isFromMe`) · `sendText` (via **outbox**: tulis `OutboundWhatsappMessage`, worker interval 2s kirim+backoff) · `downloadMedia` · `getGroupParticipants`. Ignore `isFromMe`. Commit.
 - [ ] **2.2 api: idempotensi** — webhook handler: upsert `InboundWhatsappEvent(deviceId,eventId)`; duplikat → 200 tanpa proses. Test dedup. Commit.
-- [ ] **2.3 agent: kopra + tools ber-gate** — tools (wrapper HTTP ke api dgn `AGENT_SERVICE_TOKEN` + konteks `{actorId,koperasiId,role,channel}`): read `getCooperativeProfile, listCoaAccounts, listJournalEntries, getFinancialDashboard, generateFinancialReport, listProducts, getStockLevels, getStockCard, getMySavings, listUnpaidMembers, searchCooperativeGuidance`; write-draft `createEntryDraft (SimpleEntryInput), createManualJournalDraft, recordStockMovementDraft, paySavingDraft, createProductDraft, createCoaDraft`. **Gate keras di tiap tool** per Matriks (channel GROUP → semua write + finance-read → `FORBIDDEN_CHANNEL`; role → `FORBIDDEN_ROLE`). System prompt: bahasa sederhana, tak berhitung, arahkan aksi grup→DM. Commit.
-- [ ] **2.4 api+agent: PendingAction flow (TDD)** — write-draft tool → api buat draft + `PendingAction(AWAITING_CONFIRM, preview, expiresAt)` (tolak jika sudah ada aktif utk chatJid) → bot kirim preview lengkap → balasan: `YA` → `confirmPending(id)` transaksi: lock row, cek state+expiry, confirm jurnal/movement, set CONFIRMED → balas sukses+saldo; `BATAL` → CANCELLED+hapus draft; teks lain → revisi preview (update draft+preview). Test: duplicate YA sekali efek; expiry; satu-aktif-per-chat. Commit.
+- [ ] **2.3 packages/core + agent: kopra + tools ber-gate** — buat `packages/core` (`policy.ts` can(actor,capability,channel) sesuai Matriks · `posting-rules.ts` · `journal.ts` validate+confirm · `stock.ts` · `pending-action.ts` create/confirm/cancel (lock + terminal-check) · `audit.ts` · `redact.ts` NIK) — **api & agent konsumsi core yang sama; refactor service 1.2–1.4 ke core di task ini**. Tools agent = fungsi TS langsung `@kopra/db` + `@kopra/core` dgn konteks resolved `{actorId,koperasiId,role,channel}` (BUKAN dari LLM): read `getCooperativeProfile, listCoaAccounts, listJournalEntries, getFinancialDashboard, generateFinancialReport, listProducts, getStockLevels, getStockCard, getMySavings, listUnpaidMembers, searchCooperativeGuidance`; write-draft `createEntryDraft (SimpleEntryInput), createManualJournalDraft, recordStockMovementDraft, paySavingDraft, createProductDraft, createCoaDraft`. **Gate keras via core.policy.can() di tiap tool** per Matriks (grup: write selalu FORBIDDEN_CHANNEL; finance-read butuh PENGURUS/OWNER; inventory-read butuh minimal MEMBER). System prompt: bahasa sederhana, tak berhitung, arahkan aksi grup→DM. Tak ada tool SQL generik. Commit.
+- [ ] **2.4 api+agent: PendingAction flow (TDD)** — write-draft tool → core.pendingAction.create() buat draft + `PendingAction(AWAITING_CONFIRM, preview, expiresAt)` (tolak jika sudah ada aktif utk chatJid) → bot kirim preview lengkap → balasan: `YA` → core.pendingAction.confirm(id) transaksi: lock row, cek state+expiry, confirm jurnal/movement, set CONFIRMED → balas sukses+saldo; `BATAL` → CANCELLED+hapus draft; teks lain → revisi preview (update draft+preview). Test: duplicate YA sekali efek; expiry; satu-aktif-per-chat. Commit.
 - [ ] **2.5 api: webhook orchestrator DM** — resolve identity → GUEST → intro+RAG+tawaran DAFTAR (Fase 3 melengkapi); ACTIVE → cek `PendingAction` AWAITING utk chatJid → jalur konfirmasi; else → agent generate (konteks role). Semua balasan via outbox. Test state machine. Commit.
 - [ ] **2.6 RAG FTS P1** — `rag_documents` + kolom `tsv tsvector` (generated, config `indonesian` fallback `simple`) + GIN index; ingest `rag_corpus/` (panduan pembukuan 3 file ditulis, tutorial modules, interview field_research, konsep UU 25/1992 pasal inti) · `searchCooperativeGuidance` = FTS top-5 + sumber (embedding = TIDAK di jalur kritis). Uji playground. Commit.
 
@@ -238,7 +238,7 @@ model KoperasiDirectory {            // 1.026 nama koperasi resmi (PII-free, di-
 # FASE 4 — Group support · jam 25–29
 
 - [ ] **4.1 group resolution (TDD)** — event join/first-message → upsert WaGroup + `getGroupParticipants` → map identities ACTIVE → 1 koperasi distinct → ATTACHED (umumkan); 0/multi → UNRESOLVED; saat mention di UNRESOLVED → tanya; **jawaban hanya diterima dari user terdaftar dan hanya untuk koperasinya sendiri** (prioritas PENGURUS/OWNER) → ATTACHED; participant change → refresh; bila tak ada lagi member terdaftar koperasi ter-bind → kembali UNRESOLVED. Commit.
-- [ ] **4.2 group context + routing** — SEMUA pesan teks grup → `WaGroupMessage` (prune: simpan 50 terbaru, hapus >24h); non-mention → simpan saja, **tanpa balasan**; mention (native dari spike, fallback `@Kopra`) → agent ctx `{channel:"GROUP", koperasiId, role: senderRole|GUEST}` + 20 pesan konteks terakhir; write/finance-read → penolakan sopan + arahan DM (tanpa PendingAction). Verif grup nyata 3 nomor. Commit.
+- [ ] **4.2 group context + routing** — SEMUA pesan teks grup → `WaGroupMessage` (prune: simpan 50 terbaru, hapus >24h); non-mention → simpan saja, **tanpa balasan**; mention (native dari spike, fallback `@Kopra`) → agent ctx `{channel:"GROUP", koperasiId, role: senderRole|GUEST}` + 20 pesan konteks terakhir; read mengikuti Matriks (guest=RAG, MEMBER=+inventory, PENGURUS/OWNER=+finance); write → penolakan sopan + arahan DM (tanpa PendingAction). Verif grup nyata 3 nomor. Commit.
 
 # FASE 5 — Polish web + korpus · jam 29–31
 
@@ -253,9 +253,9 @@ model KoperasiDirectory {            // 1.026 nama koperasi resmi (PII-free, di-
 
 - [ ] Video final ≤3 menit (alur demo spec §10 + momen grup) · README final (install per service, arsitektur, framing surrogate, disclosure AI, kredensial juri) · scan kredensial/PII (`grep -rE "H4ck4thon|34\.101|sk-ant-"` + cek NIK di log) · submit portal SEBELUM deadline.
 
-# FASE 8 — Stretch NON-BLOCKING (hanya bila acceptance §bawah sudah hijau)
+# CUT dari MVP (backlog/roadmap — JANGAN dibangun di sprint)
 
-- [ ] **8.1 OCR nota** (image → Claude vision → SimpleEntryInput → PendingAction biasa) → **8.2 web-chat** (`/chat` streaming ke agent, JWT) → **8.3 STT** (Groq whisper-large-v3 id).
+OCR nota · STT voice note · **web-chat (tidak ada)** · pinjaman/financing-application · warehouse lanjutan (bin/batch/expiry/adjudication/transfer) · POS/barcode/payment gateway · multi-koperasi per user · live-write DB pemerintah · Redis/BullMQ/microservices · vector-RAG di jalur kritis.
 
 ---
 
@@ -279,4 +279,4 @@ model KoperasiDirectory {            // 1.026 nama koperasi resmi (PII-free, di-
 | Nomor burner limit/banned | outbox rate ≤1 msg/dtk; video asuransi tiap checkpoint |
 | Super-admin flow memakan waktu | perintahnya 5 dan deterministik (regex, tanpa LLM) — bila kritis, `SETUJUI` saja yang wajib demo |
 | Restart saat menunggu YA | PendingAction di DB + Mastra snapshot (acceptance #4 diuji eksplisit) |
-| Waktu habis | potong: Fase 8 → 5.2 → grup auto-scan (sisakan binding manual) → laporan html polish. JANGAN potong: DM CRUD→YA, registrasi ≥1 arah penuh, grup mention read, laporan inti, dedup/idempotensi |
+| Waktu habis | potong: 5.2 korpus P2 → grup auto-scan (sisakan binding manual) → polish laporan html → super-admin sisakan SETUJUI saja. JANGAN potong: DM CRUD→YA, registrasi ≥1 arah penuh, grup mention read sesuai matriks, laporan inti, dedup/idempotensi |
