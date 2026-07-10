@@ -21,3 +21,5 @@ db_dump/
 Thumbs.db
 *.log
 coverage/
+.superpowers/
+.claude/

@@ -62,3 +62,7 @@ WA_GATEWAY_BASIC_AUTH=admin:kopra-dev
 WA_WEBHOOK_SECRET=kopra-webhook-dev-secret
 WA_DEVICE_ID=<isi setelah pairing>
 ```
+
+## ✅ Addendum pairing nyata (11 Jul, macOS native — Aldio)
+
+Binary darwin_arm64 v8.6.0 jalan native dari `kopra-whatsapp-waha/local-gowa/` (flags sama + `--host=127.0.0.1`). Pairing via phone-code SUKSES. **Temuan penting:** `X-Device-Id` utk REST API = **UUID device internal** (dari `GET /app/devices` / log `[DEVICE_MANAGER] created device placeholder <uuid>`), BUKAN JID. JID `628…:N@s.whatsapp.net` ditolak `DEVICE_NOT_FOUND` sebagai header. JID tetap dipakai GoWA sebagai `device_id` di payload webhook → adapter harus siap MEMETAKAN keduanya (simpan UUID di `WA_DEVICE_ID` utk outbound; kenali JID di inbound). Kedua nilai tercatat di `local-gowa/device-id.txt` (repo infra, gitignored).
