@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 >
-> **v2 supersedes v1 (same file, morning 11 Jul).** Between v1 and v2, Dev 2 (dika) landed M0–M3 (`465aa0f`, `28c7393`, `21eef0f`, `7c249ab`): `packages/core` now CONTAINS the full domain layer (policy, posting-rules, journal, stock, savings, pending-action, audit — **43 vitest tests green**), and `apps/api/src/whatsapp/` contains the M2 GoWA gateway. **Do NOT rebuild any of that.** Fase 1 = thin HTTP layer + web on top of the existing core.
+> **v2 supersedes v1 (same file, morning 11 Jul).** Between v1 and v2, Dev 2 (dika) landed **M0–M6** (`465aa0f`…`8f45f1d`): `packages/core` CONTAINS the full domain layer (policy, posting-rules, journal, stock, savings, pending-action, audit — all specs green; core relative imports now use ESM `.js` extensions), `apps/api/src/whatsapp/` has the M2 gateway + M4 DM orchestrator + M6 super-admin/guest flows, `apps/api/src/registration/` has the M6 registration service, and `packages/db` gained `ingest-rag.ts` (M5). **Do NOT rebuild or modify any of that.** Fase 1 = thin HTTP layer + web on top of the existing core.
 
 **Goal:** Build the web ERP surrogate — a role-aware NestJS API (auth, CORE-standard accounting, inventory-lite, member savings, derived reports) and a Next.js dashboard — so a judge sees a live cooperative on real seed data with balanced official reports.
 
@@ -31,7 +31,7 @@
 - No `.env` at repo root yet. `apps/api/src/main.ts` already loads root `.env` via dotenv and enables `rawBody`.
 - `packages/db/sql/rag_fts.sql` **missing** but `seed.ts` step 0 reads it → seed crashes without it.
 - `packages/core/test/global-setup.ts` is **Windows-only** (cmd.exe/psql.exe/findstr) → core tests fail on macOS until fixed (Task 0).
-- `apps/api/test/jest-e2e.json` lacks the `@kopra/*` moduleNameMapper + setupFiles that the unit jest config has → e2e specs importing AppModule fail to resolve workspace TS (Task 1 fixes).
+- `apps/api/test/jest-e2e.json` lacks the moduleNameMapper (`@kopra/*` + the `.js`-suffix stripper for core's ESM imports) and setupFiles that the unit jest config in `apps/api/package.json` has → e2e specs importing AppModule fail to resolve workspace TS (Task 1 fixes; mirror the unit config exactly).
 - GoWA v8.6.0 runs native at `localhost:3002` (basic auth `admin:kopra-dev`), launched from `Repositories/kopra-whatsapp-waha/local-gowa/`. Device paired: **API device id = UUID `2803949e-89da-41b6-890d-866d7f9f205e`** (name "elis"; the JID `6287776660466:5@s.whatsapp.net` appears in webhook payloads but is NOT accepted as `X-Device-Id`). Recorded in `local-gowa/device-id.txt`.
 
 ## Core surface consumed by this plan (dika M1 — exact signatures)
@@ -176,13 +176,14 @@ export default async function setup() {
 
 Add to `packages/core/package.json` devDependencies (then `pnpm install`): `"pg": "^8.13.1", "@types/pg": "^8.11.10"`.
 
-- [ ] **Step 5: Push schema + seed the dev DB**
+- [ ] **Step 5: Push schema + seed + RAG ingest**
 
 ```bash
 pnpm db:push && pnpm db:seed
+pnpm --filter @kopra/db ingest:rag   # M5, idempotent — 39 chunks dari 15 sumber
 ```
 
-Expected tail: `SEED SELESAI ✅  login demo: pengurus@kopra.id / kopra123`.
+Expected: seed tail `SEED SELESAI ✅  login demo: pengurus@kopra.id / kopra123`; ingest reports ~39 chunks.
 
 - [ ] **Step 6: Verify seed counts**
 
@@ -209,7 +210,7 @@ Expected: `{ coa: 21, units: 6, members: 15, savings: 90, products: 10, journals
 pnpm --filter @kopra/core test
 ```
 
-Expected: all suites pass (43 tests — domain.spec, policy.spec, posting-rules.spec). This validates the global-setup fix AND the whole DB toolchain.
+Expected: ALL core spec files pass (domain, policy, posting-rules — 60+ tests as of M4). This validates the global-setup fix AND the whole DB toolchain.
 
 - [ ] **Step 8: Commit (never `.env`)**
 
@@ -232,10 +233,10 @@ git commit -m "chore(dev): rag_fts.sql (unblock seed) + global-setup test cross-
 - Consumes: `prisma` from `@kopra/db` (direct import, M2 convention); seeded users (Task 0).
 - Produces: `JwtPayload = { sub: string; koperasiId: string; role: UserRole; status: UserStatus }` · guards `JwtAuthGuard`, `RolesGuard` + `@Roles('PENGURUS','OWNER')` + `@CurrentUser()` · `POST /api/v1/auth/login {email,password}` → `{token, user:{id,name,email,role,koperasiId}}` · `GET /api/v1/auth/me`.
 
-- [ ] **Step 1: Add deps** (dotenv already present):
+- [ ] **Step 1: Add deps** (dotenv + argon2 already present since M6):
 
 ```bash
-cd apps/api && pnpm add @nestjs/jwt@^11.0.0 argon2@^0.41.1 class-validator@^0.14.1 class-transformer@^0.5.1 && cd ../..
+cd apps/api && pnpm add @nestjs/jwt@^11.0.0 class-validator@^0.14.1 class-transformer@^0.5.1 && cd ../..
 pnpm install
 ```
 
@@ -250,13 +251,16 @@ pnpm install
   "setupFiles": ["<rootDir>/setup-env.ts"],
   "moduleNameMapper": {
     "^@kopra/core$": "<rootDir>/../../../packages/core/src/index.ts",
-    "^@kopra/db$": "<rootDir>/../../../packages/db/src/index.ts"
+    "^@kopra/db$": "<rootDir>/../../../packages/db/src/index.ts",
+    "^(\\.{1,2}/.*)\\.js$": "$1"
   },
   "transform": {
     "^.+\\.(t|j)s$": ["ts-jest", { "isolatedModules": true }]
   }
 }
 ```
+
+(The three mappings mirror the unit jest config in `apps/api/package.json` exactly — the `.js` stripper is required because core's relative imports are ESM `.js`-suffixed since M4.)
 
 Note: `setup-env.ts` points `DATABASE_URL` at `kopra_test` — but auth e2e needs the seeded demo users. Add to the TOP of `auth.e2e-spec.ts` (before imports are used) an override to the dev DB **only for this spec**: see Step 3 code (`process.env.DATABASE_URL` reset + `jest.resetModules` is NOT needed because `@kopra/db` reads env at first import — the setupFile runs first, so the spec sets it back before importing AppModule via dynamic import). Simpler and reliable: the spec seeds its own users into `kopra_test` in `beforeAll` — no dependence on the demo seed, no env juggling. Step 3 does exactly that.
 
