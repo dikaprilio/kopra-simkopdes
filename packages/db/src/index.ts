@@ -1,7 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 
 export * from "@prisma/client";
-export * from "./coa-default";
+export * from "./coa-default.js"; // ekstensi eksplisit: Node ESM type-stripping (prod VM)
 
 const g = globalThis as unknown as { prisma?: PrismaClient };
 
