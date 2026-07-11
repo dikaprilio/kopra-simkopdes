@@ -141,7 +141,16 @@ async function main() {
         parentId: coaId.get("400000"),
       },
     });
+    if (!rev.isActive) {
+      throw new Error(
+        `Akun pendapatan ${kode} nonaktif; seed tidak akan mengaktifkan atau menautkannya otomatis.`,
+      );
+    }
     coaId.set(kode, rev.id);
+    await prisma.businessUnit.update({
+      where: { id: u.id },
+      data: { revenueCoaId: rev.id },
+    });
   }
   console.log(`COA: ${coaId.size} akun · unit: ${UNITS.length}`);
 

@@ -1,5 +1,6 @@
 import { prisma, type EntrySource, type StockMoveType } from "@kopra/db";
 import { DomainError, createDraftFromSimple, type DraftResult } from "./journal.js";
+import { confirmStockMovementDraft } from "./stock-confirmation.js";
 
 /** Stok terkini = SUM bertanda movement CONFIRMED (IN +, OUT −, ADJUST ±qty). */
 export async function currentStock(productId: string): Promise<number> {
@@ -34,6 +35,7 @@ export interface StockDraftInput {
   hargaJual?: number;
   businessUnitId?: string;
   description?: string;
+  date?: Date;
 }
 
 export interface StockDraftResult {
@@ -55,20 +57,28 @@ export async function createMovementDraft(
   source: EntrySource = "WHATSAPP",
 ): Promise<StockDraftResult> {
   const product = input.productId
-    ? await prisma.product.findFirst({ where: { id: input.productId, koperasiId: input.koperasiId } })
+    ? await prisma.product.findFirst({
+        where: { id: input.productId, koperasiId: input.koperasiId, isActive: true },
+      })
     : await findProduct(input.koperasiId, input.productQuery ?? "");
   if (!product)
     throw new DomainError(
       "PRODUCT_NOT_FOUND",
       `Produk "${input.productQuery ?? input.productId}" belum terdaftar.`,
     );
-  if (input.qty <= 0) throw new DomainError("QTY_INVALID", "Jumlah harus lebih dari 0.");
+  if (input.type === "ADJUST" ? input.qty === 0 : input.qty <= 0)
+    throw new DomainError("QTY_INVALID", "Jumlah harus lebih dari 0.");
 
   const stok = await currentStock(product.id);
   if (input.type === "OUT" && input.qty > stok)
     throw new DomainError(
       "INSUFFICIENT_STOCK",
       `Stok ${product.nama} tinggal ${stok}, tidak cukup untuk keluar ${input.qty}.`,
+    );
+  if (input.type === "ADJUST" && stok + input.qty < 0)
+    throw new DomainError(
+      "INSUFFICIENT_STOCK",
+      `Stok ${product.nama} tinggal ${stok}, koreksi ${input.qty} akan membuat stok negatif.`,
     );
 
   // jurnal linked?
@@ -82,6 +92,7 @@ export async function createMovementDraft(
         kind: "STOCK_SALE",
         description: input.description ?? `Penjualan ${product.nama} × ${input.qty}`,
         businessUnitId: input.businessUnitId,
+        date: input.date,
         meta: { productId: product.id, qty: input.qty, hargaJual },
       },
       source,
@@ -94,6 +105,7 @@ export async function createMovementDraft(
         kind: "STOCK_PURCHASE",
         description: input.description ?? `Belanja stok ${product.nama} × ${input.qty}`,
         businessUnitId: input.businessUnitId,
+        date: input.date,
         meta: { productId: product.id, qty: input.qty, hargaBeli: input.hargaBeli },
       },
       source,
@@ -112,6 +124,7 @@ export async function createMovementDraft(
       sourceChannel: source,
       status: "DRAFT",
       createdById: actorId,
+      date: input.date,
     },
   });
 
@@ -128,17 +141,28 @@ export async function createMovementDraft(
 
 /** Konfirmasi movement TANPA jurnal linked (ADJUST / OUT non-jual). */
 export async function confirmMovementOnly(movementId: string, koperasiId: string) {
-  const res = await prisma.stockMovement.updateMany({
-    where: { id: movementId, koperasiId, status: "DRAFT", journalEntryId: null },
-    data: { status: "CONFIRMED" },
-  });
-  if (res.count !== 1)
-    throw new DomainError("NOT_DRAFT", "Movement tidak ditemukan / sudah dikonfirmasi / punya jurnal linked.");
+  await prisma.$transaction((tx) =>
+    confirmStockMovementDraft(tx, movementId, koperasiId, null),
+  );
 }
 
 export async function cancelMovement(movementId: string, koperasiId: string) {
-  await prisma.stockMovement.deleteMany({
-    where: { id: movementId, koperasiId, status: "DRAFT" },
+  await prisma.$transaction(async (tx) => {
+    const movement = await tx.stockMovement.findFirst({
+      where: { id: movementId, koperasiId },
+      select: { status: true, journalEntryId: true },
+    });
+    if (!movement) throw new DomainError("NOT_FOUND", "Movement tidak ditemukan.");
+    if (movement.status !== "DRAFT")
+      throw new DomainError("IMMUTABLE", "Movement terkonfirmasi tidak dapat dibatalkan.");
+    await tx.stockMovement.delete({ where: { id: movementId } });
+    if (movement.journalEntryId) {
+      const deleted = await tx.journalEntry.deleteMany({
+        where: { id: movement.journalEntryId, koperasiId, status: "DRAFT" },
+      });
+      if (deleted.count !== 1)
+        throw new DomainError("IMMUTABLE", "Jurnal terkait sudah terkonfirmasi.");
+    }
   });
 }
 

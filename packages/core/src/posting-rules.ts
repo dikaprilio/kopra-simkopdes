@@ -37,6 +37,7 @@ export interface PostingLine {
   coaKode: string;
   debit: number;
   kredit: number;
+  catatan?: string;
 }
 
 export const KODE = {

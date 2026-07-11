@@ -1,5 +1,6 @@
 import { prisma, type EntrySource } from "@kopra/db";
 import { DomainError, createDraftFromSimple, type DraftResult } from "./journal.js";
+import { activeMemberScope } from "./lifecycle.js";
 
 export interface SavingPayInput {
   koperasiId: string;
@@ -13,7 +14,7 @@ export interface SavingPayInput {
 
 export async function findMember(koperasiId: string, q: string) {
   const rows = await prisma.member.findMany({
-    where: { koperasiId, nama: { contains: q, mode: "insensitive" } },
+    where: { ...activeMemberScope(koperasiId), nama: { contains: q, mode: "insensitive" } },
     take: 5,
   });
   if (rows.length === 0) return null;
@@ -34,7 +35,9 @@ export async function paySavingDraft(
   source: EntrySource = "WHATSAPP",
 ): Promise<SavingDraftResult> {
   const member = input.memberId
-    ? await prisma.member.findFirst({ where: { id: input.memberId, koperasiId: input.koperasiId } })
+    ? await prisma.member.findFirst({
+      where: { id: input.memberId, ...activeMemberScope(input.koperasiId) },
+    })
     : await findMember(input.koperasiId, input.memberQuery ?? "");
   if (!member)
     throw new DomainError("MEMBER_NOT_FOUND", `Anggota "${input.memberQuery}" tidak ditemukan.`);
@@ -90,7 +93,8 @@ export async function unpaidMembers(koperasiId: string) {
            ARRAY_AGG(ms.period ORDER BY ms.period) AS periods
     FROM members m
     JOIN member_savings ms ON ms."memberId" = m.id
-    WHERE m."koperasiId" = ${koperasiId} AND ms.status = 'UNPAID' AND ms.type = 'WAJIB'
+    WHERE m."koperasiId" = ${koperasiId} AND m."isActive" = true
+      AND ms.status = 'UNPAID' AND ms.type = 'WAJIB'
     GROUP BY m.id, m.nama
     ORDER BY tunggakan DESC, m.nama`;
   return rows;

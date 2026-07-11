@@ -75,7 +75,7 @@ beforeAll(async () => {
     data: { waNumber: WA_PENGURUS, userId: pengurusId, koperasiId: kid },
   });
 
-  agentMock = jest.fn(async () => 'JAWABAN_AGENT');
+  agentMock = jest.fn<Promise<string>, [string, ActorContext]>(async () => 'JAWABAN_AGENT');
   const agent = { ask: agentMock } as unknown as AgentClient;
   const outbox = new OutboxService(new GowaClient());
   const guestReg = { handle: async () => null } as never; // alur DAFTAR diuji di registration.spec

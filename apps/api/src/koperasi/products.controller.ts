@@ -13,8 +13,8 @@ export class ProductsController {
   constructor(private readonly products: ProductsService) {}
 
   @Get()
-  list(@CurrentUser() u: JwtPayload, @Query('search') search?: string) {
-    return this.products.list(u.koperasiId, search);
+  list(@CurrentUser() u: JwtPayload, @Query() query: { search?: string; active?: string; lowStock?: string; page?: string; pageSize?: string }) {
+    return this.products.list(u.koperasiId, query);
   }
 
   @Get(':id/card')
@@ -22,21 +22,26 @@ export class ProductsController {
     return this.products.card(u.koperasiId, id);
   }
 
+  @Get(':id')
+  detail(@CurrentUser() u: JwtPayload, @Param('id') id: string) {
+    return this.products.detail(u.koperasiId, id);
+  }
+
   @Post()
   @Roles('PENGURUS', 'OWNER')
   create(@CurrentUser() u: JwtPayload, @Body() dto: CreateProductDto) {
-    return this.products.create(u.koperasiId, dto);
+    return this.products.create(u.koperasiId, u.sub, dto);
   }
 
   @Patch(':id')
   @Roles('PENGURUS', 'OWNER')
   update(@CurrentUser() u: JwtPayload, @Param('id') id: string, @Body() dto: UpdateProductDto) {
-    return this.products.update(u.koperasiId, id, dto);
+    return this.products.update(u.koperasiId, u.sub, id, dto);
   }
 
   @Delete(':id')
   @Roles('PENGURUS', 'OWNER')
   remove(@CurrentUser() u: JwtPayload, @Param('id') id: string) {
-    return this.products.remove(u.koperasiId, id);
+    return this.products.remove(u.koperasiId, u.sub, id);
   }
 }

@@ -8,6 +8,7 @@ import {
   createPending,
   findProduct,
   reverseEntry,
+  findBusinessUnitForWrite,
   writeAudit,
 } from "@kopra/core";
 import { getActor, rp } from "../../lib/context";
@@ -56,13 +57,9 @@ export const createEntryDraft = createTool({
       let businessUnitId: string | undefined;
       let unitLabel = "";
       if (input.unitName) {
-        const unit = await prisma.businessUnit.findFirst({
-          where: { koperasiId: actor.koperasiId!, nama: { contains: input.unitName, mode: "insensitive" } },
-        });
-        if (unit) {
-          businessUnitId = unit.id;
-          unitLabel = ` • ${unit.nama}`;
-        }
+        const unit = await findBusinessUnitForWrite(actor.koperasiId!, input.unitName);
+        businessUnitId = unit.id;
+        unitLabel = ` • ${unit.nama}`;
       }
       const draft = await createDraftFromSimple(actor.actorId!, {
         koperasiId: actor.koperasiId!,
