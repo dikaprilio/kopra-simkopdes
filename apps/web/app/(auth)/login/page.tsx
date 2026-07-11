@@ -49,8 +49,8 @@ export default function LoginPage() {
         <div aria-hidden className="absolute -bottom-32 -left-20 h-96 w-96 rounded-full bg-white/10" />
         <div aria-hidden className="absolute top-1/3 -left-10 h-40 w-40 rounded-full bg-white/10" />
         <div className="relative flex items-center gap-3">
-          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/15 text-xl font-extrabold">
-            K
+          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/15">
+            <img src="/brand/k-mark-white.svg" alt="" className="h-7 w-auto" />
           </div>
           <span className="text-2xl font-extrabold tracking-tight">Kopra</span>
         </div>
@@ -71,8 +71,8 @@ export default function LoginPage() {
 
       <section className="flex flex-col items-center justify-center gap-6 px-4 py-12">
         <div className="flex items-center gap-2.5 lg:hidden">
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary-500 text-base font-extrabold text-white">
-            K
+          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary-500">
+            <img src="/brand/k-mark-white.svg" alt="" className="h-5 w-auto" />
           </div>
           <span className="text-xl font-extrabold tracking-tight text-ink">Kopra</span>
         </div>

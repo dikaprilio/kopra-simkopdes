@@ -80,9 +80,9 @@ export default function RegisterPage() {
           <div className="flex items-center justify-center gap-2">
             <span
               aria-hidden="true"
-              className="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-primary-500 text-sm font-extrabold text-white shadow-card"
+              className="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-primary-500 shadow-card"
             >
-              K
+              <img src="/brand/k-mark-white.svg" alt="" className="h-4.5 w-auto" />
             </span>
             <span className="text-lg font-extrabold tracking-tight text-ink">Kopra</span>
           </div>

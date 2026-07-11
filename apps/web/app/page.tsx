@@ -32,7 +32,7 @@ export default function LandingPage() {
         <header className="relative z-10">
           <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5 text-white">
             <Link href="/" className="flex items-baseline gap-2">
-              <span className="font-display text-2xl italic">Kopra</span>
+              <img src="/brand/kopra-wordmark-white.svg" alt="Kopra" className="h-16 w-auto" />
               <span className="hidden text-sm text-white/70 sm:inline">
                 asisten koperasi di WhatsApp
               </span>
@@ -187,8 +187,8 @@ export default function LandingPage() {
           <div className="mt-16 grid items-start gap-6 md:grid-cols-2">
             <div className="overflow-hidden rounded-2xl border border-[var(--garis)] bg-white shadow-sm">
               <div className="flex items-center gap-3 bg-[var(--hijau-wa)] px-5 py-3 text-white">
-                <span className="grid h-8 w-8 place-items-center rounded-full bg-white/20 font-display italic">
-                  K
+                <span className="grid h-8 w-8 place-items-center rounded-full bg-white/20">
+                  <img src="/brand/k-mark-white.svg" alt="" className="h-4.5 w-auto" />
                 </span>
                 <div className="leading-tight">
                   <p className="text-sm font-semibold">Kopra</p>

@@ -59,8 +59,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     <div className="flex min-h-screen">
       <aside className="flex w-64 shrink-0 flex-col border-r border-border-soft bg-surface-raised">
         <div className="flex items-center gap-3 px-5 pt-5 pb-4">
-          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary-500 text-lg font-extrabold text-white">
-            K
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary-500">
+            <img src="/brand/k-mark-white.svg" alt="" className="h-6 w-auto" />
           </div>
           <div className="min-w-0">
             <div className="text-lg font-extrabold tracking-tight text-ink">Kopra</div>

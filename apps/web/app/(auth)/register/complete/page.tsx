@@ -75,7 +75,7 @@ export default function CompletePage() {
       <Stagger className="w-full max-w-sm space-y-6">
         <FadeUp>
           <div className="flex items-center justify-center gap-2.5">
-            <span className="grid size-9 place-items-center rounded-xl bg-primary-500 text-base font-extrabold text-white">K</span>
+            <span className="grid size-9 place-items-center rounded-xl bg-primary-500"><img src="/brand/k-mark-white.svg" alt="" className="h-5 w-auto" /></span>
             <span className="text-lg font-extrabold tracking-tight text-ink">Kopra</span>
           </div>
         </FadeUp>
