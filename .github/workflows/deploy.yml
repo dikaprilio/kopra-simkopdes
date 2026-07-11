@@ -1,0 +1,32 @@
+name: Deploy ke VM Azure
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+concurrency:
+  group: deploy-vm
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Siapkan kunci SSH
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "${{ secrets.VM_SSH_PRIVATE_KEY }}" > ~/.ssh/ci_key
+          chmod 600 ~/.ssh/ci_key
+          ssh-keyscan -H "${{ secrets.VM_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null
+
+      - name: Kirim kode ke VM
+        run: |
+          tar czf /tmp/kopra-deploy.tar.gz --exclude=.git .
+          scp -i ~/.ssh/ci_key /tmp/kopra-deploy.tar.gz kopra@${{ secrets.VM_HOST }}:/tmp/kopra-deploy.tar.gz
+
+      - name: Redeploy (install + build + pm2 restart)
+        run: ssh -i ~/.ssh/ci_key kopra@${{ secrets.VM_HOST }} 'bash ~/redeploy.sh'
