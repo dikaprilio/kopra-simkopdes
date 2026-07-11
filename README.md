@@ -1,6 +1,6 @@
 # Kopra — Asisten Digital Koperasi Merah Putih
 
-# wa.me/+6287776660466 
+# wa.me/+6287776660466
 
 > **Hackathon Digital Cooperatives Expo 2026** — Kemenkop RI × PEBS FEB UI · Tim Fandelion · Pilar 1 (Peningkatan Volume Usaha Koperasi)
 
