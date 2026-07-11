@@ -1,8 +1,22 @@
 'use client';
 import { useCallback, useEffect, useState } from 'react';
+import { CircleCheck, Clock, MessageCircle, NotebookText } from 'lucide-react';
 import { api } from '../../lib/api';
 import { getSession, canWrite } from '../../lib/session';
 import { rupiah } from '../../lib/format';
+import {
+  Button,
+  Pill,
+  SectionHeading,
+  Table,
+  TableCard,
+  TableEmpty,
+  TD,
+  TH,
+  THead,
+  TR,
+} from '../../components/ui';
+import { FadeUp, Stagger } from '../../components/motion';
 
 interface Line { debit: string; kredit: string; coa: { kode: string; nama: string } }
 interface Entry {
@@ -29,45 +43,70 @@ export default function JurnalPage() {
   }
 
   return (
-    <div>
-      <h1 className="mb-6 text-2xl font-semibold">Jurnal</h1>
-      <table className="w-full border-collapse bg-white text-sm">
-        <thead>
-          <tr className="border-b text-left text-slate-500">
-            {['No. Jurnal', 'Tanggal', 'Keterangan', 'Unit', 'Nominal', 'Status', ''].map((h) => <th key={h} className="p-2">{h}</th>)}
-          </tr>
-        </thead>
-        <tbody>
-          {entries.map((e) => {
-            const total = e.lines.reduce((a, l) => a + Number(l.debit), 0);
-            return (
-              <tr key={e.id} className="border-b align-top">
-                <td className="p-2 font-mono">
-                  {e.nomor}
-                  {e.sourceChannel === 'WHATSAPP' && <span className="ml-1 rounded bg-green-100 px-1 text-xs text-green-700">WA</span>}
-                </td>
-                <td className="p-2">{e.date.slice(0, 10)}</td>
-                <td className="p-2">
-                  {e.keterangan}
-                  <div className="text-xs text-slate-400">{e.lines.map((l) => `${l.coa.kode} ${l.coa.nama}`).join(' · ')}</div>
-                </td>
-                <td className="p-2">{e.businessUnit?.nama ?? '-'}</td>
-                <td className="p-2 text-right">{rupiah(total)}</td>
-                <td className="p-2">
-                  {e.status === 'CONFIRMED'
-                    ? <span className="text-green-700">CONFIRMED</span>
-                    : <span className="text-amber-600">DRAFT</span>}
-                </td>
-                <td className="p-2">
-                  {writable && e.status === 'DRAFT' && (
-                    <button onClick={() => confirm(e.id)} className="rounded bg-red-600 px-2 py-1 text-xs text-white">Konfirmasi</button>
-                  )}
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-    </div>
+    <Stagger className="space-y-6">
+      <FadeUp>
+        <SectionHeading
+          title="Jurnal"
+          subtitle="Semua transaksi koperasi — jurnal dari WhatsApp muncul otomatis di sini."
+        />
+      </FadeUp>
+      <FadeUp>
+        <TableCard>
+          {entries.length === 0 ? (
+            <TableEmpty
+              icon={NotebookText}
+              title="Belum ada jurnal"
+              hint="Jurnal dari WhatsApp akan muncul otomatis di sini."
+            />
+          ) : (
+            <Table>
+              <THead>
+                <tr>
+                  {['No. Jurnal', 'Tanggal', 'Keterangan', 'Unit', 'Nominal', 'Status', ''].map((h, i) => (
+                    <TH key={h || `th-${i}`} align={h === 'Nominal' ? 'right' : 'left'}>{h}</TH>
+                  ))}
+                </tr>
+              </THead>
+              <tbody>
+                {entries.map((e) => {
+                  const total = e.lines.reduce((a, l) => a + Number(l.debit), 0);
+                  return (
+                    <TR key={e.id} className="align-top">
+                      <TD className="font-mono text-ink">
+                        <span className="inline-flex items-center gap-1.5">
+                          {e.nomor}
+                          {e.sourceChannel === 'WHATSAPP' && (
+                            <Pill variant="success" icon={MessageCircle}>WA</Pill>
+                          )}
+                        </span>
+                      </TD>
+                      <TD className="text-ink-muted">{e.date.slice(0, 10)}</TD>
+                      <TD>
+                        <span className="font-medium text-ink">{e.keterangan}</span>
+                        <div className="mt-0.5 text-xs text-ink-muted">
+                          {e.lines.map((l) => `${l.coa.kode} ${l.coa.nama}`).join(' · ')}
+                        </div>
+                      </TD>
+                      <TD className="text-ink-muted">{e.businessUnit?.nama ?? '-'}</TD>
+                      <TD numeric className="font-semibold text-ink">{rupiah(total)}</TD>
+                      <TD>
+                        {e.status === 'CONFIRMED'
+                          ? <Pill variant="success" icon={CircleCheck}>CONFIRMED</Pill>
+                          : <Pill variant="warning" icon={Clock}>DRAFT</Pill>}
+                      </TD>
+                      <TD>
+                        {writable && e.status === 'DRAFT' && (
+                          <Button variant="primary" size="sm" onClick={() => confirm(e.id)}>Konfirmasi</Button>
+                        )}
+                      </TD>
+                    </TR>
+                  );
+                })}
+              </tbody>
+            </Table>
+          )}
+        </TableCard>
+      </FadeUp>
+    </Stagger>
   );
 }
