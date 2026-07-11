@@ -78,12 +78,13 @@ function StatCard({
 
 export default function DashboardPage() {
   const [s, setS] = useState<Summary | null>(null);
-  const [firstName, setFirstName] = useState<string | null>(null);
-  useEffect(() => { api<Summary>('/dashboard/summary').then(setS).catch(() => {}); }, []);
-  useEffect(() => {
+  // Halaman ini hanya dirender di klien (layout menahan render sampai sesi ada),
+  // jadi getSession() aman dibaca saat inisialisasi state.
+  const [firstName] = useState<string | null>(() => {
     const name = getSession()?.name;
-    if (name) setFirstName(name.trim().split(/\s+/)[0] ?? null);
-  }, []);
+    return name ? (name.trim().split(/\s+/)[0] ?? null) : null;
+  });
+  useEffect(() => { api<Summary>('/dashboard/summary').then(setS).catch(() => {}); }, []);
 
   if (!s) {
     return (

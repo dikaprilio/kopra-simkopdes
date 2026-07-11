@@ -23,6 +23,7 @@ export default function RegisterPage() {
 
   // cari koperasi (debounce 300ms, min 3 huruf)
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- perilaku pra-Fase-5 dipertahankan byte-identik (E2E registrasi)
     if (q.trim().length < 3) return setOptions([]);
     const t = setTimeout(async () => {
       try {

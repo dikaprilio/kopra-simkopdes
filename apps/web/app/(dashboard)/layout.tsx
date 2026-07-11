@@ -51,6 +51,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   useEffect(() => {
     const s = getSession();
     if (!s) router.replace('/login');
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- guard sesi pra-Fase-5: baca localStorage setelah hydrate agar SSR/klien cocok
     else setSessionState(s);
   }, [router]);
   if (!session) return null;
