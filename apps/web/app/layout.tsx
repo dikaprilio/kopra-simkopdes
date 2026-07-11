@@ -1,15 +1,12 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Fraunces, Poppins } from "next/font/google";
+import { Fraunces, Poppins, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
+import { MotionProviders } from "./components/motion/providers";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const jakarta = Plus_Jakarta_Sans({
+  variable: "--font-jakarta",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 const fraunces = Fraunces({
@@ -25,8 +22,9 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Kopra",
-  description: "Asisten Digital Koperasi Merah Putih",
+  title: "Kopra — Asisten Digital Koperasi",
+  description:
+    "Asisten digital untuk Koperasi Desa Merah Putih: kelola anggota, simpanan, pinjaman, dan pembukuan dengan mudah dan transparan.",
 };
 
 export default function RootLayout({
@@ -37,9 +35,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} ${poppins.variable} h-full antialiased`}
+      className={`${jakarta.variable} ${fraunces.variable} ${poppins.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <MotionProviders>{children}</MotionProviders>
+      </body>
     </html>
   );
 }

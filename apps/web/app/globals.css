@@ -1,15 +1,56 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-primary-50: #FFF5EC;
+  --color-primary-100: #FFE8D3;
+  --color-primary-200: #FED7AE;
+  --color-primary-300: #FDB474;
+  --color-primary-400: #FB923C;
+  --color-primary-500: #F97416;
+  --color-primary-600: #EA6207;
+  --color-primary-700: #C24E06;
+
+  --color-secondary-50: #EEF4FE;
+  --color-secondary-100: #DDE9FD;
+  --color-secondary-200: #C0D6FA;
+  --color-secondary-300: #93B8F5;
+  --color-secondary-400: #5E90EE;
+  --color-secondary-500: #3B71E8;
+  --color-secondary-600: #1E5AE0;
+  --color-secondary-700: #1747B8;
+
+  --color-surface: #FDFAF4;
+  --color-surface-raised: #FFFFFF;
+  --color-surface-sunken: #F4EFE5;
+
+  --color-border-soft: #DCE4F2;
+
+  --color-ink: #212B3B;
+  --color-ink-muted: #67728A;
+
+  --color-success-50: #EFFAF3;
+  --color-success-600: #15803D;
+  --color-success-700: #116632;
+
+  --color-warning-50: #FFF8EB;
+  --color-warning-600: #B45309;
+  --color-warning-700: #92400E;
+
+  --color-danger-50: #FEF1F1;
+  --color-danger-600: #DC2626;
+  --color-danger-700: #B91C1C;
+
+  --radius-card: 1rem;
+
+  --shadow-card: 0 1px 2px rgb(33 43 59 / 0.04), 0 12px 32px -16px rgb(33 43 59 / 0.14);
+  --shadow-card-hover: 0 2px 4px rgb(33 43 59 / 0.05), 0 20px 44px -16px rgb(33 43 59 / 0.20);
+
+  --font-sans: var(--font-jakarta);
+
+  --animate-shimmer: shimmer 1.8s ease-in-out infinite;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
   --font-display: var(--font-fraunces);
   --font-body: var(--font-poppins);
 }
@@ -59,15 +100,18 @@
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes shimmer {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-surface);
+  color: var(--color-ink);
+  font-family: var(--font-sans), system-ui, sans-serif;
 }

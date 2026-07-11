@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { api } from '../../lib/api';
+import { Button, Card, Input, Label } from '../../components/ui';
+import { FadeUp, Stagger } from '../../components/motion';
 
 type KoperasiOption = { label: string; koperasiId?: string; koperasiRef?: string };
 
@@ -21,6 +23,7 @@ export default function RegisterPage() {
 
   // cari koperasi (debounce 300ms, min 3 huruf)
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- perilaku pra-Fase-5 dipertahankan byte-identik (E2E registrasi)
     if (q.trim().length < 3) return setOptions([]);
     const t = setTimeout(async () => {
       try {
@@ -71,59 +74,88 @@ export default function RegisterPage() {
   }
 
   return (
-    <main className="min-h-screen grid place-items-center bg-slate-50 py-8">
-      <form onSubmit={submit} className="w-full max-w-sm space-y-4 rounded-xl border bg-white p-8 shadow-sm">
-        <div>
-          <h1 className="text-xl font-semibold">Daftar Kopra</h1>
-          <p className="text-sm text-slate-500">Kode OTP dikirim ke WhatsApp kamu</p>
-        </div>
+    <main className="min-h-screen grid place-items-center bg-surface px-4 py-8">
+      <Stagger className="w-full max-w-sm space-y-6">
+        <FadeUp>
+          <div className="flex items-center justify-center gap-2">
+            <span
+              aria-hidden="true"
+              className="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-primary-500 text-sm font-extrabold text-white shadow-card"
+            >
+              K
+            </span>
+            <span className="text-lg font-extrabold tracking-tight text-ink">Kopra</span>
+          </div>
+        </FadeUp>
+        <FadeUp>
+          <Card>
+            <form onSubmit={submit} className="space-y-4">
+              <div>
+                <h1 className="text-2xl font-extrabold tracking-tight text-ink">Daftar Kopra</h1>
+                <p className="mt-1 text-sm font-medium text-ink-muted">Kode OTP dikirim ke WhatsApp kamu</p>
+              </div>
 
-        <input className="w-full rounded border px-3 py-2" value={nama} onChange={(e) => setNama(e.target.value)} placeholder="Nama lengkap" />
-        <input className="w-full rounded border px-3 py-2" value={nik} onChange={(e) => setNik(e.target.value.replace(/\D/g, '').slice(0, 16))} placeholder="NIK (16 digit)" inputMode="numeric" />
-        <input className="w-full rounded border px-3 py-2" type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password (min. 6 karakter)" />
-        <input className="w-full rounded border px-3 py-2" value={waNumber} onChange={(e) => setWaNumber(e.target.value.replace(/\D/g, ''))} placeholder="Nomor WhatsApp (62…)" inputMode="numeric" />
+              <div className="space-y-1.5">
+                <Label htmlFor="reg-nama">Nama Lengkap</Label>
+                <Input id="reg-nama" value={nama} onChange={(e) => setNama(e.target.value)} placeholder="Nama lengkap" />
+              </div>
+              <div className="space-y-1.5">
+                <Label htmlFor="reg-nik">NIK</Label>
+                <Input id="reg-nik" value={nik} onChange={(e) => setNik(e.target.value.replace(/\D/g, '').slice(0, 16))} placeholder="NIK (16 digit)" inputMode="numeric" />
+              </div>
+              <div className="space-y-1.5">
+                <Label htmlFor="reg-password">Password</Label>
+                <Input id="reg-password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password (min. 6 karakter)" />
+              </div>
+              <div className="space-y-1.5">
+                <Label htmlFor="reg-wa">Nomor WhatsApp</Label>
+                <Input id="reg-wa" value={waNumber} onChange={(e) => setWaNumber(e.target.value.replace(/\D/g, ''))} placeholder="Nomor WhatsApp (62…)" inputMode="numeric" />
+              </div>
 
-        <div className="flex gap-4 text-sm">
-          {(['ANGGOTA', 'PENGURUS'] as const).map((r) => (
-            <label key={r} className="flex items-center gap-1.5">
-              <input type="radio" name="role" checked={role === r} onChange={() => setRole(r)} />
-              {r === 'ANGGOTA' ? 'Anggota' : 'Pengurus'}
-            </label>
-          ))}
-        </div>
+              <div className="flex gap-5 text-sm font-medium text-ink">
+                {(['ANGGOTA', 'PENGURUS'] as const).map((r) => (
+                  <label key={r} className="flex cursor-pointer items-center gap-2">
+                    <input type="radio" name="role" className="accent-primary-500" checked={role === r} onChange={() => setRole(r)} />
+                    {r === 'ANGGOTA' ? 'Anggota' : 'Pengurus'}
+                  </label>
+                ))}
+              </div>
 
-        <div>
-          {koperasi ? (
-            <div className="flex items-center justify-between rounded border bg-slate-50 px-3 py-2 text-sm">
-              <span>{koperasi.label}</span>
-              <button type="button" className="text-red-600" onClick={() => setKoperasi(null)}>ganti</button>
-            </div>
-          ) : (
-            <>
-              <input className="w-full rounded border px-3 py-2" value={q} onChange={(e) => setQ(e.target.value)} placeholder="Cari koperasimu (min. 3 huruf)" />
-              {options.length > 0 && (
-                <ul className="mt-1 divide-y rounded border text-sm">
-                  {options.map((o) => (
-                    <li key={o.koperasiId ?? o.koperasiRef}>
-                      <button type="button" className="w-full px-3 py-2 text-left hover:bg-slate-50" onClick={() => { setKoperasi(o); setOptions([]); }}>
-                        {o.label}
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </>
-          )}
-        </div>
+              <div>
+                {koperasi ? (
+                  <div className="flex items-center justify-between gap-2 rounded-xl bg-secondary-50 px-3.5 py-2.5 text-sm">
+                    <span className="font-medium text-ink">{koperasi.label}</span>
+                    <button type="button" className="text-xs font-semibold text-secondary-700" onClick={() => setKoperasi(null)}>ganti</button>
+                  </div>
+                ) : (
+                  <>
+                    <Input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Cari koperasimu (min. 3 huruf)" />
+                    {options.length > 0 && (
+                      <ul className="mt-1.5 divide-y divide-border-soft overflow-hidden rounded-xl border border-border-soft bg-surface-raised text-sm">
+                        {options.map((o) => (
+                          <li key={o.koperasiId ?? o.koperasiRef}>
+                            <button type="button" className="w-full px-3.5 py-2.5 text-left font-medium text-ink transition-colors duration-150 hover:bg-primary-50/60" onClick={() => { setKoperasi(o); setOptions([]); }}>
+                              {o.label}
+                            </button>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </>
+                )}
+              </div>
 
-        {error && <p className="text-sm text-red-600">{error}</p>}
-        <button disabled={busy} className="w-full rounded bg-red-600 py-2 font-medium text-white disabled:opacity-50">
-          {busy ? 'Mengirim OTP…' : 'Daftar & kirim OTP'}
-        </button>
-        <p className="text-center text-sm text-slate-500">
-          Sudah punya akun? <Link href="/login" className="text-red-600">Masuk</Link>
-        </p>
-      </form>
+              {error && <p className="text-sm font-medium text-danger-600">{error}</p>}
+              <Button type="submit" variant="primary" disabled={busy} className="w-full">
+                {busy ? 'Mengirim OTP…' : 'Daftar & kirim OTP'}
+              </Button>
+              <p className="text-center text-sm font-medium text-ink-muted">
+                Sudah punya akun? <Link href="/login" className="font-semibold text-secondary-700">Masuk</Link>
+              </p>
+            </form>
+          </Card>
+        </FadeUp>
+      </Stagger>
     </main>
   );
 }
