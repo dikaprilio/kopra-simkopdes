@@ -29,4 +29,6 @@ jobs:
           scp -i ~/.ssh/ci_key /tmp/kopra-deploy.tar.gz kopra@${{ secrets.VM_HOST }}:/tmp/kopra-deploy.tar.gz
 
       - name: Redeploy (install + build + pm2 restart)
-        run: ssh -i ~/.ssh/ci_key kopra@${{ secrets.VM_HOST }} 'bash ~/redeploy.sh'
+        run: |
+          scp -i ~/.ssh/ci_key scripts/vm/redeploy.sh kopra@${{ secrets.VM_HOST }}:~/redeploy.sh
+          ssh -i ~/.ssh/ci_key kopra@${{ secrets.VM_HOST }} 'bash ~/redeploy.sh'

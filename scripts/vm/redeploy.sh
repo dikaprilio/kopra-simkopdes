@@ -17,8 +17,13 @@ pnpm --filter api build 2>&1 | tail -1
 pnpm --filter agent build 2>&1 | tail -1
 pnpm --filter web build 2>&1 | tail -2
 echo "== prisma client -> mastra bundle =="
-SRC=$(dirname $(find /home/kopra/app/node_modules/.pnpm -path "*@prisma+client*/.prisma/client/default.js" | head -1))
-DST=$(dirname $(find /home/kopra/app/apps/agent/.mastra/output/node_modules/.pnpm -path "*@prisma+client*/node_modules/.prisma/client/default.js" | head -1))
+SRC_JS=$(find /home/kopra/app/node_modules/.pnpm -path "*@prisma+client*/.prisma/client/default.js" 2>/dev/null | head -1 || true)
+DST_JS=$(find /home/kopra/app/apps/agent/.mastra/output/node_modules/.pnpm -path "*@prisma+client*/node_modules/.prisma/client/default.js" 2>/dev/null | head -1 || true)
+if [ -z "$SRC_JS" ] || [ -z "$DST_JS" ]; then
+  echo "FATAL: path prisma client tidak ketemu (SRC_JS='$SRC_JS' DST_JS='$DST_JS')"; exit 1
+fi
+SRC=$(dirname "$SRC_JS")
+DST=$(dirname "$DST_JS")
 cp -r "$SRC/." "$DST/"
 echo "== restart =="
 pm2 restart api agent web --update-env
