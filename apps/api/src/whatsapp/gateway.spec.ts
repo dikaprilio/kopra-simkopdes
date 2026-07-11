@@ -86,6 +86,33 @@ describe('parseWebhook', () => {
     expect(parseWebhook(null)).toBeNull();
   });
 
+  it('voice note: payload.audio (tanpa body) → kind voice + audioPath (spike 11 Jul)', () => {
+    // struktur persis payload GoWA nyata (nomor disamarkan)
+    const m = parseWebhook({
+      device_id: '628000000001@s.whatsapp.net',
+      event: 'message',
+      payload: {
+        audio: 'statics/media/1783731573-28c5c820-aaaa-bbbb-cccc-000000000000.oga',
+        chat_id: '628000000002@s.whatsapp.net',
+        chat_lid: '97700000000000@lid',
+        from: '628000000002@s.whatsapp.net',
+        from_lid: '97700000000000@lid',
+        from_name: 'Tester',
+        id: '3A076C74402B00FA0000',
+        is_from_me: false,
+        timestamp: '2026-07-11T00:59:42Z',
+      },
+    })!;
+    expect(m.kind).toBe('voice');
+    expect(m.audioPath).toBe('statics/media/1783731573-28c5c820-aaaa-bbbb-cccc-000000000000.oga');
+    expect(m.text).toBe('');
+    expect(m.senderNumber).toBe('628000000002');
+  });
+
+  it('pesan teks tetap kind text', () => {
+    expect(parseWebhook(dmPayload)!.kind).toBe('text');
+  });
+
   it('jidToNumber membersihkan suffix', () => {
     expect(jidToNumber('62811:99@s.whatsapp.net')).toBe('62811');
     expect(jidToNumber('62811@s.whatsapp.net')).toBe('62811');

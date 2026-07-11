@@ -5,6 +5,7 @@ import { OutboxService } from './outbox.service';
 import { DedupService } from './dedup.service';
 import { AgentClient, type ActorContext } from './agent-client';
 import { GowaClient, type InboundMessage } from './gateway';
+import { AzureSttService } from './stt.service';
 
 /**
  * Integrasi orchestrator DM vs DB kopra_test — agent DI-MOCK (deterministik),
@@ -17,6 +18,8 @@ const JID = (n: string) => `${n}@s.whatsapp.net`;
 
 let svc: ConversationService;
 let agentMock: jest.Mock<Promise<string>, [string, ActorContext]>;
+const fetchMediaMock = jest.fn(async () => ({ buffer: Buffer.from('ogg'), mime: 'audio/ogg' }));
+const sttMock = jest.fn(async (_b: Buffer, _m: string) => 'TRANSKRIP');
 let kid: string;
 let pengurusId: string;
 
@@ -78,11 +81,16 @@ beforeAll(async () => {
   const guestReg = { handle: async () => null } as never; // alur DAFTAR diuji di registration.spec
   const superAdmin = { handle: async () => 'SA' } as never;
   const group = { onGroupMessage: async () => 'IGNORED' as const } as never; // diuji di group.service.spec
-  svc = new ConversationService(outbox, new DedupService(), agent, guestReg, superAdmin, group);
+  const gowaMedia = { fetchMedia: fetchMediaMock } as unknown as GowaClient;
+  const stt = { transcribe: sttMock } as unknown as AzureSttService;
+  svc = new ConversationService(outbox, new DedupService(), agent, guestReg, superAdmin, group, gowaMedia, stt);
 });
 
 beforeEach(async () => {
   agentMock.mockClear();
+  fetchMediaMock.mockClear();
+  sttMock.mockClear();
+  sttMock.mockImplementation(async () => 'TRANSKRIP');
   await prisma.pendingAction.deleteMany({ where: { koperasiId: kid } });
   await prisma.outboundWhatsappMessage.deleteMany({
     where: { OR: [{ toJid: { contains: '62899' } }, { toJid: '1203@g.us' }] },
@@ -172,6 +180,62 @@ describe('ConversationService (DM state machine)', () => {
 
   it('pesan grup → diam (IGNORED), tanpa outbox tanpa agent', async () => {
     await svc.onMessage({ ...msg(WA_PENGURUS, 'halo semua'), isGroup: true, chatJid: '1203@g.us' });
+    expect(agentMock).not.toHaveBeenCalled();
+    expect(await lastReply('1203@g.us')).toBe('');
+  });
+});
+
+describe('Voice note (STT)', () => {
+  const vn = (from: string, id?: string): InboundMessage => ({
+    ...msg(from, ''),
+    ...(id ? { messageId: id } : {}),
+    kind: 'voice',
+    audioPath: 'statics/media/jest-vn.oga',
+  });
+
+  it('VN pengurus → transkrip jadi teks agent + balasan ber-prefix 🎤', async () => {
+    sttMock.mockImplementation(async () => 'pemasukan bulan ini berapa');
+    await svc.onMessage(vn(WA_PENGURUS));
+    expect(fetchMediaMock).toHaveBeenCalledWith('statics/media/jest-vn.oga');
+    const [text, actor] = agentMock.mock.calls[0];
+    expect(text).toBe('pemasukan bulan ini berapa');
+    expect(actor).toMatchObject({ role: 'PENGURUS' });
+    const reply = await lastReply(JID(WA_PENGURUS));
+    expect(reply).toContain('🎤');
+    expect(reply).toContain('pemasukan bulan ini berapa');
+    expect(reply).toContain('JAWABAN_AGENT');
+  });
+
+  it('VN "Iya." (transkrip bertanda baca) mengkonfirmasi pending → CONFIRMED', async () => {
+    const entryId = await buatDraftPending();
+    sttMock.mockImplementation(async () => 'Iya.');
+    await svc.onMessage(vn(WA_PENGURUS));
+    const entry = await prisma.journalEntry.findUnique({ where: { id: entryId } });
+    expect(entry?.status).toBe('CONFIRMED');
+    const reply = await lastReply(JID(WA_PENGURUS));
+    expect(reply).toContain('🎤');
+    expect(reply).toContain('✅ Tersimpan!');
+  });
+
+  it('STT gagal → pesan sopan, tanpa agent', async () => {
+    sttMock.mockImplementation(async () => {
+      throw new Error('azure down');
+    });
+    await svc.onMessage(vn(WA_PENGURUS));
+    expect(agentMock).not.toHaveBeenCalled();
+    expect(await lastReply(JID(WA_PENGURUS))).toContain('tidak bisa saya proses');
+  });
+
+  it('transkrip kosong → minta ulang, tanpa agent', async () => {
+    sttMock.mockImplementation(async () => '');
+    await svc.onMessage(vn(WA_PENGURUS));
+    expect(agentMock).not.toHaveBeenCalled();
+    expect(await lastReply(JID(WA_PENGURUS))).toContain('kurang jelas');
+  });
+
+  it('VN di grup → diam total (tanpa STT, tanpa outbox)', async () => {
+    await svc.onMessage({ ...vn(WA_PENGURUS), isGroup: true, chatJid: '1203@g.us' });
+    expect(sttMock).not.toHaveBeenCalled();
     expect(agentMock).not.toHaveBeenCalled();
     expect(await lastReply('1203@g.us')).toBe('');
   });

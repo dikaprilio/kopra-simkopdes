@@ -11,6 +11,10 @@ export interface InboundMessage {
   text: string;
   isGroup: boolean;
   timestamp?: string;
+  /** default "text"; "voice" = voice note (text diisi transkrip STT oleh conversation) */
+  kind?: 'text' | 'voice';
+  /** path file di GoWA, mis. "statics/media/xxx.oga" (payload.audio — spike 11 Jul) */
+  audioPath?: string;
 }
 
 /** Verifikasi X-Hub-Signature-256 = "sha256=" + hex HMAC-SHA256(rawBody, secret). Constant-time. */
@@ -52,24 +56,31 @@ export function parseWebhook(body: unknown): InboundMessage | null {
       timestamp?: string;
       is_from_me?: boolean;
       body?: string;
+      audio?: string; // path "statics/media/…​.oga" — GoWA auto-download (spike 11 Jul)
     };
   };
   const p = b?.payload;
   if (!p || !p.id || !p.chat_id) return null;
   if (b.event && b.event !== 'message') return null; // ack/receipt/dll — abaikan
   if (p.is_from_me) return null;
-  if (typeof p.body !== 'string' || p.body.trim() === '') return null; // media/voice = backlog
 
-  return {
+  const base = {
     deviceId: b.device_id ?? 'unknown',
     messageId: p.id,
     chatJid: p.chat_id,
     senderNumber: jidToNumber(p.from ?? p.chat_id),
     fromName: p.from_name,
-    text: p.body.trim(),
     isGroup: p.chat_id.endsWith('@g.us'),
     timestamp: p.timestamp,
   };
+
+  // voice note: payload.audio berisi path file, body tidak ada
+  if (typeof p.audio === 'string' && p.audio) {
+    return { ...base, kind: 'voice', audioPath: p.audio, text: '' };
+  }
+
+  if (typeof p.body !== 'string' || p.body.trim() === '') return null; // media lain = backlog
+  return { ...base, kind: 'text', text: p.body.trim() };
 }
 
 /** HTTP client GoWA REST (v8: header X-Device-Id WAJIB di semua endpoint). */
@@ -103,6 +114,18 @@ export class GowaClient {
       const detail = await res.text().catch(() => '');
       throw new Error(`GoWA send/message ${res.status}: ${detail.slice(0, 200)}`);
     }
+  }
+
+  /** Ambil file media yang sudah diunduh GoWA (payload.audio → GET /statics/…). */
+  async fetchMedia(mediaPath: string): Promise<{ buffer: Buffer; mime: string }> {
+    if (!/^statics\/[\w\-./]+$/.test(mediaPath))
+      throw new Error(`Path media tidak dikenal: ${mediaPath}`);
+    const res = await fetch(`${this.baseUrl}/${mediaPath}`, { headers: this.headers() });
+    if (!res.ok) throw new Error(`GoWA media ${res.status}: ${mediaPath}`);
+    return {
+      buffer: Buffer.from(await res.arrayBuffer()),
+      mime: res.headers.get('content-type') ?? 'audio/ogg',
+    };
   }
 
   /** Participant grup (utk resolusi grup→koperasi, M7). */

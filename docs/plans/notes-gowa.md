@@ -63,6 +63,25 @@ WA_WEBHOOK_SECRET=kopra-webhook-dev-secret
 WA_DEVICE_ID=<isi setelah pairing>
 ```
 
+## ✅ Addendum voice note (11 Jul — spike STT, VN nyata)
+
+Payload webhook untuk **pesan suara**: `event: "message"` biasa, TANPA `body`, dengan field **`payload.audio`** berisi path file yang **sudah diunduh GoWA sendiri**:
+```jsonc
+{
+  "device_id": "628…@s.whatsapp.net",
+  "event": "message",
+  "payload": {
+    "audio": "statics/media/1783731573-<uuid>.oga",   // ← file OGG/Opus siap ambil
+    "chat_id": "628…@s.whatsapp.net",
+    "chat_lid": "977…@lid",                            // field baru: LID (tak dipakai adapter)
+    "from": "628…@s.whatsapp.net", "from_lid": "977…@lid",
+    "from_name": "…", "id": "3A07…", "is_from_me": false, "timestamp": "…"
+  }
+}
+```
+- Ambil file: `GET {WA_GATEWAY_BASE_URL}/{payload.audio}` → `200 audio/ogg` (terverifikasi; endpoint `/message/:id/download` TIDAK diperlukan untuk VN).
+- STT: Azure Fast Transcription menerima `.oga` ini langsung tanpa konversi (terverifikasi, locale id-ID).
+
 ## ✅ Addendum pairing nyata (11 Jul, macOS native — Aldio)
 
 Binary darwin_arm64 v8.6.0 jalan native dari `kopra-whatsapp-waha/local-gowa/` (flags sama + `--host=127.0.0.1`). Pairing via phone-code SUKSES. **Temuan penting:** `X-Device-Id` utk REST API = **UUID device internal** (dari `GET /app/devices` / log `[DEVICE_MANAGER] created device placeholder <uuid>`), BUKAN JID. JID `628…:N@s.whatsapp.net` ditolak `DEVICE_NOT_FOUND` sebagai header. JID tetap dipakai GoWA sebagai `device_id` di payload webhook → adapter harus siap MEMETAKAN keduanya (simpan UUID di `WA_DEVICE_ID` utk outbound; kenali JID di inbound). Kedua nilai tercatat di `local-gowa/device-id.txt` (repo infra, gitignored).
