@@ -10,7 +10,7 @@ note: rumus analisis rasio sudah dikoreksi dari dokumen sumber; bagian dalam kur
 
 # Template Paket Dokumen RAT Koperasi Desa/Kelurahan Merah Putih
 
-Paket dokumen RAT lengkap terdiri dari (urutan sesuai praktik lapangan):
+Panduan cara membuat (bikin) laporan RAT: undangan, notulen, LPJ pengurus, laporan keuangan, sampai laporan pengawas. Paket dokumen RAT lengkap terdiri dari (urutan sesuai praktik lapangan):
 1. Undangan RAT → 2. Notulen RAT → 3. Daftar hadir → 4. Kata pengantar → 5. Daftar isi → 6. LPJ Pengurus → 7. Laporan keuangan (posisi keuangan, PHU, perubahan modal, arus kas) → 8. Catatan atas Laporan Keuangan → 9. Analisis rasio → 10. Rencana kerja tahun berikutnya → 11. RAPB → 12. LPJ Pengawas.
 
 Dasar hukum yang lazim dikutip: UU 25/1992 Pasal 30 ayat (1) (pengurus bertugas menyelenggarakan Rapat Anggota — di undangan), Pasal 22 ayat (1) (Rapat Anggota pemegang kekuasaan tertinggi — di kata pengantar), Pasal 26 ayat (1) (Rapat Anggota minimal sekali setahun — di pembukaan LPJ), Pasal 38–40 (tugas pengawas — di laporan pengawas).

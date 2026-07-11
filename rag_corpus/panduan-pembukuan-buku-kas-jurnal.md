@@ -1,7 +1,7 @@
 ---
 title: Panduan Praktis — Dari Buku Kas ke Jurnal (Pembukuan Koperasi Sederhana)
 sourceType: guide
-source: disusun tim Kopra dari standar akuntansi koperasi & format buku kas KDMP di lapangan (buku kas umum, buku kas operasional, buku bank)
+source: disusun tim Kopra dari standar akuntansi koperasi & format buku kas KDMP di lapangan; posting rules & alur konfirmasi sejalan aplikasi Kopra dan CORE/SIMKOPDES
 year: 2026
 accessed: 2026-07-10
 relevance: cara mencatat harian — buku kas, double-entry sederhana, jurnal 2 baris, koreksi kesalahan lewat jurnal balik
@@ -60,6 +60,10 @@ Contoh nyata: gerai menjual 5 galon air Rp 100.000 (modal kulakannya Rp 80.000):
 
 Dua jurnal itu sekaligus memberi tahu: omzet 100 ribu, laba kotor 20 ribu, stok berkurang 80 ribu.
 
+Kode akun yang lazim (COA CORE): Kas 111000 · Bank BRI 112100 · Persediaan 114000 · Simpanan Pokok 310000 · Simpanan Wajib 320000 · Pendapatan 410000/41x per unit · Beban Operasional 510000/5xx.
+
+Kenapa wajib jurnal ganda? (1) **anti selisih** — dua sisi wajib sama, salah ketik langsung ketahuan; (2) **laporan RAT otomatis** — buku besar, neraca saldo, PHU, neraca tinggal dihitung dari jurnal; (3) **standar CORE/SIMKOPDES** — format sama dengan aplikasi resmi KDMP, data bisa dipertanggungjawabkan ke pembina/dinas.
+
 ## 4. Status catatan: draft vs terkonfirmasi
 
 Praktik baik (dipakai juga oleh sistem digital koperasi): pencatatan melewati dua tahap —
@@ -67,6 +71,8 @@ Praktik baik (dipakai juga oleh sistem digital koperasi): pencatatan melewati du
 - **CONFIRMED (terkonfirmasi/dibukukan)** — mengunci angka; **tidak boleh diedit atau dihapus lagi**.
 
 Kenapa dikunci? Supaya jejak audit utuh — laporan yang sudah dibaca RAT/pengawas tidak bisa berubah diam-diam.
+
+Alur pencatatan di Kopra (lewat WhatsApp): pengurus menulis dengan bahasa biasa ("catat pemasukan banyu 500rb") → sistem menerjemahkan lewat posting rules dan menampilkan **draft** (jenis, nominal, unit usaha, kas/bank, tanggal) → pengurus membalas **YA** (simpan) atau **BATAL**; salah angka tinggal dikoreksi ("eh 450rb") sebelum konfirmasi. Setiap jurnal tersimpan mendapat **nomor urut per koperasi (JU-001, JU-002, …)** yang dirujuk saat memeriksa buku besar atau saat RAT. Penjualan stok jadi **dua catatan sekaligus** dalam satu konfirmasi: kartu stok berkurang + jurnal pendapatan — stok fisik dan pembukuan tidak pernah jalan sendiri-sendiri.
 
 ## 5. Salah catat? Koreksi lewat JURNAL BALIK, bukan edit/hapus
 

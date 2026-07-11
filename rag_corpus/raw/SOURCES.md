@@ -27,5 +27,5 @@ Catatan:
 - UU 25/1992 masih berlaku (Putusan MK No. 28/PUU-XI/2013 membatalkan UU 17/2012); beberapa ketentuan diubah UU 6/2023 (Cipta Kerja) Pasal 86.
 - Teks lengkap per pasal UU 25/1992 sudah dikonversi ke `../uu-25-1992-perkoperasian.md` (siap ingest, `sourceType: regulation`).
 - FAQ KDMP sudah dikonversi langsung ke `../faq-kdmp.md` (sumber: Diskop UKM Prov. Kalbar).
-- Inpres 9/2025 di pasal.id belum ada teksnya — pakai PDF resmi di folder ini untuk ekstraksi.
+- Inpres 9/2025 sudah dikonversi ke `../inpres-9-2025-kdmp.md` (OCR vision 12 hlm); Juklak Menkop 1/2025 sudah didistilasi ke `../juklak-menkop-1-2025-pembentukan-kdmp.md` (dari text layer 70 hlm).
 - Regulasi KDMP pusat (Juklak Menkop, PMK 81/2025, Permendesa 10/2025, dll.) TIDAK ada di pasal.id; sumbernya tetap https://jdih.kop.go.id/doc/peraturan_kdmp — di luar scope P2 kecuali Juklak (sudah diunduh).
