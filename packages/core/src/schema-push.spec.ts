@@ -11,6 +11,8 @@ function pushSchema(databaseUrl: string) {
     cwd: REPO_ROOT,
     env: { ...process.env, DATABASE_URL: databaseUrl },
     stdio: "pipe",
+    // Windows: spawn .cmd butuh shell (Node ≥22 menolak tanpa ini — EINVAL)
+    shell: process.platform === "win32",
   });
 }
 
