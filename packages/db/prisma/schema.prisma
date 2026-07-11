@@ -449,7 +449,9 @@ model InboundWhatsappEvent {
 model OutboundWhatsappMessage {
   id        String   @id @default(cuid())
   toJid     String
-  text      String
+  text      String // DOCUMENT: dipakai sebagai caption
+  kind      String   @default("TEXT") // TEXT|DOCUMENT
+  payload   Json? // DOCUMENT: parameter laporan (ReportExportPayload)
   attempts  Int      @default(0)
   nextTryAt DateTime @default(now())
   status    String   @default("QUEUED") // QUEUED|SENT|FAILED

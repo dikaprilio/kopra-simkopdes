@@ -10,6 +10,7 @@ import {
   memberSavings,
   unpaidMembers,
   KODE,
+  jakartaDateStart,
   jakartaMonthRange,
   revenueByBusinessUnit,
 } from "@kopra/core";
@@ -218,6 +219,73 @@ export const listUnpaidMembers = createTool({
       total: rp(r.total),
       periode: r.periods.join(", "),
     }));
+  },
+});
+
+const REPORT_TITLES = {
+  "buku-besar": "Buku Besar",
+  "neraca-saldo": "Neraca Saldo",
+  phu: "PHU",
+  neraca: "Neraca",
+  "buku-kas": "Buku Kas",
+} as const;
+
+export const exportFinancialReport = createTool({
+  id: "exportFinancialReport",
+  description:
+    "Kirim FILE Excel (xlsx) laporan keuangan ke chat DM ini (buku-besar | neraca-saldo | phu | neraca | buku-kas). " +
+    "Pakai saat user minta file/excel-nya, bukan sekadar lihat angka atau tautan. HANYA berlaku di DM.",
+  inputSchema: z.object({
+    reportType: z.enum(["buku-besar", "neraca-saldo", "phu", "neraca", "buku-kas"]),
+    from: z.string().optional().describe("YYYY-MM-DD (buku-besar/neraca-saldo)"),
+    to: z.string().optional().describe("YYYY-MM-DD (buku-besar/neraca-saldo)"),
+    month: z.string().optional().describe("YYYY-MM (phu/buku-kas)"),
+    date: z.string().optional().describe("YYYY-MM-DD posisi neraca"),
+    kode: z.string().optional().describe("kode akun kas utk buku-kas, default 111000"),
+  }),
+  execute: async (input, ctx) => {
+    const actor = getActor(ctx?.requestContext);
+    // file laporan HANYA via DM — gate READ_FINANCE saja masih meloloskan pengurus di grup
+    if (actor.channel !== "DM" || !actor.chatJid)
+      return {
+        denied:
+          "📵 File laporan hanya saya kirim lewat *japri* (DM) ya, biar data koperasi tetap aman. Chat saya langsung 🙂",
+      };
+    const deny = gate(actor, "READ_FINANCE");
+    if (deny) return { denied: deny };
+    // validasi periode di sini supaya tidak lahir baris outbox yang pasti gagal
+    try {
+      if (input.month) jakartaMonthRange(input.month);
+      if (input.date) jakartaDateStart(input.date);
+      if (input.from) jakartaDateStart(input.from);
+      if (input.to) jakartaDateStart(input.to);
+      if (input.from && input.to && input.from > input.to)
+        return { error: "Rentang tanggalnya terbalik — tanggal mulai harus sebelum tanggal akhir." };
+    } catch {
+      return { error: "Format periodenya belum pas (tanggal YYYY-MM-DD, bulan YYYY-MM). Boleh sebutkan ulang?" };
+    }
+    const judul = REPORT_TITLES[input.reportType];
+    await prisma.outboundWhatsappMessage.create({
+      data: {
+        toJid: actor.chatJid,
+        kind: "DOCUMENT",
+        text: `📄 *Laporan ${judul}* — ${actor.koperasiNama ?? ""}`.trim(),
+        payload: {
+          reportType: input.reportType,
+          koperasiId: actor.koperasiId!,
+          from: input.from,
+          to: input.to,
+          month: input.month,
+          date: input.date,
+          kode: input.kode,
+          requestedByUserId: actor.actorId,
+        },
+      },
+    });
+    return {
+      queued: true,
+      message: `📄 Siap! File Excel *Laporan ${judul}* sedang disiapkan — sebentar lagi masuk ke chat ini ya.`,
+    };
   },
 });
 

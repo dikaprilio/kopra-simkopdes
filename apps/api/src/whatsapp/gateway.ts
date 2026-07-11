@@ -116,6 +116,27 @@ export class GowaClient {
     }
   }
 
+  /** Kirim dokumen LANGSUNG ke GoWA (POST /send/file multipart). Flow bot → lewat OutboxService. */
+  async sendFileDirect(
+    toJid: string,
+    file: Buffer,
+    filename: string,
+    caption: string,
+    mime = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+  ): Promise<void> {
+    const form = new FormData();
+    form.append('phone', toJid);
+    form.append('caption', caption);
+    form.append('file', new Blob([new Uint8Array(file)], { type: mime }), filename);
+    // Content-Type WAJIB dibiarkan kosong — undici yang menulis boundary multipart.
+    const { 'Content-Type': _json, ...headers } = this.headers();
+    const res = await fetch(`${this.baseUrl}/send/file`, { method: 'POST', headers, body: form });
+    if (!res.ok) {
+      const detail = await res.text().catch(() => '');
+      throw new Error(`GoWA send/file ${res.status}: ${detail.slice(0, 200)}`);
+    }
+  }
+
   /** Ambil file media yang sudah diunduh GoWA (payload.audio → GET /statics/…). */
   async fetchMedia(mediaPath: string): Promise<{ buffer: Buffer; mime: string }> {
     if (!/^statics\/[\w\-./]+$/.test(mediaPath))
