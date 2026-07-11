@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, Query, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Query, UseGuards } from '@nestjs/common';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { RolesGuard } from '../auth/roles.guard';
 import { Roles } from '../auth/roles.decorator';
@@ -13,8 +13,8 @@ export class StockController {
   constructor(private readonly stock: StockService) {}
 
   @Get()
-  list(@CurrentUser() u: JwtPayload, @Query('productId') productId?: string) {
-    return this.stock.list(u.koperasiId, productId);
+  list(@CurrentUser() u: JwtPayload, @Query() query: Record<string, string>) {
+    return this.stock.list(u.koperasiId, query);
   }
 
   @Post()
@@ -26,6 +26,12 @@ export class StockController {
   @Post(':id/confirm')
   @Roles('PENGURUS', 'OWNER')
   confirm(@CurrentUser() u: JwtPayload, @Param('id') id: string) {
-    return this.stock.confirm(u.koperasiId, id);
+    return this.stock.confirm(u.koperasiId, u.sub, id);
+  }
+
+  @Delete(':id')
+  @Roles('PENGURUS', 'OWNER')
+  cancel(@CurrentUser() u: JwtPayload, @Param('id') id: string) {
+    return this.stock.cancel(u.koperasiId, u.sub, id);
   }
 }

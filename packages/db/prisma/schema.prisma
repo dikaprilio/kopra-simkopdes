@@ -181,6 +181,7 @@ model Member {
   nik        String? // dari input pengurus / import (masked ok)
   waNumber   String?
   sourceRef  String?  @unique // anggota_koperasi panitia
+  isActive   Boolean  @default(true)
   createdAt  DateTime @default(now())
 
   koperasi Koperasi       @relation(fields: [koperasiId], references: [id])
@@ -211,14 +212,18 @@ model MemberSaving {
 
 // Unit usaha = DIMENSI pelaporan (BRILINK, POSPAY, BANEW, …), bukan akun.
 model BusinessUnit {
-  id         String @id @default(cuid())
-  koperasiId String
-  nama       String
+  id           String  @id @default(cuid())
+  koperasiId   String
+  nama         String
+  isActive     Boolean @default(true)
+  revenueCoaId String?
 
   koperasi       Koperasi       @relation(fields: [koperasiId], references: [id])
+  revenueCoa     CoaAccount?    @relation("BusinessUnitRevenueCoa", fields: [revenueCoaId, koperasiId], references: [id, koperasiId], onDelete: Restrict, onUpdate: Restrict, map: "business_units_revenueCoaId_fkey")
   journalEntries JournalEntry[]
 
   @@unique([koperasiId, nama])
+  @@unique([revenueCoaId, koperasiId])
   @@map("business_units")
 }
 
@@ -237,8 +242,10 @@ model CoaAccount {
   parent   CoaAccount?   @relation("CoaTree", fields: [parentId], references: [id])
   children CoaAccount[]  @relation("CoaTree")
   lines    JournalLine[]
+  revenueForUnit BusinessUnit? @relation("BusinessUnitRevenueCoa")
 
   @@unique([koperasiId, kode])
+  @@unique([id, koperasiId])
   @@map("coa_accounts")
 }
 
@@ -253,16 +260,21 @@ model JournalEntry {
   businessUnitId String?
   sourceChannel  EntrySource
   status         EntryStatus @default(DRAFT)
+  reversalOfId   String?
   createdById    String
   createdAt      DateTime    @default(now())
 
   koperasi      Koperasi       @relation(fields: [koperasiId], references: [id])
   businessUnit  BusinessUnit?  @relation(fields: [businessUnitId], references: [id])
   createdBy     User           @relation(fields: [createdById], references: [id])
+  reversalOf    JournalEntry?  @relation("JournalReversal", fields: [reversalOfId, koperasiId], references: [id, koperasiId], onDelete: Restrict, onUpdate: Restrict, map: "journal_entries_reversalOfId_fkey")
+  reversal      JournalEntry?  @relation("JournalReversal")
   lines         JournalLine[]
   stockMovement StockMovement?
 
   @@unique([koperasiId, nomor])
+  @@unique([id, koperasiId])
+  @@unique([reversalOfId, koperasiId])
   @@index([koperasiId, date])
   @@index([koperasiId, status])
   @@map("journal_entries")
@@ -437,7 +449,9 @@ model InboundWhatsappEvent {
 model OutboundWhatsappMessage {
   id        String   @id @default(cuid())
   toJid     String
-  text      String
+  text      String // DOCUMENT: dipakai sebagai caption
+  kind      String   @default("TEXT") // TEXT|DOCUMENT
+  payload   Json? // DOCUMENT: parameter laporan (ReportExportPayload)
   attempts  Int      @default(0)
   nextTryAt DateTime @default(now())
   status    String   @default("QUEUED") // QUEUED|SENT|FAILED
@@ -500,7 +514,11 @@ model RagDocument {
   sourceType String
   content    String
   createdAt  DateTime @default(now())
+  // Unsupported by Prisma Client, but represented here so `db push` preserves
+  // the generated FTS column created by sql/rag_fts.sql.
+  tsv        Unsupported("tsvector")? @default(dbgenerated("to_tsvector('simple'::regconfig, ((COALESCE(title, ''::text) || ' '::text) || COALESCE(content, ''::text)))"))
 
+  @@index([tsv], type: Gin)
   @@map("rag_documents")
 }
 

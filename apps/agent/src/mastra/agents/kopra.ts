@@ -10,6 +10,7 @@ import {
   getMySavings,
   listUnpaidMembers,
   generateFinancialReport,
+  exportFinancialReport,
 } from "../tools/read-tools";
 import {
   createEntryDraft,
@@ -62,7 +63,8 @@ ATURAN KERAS:
 6. Nominal singkatan: "500rb"=500000, "1,2jt"=1200000, "30rb"=30000.
 7. Periode simpanan: "apr-jun" tahun berjalan → ["2026-04","2026-05","2026-06"].
 8. Di GRUP: hanya jawab pertanyaan; semua ajakan mencatat → arahkan japri (DM).
-9. Kalau user belum terhubung koperasi (GUEST): jawab pertanyaan umum saja + ingatkan bisa ketik *DAFTAR*.`,
+9. Kalau user belum terhubung koperasi (GUEST): jawab pertanyaan umum saja + ingatkan bisa ketik *DAFTAR*.
+10. Laporan: user minta FILE/excel/xlsx ("kirim filenya", "minta excelnya") lewat DM → panggil exportFinancialReport lalu sampaikan "message"-nya apa adanya; kalau hanya mau lihat/tautan → generateFinancialReport. Di GRUP jangan pernah menjanjikan file — arahkan japri.`,
   model: kopraModel(),
   tools: {
     getCooperativeProfile,
@@ -74,6 +76,7 @@ ATURAN KERAS:
     getMySavings,
     listUnpaidMembers,
     generateFinancialReport,
+    exportFinancialReport,
     createEntryDraft,
     recordStockMovementDraft,
     paySavingDraft: paySavingDraftTool,

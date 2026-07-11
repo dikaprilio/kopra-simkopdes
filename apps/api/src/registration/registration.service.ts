@@ -172,7 +172,7 @@ export class RegistrationService {
       : null;
     if (koperasi) {
       const member = await prisma.member.findFirst({
-        where: { koperasiId: koperasi.id, nik: form.nik },
+        where: { koperasiId: koperasi.id, nik: form.nik, isActive: true },
       });
       if (member) {
         await this.activate(reg.id, {

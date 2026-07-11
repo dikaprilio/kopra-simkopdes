@@ -7,12 +7,15 @@ import {
   type SimpleEntryInput,
   type PostingLine,
 } from "./posting-rules.js";
+import { DomainError } from "./errors.js";
+import { confirmStockMovementDraft } from "./stock-confirmation.js";
+import {
+  assertActiveBusinessUnit,
+  assertJournalReversible,
+  resolveActiveUnitRevenueCoa,
+} from "./lifecycle.js";
 
-export class DomainError extends Error {
-  constructor(public code: string, message: string) {
-    super(message);
-  }
-}
+export { DomainError } from "./errors.js";
 
 type Tx = Prisma.TransactionClient;
 
@@ -37,20 +40,15 @@ async function nextNomor(tx: Tx, koperasiId: string): Promise<string> {
   return `JU-${String(Number(rows[0]?.n ?? 0) + 1).padStart(3, "0")}`;
 }
 
-/** Resolve kode akun pendapatan per unit usaha ("Pendapatan <UNIT>") bila ada. */
+/** Resolve kode akun pendapatan melalui relasi unit yang aktif dan tenant-safe. */
 export async function revenueKodeForUnit(
   koperasiId: string,
   businessUnitId?: string,
 ): Promise<string | undefined> {
   if (!businessUnitId) return undefined;
-  const unit = await prisma.businessUnit.findFirst({
-    where: { id: businessUnitId, koperasiId },
-  });
-  if (!unit) throw new DomainError("UNIT_MISSING", "Unit usaha tidak ditemukan.");
-  const acc = await prisma.coaAccount.findFirst({
-    where: { koperasiId, nama: `Pendapatan ${unit.nama}`, isActive: true },
-  });
-  return acc?.kode;
+  return prisma.$transaction(async (tx) =>
+    (await resolveActiveUnitRevenueCoa(tx, koperasiId, businessUnitId)).kode,
+  );
 }
 
 export interface DraftResult {
@@ -65,14 +63,17 @@ export async function createDraftFromSimple(
   input: SimpleEntryInput,
   source: EntrySource = "WHATSAPP",
 ): Promise<DraftResult> {
-  input.revenueCoaKode =
-    input.revenueCoaKode ??
-    (await revenueKodeForUnit(input.koperasiId, input.businessUnitId));
-  const lines = buildLines(input);
-  const amount = effectiveAmount(input);
-  const entry = await prisma.$transaction(async (tx) => {
+  return prisma.$transaction(async (tx) => {
+    await assertActiveBusinessUnit(tx, input.koperasiId, input.businessUnitId);
+    const usesRevenue = input.kind === "INCOME" || input.kind === "STOCK_SALE";
+    const revenueCoaKode = input.businessUnitId && usesRevenue
+      ? (await resolveActiveUnitRevenueCoa(tx, input.koperasiId, input.businessUnitId)).kode
+      : input.revenueCoaKode;
+    const resolvedInput = { ...input, revenueCoaKode };
+    const lines = buildLines(resolvedInput);
+    const amount = effectiveAmount(resolvedInput);
     const kodeMap = await coaIdByKode(tx, input.koperasiId, lines.map((l) => l.coaKode));
-    return tx.journalEntry.create({
+    const entry = await tx.journalEntry.create({
       data: {
         koperasiId: input.koperasiId,
         nomor: await nextNomor(tx, input.koperasiId),
@@ -87,13 +88,55 @@ export async function createDraftFromSimple(
             coaId: kodeMap.get(l.coaKode)!,
             debit: l.debit,
             kredit: l.kredit,
+            catatan: l.catatan,
+          })),
+        },
+      },
+      include: { lines: true },
+    });
+    return { entry, amount, lines };
+  });
+}
+
+/** Buat satu jurnal balik DRAFT; original CONFIRMED tidak pernah dimutasi. */
+export async function createReversalDraft(
+  actorId: string,
+  koperasiId: string,
+  originalId: string,
+  input: { date?: Date; keterangan?: string; source?: EntrySource } = {},
+) {
+  return prisma.$transaction(async (tx) => {
+    const original = await assertJournalReversible(tx, koperasiId, originalId);
+    if (await tx.stockMovement.findFirst({ where: { journalEntryId: originalId, koperasiId } }))
+      throw new DomainError(
+        "STOCK_LINKED_REVERSAL",
+        "Jurnal stok harus dikoreksi melalui workflow stok.",
+      );
+    const lines = await tx.journalLine.findMany({ where: { entryId: originalId } });
+    return tx.journalEntry.create({
+      data: {
+        koperasiId,
+        nomor: await nextNomor(tx, koperasiId),
+        referensi: original.nomor,
+        date: input.date ?? new Date(),
+        keterangan: input.keterangan ?? `Jurnal balik ${original.nomor}`,
+        businessUnitId: original.businessUnitId,
+        sourceChannel: input.source ?? "WEB",
+        status: "DRAFT",
+        reversalOfId: originalId,
+        createdById: actorId,
+        lines: {
+          create: lines.map((line) => ({
+            coaId: line.coaId,
+            debit: line.kredit,
+            kredit: line.debit,
+            catatan: line.catatan,
           })),
         },
       },
       include: { lines: true },
     });
   });
-  return { entry, amount, lines };
 }
 
 /** Jurnal MANUAL (dari web / perintah lanjutan) — lines eksplisit, divalidasi balance. */
@@ -106,6 +149,7 @@ export async function createManualDraft(
 ) {
   assertBalanced(lines);
   return prisma.$transaction(async (tx) => {
+    await assertActiveBusinessUnit(tx, koperasiId, header.businessUnitId);
     const kodeMap = await coaIdByKode(tx, koperasiId, lines.map((l) => l.coaKode));
     return tx.journalEntry.create({
       data: {
@@ -123,6 +167,7 @@ export async function createManualDraft(
             coaId: kodeMap.get(l.coaKode)!,
             debit: l.debit,
             kredit: l.kredit,
+            catatan: l.catatan,
           })),
         },
       },
@@ -146,27 +191,20 @@ export async function reverseEntry(actorId: string, nomor: string, koperasiId: s
       "ENTRY_NOT_FOUND",
       `Jurnal ${nomor} tidak ditemukan / belum CONFIRMED. (Draft cukup dibatalkan dengan BATAL.)`,
     );
-  const already = await prisma.journalEntry.findFirst({
-    where: { koperasiId, referensi: entry.nomor, keterangan: { startsWith: "Pembalik" } },
-  });
-  if (already)
-    throw new DomainError(
-      "ALREADY_REVERSED",
-      `Jurnal ${entry.nomor} sudah pernah dibalik (${already.nomor}).`,
+  let draft;
+  try {
+    draft = await createReversalDraft(
+      actorId,
+      koperasiId,
+      entry.id,
+      { keterangan: `Pembalik ${entry.nomor}: ${entry.keterangan}`, source: "WHATSAPP" },
     );
-  const lines = entry.lines.map((l) => ({
-    coaKode: l.coa.kode,
-    debit: Number(l.kredit),
-    kredit: Number(l.debit),
-  }));
-  const draft = await createManualDraft(
-    actorId,
-    koperasiId,
-    { keterangan: `Pembalik ${entry.nomor}: ${entry.keterangan}`, referensi: entry.nomor },
-    lines,
-    "WHATSAPP",
-  );
-  const total = lines.reduce((s, l) => s + l.debit, 0);
+  } catch (error) {
+    if (error instanceof DomainError && error.code === "REVERSAL_EXISTS")
+      throw new DomainError("ALREADY_REVERSED", `Jurnal ${entry.nomor} sudah pernah dibalik.`);
+    throw error;
+  }
+  const total = entry.lines.reduce((sum, line) => sum + Number(line.debit), 0);
   return { draft, asal: { nomor: entry.nomor, keterangan: entry.keterangan }, total };
 }
 
@@ -176,16 +214,19 @@ export async function reverseEntry(actorId: string, nomor: string, koperasiId: s
  */
 export async function confirmEntry(entryId: string, koperasiId: string): Promise<void> {
   await prisma.$transaction(async (tx) => {
+    const linkedMovement = await tx.stockMovement.findFirst({
+      where: { journalEntryId: entryId, koperasiId },
+      select: { id: true },
+    });
+    if (linkedMovement)
+      await confirmStockMovementDraft(tx, linkedMovement.id, koperasiId, entryId);
+
     const res = await tx.journalEntry.updateMany({
       where: { id: entryId, koperasiId, status: "DRAFT" },
       data: { status: "CONFIRMED" },
     });
     if (res.count !== 1)
       throw new DomainError("NOT_DRAFT", "Jurnal tidak ditemukan atau sudah dikonfirmasi.");
-    await tx.stockMovement.updateMany({
-      where: { journalEntryId: entryId, status: "DRAFT" },
-      data: { status: "CONFIRMED" },
-    });
   });
 }
 

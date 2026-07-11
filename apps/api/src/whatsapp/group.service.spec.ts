@@ -53,7 +53,7 @@ beforeAll(async () => {
   });
 
   participantsMock = jest.fn();
-  agentMock = jest.fn(async () => 'JAWABAN_GRUP');
+  agentMock = jest.fn<Promise<string>, [string, ActorContext]>(async () => 'JAWABAN_GRUP');
   const gowa = { getGroupParticipants: participantsMock } as unknown as GowaClient;
   const agent = { ask: agentMock } as unknown as AgentClient;
   svc = new GroupService(gowa, new OutboxService(new GowaClient()), agent);

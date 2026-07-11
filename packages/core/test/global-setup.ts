@@ -19,7 +19,7 @@ export default async function setup() {
   await client.end();
   // sync schema — cwd packages/db supaya binary prisma lokal ketemu;
   // env DATABASE_URL menang atas .env (aturan precedence prisma)
-  execSync("npx prisma db push --skip-generate", {
+  execSync("pnpm run push -- --skip-generate", {
     cwd: resolve(__dirname, "../../db"),
     env: { ...process.env, DATABASE_URL: TEST_URL },
     stdio: "pipe",

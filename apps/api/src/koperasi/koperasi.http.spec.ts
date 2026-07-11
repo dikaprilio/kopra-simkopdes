@@ -74,11 +74,11 @@ describe('MembersService.pay — rapel', () => {
     expect(rows.every((r) => r.status === 'UNPAID' && r.journalEntryId === null)).toBe(true);
   });
 
-  it('semua id sudah PAID → 400 TIDAK_ADA_PERIODE_UNPAID', async () => {
+  it('semua id sudah PAID → 409 SIMPANAN_SUDAH_DIBAYAR', async () => {
     const member = await prisma.member.create({ data: { koperasiId: kopId, nama: 'Bu Lunas' } });
     const paid = await prisma.memberSaving.create({ data: { memberId: member.id, type: 'WAJIB', period: '2026-01', amount: 10000, status: 'PAID', paidAt: new Date() } });
 
-    await expect(membersSvc.pay(kopId, userId, member.id, [paid.id])).rejects.toMatchObject({ status: 400, message: 'TIDAK_ADA_PERIODE_UNPAID' });
+    await expect(membersSvc.pay(kopId, userId, member.id, [paid.id])).rejects.toMatchObject({ status: 409, message: 'SIMPANAN_SUDAH_DIBAYAR' });
   });
 
   it('memberId milik koperasi lain → 404 ANGGOTA_TIDAK_DITEMUKAN', async () => {
@@ -107,7 +107,7 @@ describe('StockService.create/confirm', () => {
     const journalDraft = await prisma.journalEntry.findUnique({ where: { id: draft.journal.entry.id } });
     expect(journalDraft?.status).toBe('DRAFT');
 
-    await stockSvc.confirm(kopId, draft.movementId);
+    await stockSvc.confirm(kopId, userId, draft.movementId);
 
     const movementConfirmed = await prisma.stockMovement.findUnique({ where: { id: draft.movementId } });
     expect(movementConfirmed?.status).toBe('CONFIRMED');
@@ -128,7 +128,7 @@ describe('ProductsService.remove — delete-guard', () => {
     const product = await prisma.product.create({ data: { koperasiId: kopId, nama: 'Produk Delete-Guard', unit: 'Pcs', hargaJual: 8000 } });
     await prisma.stockMovement.create({ data: { koperasiId: kopId, productId: product.id, type: 'ADJUST', qty: 10, sourceChannel: 'SEED', status: 'CONFIRMED', createdById: userId } });
 
-    const result = await productsSvc.remove(kopId, product.id);
+    const result = await productsSvc.remove(kopId, userId, product.id);
     expect(result).toEqual({ inactivated: true });
 
     const row = await prisma.product.findUnique({ where: { id: product.id } });
@@ -138,7 +138,7 @@ describe('ProductsService.remove — delete-guard', () => {
   it('produk tanpa movement → deleted (row hilang)', async () => {
     const product = await prisma.product.create({ data: { koperasiId: kopId, nama: 'Produk Tanpa Movement', unit: 'Pcs' } });
 
-    const result = await productsSvc.remove(kopId, product.id);
+    const result = await productsSvc.remove(kopId, userId, product.id);
     expect(result).toEqual({ deleted: true });
 
     const row = await prisma.product.findUnique({ where: { id: product.id } });

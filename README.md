@@ -1,5 +1,7 @@
 # Kopra — Asisten Digital Koperasi Merah Putih
 
+# wa.me/+6287776660466 
+
 > **Hackathon Digital Cooperatives Expo 2026** — Kemenkop RI × PEBS FEB UI · Tim Fandelion · Pilar 1 (Peningkatan Volume Usaha Koperasi)
 
 **Masalah:** 92% Kopdes Merah Putih punya akun SIMKOPDES, tapi <1% yang aktif memakainya untuk bisnis. Pengurus tetap bekerja di WhatsApp dan Excel.

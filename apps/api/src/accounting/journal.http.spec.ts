@@ -50,10 +50,10 @@ it('simple INCOME → DRAFT 2 lines, decimals as strings', async () => {
 
 it('confirm → CONFIRMED; PATCH/DELETE terkunci (409)', async () => {
   const entry: any = await svc.createSimple(kopId, userId, { kind: 'EXPENSE', amount: 100000, description: 'beban tes' } as any);
-  const confirmed: any = await svc.confirm(kopId, entry.id);
+  const confirmed: any = await svc.confirm(kopId, userId, entry.id);
   expect(confirmed.status).toBe('CONFIRMED');
-  await expect(svc.confirm(kopId, entry.id)).rejects.toMatchObject({ code: 'NOT_DRAFT' });
-  await expect(svc.remove(kopId, entry.id)).rejects.toMatchObject({ code: 'IMMUTABLE' });
+  await expect(svc.confirm(kopId, userId, entry.id)).rejects.toMatchObject({ code: 'NOT_DRAFT' });
+  await expect(svc.remove(kopId, userId, entry.id)).rejects.toMatchObject({ code: 'IMMUTABLE' });
 });
 
 it('manual unbalanced → PostingError NOT_BALANCED', async () => {
@@ -75,7 +75,7 @@ it('updateDraft dengan businessUnitId milik koperasi lain → ditolak (400), ent
   const before: any = await svc.get(kopId, created.id);
 
   await expect(
-    svc.updateDraft(kopId, created.id, { keterangan: 'coba ubah lintas tenant', businessUnitId: unitBId, lines: [
+    svc.updateDraft(kopId, userId, created.id, { keterangan: 'coba ubah lintas tenant', businessUnitId: unitBId, lines: [
       { coaKode: '111000', debit: 30000, kredit: 0 },
       { coaKode: '410000', debit: 0, kredit: 30000 },
     ] } as any),
@@ -87,7 +87,7 @@ it('updateDraft dengan businessUnitId milik koperasi lain → ditolak (400), ent
 
 it('CoaService.create dengan parentId milik koperasi lain → ditolak (400)', async () => {
   await expect(
-    coaSvc.create(kopId, { kode: '999000', nama: 'Akun Lintas Tenant', type: 'ASSET', parentId: coaBId } as any),
+    coaSvc.create(kopId, userId, { kode: '999000', nama: 'Akun Lintas Tenant', type: 'ASSET', parentId: coaBId } as any),
   ).rejects.toMatchObject({ status: 400, message: 'AKUN_INDUK_TIDAK_VALID' });
 
   const rows = await prisma.coaAccount.findMany({ where: { koperasiId: kopId, kode: '999000' } });

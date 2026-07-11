@@ -1,17 +1,23 @@
 import { createTool } from "@mastra/core/tools";
 import { z } from "zod";
 import { prisma } from "@kopra/db";
-import { accountBalance, stockLevels, findProduct, memberSavings, unpaidMembers, KODE } from "@kopra/core";
+import {
+  accountBalance,
+  activeBusinessUnitScope,
+  activeMemberScope,
+  stockLevels,
+  findProduct,
+  memberSavings,
+  unpaidMembers,
+  KODE,
+  jakartaDateStart,
+  jakartaMonthRange,
+  revenueByBusinessUnit,
+} from "@kopra/core";
 import { getActor, rp } from "../../lib/context";
 import { gate } from "./gate";
 
 /** "LLM explains, backend calculates" — semua angka dari SQL, bukan dari model. */
-
-const monthRange = (month?: string) => {
-  // month "2026-06"; default bulan berjalan
-  const [y, m] = (month ?? new Date().toISOString().slice(0, 7)).split("-").map(Number);
-  return { from: new Date(Date.UTC(y, m - 1, 1)), to: new Date(Date.UTC(y, m, 1)), label: `${y}-${String(m).padStart(2, "0")}` };
-};
 
 export const getCooperativeProfile = createTool({
   id: "getCooperativeProfile",
@@ -23,7 +29,12 @@ export const getCooperativeProfile = createTool({
     if (deny) return { denied: deny };
     const kop = await prisma.koperasi.findUnique({
       where: { id: actor.koperasiId! },
-      include: { businessUnits: true, _count: { select: { members: true } } },
+      include: {
+        businessUnits: { where: activeBusinessUnitScope(actor.koperasiId!) },
+        _count: {
+          select: { members: { where: activeMemberScope(actor.koperasiId!) } },
+        },
+      },
     });
     if (!kop) return { denied: "Koperasi tidak ditemukan." };
     return {
@@ -44,26 +55,20 @@ export const getFinancialDashboard = createTool({
     const actor = getActor(ctx?.requestContext);
     const deny = gate(actor, "READ_FINANCE");
     if (deny) return { denied: deny };
-    const { from, to, label } = monthRange(input.month);
+    const { from, to, label } = jakartaMonthRange(input.month);
     const kid = actor.koperasiId!;
     const [agg, perUnit, saldoKas, saldoBank] = await Promise.all([
       prisma.$queryRaw<{ pemasukan: number; pengeluaran: number }[]>`
         SELECT
-          COALESCE(SUM(jl.kredit) FILTER (WHERE c.kode LIKE '4%'), 0)::float AS pemasukan,
-          COALESCE(SUM(jl.debit)  FILTER (WHERE c.kode LIKE '5%'), 0)::float AS pengeluaran
+          COALESCE(SUM(jl.kredit - jl.debit) FILTER (WHERE c.type = 'REVENUE'), 0)::float AS pemasukan,
+          COALESCE(SUM(jl.debit - jl.kredit) FILTER (WHERE c.type = 'EXPENSE'), 0)::float AS pengeluaran
         FROM journal_lines jl
         JOIN journal_entries je ON je.id = jl."entryId" AND je.status = 'CONFIRMED'
         JOIN coa_accounts c ON c.id = jl."coaId"
-        WHERE je."koperasiId" = ${kid} AND je.date >= ${from} AND je.date < ${to}`,
-      prisma.$queryRaw<{ akun: string; total: number }[]>`
-        SELECT c.nama AS akun, COALESCE(SUM(jl.kredit),0)::float AS total
-        FROM journal_lines jl
-        JOIN journal_entries je ON je.id = jl."entryId" AND je.status = 'CONFIRMED'
-        JOIN coa_accounts c ON c.id = jl."coaId"
-        WHERE je."koperasiId" = ${kid} AND c.kode LIKE '41%'
-          AND je.date >= ${from} AND je.date < ${to}
-        GROUP BY c.nama HAVING SUM(jl.kredit) > 0
-        ORDER BY total DESC`,
+        WHERE je."koperasiId" = ${kid}
+          AND je.date >= (${from}::timestamptz AT TIME ZONE 'UTC')
+          AND je.date < (${to}::timestamptz AT TIME ZONE 'UTC')`,
+      revenueByBusinessUnit(kid, { from, to }),
       accountBalance(kid, KODE.KAS),
       accountBalance(kid, KODE.BANK),
     ]);
@@ -75,7 +80,7 @@ export const getFinancialDashboard = createTool({
       surplus: rp(a.pemasukan - a.pengeluaran),
       saldoKas: rp(saldoKas),
       saldoBank: rp(saldoBank),
-      pemasukanPerUnit: perUnit.map((u) => `${u.akun}: ${rp(u.total)}`),
+      pemasukanPerUnit: perUnit.map((u) => `${u.unitName}: ${rp(u.total)}`),
     };
   },
 });
@@ -88,7 +93,7 @@ export const listJournalEntries = createTool({
     const actor = getActor(ctx?.requestContext);
     const deny = gate(actor, "READ_FINANCE");
     if (deny) return { denied: deny };
-    const range = input.month ? monthRange(input.month) : null;
+    const range = input.month ? jakartaMonthRange(input.month) : null;
     const entries = await prisma.journalEntry.findMany({
       where: {
         koperasiId: actor.koperasiId!,
@@ -214,6 +219,73 @@ export const listUnpaidMembers = createTool({
       total: rp(r.total),
       periode: r.periods.join(", "),
     }));
+  },
+});
+
+const REPORT_TITLES = {
+  "buku-besar": "Buku Besar",
+  "neraca-saldo": "Neraca Saldo",
+  phu: "PHU",
+  neraca: "Neraca",
+  "buku-kas": "Buku Kas",
+} as const;
+
+export const exportFinancialReport = createTool({
+  id: "exportFinancialReport",
+  description:
+    "Kirim FILE Excel (xlsx) laporan keuangan ke chat DM ini (buku-besar | neraca-saldo | phu | neraca | buku-kas). " +
+    "Pakai saat user minta file/excel-nya, bukan sekadar lihat angka atau tautan. HANYA berlaku di DM.",
+  inputSchema: z.object({
+    reportType: z.enum(["buku-besar", "neraca-saldo", "phu", "neraca", "buku-kas"]),
+    from: z.string().optional().describe("YYYY-MM-DD (buku-besar/neraca-saldo)"),
+    to: z.string().optional().describe("YYYY-MM-DD (buku-besar/neraca-saldo)"),
+    month: z.string().optional().describe("YYYY-MM (phu/buku-kas)"),
+    date: z.string().optional().describe("YYYY-MM-DD posisi neraca"),
+    kode: z.string().optional().describe("kode akun kas utk buku-kas, default 111000"),
+  }),
+  execute: async (input, ctx) => {
+    const actor = getActor(ctx?.requestContext);
+    // file laporan HANYA via DM — gate READ_FINANCE saja masih meloloskan pengurus di grup
+    if (actor.channel !== "DM" || !actor.chatJid)
+      return {
+        denied:
+          "📵 File laporan hanya saya kirim lewat *japri* (DM) ya, biar data koperasi tetap aman. Chat saya langsung 🙂",
+      };
+    const deny = gate(actor, "READ_FINANCE");
+    if (deny) return { denied: deny };
+    // validasi periode di sini supaya tidak lahir baris outbox yang pasti gagal
+    try {
+      if (input.month) jakartaMonthRange(input.month);
+      if (input.date) jakartaDateStart(input.date);
+      if (input.from) jakartaDateStart(input.from);
+      if (input.to) jakartaDateStart(input.to);
+      if (input.from && input.to && input.from > input.to)
+        return { error: "Rentang tanggalnya terbalik — tanggal mulai harus sebelum tanggal akhir." };
+    } catch {
+      return { error: "Format periodenya belum pas (tanggal YYYY-MM-DD, bulan YYYY-MM). Boleh sebutkan ulang?" };
+    }
+    const judul = REPORT_TITLES[input.reportType];
+    await prisma.outboundWhatsappMessage.create({
+      data: {
+        toJid: actor.chatJid,
+        kind: "DOCUMENT",
+        text: `📄 *Laporan ${judul}* — ${actor.koperasiNama ?? ""}`.trim(),
+        payload: {
+          reportType: input.reportType,
+          koperasiId: actor.koperasiId!,
+          from: input.from,
+          to: input.to,
+          month: input.month,
+          date: input.date,
+          kode: input.kode,
+          requestedByUserId: actor.actorId,
+        },
+      },
+    });
+    return {
+      queued: true,
+      message: `📄 Siap! File Excel *Laporan ${judul}* sedang disiapkan — sebentar lagi masuk ke chat ini ya.`,
+    };
   },
 });
 

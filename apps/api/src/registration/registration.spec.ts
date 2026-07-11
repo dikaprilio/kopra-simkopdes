@@ -8,6 +8,7 @@ import { RegistrationService, masksMatch, maskNik } from './registration.service
 /** TDD registrasi (plan M6): NIK-match, magic link single-use/expiry, OTP 3×, hook member. */
 
 const NIK_MEMBER = '3402111111111111'; // ada di Member koperasi onboarded
+const NIK_ARCHIVED = '3402111111111129';
 const NIK_IMPORT = '3402222222222222'; // cocok masked ImportedIdentity directory
 const NIK_ASING = '9999888877776666';
 
@@ -46,6 +47,14 @@ beforeAll(async () => {
   await prisma.member.deleteMany({ where: { koperasiId: kidOnboard } });
   await prisma.member.create({
     data: { koperasiId: kidOnboard, nama: 'Bu Sari Jest', nik: NIK_MEMBER },
+  });
+  await prisma.member.create({
+    data: {
+      koperasiId: kidOnboard,
+      nama: 'Bu Arsip Jest',
+      nik: NIK_ARCHIVED,
+      isActive: false,
+    },
   });
 
   // fixture 2: koperasi masih di DIRECTORY + identitas resmi masked
@@ -106,6 +115,25 @@ describe('registrasi WA → form web (NIK-match)', () => {
       orderBy: { createdAt: 'desc' },
     });
     expect(notif?.text).toContain('Selamat datang');
+  });
+
+  it('NIK milik Member arsip tidak boleh auto-ACTIVE atau memperoleh peran', async () => {
+    const { link, shortCode } = await reg.startWaRegistration({
+      waNumber: '628880012',
+      role: 'PENGURUS',
+      koperasiId: kidOnboard,
+    });
+    const res = await reg.completeWaForm({
+      token: tokenFromLink(link),
+      nama: 'Bu Arsip Jest',
+      nik: NIK_ARCHIVED,
+      password: 'rahasia1',
+    });
+    expect(res.status).toBe('PENDING');
+    expect(await prisma.registrationRequest.findUnique({ where: { shortCode } }))
+      .toMatchObject({ status: 'PENDING_SUPER_ADMIN' });
+    expect(await prisma.whatsappIdentity.findUnique({ where: { waNumber: '628880012' } }))
+      .toBeNull();
   });
 
   it('NIK tidak cocok (koperasi directory) → PENDING_SUPER_ADMIN + kandidat tunggal tertaut', async () => {

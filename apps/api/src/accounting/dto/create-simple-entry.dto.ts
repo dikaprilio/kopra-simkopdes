@@ -1,8 +1,8 @@
-import { IsIn, IsNumber, IsOptional, IsPositive, IsString } from 'class-validator';
+import { IsDateString, IsIn, IsNumber, IsOptional, IsPositive, IsString } from 'class-validator';
 
 export class CreateSimpleEntryDto {
-  @IsIn(['INCOME', 'EXPENSE', 'STOCK_PURCHASE', 'STOCK_SALE', 'SAVING_PAYMENT'])
-  kind!: 'INCOME' | 'EXPENSE' | 'STOCK_PURCHASE' | 'STOCK_SALE' | 'SAVING_PAYMENT';
+  @IsIn(['INCOME', 'EXPENSE'])
+  kind!: 'INCOME' | 'EXPENSE';
 
   @IsNumber() @IsPositive()
   amount!: number;
@@ -12,4 +12,5 @@ export class CreateSimpleEntryDto {
 
   @IsOptional() @IsString() businessUnitId?: string;
   @IsOptional() @IsIn(['KAS', 'BANK']) via?: 'KAS' | 'BANK';
+  @IsOptional() @IsDateString() date?: string;
 }

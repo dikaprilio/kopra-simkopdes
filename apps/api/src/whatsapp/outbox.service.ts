@@ -1,5 +1,6 @@
 import { Injectable, Logger, OnModuleDestroy, OnModuleInit } from '@nestjs/common';
 import { prisma } from '@kopra/db';
+import { buildReportDocument, type ReportExportPayload } from '../reports/report-export';
 import { GowaClient } from './gateway';
 
 const POLL_MS = 2_000;
@@ -20,6 +21,13 @@ export class OutboxService implements OnModuleInit, OnModuleDestroy {
 
   async enqueue(toJid: string, text: string): Promise<void> {
     await prisma.outboundWhatsappMessage.create({ data: { toJid, text } });
+  }
+
+  /** Antre kirim FILE laporan (xlsx dibangun ulang saat kirim oleh drain — data selalu segar). */
+  async enqueueDocument(toJid: string, caption: string, payload: ReportExportPayload): Promise<void> {
+    await prisma.outboundWhatsappMessage.create({
+      data: { toJid, text: caption, kind: 'DOCUMENT', payload: payload as object },
+    });
   }
 
   onModuleInit() {
@@ -46,7 +54,12 @@ export class OutboxService implements OnModuleInit, OnModuleDestroy {
       });
       for (const msg of batch) {
         try {
-          await this.gowa.sendTextDirect(msg.toJid, msg.text);
+          if (msg.kind === 'DOCUMENT') {
+            const doc = await buildReportDocument(msg.payload as unknown as ReportExportPayload);
+            await this.gowa.sendFileDirect(msg.toJid, doc.buffer, doc.filename, msg.text || doc.caption);
+          } else {
+            await this.gowa.sendTextDirect(msg.toJid, msg.text);
+          }
           // updateMany: baris bisa lenyap (prune/cleanup) saat retry — JANGAN lempar P2025.
           await prisma.outboundWhatsappMessage.updateMany({
             where: { id: msg.id },
@@ -66,6 +79,15 @@ export class OutboxService implements OnModuleInit, OnModuleDestroy {
           this.logger.warn(
             `Kirim ke ${msg.toJid} gagal (attempt ${attempts}${failed ? ', FAILED' : ''}): ${(e as Error).message}`,
           );
+          if (failed && msg.kind === 'DOCUMENT') {
+            // fallback: file menyerah total → beri tautan web (baris TEXT baru, retry sendiri)
+            const reportType = (msg.payload as { reportType?: string } | null)?.reportType ?? '';
+            const base = process.env.APP_PUBLIC_WEB_URL ?? 'http://localhost:3000';
+            await this.enqueue(
+              msg.toJid,
+              `😔 Maaf, file laporan gagal dikirim. Coba unduh lewat web ya: ${base}/laporan/${reportType}`,
+            ).catch(() => undefined);
+          }
         }
         await new Promise((r) => setTimeout(r, RATE_GAP_MS));
       }

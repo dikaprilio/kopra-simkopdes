@@ -6,7 +6,7 @@ import { CurrentUser } from '../auth/current-user.decorator';
 import type { JwtPayload } from '../auth/jwt-payload';
 import { JournalService } from './journal.service';
 import { CreateSimpleEntryDto } from './dto/create-simple-entry.dto';
-import { CreateManualJournalDto } from './dto/create-manual-journal.dto';
+import { CreateManualJournalDto, ReverseJournalDto } from './dto/create-manual-journal.dto';
 
 @UseGuards(JwtAuthGuard, RolesGuard)
 @Controller('journals')
@@ -38,18 +38,24 @@ export class JournalController {
   @Patch(':id')
   @Roles('PENGURUS', 'OWNER')
   update(@CurrentUser() u: JwtPayload, @Param('id') id: string, @Body() dto: CreateManualJournalDto) {
-    return this.journal.updateDraft(u.koperasiId, id, dto);
+    return this.journal.updateDraft(u.koperasiId, u.sub, id, dto);
   }
 
   @Post(':id/confirm')
   @Roles('PENGURUS', 'OWNER')
   confirm(@CurrentUser() u: JwtPayload, @Param('id') id: string) {
-    return this.journal.confirm(u.koperasiId, id);
+    return this.journal.confirm(u.koperasiId, u.sub, id);
+  }
+
+  @Post(':id/reversal')
+  @Roles('PENGURUS', 'OWNER')
+  reverse(@CurrentUser() u: JwtPayload, @Param('id') id: string, @Body() dto: ReverseJournalDto) {
+    return this.journal.reverse(u.koperasiId, u.sub, id, dto);
   }
 
   @Delete(':id')
   @Roles('PENGURUS', 'OWNER')
   remove(@CurrentUser() u: JwtPayload, @Param('id') id: string) {
-    return this.journal.remove(u.koperasiId, id);
+    return this.journal.remove(u.koperasiId, u.sub, id);
   }
 }
