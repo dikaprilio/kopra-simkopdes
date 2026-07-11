@@ -29,8 +29,12 @@ async function coaIdByKode(tx: Tx, koperasiId: string, kodes: string[]) {
 }
 
 async function nextNomor(tx: Tx, koperasiId: string): Promise<string> {
-  const count = await tx.journalEntry.count({ where: { koperasiId } });
-  return `JU-${String(count + 1).padStart(3, "0")}`;
+  // MAX+1, bukan count+1: BATAL menghapus draft sehingga count bisa turun
+  // di bawah nomor tertinggi → count+1 menabrak @@unique([koperasiId, nomor]).
+  const rows = await tx.$queryRaw<{ n: number }[]>`
+    SELECT COALESCE(MAX(SUBSTRING(nomor FROM 4)::int), 0)::int AS n
+    FROM journal_entries WHERE "koperasiId" = ${koperasiId} AND nomor ~ '^JU-\\d+$'`;
+  return `JU-${String(Number(rows[0]?.n ?? 0) + 1).padStart(3, "0")}`;
 }
 
 /** Resolve kode akun pendapatan per unit usaha ("Pendapatan <UNIT>") bila ada. */
@@ -125,6 +129,45 @@ export async function createManualDraft(
       include: { lines: true },
     });
   });
+}
+
+/**
+ * Jurnal PEMBALIK utk "menghapus" jurnal CONFIRMED secara akuntansi-benar:
+ * entri asli tetap immutable; draft baru dgn debit↔kredit tertukar dibuat,
+ * commit tetap lewat YA (PendingAction). Return draft + info entri asal.
+ */
+export async function reverseEntry(actorId: string, nomor: string, koperasiId: string) {
+  const entry = await prisma.journalEntry.findFirst({
+    where: { koperasiId, nomor: { equals: nomor, mode: "insensitive" }, status: "CONFIRMED" },
+    include: { lines: { include: { coa: true } } },
+  });
+  if (!entry)
+    throw new DomainError(
+      "ENTRY_NOT_FOUND",
+      `Jurnal ${nomor} tidak ditemukan / belum CONFIRMED. (Draft cukup dibatalkan dengan BATAL.)`,
+    );
+  const already = await prisma.journalEntry.findFirst({
+    where: { koperasiId, referensi: entry.nomor, keterangan: { startsWith: "Pembalik" } },
+  });
+  if (already)
+    throw new DomainError(
+      "ALREADY_REVERSED",
+      `Jurnal ${entry.nomor} sudah pernah dibalik (${already.nomor}).`,
+    );
+  const lines = entry.lines.map((l) => ({
+    coaKode: l.coa.kode,
+    debit: Number(l.kredit),
+    kredit: Number(l.debit),
+  }));
+  const draft = await createManualDraft(
+    actorId,
+    koperasiId,
+    { keterangan: `Pembalik ${entry.nomor}: ${entry.keterangan}`, referensi: entry.nomor },
+    lines,
+    "WHATSAPP",
+  );
+  const total = lines.reduce((s, l) => s + l.debit, 0);
+  return { draft, asal: { nomor: entry.nomor, keterangan: entry.keterangan }, total };
 }
 
 /**

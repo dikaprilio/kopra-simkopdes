@@ -5,6 +5,7 @@ export * from "./posting-rules.js";
 export * from "./journal.js";
 export * from "./stock.js";
 export * from "./savings.js";
+export * from "./catalog.js";
 export * from "./pending-action.js";
 export * from "./audit.js";
 export * from "./reports.js";

@@ -7,6 +7,7 @@ import {
   paySavingDraft,
   createPending,
   findProduct,
+  reverseEntry,
   writeAudit,
 } from "@kopra/core";
 import { getActor, rp } from "../../lib/context";
@@ -241,6 +242,142 @@ export const createProductDraft = createTool({
         },
       });
       await audit(actor, "createProductDraft", pending.id, previewText);
+      return { previewText };
+    } catch (e) {
+      return { error: domainErrorText(e) };
+    }
+  },
+});
+
+export const updateProductDraft = createTool({
+  id: "updateProductDraft",
+  description:
+    "Buat DRAFT ubah master produk: ganti harga jual ('ubah harga minyakita jadi 16rb'), ganti nama, atau satuan. Hanya field yang disebut user yang diisi.",
+  inputSchema: z.object({
+    productName: z.string().describe("nama produk yang mau diubah (boleh sebagian)"),
+    hargaJual: z.number().positive().optional(),
+    namaBaru: z.string().optional(),
+    unit: z.string().optional(),
+  }),
+  execute: async (input, ctx) => {
+    const actor = getActor(ctx?.requestContext);
+    const deny = gate(actor, "WRITE_ERP");
+    if (deny) return { denied: deny };
+    try {
+      const product = await findProduct(actor.koperasiId!, input.productName);
+      if (!product) return { error: `Produk "${input.productName}" tidak ditemukan.` };
+      const perubahan: string[] = [];
+      if (input.namaBaru) perubahan.push(`nama → *${input.namaBaru}*`);
+      if (input.unit) perubahan.push(`satuan → *${input.unit}*`);
+      if (input.hargaJual)
+        perubahan.push(
+          `harga jual ${product.hargaJual ? rp(Number(product.hargaJual)) : "-"} → *${rp(input.hargaJual)}*`,
+        );
+      if (!perubahan.length) return { error: "Tidak ada perubahan yang disebut." };
+      const previewText = `📝 *Draft Ubah Produk — ${product.nama}:*\n${perubahan.map((x) => `• ${x}`).join("\n")}\n👉 Balas *YA* untuk simpan, *BATAL* untuk batalkan.`;
+      const pending = await createPending({
+        chatJid: actor.chatJid!,
+        actorId: actor.actorId!,
+        koperasiId: actor.koperasiId!,
+        actionType: "PRODUCT_UPDATE",
+        payload: {
+          previewText,
+          productUpdate: {
+            productId: product.id,
+            patch: { nama: input.namaBaru, unit: input.unit, hargaJual: input.hargaJual },
+          },
+        },
+      });
+      await audit(actor, "product.update.draft", pending.id, previewText);
+      return { previewText };
+    } catch (e) {
+      return { error: domainErrorText(e) };
+    }
+  },
+});
+
+export const deleteProductDraft = createTool({
+  id: "deleteProductDraft",
+  description:
+    "Buat DRAFT hapus produk ('hapus produk air galon'). Produk yang punya riwayat stok TIDAK dihapus permanen melainkan dinonaktifkan (riwayat pembukuan tetap utuh) — sampaikan ini ke user.",
+  inputSchema: z.object({ productName: z.string() }),
+  execute: async (input, ctx) => {
+    const actor = getActor(ctx?.requestContext);
+    const deny = gate(actor, "WRITE_ERP");
+    if (deny) return { denied: deny };
+    try {
+      const product = await findProduct(actor.koperasiId!, input.productName);
+      if (!product) return { error: `Produk "${input.productName}" tidak ditemukan.` };
+      const riwayat = await prisma.stockMovement.count({ where: { productId: product.id } });
+      const mode =
+        riwayat > 0
+          ? `*dinonaktifkan* (punya ${riwayat} riwayat stok — pembukuan lama tetap utuh)`
+          : "*dihapus permanen* (belum punya riwayat)";
+      const previewText = `🗑️ *Draft Hapus Produk:*\n*${product.nama}* akan ${mode}.\n👉 Balas *YA* untuk lanjut, *BATAL* untuk batalkan.`;
+      const pending = await createPending({
+        chatJid: actor.chatJid!,
+        actorId: actor.actorId!,
+        koperasiId: actor.koperasiId!,
+        actionType: "PRODUCT_DELETE",
+        payload: { previewText, productDelete: { productId: product.id } },
+      });
+      await audit(actor, "product.delete.draft", pending.id, previewText);
+      return { previewText };
+    } catch (e) {
+      return { error: domainErrorText(e) };
+    }
+  },
+});
+
+export const createMemberDraft = createTool({
+  id: "createMemberDraft",
+  description:
+    "Buat DRAFT anggota koperasi baru ('daftarkan anggota baru bu Sari, nomor 0812…'). JANGAN pernah minta/isi NIK — NIK hanya lewat form web.",
+  inputSchema: z.object({
+    nama: z.string(),
+    waNumber: z.string().optional().describe("nomor WA/HP bila disebut, digit saja"),
+  }),
+  execute: async (input, ctx) => {
+    const actor = getActor(ctx?.requestContext);
+    const deny = gate(actor, "WRITE_ERP");
+    if (deny) return { denied: deny };
+    try {
+      const previewText = `📝 *Draft Anggota Baru:*\nNama: *${input.nama}*${input.waNumber ? `\nWA: ${input.waNumber}` : ""}\n(NIK bisa dilengkapi nanti lewat web)\n👉 Balas *YA* untuk simpan, *BATAL* untuk batalkan.`;
+      const pending = await createPending({
+        chatJid: actor.chatJid!,
+        actorId: actor.actorId!,
+        koperasiId: actor.koperasiId!,
+        actionType: "MEMBER_CREATE",
+        payload: { previewText, member: { nama: input.nama, waNumber: input.waNumber } },
+      });
+      await audit(actor, "member.create.draft", pending.id, previewText);
+      return { previewText };
+    } catch (e) {
+      return { error: domainErrorText(e) };
+    }
+  },
+});
+
+export const reverseJournalDraft = createTool({
+  id: "reverseJournalDraft",
+  description:
+    "Buat DRAFT jurnal PEMBALIK untuk membatalkan jurnal yang SUDAH tersimpan ('batalkan jurnal JU-025'). Jurnal asli tidak dihapus (aturan pembukuan) — dibuat jurnal lawan yang menetralkannya. Draft yang belum tersimpan cukup dibatalkan dengan BATAL biasa.",
+  inputSchema: z.object({ nomorJurnal: z.string().describe("mis. JU-025") }),
+  execute: async (input, ctx) => {
+    const actor = getActor(ctx?.requestContext);
+    const deny = gate(actor, "WRITE_ERP");
+    if (deny) return { denied: deny };
+    try {
+      const res = await reverseEntry(actor.actorId!, input.nomorJurnal, actor.koperasiId!);
+      const previewText = `↩️ *Draft Jurnal Pembalik:*\nMembatalkan *${res.asal.nomor}* — "${res.asal.keterangan}" senilai *${rp(res.total)}*.\nJurnal baru *${res.draft.nomor}* akan menetralkan nilainya (jurnal asli tetap tercatat).\n👉 Balas *YA* untuk simpan, *BATAL* untuk batalkan.`;
+      const pending = await createPending({
+        chatJid: actor.chatJid!,
+        actorId: actor.actorId!,
+        koperasiId: actor.koperasiId!,
+        actionType: "JOURNAL_MANUAL",
+        payload: { previewText, entryId: res.draft.id },
+      });
+      await audit(actor, "journal.reverse.draft", pending.id, previewText);
       return { previewText };
     } catch (e) {
       return { error: domainErrorText(e) };

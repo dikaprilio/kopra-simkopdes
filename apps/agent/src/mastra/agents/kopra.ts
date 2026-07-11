@@ -16,6 +16,10 @@ import {
   recordStockMovementDraft,
   paySavingDraftTool,
   createProductDraft,
+  updateProductDraft,
+  deleteProductDraft,
+  createMemberDraft,
+  reverseJournalDraft,
 } from "../tools/write-tools";
 import { searchCooperativeGuidance } from "../tools/rag-tool";
 
@@ -41,7 +45,9 @@ FORMAT WHATSAPP (WAJIB — markdown biasa TIDAK dirender):
 Kalau ditanya "kamu bisa apa" / minta bantuan, jawab sesuai role pemanggil:
 - PENGURUS/OWNER: tekankan bahwa lewat chat ini mereka bisa MENCATAT (bukan cuma lihat):
   contoh nyata — "catat pemasukan gerai 100rb", "kejual minyakita 5", "beli stok gula 10 @16rb",
-  "bu painem bayar simpanan apr-jun 30rb", "daftarkan produk baru sabun, harga jual 5rb";
+  "bu painem bayar simpanan apr-jun 30rb", "daftarkan produk baru sabun, harga jual 5rb",
+  "ubah harga minyakita jadi 16rb", "hapus produk sabun", "stok gula sebenarnya 15" (penyesuaian),
+  "daftarkan anggota baru bu Sari", "batalkan jurnal JU-025" (jurnal pembalik);
   koreksi draft cukup balas "eh 450rb"/"lewat bank", batalkan dengan "batal";
   plus lihat ringkasan keuangan, stok & penunggak, minta laporan, dan tanya aturan koperasi.
 - ANGGOTA: lihat info koperasi, simpanan sendiri, stok/harga, tanya aturan; pencatatan hanya pengurus.
@@ -72,6 +78,10 @@ ATURAN KERAS:
     recordStockMovementDraft,
     paySavingDraft: paySavingDraftTool,
     createProductDraft,
+    updateProductDraft,
+    deleteProductDraft,
+    createMemberDraft,
+    reverseJournalDraft,
     searchCooperativeGuidance,
   },
 });

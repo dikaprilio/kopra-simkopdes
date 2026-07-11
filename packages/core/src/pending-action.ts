@@ -2,6 +2,7 @@ import { prisma, type PendingAction } from "@kopra/db";
 import { DomainError, confirmEntry, rejectEntry, accountBalance } from "./journal.js";
 import { confirmMovementOnly, cancelMovement } from "./stock.js";
 import { markPeriodsPaid } from "./savings.js";
+import { createMember, deleteProductGuarded, updateProduct, type ProductPatch } from "./catalog.js";
 import { KODE } from "./posting-rules.js";
 
 const TTL_MS = Number(process.env.PENDING_ACTION_TTL_SECONDS ?? 900) * 1000;
@@ -11,7 +12,10 @@ export type ActionType =
   | "JOURNAL_MANUAL"
   | "STOCK_MOVE"
   | "SAVING_PAY"
-  | "PRODUCT_CREATE";
+  | "PRODUCT_CREATE"
+  | "PRODUCT_UPDATE"
+  | "PRODUCT_DELETE"
+  | "MEMBER_CREATE";
 
 export interface PendingPayload {
   /** teks preview persis yang dikirim ke user */
@@ -20,6 +24,9 @@ export interface PendingPayload {
   movementId?: string;
   saving?: { memberId: string; savingType: "POKOK" | "WAJIB"; periods: string[]; amountPerPeriod?: number };
   product?: { nama: string; hargaJual?: number; unit?: string };
+  productUpdate?: { productId: string; patch: ProductPatch };
+  productDelete?: { productId: string };
+  member?: { nama: string; waNumber?: string };
   via?: "KAS" | "BANK";
 }
 
@@ -113,6 +120,12 @@ export async function confirmPending(chatJid: string, actorId: string): Promise<
           hargaJual: payload.product.hargaJual,
         },
       });
+    } else if (pending.actionType === "PRODUCT_UPDATE" && payload.productUpdate) {
+      await updateProduct(pending.koperasiId, payload.productUpdate.productId, payload.productUpdate.patch);
+    } else if (pending.actionType === "PRODUCT_DELETE" && payload.productDelete) {
+      await deleteProductGuarded(pending.koperasiId, payload.productDelete.productId);
+    } else if (pending.actionType === "MEMBER_CREATE" && payload.member) {
+      await createMember(pending.koperasiId, payload.member);
     }
     const kode = payload.via === "BANK" ? KODE.BANK : KODE.KAS;
     const saldoKas = await accountBalance(pending.koperasiId, kode);
