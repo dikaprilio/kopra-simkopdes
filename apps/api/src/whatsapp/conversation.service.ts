@@ -94,7 +94,7 @@ export class ConversationService {
             memberId: identity.user.memberId ?? undefined,
           })
         : await this.guestFlow(m);
-      if (reply) await this.outbox.enqueue(m.chatJid, voicePrefix + reply);
+      if (reply?.trim()) await this.outbox.enqueue(m.chatJid, voicePrefix + reply);
       await this.dedup.markResult(m.deviceId, m.messageId, 'PROCESSED');
     } catch (e) {
       this.logger.error(`onMessage gagal: ${(e as Error).message}`);
