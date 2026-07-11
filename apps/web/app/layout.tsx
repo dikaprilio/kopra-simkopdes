@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Fraunces, Poppins, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { MotionProviders } from "./components/motion/providers";
+import { WaFab } from "./components/wa-fab";
 
 const jakarta = Plus_Jakarta_Sans({
   variable: "--font-jakarta",
@@ -39,6 +40,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <MotionProviders>{children}</MotionProviders>
+        <WaFab />
       </body>
     </html>
   );
