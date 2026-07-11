@@ -31,6 +31,9 @@ importers:
       '@mastra/memory':
         specifier: latest
         version: 1.22.2(@mastra/core@1.50.1(express@5.2.1)(rxjs@7.8.2)(zod@4.4.3))
+      p-map:
+        specifier: ^7.0.5
+        version: 7.0.5
       zod:
         specifier: ^4.0.0
         version: 4.4.3

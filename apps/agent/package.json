@@ -16,6 +16,7 @@
     "@mastra/core": "latest",
     "@mastra/libsql": "latest",
     "@mastra/memory": "latest",
+    "p-map": "^7.0.5",
     "zod": "^4.0.0"
   },
   "devDependencies": {
