@@ -187,6 +187,9 @@ Langkah bertahap (masing-masing shippable):
 6. **Test tanpa LLM**: orchestrator dites dengan agent di-mock (deterministik); tool dites langsung sebagai fungsi; LLM behaviour dites terpisah dengan probe. Jangan gantungkan CI pada jawaban model.
 7. **Format kanal** itu urusan instructions (WhatsApp: bold `*satu asterisk*`, tanpa `**`, daftar `•`) — jangan post-process regex kalau bisa dihindari.
 
+8. **`z.unknown()`/`z.any()` di schema tool ditolak Gemini** (400 saat function-declaration) — selalu tipenkan field longgar sebagai `z.string()`/union eksplisit.
+9. **`toolCalls` hasil `generate()` bisa DOBEL** (entri sama muncul lagi dengan nama di `payload.toolName`) — dedup by id/nama sebelum dihitung atau dieksekusi (temuan eval Ventara Fase 1).
+
 ## 8. Rujukan implementasi nyata di repo ini
 
 | Konsep | File |
