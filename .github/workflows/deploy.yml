@@ -1,8 +1,8 @@
 name: Deploy ke VM Azure
 
+# NONAKTIF sementara (permintaan 11 Jul): deploy hanya MANUAL via tombol
+# "Run workflow" di tab Actions — push ke main TIDAK men-deploy lagi.
 on:
-  push:
-    branches: [main]
   workflow_dispatch: {}
 
 concurrency:
